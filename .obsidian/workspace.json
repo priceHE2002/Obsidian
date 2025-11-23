@@ -11,10 +11,14 @@
             "id": "3ceebc484bee5c94",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "karuko-temp-notes/dsp/因果性时域证明.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "因果性时域证明"
             }
           }
         ]
@@ -91,6 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "karuko-temp-notes/dsp/因果性时域证明.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "因果性时域证明 的反向链接列表"
             }
           },
           {
@@ -138,12 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "karuko-temp-notes/dsp/因果性时域证明.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "因果性时域证明 的大纲"
             }
           },
           {
@@ -186,8 +192,16 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "2a0b2c21f867c062",
+  "active": "3ceebc484bee5c94",
   "lastOpenFiles": [
+    "karuko-temp-notes/dsp/z的模值最小是1？.md",
+    "karuko-temp-notes/dsp/离散卷积公式推导.md",
+    "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
+    "karuko-temp-notes/dsp/采样信息是否消失.md",
+    "karuko-temp-notes/dsp/🌟一些频率关系.md",
+    "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
+    "karuko-temp-notes/26张宇《高等数学18讲》_含目录 14.jpeg",
+    "karuko-temp-notes/截屏 2025-10-25 22.05.24.jpeg",
     "karuko-temp-notes/sx/🧵6.【‼️】线性方程组.md",
     "karuko-temp-notes/sx/🧵5.二次型.md",
     "karuko-temp-notes/sx/🧵4.特征值和特征向量.md",
@@ -209,11 +223,6 @@
     "karuko-temp-notes/sx/🌟非齐次方程组的解集的秩.md",
     "karuko-temp-notes/sx/🌟零向量和零矩阵.md",
     "karuko-temp-notes/sx/🌟证明不等式的常用方法总结.md",
-    "karuko-temp-notes/sx/🌟秩为1的矩阵.md",
-    "karuko-temp-notes/sx/🌟矩阵行列分块.md",
-    "karuko-temp-notes/sx/🌟矩阵乘积可交换总结.md",
-    "karuko-temp-notes/sx/🌟泰勒展开式及形式展开式.md",
-    "karuko-temp-notes/sx/🌟施密特正交化.md",
     "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/截屏2025-11-21 17.19.50.png",
@@ -223,13 +232,10 @@
     "karuko-temp-notes/截屏2025-11-11 09.32.35.png",
     "karuko-temp-notes/截屏2025-11-07 09.26.41.png",
     "karuko-temp-notes/截屏2025-11-05 14.06.21.png",
-    "karuko-temp-notes/截屏2025-11-04 19.51.22.png",
-    "karuko-temp-notes/截屏2025-11-04 19.50.26.png",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
     "karuko-temp-notes/hbj",
     "karuko-temp-notes/dsp",
-    "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes",
     "未命名.base",
     "未命名 1",
