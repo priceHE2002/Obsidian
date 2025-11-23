@@ -11,14 +11,14 @@
             "id": "3ceebc484bee5c94",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "karuko-temp-notes/dsp/因果性时域证明.md",
-                "mode": "source",
-                "source": false
+                "aFile": "karuko-temp-notes",
+                "bFile": "karuko-temp-notes",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "因果性时域证明"
+              "icon": "diff",
+              "title": "Diff: karuko-temp-notes"
             }
           }
         ]
@@ -95,7 +95,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "karuko-temp-notes/dsp/因果性时域证明.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "因果性时域证明 的反向链接列表"
+              "title": "反向链接"
             }
           },
           {
@@ -143,13 +142,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "karuko-temp-notes/dsp/因果性时域证明.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "因果性时域证明 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -194,6 +192,7 @@
   },
   "active": "3ceebc484bee5c94",
   "lastOpenFiles": [
+    "karuko-temp-notes/dsp/因果性时域证明.md",
     "karuko-temp-notes/dsp/z的模值最小是1？.md",
     "karuko-temp-notes/dsp/离散卷积公式推导.md",
     "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
@@ -222,7 +221,6 @@
     "karuko-temp-notes/sx/🌲1.函数（数列）极限和连续做题必记.md",
     "karuko-temp-notes/sx/🌟非齐次方程组的解集的秩.md",
     "karuko-temp-notes/sx/🌟零向量和零矩阵.md",
-    "karuko-temp-notes/sx/🌟证明不等式的常用方法总结.md",
     "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/截屏2025-11-21 17.19.50.png",
