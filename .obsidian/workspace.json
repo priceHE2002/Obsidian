@@ -11,14 +11,14 @@
             "id": "3ceebc484bee5c94",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "karuko-temp-notes/hbj/前端界面.md",
-                "mode": "source",
-                "source": false
+                "aFile": "karuko-temp-notes",
+                "bFile": "karuko-temp-notes",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "前端界面"
+              "icon": "diff",
+              "title": "Diff: karuko-temp-notes"
             }
           }
         ]
@@ -194,6 +194,7 @@
   },
   "active": "3ceebc484bee5c94",
   "lastOpenFiles": [
+    "karuko-temp-notes/hbj/前端界面.md",
     "karuko-temp-notes/sx/🌟常见函数求导公式大全.md",
     "karuko-temp-notes/sx/🌟 🌟重要函数关系图像.md",
     "karuko-temp-notes/sx/🌟不等思想.md",
@@ -227,7 +228,6 @@
     "karuko-temp-notes/sx/🌲空间解析几何.md",
     "karuko-temp-notes/sx/🌲中值定理mean value theorem（微分与积分）.md",
     "karuko-temp-notes/sx/🌲7.反常积分和无穷级数（待）.md",
-    "karuko-temp-notes/sx/🌲6.微分方程及其应用.md",
     "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/截屏2025-11-21 17.19.50.png",
