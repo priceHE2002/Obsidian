@@ -11,14 +11,14 @@
             "id": "3ceebc484bee5c94",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "karuko-temp-notes",
-                "bFile": "karuko-temp-notes",
-                "aRef": ""
+                "file": "karuko-temp-notes/hbj/前端界面.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: karuko-temp-notes"
+              "icon": "lucide-file",
+              "title": "前端界面"
             }
           }
         ]
@@ -95,6 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "karuko-temp-notes/hbj/前端界面.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +105,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "前端界面 的反向链接列表"
             }
           },
           {
@@ -142,12 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "karuko-temp-notes/hbj/前端界面.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "前端界面 的大纲"
             }
           },
           {
@@ -192,13 +194,25 @@
   },
   "active": "3ceebc484bee5c94",
   "lastOpenFiles": [
+    "karuko-temp-notes/sx/🌟常见函数求导公式大全.md",
+    "karuko-temp-notes/sx/🌟 🌟重要函数关系图像.md",
+    "karuko-temp-notes/sx/🌟不等思想.md",
+    "karuko-temp-notes/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
+    "karuko-temp-notes/26张宇《高等数学18讲》_含目录 9.jpeg",
+    "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
+    "karuko-temp-notes/截屏 2025-10-11 14.22.18.jpeg",
+    "karuko-temp-notes/dsp/希尔伯特变换.md",
+    "karuko-temp-notes/dsp/求 f(t)=1 的傅里叶变换？.md",
+    "karuko-temp-notes/dsp/傅里叶逆变换 (Inverse Fourier Transform).md",
+    "karuko-temp-notes/Pasted image 20251121154504.png",
+    "karuko-temp-notes/Pasted image 20251121140445.png",
+    "karuko-temp-notes/数列极限与函数极限的关系.md",
     "karuko-temp-notes/dsp/因果性时域证明.md",
     "karuko-temp-notes/dsp/z的模值最小是1？.md",
     "karuko-temp-notes/dsp/离散卷积公式推导.md",
     "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
     "karuko-temp-notes/dsp/采样信息是否消失.md",
     "karuko-temp-notes/dsp/🌟一些频率关系.md",
-    "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/26张宇《高等数学18讲》_含目录 14.jpeg",
     "karuko-temp-notes/截屏 2025-10-25 22.05.24.jpeg",
     "karuko-temp-notes/sx/🧵6.【‼️】线性方程组.md",
@@ -214,22 +228,10 @@
     "karuko-temp-notes/sx/🌲中值定理mean value theorem（微分与积分）.md",
     "karuko-temp-notes/sx/🌲7.反常积分和无穷级数（待）.md",
     "karuko-temp-notes/sx/🌲6.微分方程及其应用.md",
-    "karuko-temp-notes/sx/🌲5.多元函数积分学及其应用.md",
-    "karuko-temp-notes/sx/🌲4.多元函数微分学及其应用.md",
-    "karuko-temp-notes/sx/🌲3.一元积分学及其应用.md",
-    "karuko-temp-notes/sx/🌲2.一元微分学及其应用.md",
-    "karuko-temp-notes/sx/🌲1.函数（数列）极限和连续做题必记.md",
-    "karuko-temp-notes/sx/🌟非齐次方程组的解集的秩.md",
-    "karuko-temp-notes/sx/🌟零向量和零矩阵.md",
     "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/截屏2025-11-21 17.19.50.png",
     "karuko-temp-notes/截屏2025-11-21 15.52.11.png",
-    "karuko-temp-notes/截屏2025-11-20 14.35.11.png",
-    "karuko-temp-notes/截屏2025-11-19 15.16.24.png",
-    "karuko-temp-notes/截屏2025-11-11 09.32.35.png",
-    "karuko-temp-notes/截屏2025-11-07 09.26.41.png",
-    "karuko-temp-notes/截屏2025-11-05 14.06.21.png",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
     "karuko-temp-notes/hbj",
