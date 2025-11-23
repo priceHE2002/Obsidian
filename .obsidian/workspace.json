@@ -11,10 +11,15 @@
             "id": "62aab284248af905",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "新标签页"
+              "type": "split-diff-view",
+              "state": {
+                "aFile": "1. 离散序列与系统.md",
+                "bFile": "1. 离散序列与系统.md",
+                "aRef": "HEAD",
+                "bRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: 1. 离散序列与系统"
             }
           }
         ]
@@ -186,7 +191,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "e597b8ba97aeb6d0",
+  "active": "62aab284248af905",
   "lastOpenFiles": [
     "1.md",
     "矩形窗.md",
