@@ -4,22 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "55fb07bab1466796",
+        "id": "5ca6bb965df0edd2",
         "type": "tabs",
         "children": [
           {
-            "id": "62aab284248af905",
+            "id": "3ceebc484bee5c94",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "1. 离散序列与系统.md",
-                "bFile": "1. 离散序列与系统.md",
-                "aRef": "HEAD",
-                "bRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: 1. 离散序列与系统"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
             }
           }
         ]
@@ -191,8 +186,9 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "62aab284248af905",
+  "active": "e597b8ba97aeb6d0",
   "lastOpenFiles": [
+    "工作/未命名.md",
     "1.md",
     "矩形窗.md",
     "未命名.base",
@@ -215,7 +211,6 @@
     "信",
     "音频算法/HB Demucs.md",
     "音频算法",
-    "工作/未命名.md",
     "欢迎.md",
     "未命名.canvas",
     "数学公式/未命名.md",
