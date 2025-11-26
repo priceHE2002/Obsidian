@@ -29,15 +29,29 @@
               "type": "markdown",
               "state": {
                 "file": "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）"
             }
+          },
+          {
+            "id": "0f89f482d5a045ea",
+            "type": "leaf",
+            "state": {
+              "type": "split-diff-view",
+              "state": {
+                "aFile": "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
+                "bFile": "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: 第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -208,9 +222,13 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "a6f269c7c93ed138",
+  "active": "0f89f482d5a045ea",
   "lastOpenFiles": [
     "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
+    "a.md",
+    "音频算法/HB Demucs.md",
+    "音频算法/BS-Roformer.md",
+    "未命名",
     "DSP习题集",
     "karuko-temp-notes/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
     "karuko-temp-notes/hbj/前端界面.md",
@@ -242,9 +260,6 @@
     "karuko-temp-notes/sx/🧵1.综合.md",
     "karuko-temp-notes/sx/📈3.数理统计.md",
     "karuko-temp-notes/sx/📈2.随机变量及其分布及数字特征.md",
-    "karuko-temp-notes/sx/📈1.随机事件与概率.md",
-    "karuko-temp-notes/sx/🌲空间解析几何.md",
-    "karuko-temp-notes/sx/🌲中值定理mean value theorem（微分与积分）.md",
     "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/截屏2025-11-21 17.19.50.png",
@@ -255,7 +270,6 @@
     "karuko-temp-notes/dsp",
     "karuko-temp-notes",
     "未命名.base",
-    "未命名 1",
     "未命名.canvas"
   ]
 }
