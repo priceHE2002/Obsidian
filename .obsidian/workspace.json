@@ -40,14 +40,14 @@
             "id": "0f89f482d5a045ea",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
-                "bFile": "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
-                "aRef": ""
+                "file": "a.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: 第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）"
+              "icon": "lucide-file",
+              "title": "a"
             }
           }
         ],
@@ -224,10 +224,10 @@
   },
   "active": "0f89f482d5a045ea",
   "lastOpenFiles": [
+    "音频算法/BS-Roformer.md",
     "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
     "a.md",
     "音频算法/HB Demucs.md",
-    "音频算法/BS-Roformer.md",
     "未命名",
     "DSP习题集",
     "karuko-temp-notes/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
