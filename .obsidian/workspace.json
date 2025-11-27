@@ -55,10 +55,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "exercise_1_11_spectrum.png"
+                "file": "digital_filter_response.png"
               },
               "icon": "lucide-image",
-              "title": "exercise_1_11_spectrum"
+              "title": "digital_filter_response"
             }
           }
         ],
@@ -235,10 +235,10 @@
   },
   "active": "56a15a26d95060ba",
   "lastOpenFiles": [
-    "test.md",
     "exercise_1_11_spectrum.png",
-    "digital_filter_response.png",
     "sin_wave_test.png",
+    "digital_filter_response.png",
+    "test.md",
     "README.md",
     "test1.md",
     "pyproject.toml",
