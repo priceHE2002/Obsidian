@@ -62,7 +62,7 @@
   "pythonArgs": "",
   "pythonEmbedPlots": true,
   "pythonFileExtension": "py",
-  "pythonInject": "",
+  "pythonInject": "import matplotlib.pyplot as plt\nimport os\n\n# === 这里填你刚才测试成功的绝对路径 ===\n# 注意：最后不要带斜杠\nVAULT_PATH = \"/Users/heyuhang/Documents/Obsidian Vault\"\n\ndef save_plot(filename):\n    \"\"\"\n    自动保存高清图片到库根目录，并在 Obsidian 中显示\n    \"\"\"\n    # 1. 确保文件名后缀\n    if not filename.endswith('.png'):\n        filename += '.png'\n        \n    # 2. 拼接完整路径\n    full_path = os.path.join(VAULT_PATH, filename)\n    \n    # 3. 保存图片 (自动应用高清设置)\n    try:\n        plt.savefig(full_path, dpi=300, bbox_inches='tight')\n        plt.close() # 关掉画布，省内存\n        \n        # 4. 打印 Obsidian 图片语法\n        print(f\"![[{filename}]]\")\n        \n    except Exception as e:\n        print(f\"❌ 图片保存失败: {e}\")",
   "shellPath": "bash",
   "shellArgs": "",
   "shellFileExtension": "sh",
