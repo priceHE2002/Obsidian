@@ -56,7 +56,7 @@
               "type": "markdown",
               "state": {
                 "file": "test.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -237,8 +237,9 @@
   },
   "active": "56a15a26d95060ba",
   "lastOpenFiles": [
-    "digital_filter_response.png",
+    "sin_wave_test.png",
     "test.md",
+    "digital_filter_response.png",
     "README.md",
     "test1.md",
     "pyproject.toml",
@@ -277,7 +278,6 @@
     "karuko-temp-notes/sx/🧵3.矩阵和向量组.md",
     "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
-    "karuko-temp-notes/截屏2025-11-21 17.19.50.png",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
     "karuko-temp-notes/hbj",
