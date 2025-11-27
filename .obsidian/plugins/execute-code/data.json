@@ -58,7 +58,7 @@
   "csArgs": "",
   "csFileExtension": "csx",
   "csInject": "",
-  "pythonPath": "python",
+  "pythonPath": "/Users/heyuhang/Documents/Obsidian Vault/.venv/bin/python",
   "pythonArgs": "",
   "pythonEmbedPlots": true,
   "pythonFileExtension": "py",
