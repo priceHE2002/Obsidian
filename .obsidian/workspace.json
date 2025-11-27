@@ -53,12 +53,14 @@
             "id": "56a15a26d95060ba",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "digital_filter_response.png"
+                "file": "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "digital_filter_response"
+              "icon": "lucide-file",
+              "title": "重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引"
             }
           }
         ],
@@ -233,22 +235,24 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "56a15a26d95060ba",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
-    "exercise_1_11_spectrum.png",
-    "test.md",
-    "sin_wave_test.png",
     "digital_filter_response.png",
+    "exercise_1_11_spectrum.png",
+    "sin_wave_test.png",
+    "test.md",
+    "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
+    "未命名.md",
+    "Work",
     "README.md",
     "test1.md",
     "pyproject.toml",
     "main.py",
-    "DSP习题集/第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md",
+    "DSP_Practise/第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md",
     "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
-    "音频算法/BS-Roformer.md",
-    "音频算法/HB Demucs.md",
-    "未命名",
-    "DSP习题集",
+    "Audio_Algorithm/BS-Roformer.md",
+    "Audio_Algorithm/HB Demucs.md",
+    "DSP_Practise",
     "karuko-temp-notes/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
     "karuko-temp-notes/hbj/前端界面.md",
     "karuko-temp-notes/sx/🌟常见函数求导公式大全.md",
@@ -273,8 +277,6 @@
     "karuko-temp-notes/截屏 2025-10-25 22.05.24.jpeg",
     "karuko-temp-notes/sx/🧵6.【‼️】线性方程组.md",
     "karuko-temp-notes/sx/🧵5.二次型.md",
-    "karuko-temp-notes/sx/🧵4.特征值和特征向量.md",
-    "karuko-temp-notes/sx/🧵3.矩阵和向量组.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
