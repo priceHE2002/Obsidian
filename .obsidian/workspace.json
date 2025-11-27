@@ -53,14 +53,12 @@
             "id": "56a15a26d95060ba",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "test.md",
-                "mode": "source",
-                "source": false
+                "file": "exercise_1_11_spectrum.png"
               },
-              "icon": "lucide-file",
-              "title": "test"
+              "icon": "lucide-image",
+              "title": "exercise_1_11_spectrum"
             }
           }
         ],
@@ -237,9 +235,10 @@
   },
   "active": "56a15a26d95060ba",
   "lastOpenFiles": [
-    "sin_wave_test.png",
     "test.md",
+    "exercise_1_11_spectrum.png",
     "digital_filter_response.png",
+    "sin_wave_test.png",
     "README.md",
     "test1.md",
     "pyproject.toml",
@@ -276,7 +275,6 @@
     "karuko-temp-notes/sx/🧵5.二次型.md",
     "karuko-temp-notes/sx/🧵4.特征值和特征向量.md",
     "karuko-temp-notes/sx/🧵3.矩阵和向量组.md",
-    "karuko-temp-notes/sx/Pasted image 20250810170656.png",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
