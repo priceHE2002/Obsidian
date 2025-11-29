@@ -27,10 +27,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "实信号DFT共轭对称性.png"
+                "file": "DFT序列偶奇延拓演示.png"
               },
               "icon": "lucide-image",
-              "title": "实信号DFT共轭对称性"
+              "title": "DFT序列偶奇延拓演示"
             }
           }
         ],
@@ -207,10 +207,12 @@
   },
   "active": "98c88242f2bd9df8",
   "lastOpenFiles": [
-    "未命名.md",
-    "实信号DFT共轭对称性.png",
-    "周期共轭对称性演示.png",
     "自相关与能量谱关系.png",
+    "周期共轭对称性演示.png",
+    "DFT序列偶奇延拓演示.png",
+    "未命名.md",
+    "既偶又奇序列验证.png",
+    "实信号DFT共轭对称性.png",
     "digital_filter_response.png",
     "dsp_time_reversal_conjugate.png",
     "exercise_1_11_spectrum.png",
@@ -232,9 +234,7 @@
     "karuko-temp-notes/sx/🌟常见函数求导公式大全.md",
     "karuko-temp-notes/sx/🌟 🌟重要函数关系图像.md",
     "karuko-temp-notes/sx/🌟不等思想.md",
-    "karuko-temp-notes/26张宇《高等数学18讲》_含目录 9.jpeg",
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
-    "karuko-temp-notes/截屏 2025-10-11 14.22.18.jpeg",
     "karuko-temp-notes/dsp/希尔伯特变换.md",
     "karuko-temp-notes/dsp/求 f(t)=1 的傅里叶变换？.md",
     "karuko-temp-notes/dsp/傅里叶逆变换 (Inverse Fourier Transform).md",
