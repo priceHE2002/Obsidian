@@ -34,9 +34,21 @@
               "icon": "lucide-file",
               "title": "利用DFT计算线性卷积"
             }
+          },
+          {
+            "id": "b4ae3772abf8b8a7",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "小波变换时频分析演示.png"
+              },
+              "icon": "lucide-image",
+              "title": "小波变换时频分析演示"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -207,10 +219,12 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "98c88242f2bd9df8",
+  "active": "b4ae3772abf8b8a7",
   "lastOpenFiles": [
-    "自相关与能量谱关系.png",
+    "小波变换.md",
+    "小波变换时频分析演示.png",
     "利用DFT计算线性卷积.md",
+    "自相关与能量谱关系.png",
     "周期共轭对称性演示.png",
     "实信号DFT共轭对称性.png",
     "DFT计算线性卷积演示.png",
@@ -219,7 +233,6 @@
     "digital_filter_response.png",
     "dsp_time_reversal_conjugate.png",
     "exercise_1_11_spectrum.png",
-    "sin_wave_test.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -248,7 +261,6 @@
     "karuko-temp-notes/dsp/采样信息是否消失.md",
     "karuko-temp-notes/dsp/🌟一些频率关系.md",
     "karuko-temp-notes/sx/🧵6.【‼️】线性方程组.md",
-    "karuko-temp-notes/sx/🧵5.二次型.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
