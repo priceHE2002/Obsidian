@@ -25,12 +25,14 @@
             "id": "98c88242f2bd9df8",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "DFT序列偶奇延拓演示.png"
+                "file": "利用DFT计算线性卷积.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "DFT序列偶奇延拓演示"
+              "icon": "lucide-file",
+              "title": "利用DFT计算线性卷积"
             }
           }
         ],
@@ -208,11 +210,12 @@
   "active": "98c88242f2bd9df8",
   "lastOpenFiles": [
     "自相关与能量谱关系.png",
+    "利用DFT计算线性卷积.md",
     "周期共轭对称性演示.png",
-    "DFT序列偶奇延拓演示.png",
-    "未命名.md",
-    "既偶又奇序列验证.png",
     "实信号DFT共轭对称性.png",
+    "DFT计算线性卷积演示.png",
+    "既偶又奇序列验证.png",
+    "DFT序列偶奇延拓演示.png",
     "digital_filter_response.png",
     "dsp_time_reversal_conjugate.png",
     "exercise_1_11_spectrum.png",
@@ -229,7 +232,6 @@
     "Audio_Algorithm/BS-Roformer.md",
     "Audio_Algorithm/HB Demucs.md",
     "DSP_Practise",
-    "karuko-temp-notes/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
     "karuko-temp-notes/hbj/前端界面.md",
     "karuko-temp-notes/sx/🌟常见函数求导公式大全.md",
     "karuko-temp-notes/sx/🌟 🌟重要函数关系图像.md",
