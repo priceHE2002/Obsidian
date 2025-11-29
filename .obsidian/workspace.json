@@ -27,10 +27,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "自相关与能量谱关系.png"
+                "file": "周期共轭对称性演示.png"
               },
               "icon": "lucide-image",
-              "title": "自相关与能量谱关系"
+              "title": "周期共轭对称性演示"
             }
           }
         ],
@@ -208,11 +208,12 @@
   "active": "98c88242f2bd9df8",
   "lastOpenFiles": [
     "未命名.md",
+    "周期共轭对称性演示.png",
     "自相关与能量谱关系.png",
+    "digital_filter_response.png",
+    "dsp_time_reversal_conjugate.png",
     "exercise_1_11_spectrum.png",
     "sin_wave_test.png",
-    "dsp_time_reversal_conjugate.png",
-    "digital_filter_response.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -237,7 +238,6 @@
     "karuko-temp-notes/dsp/求 f(t)=1 的傅里叶变换？.md",
     "karuko-temp-notes/dsp/傅里叶逆变换 (Inverse Fourier Transform).md",
     "karuko-temp-notes/Pasted image 20251121154504.png",
-    "karuko-temp-notes/Pasted image 20251121140445.png",
     "karuko-temp-notes/数列极限与函数极限的关系.md",
     "karuko-temp-notes/dsp/因果性时域证明.md",
     "karuko-temp-notes/dsp/z的模值最小是1？.md",
