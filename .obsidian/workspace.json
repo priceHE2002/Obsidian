@@ -11,12 +11,14 @@
             "id": "56a15a26d95060ba",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "digital_filter_response.png"
+                "file": "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "digital_filter_response"
+              "icon": "lucide-file",
+              "title": "重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引"
             }
           }
         ]
@@ -192,9 +194,9 @@
   },
   "active": "56a15a26d95060ba",
   "lastOpenFiles": [
+    "digital_filter_response.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "exercise_1_11_spectrum.png",
-    "digital_filter_response.png",
     "sin_wave_test.png",
     "test.md",
     "未命名.md",
