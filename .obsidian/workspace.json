@@ -27,10 +27,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "dsp_time_reversal_conjugate.png"
+                "file": "自相关与能量谱关系.png"
               },
               "icon": "lucide-image",
-              "title": "dsp_time_reversal_conjugate"
+              "title": "自相关与能量谱关系"
             }
           }
         ],
@@ -207,12 +207,13 @@
   },
   "active": "98c88242f2bd9df8",
   "lastOpenFiles": [
-    "digital_filter_response.png",
     "未命名.md",
-    "dsp_time_reversal_conjugate.png",
-    "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
+    "自相关与能量谱关系.png",
     "exercise_1_11_spectrum.png",
     "sin_wave_test.png",
+    "dsp_time_reversal_conjugate.png",
+    "digital_filter_response.png",
+    "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
     "README.md",
@@ -244,7 +245,6 @@
     "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
     "karuko-temp-notes/dsp/采样信息是否消失.md",
     "karuko-temp-notes/dsp/🌟一些频率关系.md",
-    "karuko-temp-notes/26张宇《高等数学18讲》_含目录 14.jpeg",
     "karuko-temp-notes/sx/🧵6.【‼️】线性方程组.md",
     "karuko-temp-notes/sx/🧵5.二次型.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
