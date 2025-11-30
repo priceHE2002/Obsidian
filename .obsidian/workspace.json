@@ -63,16 +63,30 @@
             "id": "611c4a4b7c5086b9",
             "type": "leaf",
             "state": {
+              "type": "markdown",
+              "state": {
+                "file": "利用DFT计算线性卷积.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "利用DFT计算线性卷积"
+            }
+          },
+          {
+            "id": "db83664455832573",
+            "type": "leaf",
+            "state": {
               "type": "image",
               "state": {
-                "file": "DFT频谱泄漏现象演示.png"
+                "file": "汉明窗与汉宁窗对比.png"
               },
               "icon": "lucide-image",
-              "title": "DFT频谱泄漏现象演示"
+              "title": "汉明窗与汉宁窗对比"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -243,22 +257,23 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "611c4a4b7c5086b9",
+  "active": "db83664455832573",
   "lastOpenFiles": [
-    "DFT计算线性卷积演示.png",
+    "汉明窗与汉宁窗对比.md",
+    "汉明窗与汉宁窗对比.png",
+    "利用DFT计算线性卷积.md",
+    "实信号DFT共轭对称性.png",
+    "小波变换.md",
+    "DFT连续信号的频谱分析原理.md",
+    "DFT连续信号频谱分析原理.png",
     "频谱泄漏现象.md",
     "DFT频谱泄漏现象演示.png",
-    "DFT连续信号频谱分析原理.png",
+    "DFT计算线性卷积演示.png",
     "DFT序列偶奇延拓演示.png",
     "周期共轭对称性演示.png",
-    "未命名.md",
-    "小波变换.md",
     "自相关与能量谱关系.png",
     "小波变换时频分析演示.png",
-    "利用DFT计算线性卷积.md",
     "既偶又奇序列验证.png",
-    "实信号DFT共轭对称性.png",
-    "digital_filter_response.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -284,7 +299,6 @@
     "karuko-temp-notes/dsp/z的模值最小是1？.md",
     "karuko-temp-notes/dsp/离散卷积公式推导.md",
     "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
-    "karuko-temp-notes/dsp/采样信息是否消失.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
