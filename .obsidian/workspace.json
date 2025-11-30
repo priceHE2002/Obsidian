@@ -96,9 +96,21 @@
               "icon": "lucide-image",
               "title": "DFT频率分辨率N值影响演示"
             }
+          },
+          {
+            "id": "c0fb3bd370bbe927",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "DFT分辨率_瑞利判据vs严格不重叠.png"
+              },
+              "icon": "lucide-image",
+              "title": "DFT分辨率_瑞利判据vs严格不重叠"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -269,24 +281,25 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "d5305b11d3a02e46",
+  "active": "c0fb3bd370bbe927",
   "lastOpenFiles": [
-    "汉明窗与汉宁窗对比.png",
+    "DFT分辨率_瑞利判据vs严格不重叠.md",
+    "DFT分辨率_瑞利判据vs严格不重叠.png",
     "DFT频率分辨率N值影响演示.png",
-    "DFT频率分辨率.md",
-    "汉明窗与汉宁窗对比.md",
-    "利用DFT计算线性卷积.md",
-    "实信号DFT共轭对称性.png",
-    "小波变换.md",
-    "DFT连续信号的频谱分析原理.md",
-    "DFT连续信号频谱分析原理.png",
-    "频谱泄漏现象.md",
-    "DFT频谱泄漏现象演示.png",
     "DFT计算线性卷积演示.png",
+    "DFT连续信号频谱分析原理.png",
+    "DFT频谱泄漏现象演示.png",
+    "汉明窗与汉宁窗对比.md",
+    "频谱泄漏现象.md",
+    "小波变换.md",
+    "实信号DFT共轭对称性.png",
+    "汉明窗与汉宁窗对比.png",
+    "自相关与能量谱关系.png",
+    "DFT频率分辨率.md",
+    "利用DFT计算线性卷积.md",
+    "DFT连续信号的频谱分析原理.md",
     "DFT序列偶奇延拓演示.png",
     "周期共轭对称性演示.png",
-    "自相关与能量谱关系.png",
-    "小波变换时频分析演示.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -310,7 +323,6 @@
     "karuko-temp-notes/数列极限与函数极限的关系.md",
     "karuko-temp-notes/dsp/因果性时域证明.md",
     "karuko-temp-notes/dsp/z的模值最小是1？.md",
-    "karuko-temp-notes/dsp/离散卷积公式推导.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
