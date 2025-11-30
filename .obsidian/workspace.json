@@ -84,9 +84,21 @@
               "icon": "lucide-image",
               "title": "汉明窗与汉宁窗对比"
             }
+          },
+          {
+            "id": "d5305b11d3a02e46",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "DFT频率分辨率N值影响演示.png"
+              },
+              "icon": "lucide-image",
+              "title": "DFT频率分辨率N值影响演示"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -257,10 +269,12 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "db83664455832573",
+  "active": "d5305b11d3a02e46",
   "lastOpenFiles": [
-    "汉明窗与汉宁窗对比.md",
     "汉明窗与汉宁窗对比.png",
+    "DFT频率分辨率N值影响演示.png",
+    "DFT频率分辨率.md",
+    "汉明窗与汉宁窗对比.md",
     "利用DFT计算线性卷积.md",
     "实信号DFT共轭对称性.png",
     "小波变换.md",
@@ -273,7 +287,6 @@
     "周期共轭对称性演示.png",
     "自相关与能量谱关系.png",
     "小波变换时频分析演示.png",
-    "既偶又奇序列验证.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -298,7 +311,6 @@
     "karuko-temp-notes/dsp/因果性时域证明.md",
     "karuko-temp-notes/dsp/z的模值最小是1？.md",
     "karuko-temp-notes/dsp/离散卷积公式推导.md",
-    "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
