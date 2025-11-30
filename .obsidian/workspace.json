@@ -41,14 +41,26 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "小波变换时频分析演示.png"
+                "file": "自相关与能量谱关系.png"
               },
               "icon": "lucide-image",
-              "title": "小波变换时频分析演示"
+              "title": "自相关与能量谱关系"
+            }
+          },
+          {
+            "id": "e96f533767f25774",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "DFT连续信号频谱分析原理.png"
+              },
+              "icon": "lucide-image",
+              "title": "DFT连续信号频谱分析原理"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -219,20 +231,21 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "b4ae3772abf8b8a7",
+  "active": "e96f533767f25774",
   "lastOpenFiles": [
-    "小波变换.md",
-    "小波变换时频分析演示.png",
-    "利用DFT计算线性卷积.md",
-    "自相关与能量谱关系.png",
-    "周期共轭对称性演示.png",
-    "实信号DFT共轭对称性.png",
     "DFT计算线性卷积演示.png",
+    "未命名.md",
+    "DFT连续信号频谱分析原理.png",
+    "自相关与能量谱关系.png",
+    "小波变换时频分析演示.png",
+    "周期共轭对称性演示.png",
+    "小波变换.md",
+    "利用DFT计算线性卷积.md",
     "既偶又奇序列验证.png",
+    "实信号DFT共轭对称性.png",
     "DFT序列偶奇延拓演示.png",
     "digital_filter_response.png",
     "dsp_time_reversal_conjugate.png",
-    "exercise_1_11_spectrum.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -260,7 +273,6 @@
     "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
     "karuko-temp-notes/dsp/采样信息是否消失.md",
     "karuko-temp-notes/dsp/🌟一些频率关系.md",
-    "karuko-temp-notes/sx/🧵6.【‼️】线性方程组.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
