@@ -58,9 +58,21 @@
               "icon": "lucide-image",
               "title": "DFT连续信号频谱分析原理"
             }
+          },
+          {
+            "id": "611c4a4b7c5086b9",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "DFT频谱泄漏现象演示.png"
+              },
+              "icon": "lucide-image",
+              "title": "DFT频谱泄漏现象演示"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -231,21 +243,22 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "e96f533767f25774",
+  "active": "611c4a4b7c5086b9",
   "lastOpenFiles": [
     "DFT计算线性卷积演示.png",
-    "未命名.md",
+    "频谱泄漏现象.md",
+    "DFT频谱泄漏现象演示.png",
     "DFT连续信号频谱分析原理.png",
+    "DFT序列偶奇延拓演示.png",
+    "周期共轭对称性演示.png",
+    "未命名.md",
+    "小波变换.md",
     "自相关与能量谱关系.png",
     "小波变换时频分析演示.png",
-    "周期共轭对称性演示.png",
-    "小波变换.md",
     "利用DFT计算线性卷积.md",
     "既偶又奇序列验证.png",
     "实信号DFT共轭对称性.png",
-    "DFT序列偶奇延拓演示.png",
     "digital_filter_response.png",
-    "dsp_time_reversal_conjugate.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
@@ -272,7 +285,6 @@
     "karuko-temp-notes/dsp/离散卷积公式推导.md",
     "karuko-temp-notes/dsp/解析信号频谱只有正频.md",
     "karuko-temp-notes/dsp/采样信息是否消失.md",
-    "karuko-temp-notes/dsp/🌟一些频率关系.md",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
