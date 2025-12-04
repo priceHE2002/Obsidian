@@ -60,9 +60,21 @@
               "icon": "lucide-file",
               "title": "未命名"
             }
+          },
+          {
+            "id": "740e728edf4550de",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "信号采样与频谱分辨.png"
+              },
+              "icon": "lucide-image",
+              "title": "信号采样与频谱分辨"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -233,10 +245,12 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "85b580cb97684bd8",
+  "active": "740e728edf4550de",
   "lastOpenFiles": [
-    "FFT频谱分析演示.png",
+    "信号采样与频谱分辨.md",
+    "信号采样与频谱分辨.png",
     "未命名.md",
+    "FFT频谱分析演示.png",
     "FFT频谱分析演示.md",
     "利用DFT计算线性卷积.md",
     "DFT简易打谱程序演示.png",
@@ -251,7 +265,6 @@
     "汉明窗与汉宁窗对比.png",
     "DFT频率分辨率N值影响演示.png",
     "DFT分辨率_瑞利判据vs严格不重叠.png",
-    "矩形窗频率分辨率与时长关系.png",
     "DFT连续信号的频谱分析原理.md",
     "汉明窗与汉宁窗对比.md",
     "矩形窗频率分辨率与时长关系.md",
@@ -273,7 +286,6 @@
     "Audio_Algorithm/BS-Roformer.md",
     "Audio_Algorithm/HB Demucs.md",
     "DSP_Practise",
-    "karuko-temp-notes/hbj/前端界面.md",
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
