@@ -46,9 +46,23 @@
               "icon": "lucide-image",
               "title": "FFT频谱分析演示"
             }
+          },
+          {
+            "id": "85b580cb97684bd8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "未命名"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -219,10 +233,11 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "f19c906de80e0475",
+  "active": "85b580cb97684bd8",
   "lastOpenFiles": [
-    "FFT频谱分析演示.md",
     "FFT频谱分析演示.png",
+    "未命名.md",
+    "FFT频谱分析演示.md",
     "利用DFT计算线性卷积.md",
     "DFT简易打谱程序演示.png",
     "DFT简易打谱程序演示.md",
@@ -259,7 +274,6 @@
     "Audio_Algorithm/HB Demucs.md",
     "DSP_Practise",
     "karuko-temp-notes/hbj/前端界面.md",
-    "karuko-temp-notes/sx/🌟常见函数求导公式大全.md",
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
