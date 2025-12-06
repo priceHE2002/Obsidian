@@ -96,9 +96,33 @@
               "icon": "lucide-image",
               "title": "N2_巴特沃斯推导验证"
             }
+          },
+          {
+            "id": "213c7901b12cffb9",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "真题符号运算结果.png"
+              },
+              "icon": "lucide-image",
+              "title": "真题符号运算结果"
+            }
+          },
+          {
+            "id": "5bcc8fe453aa025e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "模拟滤波器特性对比.png"
+              },
+              "icon": "lucide-image",
+              "title": "模拟滤波器特性对比"
+            }
           }
         ],
-        "currentTab": 6
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -269,10 +293,14 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "591f69282ac6245d",
+  "active": "5bcc8fe453aa025e",
   "lastOpenFiles": [
-    "N2_巴特沃斯推导验证.md",
+    "模拟滤波器特性对比.md",
+    "模拟滤波器特性对比.png",
+    "真题符号运算结果.png",
+    "真题符号运算结果.md",
     "N2_巴特沃斯推导验证.png",
+    "N2_巴特沃斯推导验证.md",
     "混合基FFT分解演示.png",
     "混合基FFT分解演示.md",
     "未命名 1.md",
@@ -289,9 +317,7 @@
     "小波变换时频分析演示.png",
     "DFT分辨率_瑞利判据vs严格不重叠.md",
     "自相关与能量谱关系.png",
-    "周期共轭对称性演示.png",
     "DFT参数设计与补零验证.md",
-    "DFT连续信号频谱分析原理.png",
     "DFT连续信号的频谱分析原理.md",
     "汉明窗与汉宁窗对比.md",
     "矩形窗频率分辨率与时长关系.md",
@@ -305,10 +331,8 @@
     "test.md",
     "Work",
     "README.md",
-    "test1.md",
     "pyproject.toml",
     "main.py",
-    "DSP_Practise/第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md",
     "DSP_Practise",
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
