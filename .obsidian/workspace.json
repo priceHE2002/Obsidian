@@ -115,14 +115,26 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "模拟滤波器特性对比.png"
+                "file": "采样频率与采样间隔的关系演示.png"
               },
               "icon": "lucide-image",
-              "title": "模拟滤波器特性对比"
+              "title": "采样频率与采样间隔的关系演示"
+            }
+          },
+          {
+            "id": "60c902d5e0c85d87",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "低通到带通频率转换演示.png"
+              },
+              "icon": "lucide-image",
+              "title": "低通到带通频率转换演示"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -293,10 +305,13 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "5bcc8fe453aa025e",
+  "active": "60c902d5e0c85d87",
   "lastOpenFiles": [
-    "模拟滤波器特性对比.md",
+    "低通到带通频率转换演示.md",
+    "低通到带通频率转换演示.png",
+    "采样频率与采样间隔的关系演示.png",
     "模拟滤波器特性对比.png",
+    "模拟滤波器特性对比.md",
     "真题符号运算结果.png",
     "真题符号运算结果.md",
     "N2_巴特沃斯推导验证.png",
@@ -314,9 +329,7 @@
     "DFT简易打谱程序演示.png",
     "DFT简易打谱程序演示.md",
     "栅栏现象与补零原理演示.md",
-    "小波变换时频分析演示.png",
     "DFT分辨率_瑞利判据vs严格不重叠.md",
-    "自相关与能量谱关系.png",
     "DFT参数设计与补零验证.md",
     "DFT连续信号的频谱分析原理.md",
     "汉明窗与汉宁窗对比.md",
@@ -330,7 +343,6 @@
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "test.md",
     "Work",
-    "README.md",
     "pyproject.toml",
     "main.py",
     "DSP_Practise",
