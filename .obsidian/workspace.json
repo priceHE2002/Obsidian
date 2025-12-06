@@ -84,9 +84,21 @@
               "icon": "lucide-image",
               "title": "混合基FFT分解演示"
             }
+          },
+          {
+            "id": "591f69282ac6245d",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "N2_巴特沃斯推导验证.png"
+              },
+              "icon": "lucide-image",
+              "title": "N2_巴特沃斯推导验证"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -257,10 +269,12 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "2da28cd90bbbdb43",
+  "active": "591f69282ac6245d",
   "lastOpenFiles": [
-    "混合基FFT分解演示.md",
+    "N2_巴特沃斯推导验证.md",
+    "N2_巴特沃斯推导验证.png",
     "混合基FFT分解演示.png",
+    "混合基FFT分解演示.md",
     "未命名 1.md",
     "N12混合基FFT算法流图.png",
     "N12混合基FFT算法流图.md",
@@ -278,7 +292,6 @@
     "周期共轭对称性演示.png",
     "DFT参数设计与补零验证.md",
     "DFT连续信号频谱分析原理.png",
-    "汉明窗与汉宁窗对比.png",
     "DFT连续信号的频谱分析原理.md",
     "汉明窗与汉宁窗对比.md",
     "矩形窗频率分辨率与时长关系.md",
@@ -296,7 +309,6 @@
     "pyproject.toml",
     "main.py",
     "DSP_Practise/第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md",
-    "DSP习题集/第一章 离散信号与系统分析 习题全解（题目+详解+考点分析）.md",
     "DSP_Practise",
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
