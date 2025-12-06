@@ -127,10 +127,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "低通到带通频率转换演示.png"
+                "file": "DSP/模拟带通不对称性演示.png"
               },
               "icon": "lucide-image",
-              "title": "低通到带通频率转换演示"
+              "title": "模拟带通不对称性演示"
             }
           }
         ],
@@ -307,8 +307,13 @@
   },
   "active": "60c902d5e0c85d87",
   "lastOpenFiles": [
-    "低通到带通频率转换演示.md",
+    "DSP/模拟带通不对称性演示.md",
+    "DSP/模拟带通不对称性演示.png",
+    "未命名.md",
+    "未命名 1.md",
     "低通到带通频率转换演示.png",
+    "DSP",
+    "低通到带通频率转换演示.md",
     "采样频率与采样间隔的关系演示.png",
     "模拟滤波器特性对比.png",
     "模拟滤波器特性对比.md",
@@ -318,7 +323,6 @@
     "N2_巴特沃斯推导验证.md",
     "混合基FFT分解演示.png",
     "混合基FFT分解演示.md",
-    "未命名 1.md",
     "N12混合基FFT算法流图.png",
     "N12混合基FFT算法流图.md",
     "FFT频谱分析演示.png",
@@ -326,7 +330,6 @@
     "信号采样与频谱分辨.md",
     "FFT频谱分析演示.md",
     "利用DFT计算线性卷积.md",
-    "DFT简易打谱程序演示.png",
     "DFT简易打谱程序演示.md",
     "栅栏现象与补零原理演示.md",
     "DFT分辨率_瑞利判据vs严格不重叠.md",
@@ -340,8 +343,6 @@
     "采样频率与采样间隔的关系演示.md",
     "DTFT中N与fs对分辨率的影响.md",
     "DFT频率分辨率.md",
-    "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
-    "test.md",
     "Work",
     "pyproject.toml",
     "main.py",
@@ -351,7 +352,6 @@
     "karuko-temp-notes/sx",
     "karuko-temp-notes/yy",
     "karuko-temp-notes/hbj",
-    "karuko-temp-notes/dsp",
     "未命名.canvas"
   ]
 }
