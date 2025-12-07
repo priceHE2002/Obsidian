@@ -13,10 +13,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "深度学习去噪重建(DAE).png"
+                "file": "跨模态注意力融合可视化.png"
               },
               "icon": "lucide-image",
-              "title": "深度学习去噪重建(DAE)"
+              "title": "跨模态注意力融合可视化"
             }
           }
         ]
@@ -192,9 +192,10 @@
   },
   "active": "89f17ddeece75971",
   "lastOpenFiles": [
+    "深度学习去噪重建(DAE).png",
+    "跨模态注意力融合可视化.png",
     "深度学习特征提取可视化.png",
     "Transformer信号拟合与注意力.png",
-    "深度学习去噪重建(DAE).png",
     "DTFT中N与fs对分辨率的影响.md",
     "LSTM时间依赖特征提取.png",
     "真题符号运算结果.png",
@@ -208,7 +209,6 @@
     "DSP/第四章 IIR/Hz系数计算验证.md",
     "DSP/第四章 IIR/模拟带通不对称性演示.png",
     "DSP/第四章 IIR/模拟带通不对称性演示.md",
-    "采样频率与采样间隔的关系演示.png",
     "混合基FFT分解演示.md",
     "利用DFT计算线性卷积.md",
     "DSP/第四章 IIR/脉冲响应不变法_频率响应对比.md",
