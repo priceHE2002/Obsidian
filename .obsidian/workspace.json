@@ -4,19 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "5b909812c93aa8c3",
+        "id": "789d0b49d21c6077",
         "type": "tabs",
         "children": [
           {
-            "id": "89f17ddeece75971",
+            "id": "33372ff3790f05dd",
             "type": "leaf",
             "state": {
-              "type": "image",
-              "state": {
-                "file": "跨模态注意力融合可视化.png"
-              },
-              "icon": "lucide-image",
-              "title": "跨模态注意力融合可视化"
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "新标签页"
             }
           }
         ]
@@ -190,10 +188,10 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "89f17ddeece75971",
+  "active": "33372ff3790f05dd",
   "lastOpenFiles": [
-    "深度学习去噪重建(DAE).png",
     "跨模态注意力融合可视化.png",
+    "深度学习去噪重建(DAE).png",
     "深度学习特征提取可视化.png",
     "Transformer信号拟合与注意力.png",
     "DTFT中N与fs对分辨率的影响.md",
