@@ -11,13 +11,42 @@
             "id": "33372ff3790f05dd",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "image",
+              "state": {
+                "file": "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析_修复版.png"
+              },
+              "icon": "lucide-image",
+              "title": "2017真题结构分析_修复版"
+            }
+          },
+          {
+            "id": "1835cf3a9bfd2192",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "未命名 1.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "未命名 1"
+            }
+          },
+          {
+            "id": "d1d32a8695c8dc3e",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png"
+              },
+              "icon": "lucide-image",
+              "title": "二阶IIR直接II型_教科书版"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -188,31 +217,34 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "33372ff3790f05dd",
+  "active": "d1d32a8695c8dc3e",
   "lastOpenFiles": [
+    "DSP/第六章 IIR数字滤波器的基本结构/梅森公式流图.png",
+    "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png\".md",
+    "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png",
+    "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析.md",
+    "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析_修复版.png",
+    "未命名 2.md",
+    "未命名 1.md",
+    "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析.png",
+    "2017真题结构分析_修复版.png",
+    "DSP/第六章 IIR数字滤波器的基本结构",
     "跨模态注意力融合可视化.png",
     "深度学习去噪重建(DAE).png",
     "深度学习特征提取可视化.png",
     "Transformer信号拟合与注意力.png",
     "DTFT中N与fs对分辨率的影响.md",
     "LSTM时间依赖特征提取.png",
-    "真题符号运算结果.png",
-    "周期共轭对称性演示.png",
     "test.md",
-    "sin_wave_test.png",
-    "DSP/第四章 IIR/双线性变换法_频率畸变与响应.png",
     "DSP/第四章 IIR/双线性变换法_频率畸变与响应.md",
     "DSP/第四章 IIR/模拟滤波器部分分式分解验证.md",
-    "DSP/第四章 IIR/Hz系数计算验证.png",
     "DSP/第四章 IIR/Hz系数计算验证.md",
-    "DSP/第四章 IIR/模拟带通不对称性演示.png",
     "DSP/第四章 IIR/模拟带通不对称性演示.md",
     "混合基FFT分解演示.md",
     "利用DFT计算线性卷积.md",
     "DSP/第四章 IIR/脉冲响应不变法_频率响应对比.md",
     "未命名.md",
     "DSP/第四章 IIR",
-    "未命名 1.md",
     "DSP",
     "低通到带通频率转换演示.md",
     "模拟滤波器特性对比.md",
@@ -225,9 +257,6 @@
     "栅栏现象与补零原理演示.md",
     "DFT分辨率_瑞利判据vs严格不重叠.md",
     "DFT参数设计与补零验证.md",
-    "DFT连续信号的频谱分析原理.md",
-    "汉明窗与汉宁窗对比.md",
-    "矩形窗频率分辨率与时长关系.md",
     "Work",
     "pyproject.toml",
     "main.py",
@@ -235,7 +264,6 @@
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
     "karuko-temp-notes/sx",
-    "karuko-temp-notes/yy",
     "未命名.canvas"
   ]
 }
