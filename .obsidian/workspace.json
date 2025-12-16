@@ -44,9 +44,21 @@
               "icon": "lucide-image",
               "title": "DFT参数设计与补零验证"
             }
+          },
+          {
+            "id": "6b2f984134e3203b",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "离散系统响应与零极点分析.png"
+              },
+              "icon": "lucide-image",
+              "title": "离散系统响应与零极点分析"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -217,8 +229,11 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "d1d32a8695c8dc3e",
+  "active": "6b2f984134e3203b",
   "lastOpenFiles": [
+    "离散系统响应与零极点分析.md",
+    "离散系统响应与零极点分析.png",
+    "DFT参数设计与补零验证.png",
     "周期共轭对称性演示.png",
     "小波变换时频分析演示.png",
     "数字角频率Pi的物理意义.png",
@@ -232,11 +247,8 @@
     "karuko-temp-notes/sx/🌲4.多元函数微分学及其应用.md",
     "karuko-temp-notes/sx/🌲2.一元微分学及其应用.md",
     "karuko-temp-notes/sx/🌲3.一元积分学及其应用.md",
-    "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png",
-    "DSP/第六章 IIR数字滤波器的基本结构/梅森公式流图.png",
     "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png\".md",
     "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析.md",
-    "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析_修复版.png",
     "未命名 2.md",
     "未命名 1.md",
     "DSP/第六章 IIR数字滤波器的基本结构",
@@ -257,7 +269,6 @@
     "真题符号运算结果.md",
     "N2_巴特沃斯推导验证.md",
     "N12混合基FFT算法流图.md",
-    "信号采样与频谱分辨.md",
     "Work",
     "pyproject.toml",
     "main.py",
