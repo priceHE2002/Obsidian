@@ -39,10 +39,10 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png"
+                "file": "DFT参数设计与补零验证.png"
               },
               "icon": "lucide-image",
-              "title": "二阶IIR直接II型_教科书版"
+              "title": "DFT参数设计与补零验证"
             }
           }
         ],
@@ -104,7 +104,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 366.5
   },
   "right": {
     "id": "7f4b4e0b83f1f22d",
@@ -219,22 +219,28 @@
   },
   "active": "d1d32a8695c8dc3e",
   "lastOpenFiles": [
+    "周期共轭对称性演示.png",
+    "小波变换时频分析演示.png",
+    "数字角频率Pi的物理意义.png",
+    "数字角频率Pi的物理意义.md",
+    "实信号DFT共轭对称性.png",
+    "深度学习去噪重建(DAE).png",
+    "深度学习特征提取可视化.png",
+    "模拟滤波器特性对比.png",
+    "混合基FFT分解演示.png",
+    "karuko-temp-notes/sx/🌲5.多元函数积分学及其应用.md",
+    "karuko-temp-notes/sx/🌲4.多元函数微分学及其应用.md",
+    "karuko-temp-notes/sx/🌲2.一元微分学及其应用.md",
+    "karuko-temp-notes/sx/🌲3.一元积分学及其应用.md",
+    "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png",
     "DSP/第六章 IIR数字滤波器的基本结构/梅森公式流图.png",
     "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png\".md",
-    "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png",
     "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析.md",
     "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析_修复版.png",
     "未命名 2.md",
     "未命名 1.md",
-    "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析.png",
-    "2017真题结构分析_修复版.png",
     "DSP/第六章 IIR数字滤波器的基本结构",
-    "跨模态注意力融合可视化.png",
-    "深度学习去噪重建(DAE).png",
-    "深度学习特征提取可视化.png",
-    "Transformer信号拟合与注意力.png",
     "DTFT中N与fs对分辨率的影响.md",
-    "LSTM时间依赖特征提取.png",
     "test.md",
     "DSP/第四章 IIR/双线性变换法_频率畸变与响应.md",
     "DSP/第四章 IIR/模拟滤波器部分分式分解验证.md",
@@ -252,11 +258,6 @@
     "N2_巴特沃斯推导验证.md",
     "N12混合基FFT算法流图.md",
     "信号采样与频谱分辨.md",
-    "FFT频谱分析演示.md",
-    "DFT简易打谱程序演示.md",
-    "栅栏现象与补零原理演示.md",
-    "DFT分辨率_瑞利判据vs严格不重叠.md",
-    "DFT参数设计与补零验证.md",
     "Work",
     "pyproject.toml",
     "main.py",
