@@ -56,9 +56,23 @@
               "icon": "lucide-image",
               "title": "DFT分辨率_瑞利判据vs严格不重叠"
             }
+          },
+          {
+            "id": "50e69ed2931aaa11",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "tmux/Tmux 终极速查表 (自定义增强版).md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Tmux 终极速查表 (自定义增强版)"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -229,8 +243,11 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "6b2f984134e3203b",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
+    "DFT分辨率_瑞利判据vs严格不重叠.png",
+    "tmux/Tmux 终极速查表 (自定义增强版).md",
+    "tmux",
     "FFT频谱分析演示.png",
     "N2_巴特沃斯推导验证.png",
     "N2_巴特沃斯推导验证.md",
@@ -242,7 +259,6 @@
     "DFT序列偶奇延拓演示.png",
     "sin_wave_test.png",
     "Transformer信号拟合与注意力.png",
-    "N12混合基FFT算法流图.png",
     "DSP/第四章 IIR/模拟滤波器部分分式分解验证.md",
     "DSP/第四章 IIR/双线性变换法_频率畸变与响应.md",
     "Further_Mathematics/数学公式/基本积分公式表.md",
@@ -269,14 +285,12 @@
     "DSP",
     "低通到带通频率转换演示.md",
     "模拟滤波器特性对比.md",
-    "真题符号运算结果.md",
     "Work",
     "pyproject.toml",
     "main.py",
     "DSP_Practise",
     "karuko-temp-notes/26张宇基础30讲（高数）-195-219.pdf",
     "karuko-temp-notes/空间图形（一定要会画）.pdf",
-    "karuko-temp-notes/sx",
     "未命名.canvas"
   ]
 }
