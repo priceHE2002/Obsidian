@@ -70,9 +70,21 @@
               "icon": "lucide-file",
               "title": "Tmux 终极速查表 (自定义增强版)"
             }
+          },
+          {
+            "id": "b2c998314a800fcf",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.11.4"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -232,7 +244,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:创建新数据库": false,
+      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
@@ -243,7 +255,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "2a0b2c21f867c062",
+  "active": "b2c998314a800fcf",
   "lastOpenFiles": [
     "DFT分辨率_瑞利判据vs严格不重叠.png",
     "tmux/Tmux 终极速查表 (自定义增强版).md",
