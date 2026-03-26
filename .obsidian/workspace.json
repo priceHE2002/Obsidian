@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "未命名"
             }
+          },
+          {
+            "id": "9cb40a01c578a2e5",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "版本说明 1.12.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -192,7 +205,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "c31d8b71bcdd8679",
+  "active": "9cb40a01c578a2e5",
   "lastOpenFiles": [
     "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析_修复版.png",
     "tmux/Tmux 终极速查表 (自定义增强版).md",
