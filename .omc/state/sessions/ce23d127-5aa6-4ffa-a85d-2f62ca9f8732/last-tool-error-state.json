@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"python3 \\\"/Users/heyuhang/Documents/Obsidian Vault/_gen_excalidraw.py\\\"\",\"description\":\"Generate Excalidraw mind map\"}",
+  "error": "Exit code 1\nTraceback (most recent call last):\n  File \"/Users/heyuhang/Documents/Obsidian Vault/_gen_excalidraw.py\", line 197, in <module>\n    sy = CY + (ch//2 + 5) * math.sin(angle)\n               ~~^^~\nTypeError: unsupported operand type(s) for //: 'dict' and 'int'",
+  "timestamp": "2026-06-22T16:23:51.958Z",
+  "retry_count": 2
+}
