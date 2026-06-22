@@ -187,7 +187,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 416.5
+    "width": 341.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,7 +204,7 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e394171055dafe3e",
+  "active": "dbb561080db75c9a",
   "lastOpenFiles": [
     "00_Inbox/未命名.md",
     "00_Inbox/草稿.md",
