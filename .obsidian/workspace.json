@@ -11,12 +11,14 @@
             "id": "e394171055dafe3e",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "99_Archive/karuko-screenshots/Pasted image 20250810170656.png"
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250810170656"
+              "icon": "lucide-file",
+              "title": "计算机组成原理_截图整理笔记"
             }
           }
         ]
@@ -141,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "99_Archive/karuko-screenshots/Pasted image 20250810170656.png",
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Pasted image 20250810170656 的大纲"
+              "title": "计算机组成原理_截图整理笔记 的大纲"
             }
           },
           {
@@ -204,8 +206,31 @@
   },
   "active": "e394171055dafe3e",
   "lastOpenFiles": [
+    "00_Inbox/未命名.md",
+    "00_Inbox/草稿.md",
+    "00_Inbox/【重点复习】.md",
+    "00_Inbox/【计划】.md",
+    "99_Archive/karuko-screenshots/26张宇基础30讲（高数）-195-219.pdf",
+    "99_Archive/karuko-screenshots/截屏 2025-10-13 09.41.32.jpeg",
+    "99_Archive/karuko-screenshots/截屏 2025-10-11 14.22.18.jpeg",
+    "99_Archive/karuko-screenshots/26张宇《高等数学18讲》_含目录 9.jpeg",
+    "Claude Code 已安装 Skills 列表.md",
+    "99_Archive/karuko-screenshots/Pasted image 20250810170656.png",
+    "99_Archive/karuko-screenshots/空间图形（一定要会画）.pdf",
+    "99_Archive/karuko-screenshots/截屏2025-11-21 17.19.50.png",
+    "99_Archive/karuko-screenshots/截屏2025-11-21 15.52.11.png",
+    "99_Archive/karuko-screenshots/截屏2025-11-20 14.35.11.png",
+    "99_Archive/karuko-screenshots/截屏2025-11-19 15.16.24.png",
+    "99_Archive/karuko-screenshots/截屏2025-11-11 09.32.35.png",
+    "99_Archive/karuko-screenshots/截屏2025-11-07 09.26.41.png",
+    "99_Archive/计算机组成原理.zip",
+    "05_编程/Python/pyproject.toml",
+    "05_编程/Python/main.py",
+    "06_英语/长难句.md",
+    "05_编程/前端/前端界面.md",
+    "07_工具/Tmux/Tmux 终极速查表 (自定义增强版).md",
+    "05_编程/C++/未命名.md",
     "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-    "03_计算机组成原理/计算机组成原理截图/32位无符号数乘法运算电路结构.png",
     "01_数学/习题与证明/证明数列收敛的常用方法总结.md",
     "01_数学/习题与证明/数学证明常用方法总结.md",
     "01_数学/习题与证明/数列极限的唯一性证明.md",
@@ -217,38 +242,16 @@
     "01_数学/概率论与数理统计/📈3.数理统计.md",
     "01_数学/概率论与数理统计/📈2.随机变量及其分布及数字特征.md",
     "01_数学/概率论与数理统计/📈1.随机事件与概率.md",
-    "karuko-temp-notes/Pasted image 20251113111527.png",
     "04_音频算法/HB Demucs.md",
     "04_音频算法/BS-Roformer.md",
-    "03_计算机组成原理/计算机组成原理截图/非规格化浮点数的表示.png",
-    "03_计算机组成原理/计算机组成原理截图/逻辑门电路基础总结.png",
-    "03_计算机组成原理/计算机组成原理截图/运算器的基本结构-专用数据通路方式.png",
-    "03_计算机组成原理/计算机组成原理截图/运算器的基本组成.png",
-    "03_计算机组成原理/计算机组成原理截图/译码器补充.png",
-    "03_计算机组成原理/计算机组成原理截图/计算机工作过程.png",
-    "03_计算机组成原理/计算机组成原理截图/计算器的基本结构-CPU内部总线.png",
-    "03_计算机组成原理/计算机组成原理截图/组相联映射访存.png",
     "03_计算机组成原理/计算机组成原理截图",
     "02_DSP/基础概念/栅栏现象与补零原理演示.md",
     "02_DSP/基础概念/信号采样与频谱分辨.md",
     "02_DSP/基础概念/小波变换.md",
-    "02_DSP/基础概念/未命名.md",
-    "02_DSP/基础概念/未命名 2.md",
-    "02_DSP/基础概念/未命名 1.md",
-    "02_DSP/基础概念/数字角频率Pi的物理意义.md",
-    "02_DSP/基础概念/频谱泄漏现象.md",
-    "02_DSP/基础概念/模拟滤波器特性对比.md",
-    "02_DSP/基础概念/利用DFT计算线性卷积.md",
-    "02_DSP/基础概念/离散系统响应与零极点分析.md",
     "02_DSP/滤波器设计/第四章 IIR",
     "02_DSP/滤波器设计/第六章 IIR数字滤波器的基本结构",
     "99_Archive/karuko-screenshots",
     "05_编程/前端",
-    "02_DSP/习题",
-    "03_计算机组成原理/assets",
-    "02_DSP/滤波器设计",
-    "01_数学/公式定理",
-    "03_计算机组成原理",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"
   ]
