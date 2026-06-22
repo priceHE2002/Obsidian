@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd \\\"/Users/heyuhang/Documents/Obsidian Vault/DSP\\\" && mv DFT*.* \\\"DFT*\\\" \\\"N12混合基FFT\\\"* \\\"FFT\\\"* \\\"02_DSP/DFT_FFT/\\\" 2>&1\",\"description\":\"Move DFT/FFT related files\"}",
+  "error": "Exit code 1\nmv: 02_DSP/DFT_FFT/ is not a directory",
+  "timestamp": "2026-06-22T14:36:05.797Z",
+  "retry_count": 1
+}

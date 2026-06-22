@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd \\\"/Users/heyuhang/Documents/Obsidian Vault\\\" && git mv \\\"karuko-temp-notes/sx/🧵\\\"* \\\"01_数学/线性代数/\\\" 2>&1\",\"description\":\"Move 线性代数 files (🧵 prefix)\"}",
+  "error": "Exit code 128\n致命错误：不在版本控制之下，源=karuko-temp-notes/sx/🧵1.综合.md，目标=01_数学/线性代数/🧵1.综合.md",
+  "timestamp": "2026-06-22T14:31:00.757Z",
+  "retry_count": 1
+}
