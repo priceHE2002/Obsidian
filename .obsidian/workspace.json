@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "机组/计算机组成原理_截图整理笔记.md",
+                "file": "计算机组成原理/计算机组成原理_截图整理笔记.md",
                 "mode": "preview",
                 "source": false
               },
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "karuko-temp-notes/hbj/前端界面.md",
+                "file": "计算机组成原理/计算机组成原理_截图整理笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "前端界面 的大纲"
+              "title": "计算机组成原理_截图整理笔记 的大纲"
             }
           },
           {
@@ -173,7 +173,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -192,30 +192,31 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "cbb90ca1f4c26182",
+  "active": "455ee7f8adbb470b",
   "lastOpenFiles": [
-    "机组/计算机组成原理_截图整理笔记.md",
     "未命名.base",
+    "计算机组成原理/计算机组成原理_截图整理笔记.md",
+    "计算机组成原理/计算机组成原理截图/运算器的基本组成.png",
+    "计算机组成原理/计算机组成原理截图/控制器.png",
+    "计算机组成原理/计算机组成原理截图/原反补移码转换关系.png",
+    "计算机组成原理/计算机组成原理截图/逻辑门电路基础总结.png",
+    "计算机组成原理/计算机组成原理截图/定点数的移位运算.png",
+    "计算机组成原理/计算机组成原理截图/无符号数加减运算.png",
+    "计算机组成原理/计算机组成原理截图/加减运算电路.png",
+    "计算机组成原理/计算机组成原理截图/无符号整数乘法原理.png",
+    "计算机组成原理/计算机组成原理截图/32位无符号数乘法运算电路结构.png",
+    "计算机组成原理/计算机组成原理截图/带符号整数乘法原理.png",
+    "计算机组成原理/计算机组成原理截图",
     "tmux/Tmux 终极速查表 (自定义增强版).md",
-    "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png",
     "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析.md",
     "2026-06-22.md",
     "机组/未命名.md",
     "C++ leanring/未命名.md",
-    "机组",
-    "DSP/第六章 IIR数字滤波器的基本结构/2017真题结构分析_修复版.png",
-    "DSP/采样频率与采样间隔的关系演示.png",
+    "计算机组成原理",
     "DSP_Practise/汉明窗与汉宁窗对比.md",
     "DSP/采样频率与采样间隔的关系演示.md",
     "DSP/低通到带通频率转换演示.md",
-    "Transformer信号拟合与注意力.png",
-    "DSP/汉明窗与汉宁窗对比.png",
     "C++ leanring",
-    "DSP/深度学习特征提取可视化.png",
-    "DSP/实信号DFT共轭对称性.png",
-    "DSP/模拟滤波器特性对比.png",
-    "DSP/离散系统响应与零极点分析.png",
-    "DSP/跨模态注意力融合可视化.png",
     "Work/重庆大学附属三峡医院第三期银医项目 投标文件材料清单及页码索引.md",
     "tmux",
     "DSP/N2_巴特沃斯推导验证.md",
@@ -238,7 +239,6 @@
     "DSP",
     "Work",
     "pyproject.toml",
-    "main.py",
     "未命名.canvas"
   ]
 }
