@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Claude Code 已安装 Skills 列表.md",
-                "mode": "preview",
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Claude Code 已安装 Skills 列表"
+              "title": "计算机组成原理_截图整理笔记"
             }
           }
         ]
@@ -143,13 +143,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Claude Code 已安装 Skills 列表.md",
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Claude Code 已安装 Skills 列表 的大纲"
+              "title": "计算机组成原理_截图整理笔记 的大纲"
             }
           },
           {
@@ -187,7 +187,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 334.5
+    "width": 433.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -200,11 +200,23 @@
       "command-palette:打开命令面板": false,
       "obsidian-git:Open Git source control": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
-      "realclaudian:Open Claudian": false
+      "realclaudian:Open Claudian": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
   "active": "e394171055dafe3e",
   "lastOpenFiles": [
+    "03_计算机组成原理/计算机组成原理_全览.md",
+    "03_计算机组成原理/计算机组成原理_全览.canvas",
+    "03_计算机组成原理/计算机组成原理_全览.excalidraw",
+    "Excalidraw/Drawing 2026-06-23 00.29.36.excalidraw.md",
+    "Excalidraw",
+    "_gen_excalidraw.py",
+    "_gen_canvas.py",
+    "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+    "07_工具/Obsidian/Obsidian 完全使用指南.md",
+    "Claude Code 已安装 Skills 列表.md",
+    "07_工具/Obsidian",
     "99_Archive/karuko-screenshots/Pasted image 20251103165113.png",
     "99_Archive/karuko-screenshots/Pasted image 20251023113122.png",
     "99_Archive/karuko-screenshots/截屏2025-11-11 09.32.35.png",
@@ -220,7 +232,6 @@
     "06_英语/长难句.md",
     "02_DSP/习题/第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md",
     "02_DSP/习题/汉明窗与汉宁窗对比.md",
-    "02_DSP/assets/N12混合基FFT算法流图.png",
     "00_Inbox/未命名.md",
     "00_Inbox/草稿.md",
     "00_Inbox/【重点复习】.md",
@@ -232,25 +243,15 @@
     "02_DSP/基础概念/采样信息是否消失.md",
     "02_DSP/基础概念/🌟一些频率关系.md",
     "02_DSP/基础概念/🌟解卷积.md",
-    "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
     "03_计算机组成原理/计算机组成原理_截图整理笔记.md.bak",
     "01_数学/线性代数/🧵2.行列式.md",
     "01_数学/高等数学/函数与数列的单调有界准则对比.md",
     "01_数学/高等数学/伯努利Bernoulli.md",
     "01_数学/高等数学/🌲4.多元函数微分学及其应用.md",
     "01_数学/高等数学/10.26 常数和无穷小量的关系.md",
-    "01_数学/公式定理/🌟微分算子法.md",
-    "01_数学/公式定理/🌟基本积分公式大全.md",
-    "01_数学/公式定理/🌟矩阵乘积可交换总结.md",
-    "01_数学/公式定理/🌟20 个特殊函数及其性质.md",
     "99_Archive/karuko-screenshots/空间图形（一定要会画）.pdf",
     "99_Archive/计算机组成原理.zip",
     "05_编程/Python/pyproject.toml",
-    "05_编程/Python/main.py",
-    "03_计算机组成原理/计算机组成原理截图",
-    "02_DSP/滤波器设计/第四章 IIR",
-    "02_DSP/滤波器设计/第六章 IIR数字滤波器的基本结构",
-    "99_Archive/karuko-screenshots",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"
   ]

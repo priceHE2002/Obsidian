@@ -138,8 +138,8 @@
   "hotPaths": [
     {
       "path": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-      "accessCount": 176,
-      "lastAccessed": 1782143760963,
+      "accessCount": 177,
+      "lastAccessed": 1782145294387,
       "type": "file"
     },
     {
@@ -149,9 +149,39 @@
       "type": "file"
     },
     {
+      "path": "_gen_excalidraw.py",
+      "accessCount": 6,
+      "lastAccessed": 1782145776518,
+      "type": "file"
+    },
+    {
+      "path": "03_计算机组成原理/计算机组成原理_全览.md",
+      "accessCount": 3,
+      "lastAccessed": 1782145952792,
+      "type": "file"
+    },
+    {
       "path": "06_英语/长难句.md",
       "accessCount": 2,
       "lastAccessed": 1782144605446,
+      "type": "file"
+    },
+    {
+      "path": "07_工具/Tmux/Tmux 终极速查表 (自定义增强版).md",
+      "accessCount": 1,
+      "lastAccessed": 1782145027547,
+      "type": "file"
+    },
+    {
+      "path": "07_工具/Obsidian/Obsidian 完全使用指南.md",
+      "accessCount": 1,
+      "lastAccessed": 1782145133259,
+      "type": "file"
+    },
+    {
+      "path": "_gen_canvas.py",
+      "accessCount": 1,
+      "lastAccessed": 1782145699186,
       "type": "file"
     }
   ],

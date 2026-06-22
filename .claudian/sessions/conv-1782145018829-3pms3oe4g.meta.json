@@ -1,0 +1,24 @@
+{
+  "id": "conv-1782145018829-3pms3oe4g",
+  "providerId": "claude",
+  "title": "撰写Obsidian功能详解指南",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782145018829,
+  "updatedAt": 1782145967698,
+  "lastResponseAt": 1782145967698,
+  "sessionId": "ce23d127-5aa6-4ffa-a85d-2f62ca9f8732",
+  "providerState": {
+    "providerSessionId": "ce23d127-5aa6-4ffa-a85d-2f62ca9f8732"
+  },
+  "currentNote": "Claude Code 已安装 Skills 列表.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 86,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 120320,
+    "contextWindow": 1000000,
+    "contextTokens": 120406,
+    "percentage": 12,
+    "contextWindowIsAuthoritative": true
+  }
+}
