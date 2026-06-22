@@ -8,13 +8,13 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f195779374467589",
+            "id": "3096047f6337928f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "计算机组成原理/计算机组成原理_截图整理笔记.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -177,7 +177,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 289.5
+    "width": 289.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -189,15 +190,23 @@
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
       "obsidian-git:Open Git source control": false,
-      "markdown-importer:打开 Markdown 格式转换器": false
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
   "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
-    "计算机组成原理.zip",
+    "计算机组成原理/Drawing 2026-06-22 21.30.24.excalidraw.md",
     "计算机组成原理/计算机组成原理_截图整理笔记.md",
-    "未命名 1.base",
+    "Excalidraw/Drawing 2026-06-22 21.30.58.excalidraw.md",
+    "Excalidraw/Drawing 2026-06-22 21.30.57.excalidraw.md",
+    "Excalidraw/Drawing 2026-06-22 21.28.15.excalidraw.md",
+    "Excalidraw/Drawing 2026-06-22 21.27.35.excalidraw.md",
     "未命名.base",
+    "Excalidraw",
+    "未命名 2.base",
+    "计算机组成原理.zip",
+    "未命名 1.base",
     "计算机组成原理/计算机组成原理截图/运算器的基本组成.png",
     "计算机组成原理/计算机组成原理截图/控制器.png",
     "计算机组成原理/计算机组成原理截图/原反补移码转换关系.png",
@@ -232,14 +241,7 @@
     "karuko-temp-notes/sx/🌲2.一元微分学及其应用.md",
     "karuko-temp-notes/sx/🌲3.一元积分学及其应用.md",
     "DSP/第六章 IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png\".md",
-    "DSP/未命名 2.md",
-    "DSP/未命名 1.md",
     "DSP/第六章 IIR数字滤波器的基本结构",
-    "DSP/DTFT中N与fs对分辨率的影响.md",
-    "DSP/test.md",
-    "DSP/第四章 IIR",
-    "DSP",
-    "Work",
     "未命名.canvas"
   ]
 }
