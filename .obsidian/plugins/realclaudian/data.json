@@ -2,15 +2,15 @@
   "tabManagerState": {
     "openTabs": [
       {
-        "tabId": "tab-1782136143148-18a5ry9",
-        "conversationId": "conv-1782136154965-abof99ab4"
+        "tabId": "tab-1782137572002-dbeqlj9",
+        "conversationId": "conv-1782142593889-z2udg7af9"
       },
       {
         "draftModel": "opus[1m]",
-        "tabId": "tab-1782137572002-dbeqlj9",
+        "tabId": "tab-1782142301485-cyn5p02",
         "conversationId": null
       }
     ],
-    "activeTabId": "tab-1782136143148-18a5ry9"
+    "activeTabId": "tab-1782137572002-dbeqlj9"
   }
 }
