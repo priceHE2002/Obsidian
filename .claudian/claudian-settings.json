@@ -24,14 +24,14 @@
   "locale": "zh-CN",
   "providerConfigs": {
     "claude": {
-      "safeMode": "acceptEdits",
+      "safeMode": "auto",
       "cliPath": "",
       "cliPathsByHost": {},
       "loadUserSettings": true,
       "enableChrome": false,
       "enableBangBash": false,
       "enableOpus1M": true,
-      "enableSonnet1M": false,
+      "enableSonnet1M": true,
       "customModels": "",
       "lastModel": "opus[1m]",
       "environmentVariables": "",
