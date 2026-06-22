@@ -1,0 +1,147 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1782136155894,
+  "projectRoot": "/Users/heyuhang/Documents/Obsidian Vault",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Python",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "pyproject.toml"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": "pytest",
+    "lintCommand": "ruff check",
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "Audio_Algorithm": {
+      "path": "Audio_Algorithm",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1782136155882,
+      "keyFiles": [
+        "BS-Roformer.md",
+        "HB Demucs.md"
+      ]
+    },
+    "C++ leanring": {
+      "path": "C++ leanring",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1782136155884,
+      "keyFiles": [
+        "未命名.md"
+      ]
+    },
+    "DSP": {
+      "path": "DSP",
+      "purpose": null,
+      "fileCount": 59,
+      "lastAccessed": 1782136155884,
+      "keyFiles": [
+        "DFT分辨率_瑞利判据vs严格不重叠.md",
+        "DFT分辨率_瑞利判据vs严格不重叠.png",
+        "DFT参数设计与补零验证.md",
+        "DFT参数设计与补零验证.png",
+        "DFT序列偶奇延拓演示.png"
+      ]
+    },
+    "DSP_Practise": {
+      "path": "DSP_Practise",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1782136155885,
+      "keyFiles": [
+        "汉明窗与汉宁窗对比.md",
+        "第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md"
+      ]
+    },
+    "Excalidraw": {
+      "path": "Excalidraw",
+      "purpose": null,
+      "fileCount": 5,
+      "lastAccessed": 1782136155885,
+      "keyFiles": [
+        "Drawing 2026-06-22 21.27.35.excalidraw.md",
+        "Drawing 2026-06-22 21.28.15.excalidraw.md",
+        "Drawing 2026-06-22 21.30.57.excalidraw.md",
+        "Drawing 2026-06-22 21.30.58.excalidraw.md",
+        "Drawing 2026-06-22 21.46.32.excalidraw.md"
+      ]
+    },
+    "Further_Mathematics": {
+      "path": "Further_Mathematics",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1782136155886,
+      "keyFiles": []
+    },
+    "karuko-temp-notes": {
+      "path": "karuko-temp-notes",
+      "purpose": null,
+      "fileCount": 70,
+      "lastAccessed": 1782136155886,
+      "keyFiles": [
+        "1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述 2.jpeg",
+        "1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
+        "26张宇《高等数学18讲》_含目录 14.jpeg",
+        "26张宇《高等数学18讲》_含目录 9.jpeg",
+        "26张宇基础30讲（高数）-195-219.pdf"
+      ]
+    },
+    "tmux": {
+      "path": "tmux",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1782136155887,
+      "keyFiles": [
+        "Tmux 终极速查表 (自定义增强版).md"
+      ]
+    },
+    "计算机组成原理": {
+      "path": "计算机组成原理",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1782136155887,
+      "keyFiles": [
+        "计算机组成原理_截图整理笔记.md"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "计算机组成原理/计算机组成原理_截图整理笔记.md",
+      "accessCount": 38,
+      "lastAccessed": 1782136559001,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
