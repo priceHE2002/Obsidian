@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5531fdc711aaa996",
+        "id": "6c2a02133913d87f",
         "type": "tabs",
         "children": [
           {
-            "id": "cbb90ca1f4c26182",
+            "id": "f195779374467589",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -177,7 +177,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 289.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,10 +192,12 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "455ee7f8adbb470b",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
-    "未命名.base",
+    "计算机组成原理.zip",
     "计算机组成原理/计算机组成原理_截图整理笔记.md",
+    "未命名 1.base",
+    "未命名.base",
     "计算机组成原理/计算机组成原理截图/运算器的基本组成.png",
     "计算机组成原理/计算机组成原理截图/控制器.png",
     "计算机组成原理/计算机组成原理截图/原反补移码转换关系.png",
@@ -238,7 +240,6 @@
     "DSP/第四章 IIR",
     "DSP",
     "Work",
-    "pyproject.toml",
     "未命名.canvas"
   ]
 }
