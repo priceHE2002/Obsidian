@@ -9,8 +9,12 @@
         "draftModel": "opus[1m]",
         "tabId": "tab-1782142301485-cyn5p02",
         "conversationId": null
+      },
+      {
+        "tabId": "tab-1782144561372-twwlvfi",
+        "conversationId": "conv-1782144593017-wg6hdoojx"
       }
     ],
-    "activeTabId": "tab-1782137572002-dbeqlj9"
+    "activeTabId": "tab-1782144561372-twwlvfi"
   }
 }
