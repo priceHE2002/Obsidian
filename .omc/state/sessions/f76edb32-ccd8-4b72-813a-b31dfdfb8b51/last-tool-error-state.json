@@ -1,0 +1,7 @@
+{
+  "tool_name": "WebFetch",
+  "tool_input_preview": "{\"url\":\"https://kaoyan.xhd.cn/m/news/99000449.html\",\"prompt\":\"提取408计算机学科考试大纲中计算机组成原理部分的完整内容，特别关注\\\"数据的表示和运算\\\"下面是否包含校验码/海明码/CRC/奇偶校验\"}",
+  "error": "Unable to verify if domain kaoyan.xhd.cn is safe to fetch. This may be due to network restrictions or enterprise security policies blocking claude.ai.",
+  "timestamp": "2026-06-22T15:51:03.144Z",
+  "retry_count": 2
+}
