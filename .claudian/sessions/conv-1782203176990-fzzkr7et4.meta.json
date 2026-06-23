@@ -1,0 +1,24 @@
+{
+  "id": "conv-1782203176990-fzzkr7et4",
+  "providerId": "claude",
+  "title": "Add microprogram cycle differentiation",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782203176990,
+  "updatedAt": 1782203292911,
+  "lastResponseAt": 1782203292911,
+  "sessionId": "7a739fd8-9f6c-4378-83ee-9c66f91814be",
+  "providerState": {
+    "providerSessionId": "7a739fd8-9f6c-4378-83ee-9c66f91814be"
+  },
+  "currentNote": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 545,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 77696,
+    "contextWindow": 1000000,
+    "contextTokens": 78241,
+    "percentage": 8,
+    "contextWindowIsAuthoritative": true
+  }
+}
