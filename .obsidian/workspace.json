@@ -138,21 +138,6 @@
             }
           },
           {
-            "id": "455ee7f8adbb470b",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-                "followCursor": false,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "计算机组成原理_截图整理笔记 的大纲"
-            }
-          },
-          {
             "id": "6c48c89253c2084a",
             "type": "leaf",
             "state": {
@@ -183,11 +168,11 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
-    "width": 433.5
+    "width": 394.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,16 +189,16 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "e394171055dafe3e",
+  "active": "dbb561080db75c9a",
   "lastOpenFiles": [
     "03_计算机组成原理/计算机组成原理_全览.md",
+    "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
     "03_计算机组成原理/计算机组成原理_全览.canvas",
     "03_计算机组成原理/计算机组成原理_全览.excalidraw",
     "Excalidraw/Drawing 2026-06-23 00.29.36.excalidraw.md",
     "Excalidraw",
     "_gen_excalidraw.py",
     "_gen_canvas.py",
-    "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
     "07_工具/Obsidian/Obsidian 完全使用指南.md",
     "Claude Code 已安装 Skills 列表.md",
     "07_工具/Obsidian",
