@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -172,7 +172,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 394.5
+    "width": 437.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -191,6 +191,16 @@
   },
   "active": "e394171055dafe3e",
   "lastOpenFiles": [
+    "03_计算机组成原理/计算机组成原理截图/微程序控控制单元的设计2.png",
+    "03_计算机组成原理/计算机组成原理截图/微程序控制器回顾.png",
+    "03_计算机组成原理/计算机组成原理截图/微程序控制单元的设计.png",
+    "03_计算机组成原理/计算机组成原理截图/流水线资源冲突（结构冒险）.png",
+    "03_计算机组成原理/计算机组成原理截图/流水线的表示方法.png",
+    "03_计算机组成原理/计算机组成原理截图/流水线的效率.png",
+    "03_计算机组成原理/计算机组成原理截图/流水线数据相关（数据冒险）.png",
+    "03_计算机组成原理/计算机组成原理截图/流水线控制相关（控制冒险）.png",
+    "03_计算机组成原理/计算机组成原理截图/流水线-加速比.png",
+    "03_计算机组成原理/计算机组成原理截图/机器周期的设置.png",
     "未命名.md",
     "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
     "03_计算机组成原理/计算机组成原理_全览.md",
@@ -204,15 +214,6 @@
     "Claude Code 已安装 Skills 列表.md",
     "07_工具/Obsidian",
     "99_Archive/karuko-screenshots/Pasted image 20251103165113.png",
-    "99_Archive/karuko-screenshots/Pasted image 20251023113122.png",
-    "99_Archive/karuko-screenshots/截屏2025-11-11 09.32.35.png",
-    "99_Archive/karuko-screenshots/截屏2025-11-05 14.06.21.png",
-    "99_Archive/karuko-screenshots/截屏2025-11-04 16.47.39.png",
-    "99_Archive/karuko-screenshots/截屏2025-11-03 10.33.49.png",
-    "99_Archive/karuko-screenshots/截屏2025-09-18 15.14.10.png",
-    "99_Archive/karuko-screenshots/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
-    "99_Archive/karuko-screenshots/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述 2.jpeg",
-    "99_Archive/karuko-screenshots/26张宇《高等数学18讲》_含目录 9.jpeg",
     "99_Archive/karuko-screenshots/26张宇基础30讲（高数）-195-219.pdf",
     "07_工具/Tmux/Tmux 终极速查表 (自定义增强版).md",
     "06_英语/长难句.md",
@@ -234,7 +235,6 @@
     "01_数学/高等数学/函数与数列的单调有界准则对比.md",
     "01_数学/高等数学/伯努利Bernoulli.md",
     "01_数学/高等数学/🌲4.多元函数微分学及其应用.md",
-    "01_数学/高等数学/10.26 常数和无穷小量的关系.md",
     "99_Archive/karuko-screenshots/空间图形（一定要会画）.pdf",
     "99_Archive/计算机组成原理.zip",
     "05_编程/Python/pyproject.toml",
