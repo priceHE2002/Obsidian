@@ -4,6 +4,7 @@ tags:
   - 优化器
   - 训练技巧
   - 基础组件
+  - 自适应学习率
 created: 2026-06-30
 paper_title: "Adam: A Method for Stochastic Optimization"
 paper_authors: "Diederik P. Kingma, Jimmy Ba"
@@ -16,161 +17,334 @@ paper_url: "https://arxiv.org/abs/1412.6980"
 # Adam
 
 **Adam: A Method for Stochastic Optimization**
-*University of Amsterdam / University of Toronto | ICLR 2015 | arXiv: 1412.6980*
+*Diederik P. Kingma, Jimmy Ba | University of Amsterdam, OpenAI / University of Toronto | ICLR 2015 | arXiv 1412.6980*
 
-> 几乎所有深度学习模型（包括 VLA）的默认优化器。Adam 结合了动量（加速收敛 + 越过局部最优）和自适应学习率（每个参数有自己的学习率），并加入了偏差校正。从 CNNs 到 Transformers 到 VLA，几乎所有 SOTA 模型都在用 Adam 或其变体 AdamW。
+> Adam is the default optimizer for virtually all deep learning. Combining momentum (accelerated convergence) with per-parameter adaptive learning rates (via gradient second moments), it is robust to hyperparameter choices, handles sparse gradients, and works out of the box for CNNs, RNNs, and Transformers. Its variant AdamW (decoupled weight decay) is the universal optimizer for every VLA system -- OpenVLA, RT-2, Diffusion Policy, pi-zero, and FLOWER all use it.
 
 ---
 
-## 一、研究背景与动机
+## 一、Background/Core Idea
 
-在 Adam 之前，深度学习优化主要有两个流派：
+### 1.1 The Pre-Adam Landscape
 
-1. **SGD + Momentum**：利用梯度的历史信息（一阶矩）加速收敛，但所有参数使用相同的学习率
-2. **AdaGrad / RMSProp**：为每个参数自适应学习率（二阶矩），但缺乏动量机制
+Before Adam, gradient-based optimization had two dominant paradigms that addressed different challenges:
 
-两者各有利弊：
+| Family | Methods | Strength | Weakness |
+|---|---|---|---|
+| **Momentum-based** | SGD + Momentum, Nesterov SGD | Accelerated convergence, smooth trajectory | Single global learning rate, poor sparse gradients |
+| **Adaptive learning rate** | AdaGrad, RMSProp, AdaDelta | Per-parameter learning rates, handle sparse features | AdaGrad: learning rate monotonically decays to zero; RMSProp: no momentum |
 
-| 方法 | 优势 | 劣势 |
-|------|------|------|
-| SGD + Momentum | 收敛稳定，泛化性好 | 需要手动调学习率，对稀疏梯度处理差 |
-| AdaGrad | 自适应学习率，适合稀疏梯度 | 学习率单调递减，可能提前停止 |
-| RMSProp | 滑动窗口自适应学习率 | 缺乏动量，收敛慢 |
+**SGD + Momentum** (Sutskever et al., 2013) maintains a velocity vector that accumulates past gradients:
+$$v_t = \mu v_{t-1} + (1 - \mu) g_t$$
+$$\theta_t = \theta_{t-1} - \alpha v_t$$
 
-**Adam (Adaptive Moment Estimation)** 的目标是：将两者的优势结合——既有 Momentum 的加速能力，又有 RMSProp 的自适应学习率，同时解决初期偏差问题。
+**AdaGrad** (Duchi et al., 2011) accumulates all past squared gradients:
+$$G_t = \sum_{i=1}^t g_i^2, \quad \theta_t = \theta_{t-1} - \frac{\alpha}{\sqrt{G_t + \epsilon}} \odot g_t$$
 
-## 二、核心方法
+AdaGrad works well for sparse features (infrequent large gradients get larger updates) but the learning rate $G_t$ grows monotonically, eventually becoming so small that training effectively stops.
 
-### 算法推导
+**RMSProp** (Tieleman & Hinton, 2012) fixes the monotonic decay by using an exponential moving average:
+$$v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2, \quad \theta_t = \theta_{t-1} - \frac{\alpha}{\sqrt{v_t + \epsilon}} \odot g_t$$
 
-Adam 维护两个状态变量：
+But RMSProp lacks momentum and has no bias correction, which causes instability with $\beta_2$ close to 1 (required for sparse gradients).
 
-#### 一阶矩估计（动量项）
+### 1.2 Adam's Core Insight
 
-$$ m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t $$
+Adam (Adaptive Moment Estimation) fuses these two families into a single algorithm that:
+1. **Maintains a first moment estimate** $m_t$ (running average of gradients -- like momentum)
+2. **Maintains a second moment estimate** $v_t$ (running average of squared gradients -- like RMSProp)
+3. **Applies bias correction** to both moments (critical in early training steps)
+4. **Offers the effective step size as a trust region**: $|\Delta_t| \lessapprox \alpha$, meaning the learning rate $\alpha$ directly bounds the per-step parameter change
 
-其中 $g_t = \nabla_\theta L_t(\theta_{t-1})$ 是当前步的梯度。$m_t$ 是梯度的指数移动平均，相当于 Momentum。
+Adam's design principle: "The effective magnitude of the steps taken in parameter space at each timestep are approximately bounded by the stepsize setting $\alpha$. This can be understood as establishing a trust region around the current parameter value."
 
-#### 二阶矩估计（自适应学习率项）
+## 二、Method/Architecture/Technical Contribution
 
-$$ v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2 $$
+### 2.1 Full Algorithm Derivation
 
-$v_t$ 是梯度平方的指数移动平均，相当于 RMSProp。学习了每个参数的学习率缩放。
+**Algorithm 1: Adam**
 
-#### 偏差校正
+**Input**: Learning rate $\alpha = 0.001$, decay rates $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-8}$
 
-由于 $m_t$ 和 $v_t$ 初始化为零向量，在训练早期它们会偏向零。偏差校正补偿这一偏差：
+**Initialize**: $m_0 = 0$ (first moment), $v_0 = 0$ (second moment), $t = 0$
 
-$$ \hat{m}_t = \frac{m_t}{1 - \beta_1^t} $$
+For each training step $t$:
 
-$$ \hat{v}_t = \frac{v_t}{1 - \beta_2^t} $$
+1. **Compute gradient**: $g_t = \nabla_\theta f_t(\theta_{t-1})$
 
-注意 $\beta_1^t$ 随着 $t$ 增加迅速衰减到零，所以校正主要在早期步数发挥作用。
+2. **Update biased first moment** (momentum):
+   $$m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t$$
 
-#### 参数更新
+3. **Update biased second moment** (adaptive learning rate):
+   $$v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2$$
+   (Element-wise square: $g_t^2 = g_t \odot g_t$)
 
-$$ \theta_t = \theta_{t-1} - \alpha \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} $$
+4. **Bias correction**:
+   $$\hat{m}_t = \frac{m_t}{1 - \beta_1^t}, \quad \hat{v}_t = \frac{v_t}{1 - \beta_2^t}$$
 
-### 默认超参数
+5. **Parameter update**:
+   $$\theta_t = \theta_{t-1} - \alpha \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}$$
 
-| 参数 | 默认值 | 作用 |
-|------|:------:|------|
-| $\alpha$ | 0.001 | 学习率（通常需要针对任务调优） |
-| $\beta_1$ | 0.9 | 一阶矩的衰减率（动量系数） |
-| $\beta_2$ | 0.999 | 二阶矩的衰减率 |
-| $\epsilon$ | $10^{-8}$ | 防止除以零的数值稳定项 |
+### 2.2 Why Bias Correction Matters
 
-### AdamW 改进
+Both $m_t$ and $v_t$ are initialized to zero vectors. Without bias correction:
 
-AdamW (Loschilov & Hutter, 2017) 将权重衰减（weight decay）从梯度更新中解耦出来：
+- In early steps, $m_t \approx (1 - \beta_1) g_t$ is heavily biased toward zero
+- $v_t$ with $\beta_2 = 0.999$ is even more biased: after 10 steps, $v_{10} \approx 0.01 \sum_{i} 0.999^{10-i} g_i^2$
 
-- **标准 Adam + 权重衰减**：$L_{\text{reg}} = L + \frac{\lambda}{2}||\theta||^2$（权重衰减耦合在梯度中）
-- **AdamW**：$\theta_t = \theta_{t-1} - \alpha \cdot (\frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda\theta_{t-1})$（权重衰减独立于自适应学习率）
+The bias correction terms $1 - \beta_1^t$ and $1 - \beta_2^t$ compensate for this initialization bias. For $\beta_2 = 0.999$:
+- After 1 step: $1 - 0.999^1 = 0.001$, so $\hat{v}_1 = 1000 \times v_1$ (strong correction)
+- After 1000 steps: $1 - 0.999^{1000} \approx 0.632$, moderate correction
+- After 7000 steps: $1 - 0.999^{7000} \approx 0.999$, negligible correction
 
-**为什么这很重要？** 在 Transformer 中，AdamW 的解耦权重衰减显著提升了训练稳定性和最终性能——RMSNorm 的 scale 参数 $\gamma$ 和 SwiGLU 的权重矩阵尤其受益于解耦的正则化。
+The paper's experiment (Section 6.4) shows that removing bias correction (equivalent to a version of RMSProp with momentum) causes divergence when $\beta_2$ is close to 1, especially in early training.
 
-## 三、关键实验与发现
+### 2.3 The Signal-to-Noise Ratio Interpretation
 
-### 原始论文实验
+Adam's effective update can be interpreted as:
 
-| 任务 | 数据集 | Adam vs Baseline |
-|------|--------|:-:|
-| MNIST 分类 | MNIST | Adam 收敛更快，最终精度更高 |
-| CIFAR-10 分类 | CIFAR-10 | Adam 超过 SGD 收敛速度 2-3× |
-| 语言建模 | PTB | Adam 困惑度最低 |
-| 机器翻译 | WMT'14 En-Fr | Adam 超过 Adadelta 和 SGD |
-| 图像 captioning | MS COCO | Adam 训练更稳定 |
+$$\Delta_t = -\alpha \cdot \hat{m}_t / (\sqrt{\hat{v}_t} + \epsilon)$$
 
-### 核心发现
+The ratio $\hat{m}_t / \sqrt{\hat{v}_t}$ is a **signal-to-noise ratio (SNR)** approximation:
+- When the gradient direction is consistent (high SNR), $\hat{m}_t \approx \pm \sqrt{\hat{v}_t}$, so $|\Delta_t| \approx \alpha$
+- When the gradient direction is noisy (low SNR, e.g., near optimum), $\hat{m}_t \ll \sqrt{\hat{v}_t}$, so $|\Delta_t| \ll \alpha$
 
-1. **训练初期收敛速度极快**：偏差校正使得前几步的更新量合理有效
-2. **超参数鲁棒性强**：$\alpha=0.001, \beta_1=0.9, \beta_2=0.999$ 在多数任务上有效
-3. **适合非稳态目标**：在 RL 和在线学习中表现优异
-4. **对梯度噪声不敏感**：在存在噪声估计的情况下（如小 batch），Adam 比 SGD 稳定得多
+This means Adam **automatically anneals** the step size as it approaches an optimum -- no learning rate schedule required (though one still helps).
 
-### 分析：何时 Adam 优于 SGD？
+Additionally, the update is **invariant to gradient rescaling**: if all gradients are scaled by $c$, then $\hat{m}_t$ scales by $c$ and $\sqrt{\hat{v}_t}$ also scales by $c$, so the ratio is unchanged.
 
-| 场景 | Adam 优势 | SGD 优势 |
-|------|-----------|----------|
-| 稀疏梯度 | √ 自适应学习率很好处理 | × |
-| 大噪声梯度 | √ 动量 + 自适应平滑噪声 | × |
-| CV (ImageNet) | × | √ 更好的泛化性 |
-| NLP / LLM | √ 自适应学习率对嵌入层至关重要 | × |
-| Transformer 训练 | √ (AdamW 是标准选择) | × |
+### 2.4 AdaMax Extension
 
-## 四、局限性与后续影响
+The paper also proposes AdaMax, a variant using the $\ell_\infty$ norm instead of $\ell_2$:
 
-### 局限性
+$$u_t = \max(\beta_2 \cdot u_{t-1}, |g_t|)$$
+$$\theta_t = \theta_{t-1} - \frac{\alpha}{1 - \beta_1^t} \cdot \frac{m_t}{u_t}$$
 
-1. **在某些 CV 任务上泛化性不如 SGD + momentum**：特别是 ImageNet 分类
-2. **存储开销大**：需要额外存储 $m_t$ 和 $v_t$（2 × 参数量）。对于 7B 模型，在 bf16 下需要 28GB 额外显存
-3. **$\beta_2$ 对长尾 loss 敏感**：在稀疏梯度场景下，$\beta_2$ 太大可能导致高方差估计
-4. **权重衰减实现有缺陷**（原始 Adam）：这是 AdamW 出现的原因
-5. **学习率仍然需要调优**：虽然比 SGD 省事，但 $\alpha$ 仍然关键
+AdaMax simplifies to tracking the maximum (exponentially weighted) absolute gradient. The update bound becomes simpler: $|\Delta_t| \leq \alpha / (1 - \beta_1^t)$. In practice, AdaMax is rarely used compared to standard Adam.
 
-### 后续影响
+### 2.5 Theoretical Convergence Guarantee
 
-Adam 是引用量最高的深度学习论文之一（~200,000+），直接衍生出：
-- **AdamW**：LLM/VLA 的默认优化器
-- **AdaBelief**：关注二阶矩的离差
-- **Lion**：Google 提出的更省显存的动量方法
-- **Sophia**：使用梯度曲率信息的高效优化器
+The paper provides a regret bound for convex optimization:
 
-## 五、VLA/机器人研究中的角色
+$$R(T) \leq \frac{D^2}{2\alpha(1-\beta_1)} \sum_{i=1}^d \sqrt{T \hat{v}_{T,i}} + \frac{\alpha(1+\beta_1)G_\infty}{(1-\beta_1)\sqrt{1-\beta_2}(1-\gamma)^2} \sum_{i=1}^d \|g_{1:T,i}\|_2 + \cdots$$
 
-AdamW 是 VLA 训练的"统一优化器"：
+where $\gamma = \frac{\beta_1^2}{\sqrt{\beta_2}}$. For sparse data, Adam achieves $O(\log d \sqrt{T})$ regret -- an improvement over $O(\sqrt{d T})$ for non-adaptive methods. This is comparable to the best known result for Adagrad.
 
-| VLA 系统 | 优化器 | 学习率 | 细节 |
-|----------|--------|:------:|------|
-| **OpenVLA** | AdamW | 2e-5 | 复用 Prismatic VLM 超参，全部参数 |
-| **Diffusion Policy** | AdamW | 1e-4 | 使用余弦学习率调度 + warmup |
-| **RT-2** | AdamW | 3e-5 | Co-Fine-Tuning，冻结部分 ViT 参数 |
-| **FLOWER** | AdamW | 3e-4 | 预训练；微调降至 3e-5 |
-| **π0** | AdamW | 各种 schedule | 通过 JAX optax 实现 |
+## 三、Experiments and Key Findings
 
-### 为何 VLA 普遍使用 AdamW？
+### 3.1 Logistic Regression
 
-1. **Transformer 骨干需要 AdamW**：Llama 2 模型在 AdamW 下训练，VLA 微调需继承相同优化器状态
-2. **多模态训练的不稳定性**：图像特征 + 文本特征 + 动作特征的梯度尺度差异巨大，自适应学习率至关重要
-3. **LoRA 微调与 AdamW 兼容**：LoRA + AdamW 是 VLA 微调的标准配置
-4. **SwiGLU 对学习率敏感**：SwiGLU 激活函数的梯度分布比 ReLU 宽，需要 Adam 的自适应学习率来控制步长
-5. **VLA 训练需要大量超参搜索**：但学习率可以锁定在 2e-5 ~ 3e-5 的范围
+| Dataset | Task | Adam vs Best Competitor |
+|---|---|---|
+| MNIST (784-dim pixels) | 10-class logistic regression | Adam matches AdaGrad, significantly outperforms SGD+Nesterov |
+| IMDB (10K BoW features) | Sentiment classification | Adam + dropout: fastest convergence, lowest cost |
 
-### 显存优化注意事项
+Adam converges as fast as AdaGrad on sparse features while also benefiting from the momentum-like behavior.
 
-对于 7B 模型的 VLA 训练：
-- 标准 AdamW：模型参数 (14GB) + 优化器状态 (28GB) + 梯度 (14GB) = **~56GB 显存**
-- 使用 bitsandbytes 8-bit Adam：优化器状态降至 **~7GB**（可以用 24GB 显卡微调）
-- LoRA + 4-bit Adam：降至 **~8GB 总显存**（16GB GPU 足够）
+### 3.2 Multi-Layer Neural Networks (MNIST)
 
-## 六、对你的启示
+2 hidden layers with 1000 hidden units, ReLU activation:
 
-1. **在 VLA 微调中永远选择 AdamW**：不使用 SGD 或原始 Adam。权重衰减的解耦对 Transformer 的 RMSNorm 和 embedding 层至关重要
-2. **学习率是关键超参**：对于 VLA 微调，**2e-5 是一个安全的起点**。如果 loss 震荡，降到 1e-5；如果收敛太慢，升到 5e-5
-3. **16GB GPU 的优化器选择**：使用 bitsandbytes 的 8-bit AdamW。在 LoRA 微调中，优化器状态占用的显存从 28GB 降到 < 5GB
-4. **权重衰减设置**：VLA 微调时推荐 weight_decay = 0.01（这是 Llama 2 使用的设置），但如果 LoRA 的 rank 很小可以降到 0.001
-5. **预热 + 余弦衰减是最佳实践**：warmup 5% steps + cosine annealing 是 VLA 微调的经验法则
-6. **理解 $v_t$ 的作用有助于调试**：如果 loss 突然炸了，通常是 $v_t$ 中的某些参数对应梯度过大，可以临时增大 $\epsilon$ 到 $10^{-6}$ 或减小 $\beta_2$ 到 0.995
+| Condition | Adam vs Others |
+|---|---|
+| **Deterministic** (no dropout) | Adam converges faster than SFO (quasi-Newton), AdaGrad, SGD+Nesterov |
+| **With dropout** | Adam significantly outperforms all competitors |
+| **Wall-clock time** | SFO is 5-10x slower per iteration than Adam (which only requires first-order gradients) |
+
+Adam maintained its advantage even with dropout's stochastic regularization.
+
+### 3.3 Convolutional Neural Networks (CIFAR-10)
+
+Architecture: c64-c64-c128-1000 (conv layers + FC)
+
+| Phase | Behavior |
+|---|---|
+| **First 3 epochs** | Adam and AdaGrad make rapid initial progress |
+| **After 45 epochs** | Adam and SGD converge well; AdaGrad plateaus early |
+
+The paper notes that Adam's second moment estimate $\hat{v}_t$ becomes very small after a few epochs (dominated by $\epsilon$), making the approximation less useful for CNNs. However, the first moment (momentum) continues to help.
+
+### 3.4 Bias Correction Ablation (Variational Autoencoder)
+
+This experiment directly tests the importance of bias correction:
+
+| $\beta_1$ | $\beta_2$ | With bias correction | Without bias correction |
+|---|---|---|---|
+| 0 | 0.99 | Stable | Stable (small bias) |
+| 0 | 0.999 | Stable | Slightly unstable |
+| 0 | 0.9999 | Stable | **Diverges** |
+| 0.9 | 0.99 | Stable | Instability at low $\alpha$ |
+| 0.9 | 0.999 | Stable | **Highly unstable** |
+| 0.9 | 0.9999 | Stable | **Diverges** |
+
+With $\beta_2 = 0.9999$ and $\alpha$ around 0.001, removing bias correction leads to divergence. This validates the paper's design: bias correction is essential when $\beta_2$ is close to 1.
+
+### 3.5 Language Modeling and Machine Translation
+
+| Task | Dataset | Adam Result |
+|---|---|---|
+| Language modeling | Penn Treebank | Adam achieves lowest perplexity |
+| Machine translation | WMT'14 En-Fr | Adam surpasses Adadelta and SGD |
+
+## 四、Limitations and Challenges
+
+### 4.1 Generalization Gap vs. SGD
+
+A known issue: Adam sometimes generalizes worse than SGD with momentum on some vision tasks. The hypothesis is that Adam's adaptive learning rates may lead to sharper minima (less flat minima = worse generalization).
+
+| Task | Adam | SGD Momentum | Winner |
+|---|---|---|---|
+| ImageNet classification (ResNet) | 23.5% top-1 err | **22.8%** | SGD |
+| CIFAR-10 (Wide ResNet) | 4.2% | **3.9%** | SGD |
+| PTB language modeling | **76.4 PPL** | 79.1 PPL | Adam |
+| WMT translation | **24.3 BLEU** | 23.8 BLEU | Adam |
+| Transformer training | **AdamW** is standard | SGD fails | AdamW |
+
+In practice, Adam/AdamW dominates NLP, generative models, and multimodal systems, while SGD is still competitive in image classification.
+
+### 4.2 Memory Overhead
+
+Adam stores 2 additional values per parameter ($m_t$ and $v_t$):
+
+| Model size | Parameters (bf16) | Adam optimizer states | Total (model + opt) |
+|---|---|---|---|
+| 7B | 14 GB | 28 GB ($m_t$ + $v_t$ in fp32) | 42 GB |
+| 13B | 26 GB | 52 GB | 78 GB |
+| 70B | 140 GB | 280 GB | 420 GB |
+
+This memory overhead is a critical constraint. Mitigations:
+- **bitsandbytes 8-bit Adam**: Reduces optimizer states to ~7 GB for 7B model
+- **Adafactor**: Removes $m_t$ storage (factors it across dimensions)
+- **Lion**: Only tracks momentum, no second moment
+- **Sophia**: Uses Hessian information, claims 2x fewer steps
+
+### 4.3 Hyperparameter Sensitivity (Practical)
+
+| Hyperparameter | Default | Sensitivity | Common Adjustments |
+|---|---|---|---|
+| $\alpha$ (learning rate) | 0.001 | High | 2e-5 for LoRA fine-tuning, 1e-4 for training from scratch |
+| $\beta_1$ (momentum decay) | 0.9 | Low-Moderate | 0.95 sometimes helps smoother training |
+| $\beta_2$ (square decay) | 0.999 | Low-Moderate | 0.995 for noisy gradients, 0.99 for fast adaptation |
+| $\epsilon$ (numerical stability) | 1e-8 | Low | 1e-6 for fp16/bf16 training to prevent division by near-zero |
+| Weight decay (AdamW) | 0.01 | Moderate | 0.1 for large models, 0.001 for fine-tuning |
+
+## 五、Relationship with Subsequent Work / Impact on the Field
+
+### 5.1 AdamW: The Critical Fix for Transformers
+
+AdamW (Loshchilov & Hutter, 2017, "Decoupled Weight Decay Regularization") identified a subtle bug in Adam's weight decay implementation.
+
+**The problem**: In standard Adam (and SGD), L2 regularization and weight decay are equivalent:
+$$\theta_t = \theta_{t-1} - \alpha \cdot (\nabla L + \lambda \theta_{t-1}) = \theta_{t-1}(1 - \alpha \lambda) - \alpha \nabla L$$
+
+But in Adam, the update becomes:
+$$\theta_t = \theta_{t-1} - \alpha \cdot \frac{\hat{m}_t + \lambda \theta_{t-1}}{\sqrt{\hat{v}_t} + \epsilon}$$
+
+The weight decay $\lambda \theta_{t-1}$ is **divided by** $\sqrt{\hat{v}_t}$, meaning parameters with large historical gradients (small $\hat{v}_t$) receive weaker regularization. This is incorrect -- weight decay should be uniform.
+
+**AdamW's fix**:
+$$\theta_t = \theta_{t-1} - \alpha \left( \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \theta_{t-1} \right)$$
+
+Weight decay is now **decoupled** from the adaptive learning rate. This seemingly minor change is crucial for Transformers, where different layers (embedding, attention, FFN) have very different gradient scales.
+
+### 5.2 AdamW as the Universal VLA Optimizer
+
+Every major VLA system uses AdamW:
+
+| VLA System | Optimizer | Learning Rate | Weight Decay | Schedule |
+|---|---|---|---|---|
+| **OpenVLA** | AdamW | 2e-5 | 0.01 | Cosine, 500 warmup steps |
+| **Diffusion Policy** | AdamW | 1e-4 | 0.01 or 0.001 | Cosine + warmup |
+| **RT-2** | AdamW | 3e-5 | 0.01 | Co-Fine-Tuning schedule |
+| **FLOWER** | AdamW | 3e-4 (pretrain), 3e-5 (finetune) | 0.01 | Cosine decay |
+| **pi-zero** | AdamW | Various | Various | Through JAX optax |
+| **Octo** | AdamW | 3e-4 | 0.01 | Cosine, 3000 warmup steps |
+
+Why AdamW dominates:
+1. **Transformer backbone requirement**: Llama 2 is trained with AdamW, so VLA fine-tuning must inherit the same optimizer
+2. **Multi-modal gradient diversity**: Image, text, and action gradients have wildly different scales -- adaptive learning rates are essential
+3. **SwiGLU activation sensitivity**: [[Llama 2]] uses SwiGLU, which has broader gradient distributions than ReLU, benefiting from adaptive per-parameter control
+4. **LoRA compatibility**: LoRA + AdamW is the standard fine-tuning configuration
+
+### 5.3 Why SwiGLU Needs Different Learning Rates Than ReLU
+
+SwiGLU (used in [[Llama 2]], PaLM, Gemini) computes:
+$$\text{SwiGLU}(x) = \text{Swish}(xW_1) \odot (xW_2)$$
+
+The Swish activation $\text{Swish}(x) = x \cdot \sigma(x)$ has:
+- Non-zero gradients for negative inputs (unlike ReLU which is exactly 0)
+- Larger gradient variance than ReLU due to the multiplicative gating structure
+
+This means:
+- With SGD's single global LR, SwiGLU networks are harder to tune
+- Adam's per-parameter LR automatically adapts: the gating weight $W_2$ may need a different effective LR than the projection weight $W_1$
+- LR = 2e-5 for OpenVLA fine-tuning works because Adam's adaptive mechanism handles these per-weight differences
+
+## 六、Implications for You / Hardware Compatibility
+
+### 6.1 Practical VLA Fine-Tuning Configuration
+
+**Recommended default for VLA fine-tuning**:
+```python
+from torch.optim import AdamW
+
+optimizer = AdamW(
+    model.parameters(),
+    lr=2e-5,           # Safe starting point for most VLA fine-tuning
+    betas=(0.9, 0.999), # Standard defaults
+    eps=1e-8,           # Increase to 1e-6 for fp16
+    weight_decay=0.01   # Llama 2 default
+)
+
+# Schedule: warmup + cosine
+scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+    optimizer,
+    T_max=num_epochs,
+)
+```
+
+### 6.2 Memory Optimization Guide
+
+For a 7B VLA model on consumer GPUs:
+
+| Setting | Model Params | Optimizer State | Gradient | Total VRAM | Feasible GPU |
+|---|---|---|---|---|---|
+| Full fine-tune (fp32) | 28 GB | 56 GB | 28 GB | 112 GB | A100 80GB |
+| Full fine-tune (bf16) | 14 GB | 28 GB | 14 GB | 56 GB | A100, H100 |
+| **LoRA + bf16 AdamW** | 14 GB | 28 GB (base) + 0.3 GB (LoRA) | 14 GB | ~48 GB | A100 |
+| **LoRA + 8-bit AdamW** | 14 GB | **~7 GB** | 14 GB | ~36 GB | **RTX 4090 24GB** |
+| **QLoRA + 4-bit Adam** | ~3.5 GB | ~1 GB | ~3.5 GB | **~8 GB** | **RTX 3090 24GB** |
+
+### 6.3 Hyperparameter Tuning Protocol
+
+**When loss oscillates wildly**:
+1. Halve LR (2e-5 -> 1e-5)
+2. Increase $\epsilon$ to 1e-6
+3. Increase warmup proportion
+
+**When loss converges too slowly**:
+1. Double LR (2e-5 -> 5e-5)
+2. Check that $\beta_2$ isn't too close to 1 (try 0.99)
+3. Increase batch size if possible
+
+**When overfitting**:
+1. Increase weight_decay (0.01 -> 0.1)
+2. Add gradient clipping (max_norm = 1.0)
+3. Reduce LR / increase LoRA dropout
+
+### 6.4 Understanding $\hat{v}_t$ for Debugging
+
+If you see sudden loss spikes during training, inspect the effective step sizes:
+
+```python
+# Pseudo-code: monitor the effective step size ratio
+for name, param in model.named_parameters():
+    if param.grad is not None:
+        ratio = m_t[name] / (sqrt(v_t[name]) + eps)
+        # If ratio > 10 for any parameter, learning is unstable
+```
+
+Large spikes in a specific weight's effective step size often indicate that $\hat{v}_t$ underestimated the gradient magnitude (because the gradient just became much larger than its historical average). This is common when training enters a new region of parameter space (e.g., after a learning rate warmup ends too abruptly).
 
 ## PDF
 
