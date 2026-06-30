@@ -1,26 +1,17 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1782136155894,
+  "lastScanned": 1782824891995,
   "projectRoot": "/Users/heyuhang/Documents/Obsidian Vault",
   "techStack": {
-    "languages": [
-      {
-        "name": "Python",
-        "version": null,
-        "confidence": "high",
-        "markers": [
-          "pyproject.toml"
-        ]
-      }
-    ],
+    "languages": [],
     "frameworks": [],
     "packageManager": null,
     "runtime": null
   },
   "build": {
     "buildCommand": null,
-    "testCommand": "pytest",
-    "lintCommand": "ruff check",
+    "testCommand": null,
+    "lintCommand": null,
     "devCommand": null,
     "scripts": {}
   },
@@ -41,98 +32,107 @@
   },
   "customNotes": [],
   "directoryMap": {
-    "Audio_Algorithm": {
-      "path": "Audio_Algorithm",
+    "00_Inbox": {
+      "path": "00_Inbox",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1782824891986,
+      "keyFiles": [
+        "草稿.md"
+      ]
+    },
+    "01_数学": {
+      "path": "01_数学",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1782824891986,
+      "keyFiles": []
+    },
+    "02_DSP": {
+      "path": "02_DSP",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1782824891987,
+      "keyFiles": []
+    },
+    "03_计算机组成原理": {
+      "path": "03_计算机组成原理",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1782136155882,
+      "lastAccessed": 1782824891987,
+      "keyFiles": [
+        "408 计组高频计算题训练单.md",
+        "计算机组成原理_截图整理笔记.md"
+      ]
+    },
+    "04_音频算法": {
+      "path": "04_音频算法",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1782824891987,
       "keyFiles": [
         "BS-Roformer.md",
         "HB Demucs.md"
       ]
     },
-    "C++ leanring": {
-      "path": "C++ leanring",
+    "05_编程": {
+      "path": "05_编程",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1782824891987,
+      "keyFiles": []
+    },
+    "06_英语": {
+      "path": "06_英语",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1782136155884,
+      "lastAccessed": 1782824891987,
       "keyFiles": [
-        "未命名.md"
+        "长难句.md"
       ]
     },
-    "DSP": {
-      "path": "DSP",
+    "07_工具": {
+      "path": "07_工具",
       "purpose": null,
-      "fileCount": 59,
-      "lastAccessed": 1782136155884,
+      "fileCount": 0,
+      "lastAccessed": 1782824891988,
+      "keyFiles": []
+    },
+    "08_论文": {
+      "path": "08_论文",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1782824891988,
       "keyFiles": [
-        "DFT分辨率_瑞利判据vs严格不重叠.md",
+        "VLA论文精讲.md"
+      ]
+    },
+    "99_Archive": {
+      "path": "99_Archive",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1782824891988,
+      "keyFiles": [
+        "计算机组成原理.zip"
+      ]
+    },
+    "02_DSP/assets": {
+      "path": "02_DSP/assets",
+      "purpose": "Static assets",
+      "fileCount": 35,
+      "lastAccessed": 1782824891989,
+      "keyFiles": [
         "DFT分辨率_瑞利判据vs严格不重叠.png",
-        "DFT参数设计与补零验证.md",
         "DFT参数设计与补零验证.png",
         "DFT序列偶奇延拓演示.png"
       ]
     },
-    "DSP_Practise": {
-      "path": "DSP_Practise",
-      "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1782136155885,
-      "keyFiles": [
-        "汉明窗与汉宁窗对比.md",
-        "第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md"
-      ]
-    },
-    "Excalidraw": {
-      "path": "Excalidraw",
-      "purpose": null,
-      "fileCount": 5,
-      "lastAccessed": 1782136155885,
-      "keyFiles": [
-        "Drawing 2026-06-22 21.27.35.excalidraw.md",
-        "Drawing 2026-06-22 21.28.15.excalidraw.md",
-        "Drawing 2026-06-22 21.30.57.excalidraw.md",
-        "Drawing 2026-06-22 21.30.58.excalidraw.md",
-        "Drawing 2026-06-22 21.46.32.excalidraw.md"
-      ]
-    },
-    "Further_Mathematics": {
-      "path": "Further_Mathematics",
-      "purpose": null,
+    "03_计算机组成原理/assets": {
+      "path": "03_计算机组成原理/assets",
+      "purpose": "Static assets",
       "fileCount": 0,
-      "lastAccessed": 1782136155886,
+      "lastAccessed": 1782824891989,
       "keyFiles": []
-    },
-    "karuko-temp-notes": {
-      "path": "karuko-temp-notes",
-      "purpose": null,
-      "fileCount": 70,
-      "lastAccessed": 1782136155886,
-      "keyFiles": [
-        "1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述 2.jpeg",
-        "1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
-        "26张宇《高等数学18讲》_含目录 14.jpeg",
-        "26张宇《高等数学18讲》_含目录 9.jpeg",
-        "26张宇基础30讲（高数）-195-219.pdf"
-      ]
-    },
-    "tmux": {
-      "path": "tmux",
-      "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1782136155887,
-      "keyFiles": [
-        "Tmux 终极速查表 (自定义增强版).md"
-      ]
-    },
-    "计算机组成原理": {
-      "path": "计算机组成原理",
-      "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1782136155887,
-      "keyFiles": [
-        "计算机组成原理_截图整理笔记.md"
-      ]
     }
   },
   "hotPaths": [
