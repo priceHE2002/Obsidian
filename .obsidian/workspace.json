@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "08_论文/02_深度学习基础/19_LoRA/LoRA.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "深度学习基础论文精讲"
+              "title": "LoRA"
             }
           }
         ]
@@ -115,13 +115,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "08_论文/02_深度学习基础/19_LoRA/LoRA.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "深度学习基础论文精讲 的大纲"
+              "title": "LoRA 的大纲"
             }
           },
           {
@@ -130,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "08_论文/02_深度学习基础/19_LoRA/LoRA.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +140,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "深度学习基础论文精讲 的反向链接列表"
+              "title": "LoRA 的反向链接列表"
             }
           },
           {
@@ -149,12 +149,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "08_论文/02_深度学习基础/19_LoRA/LoRA.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "深度学习基础论文精讲 的出链列表"
+              "title": "LoRA 的出链列表"
             }
           },
           {
@@ -206,8 +206,8 @@
   },
   "active": "e1e79831d7b717b0",
   "lastOpenFiles": [
-    "08_论文/CLAUDE.md",
     "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+    "08_论文/CLAUDE.md",
     "08_论文/02_深度学习基础/22_Scaling_Laws/Scaling Laws.md",
     "08_论文/02_深度学习基础/20_RMSNorm/RMSNorm.md",
     "08_论文/02_深度学习基础/23_Adam/Adam.md",
