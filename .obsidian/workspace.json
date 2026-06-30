@@ -182,12 +182,11 @@
               "title": "Calendar"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 253.5
+    "width": 332.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -204,7 +203,7 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "e1e79831d7b717b0",
+  "active": "e597b8ba97aeb6d0",
   "lastOpenFiles": [
     "08_论文/01_embodied AI",
     "08_论文/01_embodied AI/10_MolmoAct/MolmoAct.md",
