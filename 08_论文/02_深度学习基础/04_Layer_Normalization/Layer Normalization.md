@@ -1,10 +1,9 @@
 ---
 tags:
   - 论文
-  - 归一化
-  - 训练稳定性
-  - 架构组件
-  - Transformer
+  - 归一化技术
+  - Transformer架构
+  - VLA基础设施
   - RNN
 created: 2026-06-30
 paper_title: "Layer Normalization"
@@ -20,42 +19,56 @@ paper_url: "https://arxiv.org/abs/1607.06450"
 **Layer Normalization**
 *Jimmy Lei Ba, Jamie Ryan Kiros, Geoffrey E. Hinton | University of Toronto | arXiv 1607.06450*
 
-> Layer Normalization is the default normalization method for every Transformer-based model in existence. Unlike [[Batch Normalization]], LN normalizes along the feature dimension per individual sample, making it independent of batch size and identical at training and inference time. This property is essential for RNNs handling variable-length sequences and for Transformers processing billions of tokens. Its modern variant [[RMSNorm]] (used in the Llama series) removes the re-centering step for ~10% speedup.
+> Layer Normalization 是所有基于 Transformer 的模型的默认归一化方法。与 [[Batch Normalization]] 不同，LN 沿特征维度对每个独立样本进行归一化，因此既不依赖 batch size，也在训练和推理时行为完全一致。这一特性对于处理变长序列的 RNN 和处理数十亿 token 的 Transformer 至关重要。其现代变体 [[RMSNorm]]（用于 Llama 系列）去除了均值中心化步骤，获得了约 10% 的速度提升。
 
 ---
 
-## 一、Background/Core Idea
+## 一、研究背景与核心思想
 
-### 1.1 The Limitations of Batch Normalization for Sequence Models
+Layer Normalization 的提出直接源于 [[Batch Normalization]] 在序列模型中遇到的三个根本性局限。LN 的核心洞察极其简洁优雅——不跨样本归一化，而是对每个训练样本独立地在特征维度上进行归一化。这一简单的轴选择变化带来了根本性的能力差异。
 
-[[Batch Normalization]] revolutionized CNN training but had three fundamental limitations that become critical for RNNs and Transformers:
+### 1.1 Batch Normalization 在序列模型中的局限
 
-**1. Batch-size dependency**: BN's statistics ($\mu_\mathcal{B}$, $\sigma^2_\mathcal{B}$) are computed over the batch dimension. When batch size is small (common in sequence models with long sequences), these estimates become noisy. In online learning or extremely large distributed models, the mini-batch may contain only 1-2 examples.
+[[Batch Normalization]] 彻底革新了 CNN 训练，但对于 RNN 和 Transformer，它存在三个致命局限：
 
-**2. Training-inference discrepancy**: BN uses running statistics at inference time, creating two different computational graphs. This makes it harder to deploy and debug.
+**1. 对 batch size 的依赖**：BN 的统计量（$\mu_\mathcal{B}$、$\sigma^2_\mathcal{B}$）在 batch 维度上计算。当 batch size 较小时（这在长序列模型中非常常见），这些估计会变得嘈杂。在在线学习或超大规模分布式模型中，mini-batch 可能仅包含 1-2 个样本。
 
-**3. RNN incompatibility**: In an RNN, the same cell is unrolled across time steps of varying length. BN would need to maintain separate running statistics for each time step, and a test sequence longer than any training sequence would encounter unseen time steps with no statistics. As the paper states: "It is not obvious how to apply [BN] to recurrent neural networks."
+**2. 训练-推理不一致**：BN 在推理时使用 running 统计量，导致训练和推理对应两个不同的计算图，这增加了部署和调试的复杂性。
 
-Specifically, in an RNN the hidden state at time $t$ is:
+**3. RNN 完全不兼容**：在 RNN 中，同一个单元在不同时间步上展开。BN 需要为每个时间步维护单独的 running 统计量，而测试序列如果长于任何训练序列，将遇到没有统计量的"未见时间步"。正如论文所述："如何将 [BN] 应用于循环神经网络并不显而易见。"
+
+具体而言，RNN 在时间步 $t$ 的隐藏状态为：
 $$h_t = f(W_h h_{t-1} + W_x x_t)$$
 
-If we try to apply BN to $W_h h_{t-1}$ at each time step, we need to estimate statistics for each $t$ separately. A test sequence that is longer than all training sequences would have no statistics for its later time steps.
+如果尝试在每个时间步对 $W_h h_{t-1}$ 应用 BN，就需要为每个 $t$ 分别估计统计量。一个长于所有训练序列的测试序列，其较晚的时间步将无法获得统计量。
 
-### 1.2 The Core Insight: Normalize Per Sample, Per Layer
+### 1.2 核心洞察：逐样本、逐层归一化
 
-LN's key idea is elegantly simple: instead of normalizing over the batch, normalize over the feature dimension for EACH training sample independently. The normalization statistics depend only on the current input at the current time step, not on other examples or other time steps.
+LN 的关键洞察极其简洁优雅：**不在 batch 上做归一化，而是对每个训练样本独立地在特征维度上做归一化**。归一化统计量仅取决于当前输入在当前时间步的值，与其他样本或其他时间步完全无关。
 
-This means:
-- **No batch dependency**: Works with batch size = 1
-- **Training = inference**: Identical computation at both phases
-- **Time-step independence**: Each RNN time step normalizes independently
-- **Variable-length sequences**: No issue -- each position normalizes its own features
+这意味着：
+- **无 batch 依赖**：batch size = 1 也能正常工作
+- **训练 = 推理**：两阶段计算完全相同
+- **时间步独立**：每个 RNN 时间步独立完成归一化
+- **变长序列支持**：序列中每个位置的统计量都由自身特征计算，不存在"未见时间步"问题
 
-## 二、Method/Architecture/Technical Contribution
+### 1.3 为什么 Transformer 需要 LN
 
-### 2.1 The Layer Normalization Transform
+当 [[Attention Is All You Need]] 在 2017 年提出 Transformer 时，设计者面临一个选择：RNN 中已经证明 BN 不适用，但深层 Transformer 同样需要归一化来稳定训练。Transformer 的独有挑战包括：
 
-For a layer with $H$ hidden units (feature dimension), having summed inputs $a^l$:
+1. **多头注意力输出的尺度不一致**：多个注意力头的输出拼接后，不同头的激活值量级可能差异巨大，需要归一化来统一尺度
+2. **残差连接中的梯度累积**：深度 Transformer（12 层以上）中，未归一化的残差流会导致激活值逐层增长，最终数值溢出
+3. **变长序列批次**：Transformer 的 padding 操作使得 batch 维度上包含无效的填充 token，BN 无法正确处理
+
+LN 完美回答了所有这些需求：它不关心序列长度、不依赖 batch 统计量、处理每个 token 独立的特征分布。这就是为什么 LN（及其变体 RMSNorm）成为了 Transformer 架构的标配。
+
+## 二、方法/架构/技术贡献
+
+LN 的计算与 BN 在代数形式上高度相似，区别仅在于归一化轴的选择。论文还提供了 LN 在 RNN 和 LSTM 中的完整公式，并分析了 LN 的不变性属性。
+
+### 2.1 Layer Normalization 变换
+
+对于一个具有 $H$ 个隐藏单元（特征维度）的层，设求和输入为 $a^l$：
 
 $$\mu^l = \frac{1}{H} \sum_{i=1}^{H} a_i^l$$
 
@@ -63,200 +76,228 @@ $$\sigma^l = \sqrt{\frac{1}{H} \sum_{i=1}^{H} (a_i^l - \mu^l)^2}$$
 
 $$h^l = f\left(\frac{g}{\sigma^l} \odot (a^l - \mu^l) + b\right)$$
 
-Where:
-- $g$ (gain) and $b$ (bias) are learnable parameters -- analogous to $\gamma$ and $\beta$ in BN
-- $\odot$ denotes element-wise multiplication
-- $f(\cdot)$ is the nonlinearity (applied AFTER normalization)
+其中：
+- $g$（gain）和 $b$（bias）是可学习参数，类比 BN 中的 $\gamma$ 和 $\beta$
+- $\odot$ 表示逐元素乘法
+- $f(\cdot)$ 是非线性激活函数（在归一化之后应用）
 
-**Key difference from BN**: The normalization is applied to the entire hidden layer vector (all $H$ units) for a single training case, rather than to one feature across all cases in the mini-batch.
+**与 BN 的关键区别**：归一化是对单个训练样本的整个隐藏层向量（全部 $H$ 个单元）进行的，而不是对 batch 中所有样本的某一个特征进行。这一区别带来了完全不同的行为特性。
 
-### 2.2 Comparison with Batch Normalization
+### 2.2 与 Batch Normalization 的详细对比
 
-| Property | Batch Normalization | Layer Normalization |
+| 属性 | Batch Normalization | Layer Normalization |
 |---|---|---|
-| **Normalization axis** | Batch (N) | Feature (H) |
-| **Statistics computed over** | N x H x W (across examples) | H (within one example) |
-| **Dependence on batch size** | Yes -- small batches hurt | No -- works with batch=1 |
-| **Train vs. inference** | Different (running stats) | Identical |
-| **RNN applicability** | Poor (time-step statistics) | Natural (per time-step) |
-| **CNN effectiveness** | Excellent | Poor (see Section 3.3) |
-| **Parameters per layer** | $2 \times C$ (per channel $\gamma, \beta$) | $2 \times H$ (per neuron $\gamma, \beta$) |
-| **Extra storage** | Running mean/var (2 buffers) | None |
-| **Small batch stability** | Unstable ($m < 8$) | Stable |
-| **Variable-length sequences** | Breaks (unseen time steps) | Works naturally |
+| **归一化轴** | Batch (N) | 特征 (H) |
+| **统计量计算范围** | N × H × W（跨样本） | H（单样本内） |
+| **是否依赖 batch size** | 是——小 batch 显著影响性能 | 否——batch size = 1 也可用 |
+| **训练 vs 推理** | 不同（running stats） | 完全相同 |
+| **RNN 适用性** | 差（时间步统计量问题） | 天然适用（每步独立） |
+| **CNN 效果** | 优秀 | 差（见 3.3 节） |
+| **每层参数量** | $2 \times C$（逐通道 $\gamma, \beta$） | $2 \times H$（逐神经元 $\gamma, \beta$） |
+| **额外存储** | running mean/var（2 个 buffer） | 无 |
+| **小 batch 稳定性** | 不稳定（$m < 8$） | 稳定 |
+| **变长序列支持** | 破坏（未见时间步） | 天然支持 |
 
-### 2.3 LN in Recurrent Neural Networks
+### 2.3 LN 在 RNN 中的应用
 
-The paper's primary contribution is making normalization work for RNNs. The LN-RNN formulation:
+论文的主要贡献之一就是让归一化在 RNN 中可行。LN-RNN 的公式如下：
 
-**Standard RNN cell**:
+**标准 RNN 单元**：
 $$a_t = W_{hh} h_{t-1} + W_{xh} x_t$$
 
-**Layer-normalized RNN cell**:
+**Layer Normalized RNN 单元**：
 $$\mu_t = \frac{1}{H} \sum_{i=1}^{H} a_t^{(i)}, \quad \sigma_t = \sqrt{\frac{1}{H} \sum_{i=1}^{H} (a_t^{(i)} - \mu_t)^2}$$
 $$h_t = f\left(\frac{g}{\sigma_t} \odot (a_t - \mu_t) + b\right)$$
 
-Each time step $\mu_t$ and $\sigma_t$ are computed independently from the current $a_t$ only -- no statistics are shared across time steps. This prevents the gradient explosion/vanishing that normally plagues RNNs, because $\sigma_t$ adapts to the scale of $a_t$ at each step.
+每个时间步的 $\mu_t$ 和 $\sigma_t$ 从当前的 $a_t$ 独立计算——没有统计量跨时间步共享。这阻止了通常在 RNN 中出现的梯度爆炸/消失，因为 $\sigma_t$ 会在每个时间步自适应 $a_t$ 的尺度。
 
-**LN for LSTM**: The paper provides specific LN-LSTM formulations. For Vanilla LSTM:
+**LN 应用于 LSTM**：论文提供了具体的 LN-LSTM 公式。以标准 LSTM 为例：
 
-Standard:
+标准 LSTM：
 $$\begin{pmatrix} f_t \\ i_t \\ o_t \\ g_t \end{pmatrix} = W_h h_{t-1} + W_x x_t + b$$
 $$c_t = \sigma(f_t) \odot c_{t-1} + \sigma(i_t) \odot \tanh(g_t)$$
 $$h_t = \sigma(o_t) \odot \tanh(c_t)$$
 
-With LN (applied separately to recurrent weights and input weights):
+应用 LN（分别对循环权重和输入权重做归一化）：
 $$\begin{pmatrix} f_t \\ i_t \\ o_t \\ g_t \end{pmatrix} = \text{LN}(W_h h_{t-1}; \alpha_1, \beta_1) + \text{LN}(W_x x_t; \alpha_2, \beta_2) + b$$
 $$h_t = \sigma(o_t) \odot \tanh(\text{LN}(c_t; \alpha_3, \beta_3))$$
 
-The LN is applied to the **summed inputs** before the nonlinearity, similar to BN's placement. LN applied to GRU follows a similar pattern: each linear projection is independently normalized before summation.
+LN 被应用于**求和输入之后、非线性激活之前**，与 BN 的放置位置类似。LN 应用于 GRU 的模式也同理：每个线性投影在求和之前独立进行归一化。
 
-### 2.4 Invariance Properties (Theoretical Contribution)
+### 2.4 LN 的不变性属性（理论贡献）
 
-The paper provides a rigorous analysis of invariance properties:
+论文对 LN 的不变性进行了严谨的理论分析：
 
-| Method | Weight re-scaling | Weight re-centering | Weight vector re-scaling | Dataset re-scaling | Dataset re-centering | Single case re-scaling |
+| 方法 | 权重重新缩放 | 权重重新中心化 | 权向量重新缩放 | 数据集重新缩放 | 数据集重新中心化 | 单样本重新缩放 |
 |---|---|---|---|---|---|---|
-| BatchNorm | Invariant | No | Invariant | Invariant | Invariant | No |
-| WeightNorm | Invariant | No | Invariant | No | No | No |
-| **LayerNorm** | **Invariant** | **Invariant** | No | Invariant | No | **Invariant** |
+| BatchNorm | 不变 | 否 | 不变 | 不变 | 不变 | 否 |
+| WeightNorm | 不变 | 否 | 不变 | 否 | 否 | 否 |
+| **LayerNorm** | **不变** | **不变** | 否 | 不变 | 否 | **不变** |
 
-LN is **invariant to scaling of the entire weight matrix** AND a **shift to all incoming weights**. If $W' = \delta W + \mathbf{1} \gamma^\top$, the LN model output remains unchanged. This is because the $\mu$ and $\sigma$ statistics in LN involve all neurons in the layer, so shifting all weights by a constant vector is absorbed by the normalization.
+LN 对**整个权重矩阵的缩放**以及**所有权重的偏移**均具不变性。具体来说，如果 $W' = \delta W + \mathbf{1} \gamma^\top$，LN 模型的输出保持不变。这是因为 LN 的 $\mu$ 和 $\sigma$ 统计量涉及该层的所有神经元，所有权重同时被一个常向量偏移会被归一化操作吸收。
 
-Most importantly, LN is **invariant to re-scaling of individual training cases** -- the normalization scalar depends only on the current input. This is the property that makes LN robust to varying sequence lengths and input magnitudes.
+最重要的是，LN 对**单个训练样本的缩放具有不变性**——归一化的标量仅取决于当前输入。这一性质使 LN 对变长序列和不同量级的输入具有鲁棒性。
 
-## 三、Experiments and Key Findings
+## 三、实验与关键发现
 
-### 3.1 Image-Sentence Ranking (Order-Embeddings)
+论文通过多组实验系统验证了 LN 的效果，覆盖了图像-文本排序、阅读理解、MNIST 分类和 CNN 等多个任务。论文最令人印象深刻的是对 CNN 效果不佳的诚实评估——这在学术论文中并不多见。
 
-The first experiment tests LN on a GRU-based order-embedding model for cross-modal retrieval (MS COCO dataset).
+### 3.1 图像-文本排序（Order-Embeddings）
 
-| Model | Caption R@1 | Caption R@5 | Caption R@10 | Image R@1 | Image R@5 | Image R@10 |
+第一个实验在 GRU-based 的 order-embedding 模型上测试 LN 的效果，任务为跨模态检索（MS COCO 数据集）：
+
+| 模型 | Caption R@1 | Caption R@5 | Caption R@10 | Image R@1 | Image R@5 | Image R@10 |
 |---|---|---|---|---|---|---|
-| OE (baseline) | 46.6 | 79.3 | 89.1 | 37.8 | 73.6 | 85.7 |
+| OE（基线） | 46.6 | 79.3 | 89.1 | 37.8 | 73.6 | 85.7 |
 | OE + LN | **48.5** | **80.6** | **89.8** | **38.9** | **74.3** | **86.3** |
 
-- LN improves all recall metrics
-- LN converges in **60% of the training time** compared to baseline
-- This was state-of-the-art for RNN embedding models at the time
+- LN 在所有召回指标上均有提升
+- LN 在**基线 60% 的训练时间内**完成收敛
+- 这达到了当时 RNN 嵌入模型的最先进水平
 
-### 3.2 Attentive Reader (Question Answering)
+### 3.2 Attentive Reader（问答任务）
 
-The reading comprehension task (CNN corpus) directly compares LN with recurrent BN:
+阅读理解任务（CNN corpus）直接比较了 LN 与循环 BN（recurrent BN）：
 
-| Model | Validation Error |
+| 模型 | 验证错误率 |
 |---|---|
-| LSTM (baseline) | Highest |
-| BN-LSTM (Cooijmans et al.) | Lower |
-| BN-everywhere | Similar |
-| **LN-LSTM** | **Lowest** |
+| LSTM（基线） | 最高 |
+| BN-LSTM（Cooijmans et al.） | 较低 |
+| BN-everywhere | 与 BN-LSTM 相近 |
+| **LN-LSTM** | **最低** |
 
-LN-LSTM outperforms both the baseline and the specially-designed recurrent BN. The validation curve shows LN converging faster and to a lower error rate than all alternatives.
+LN-LSTM 的表现优于基线和专门设计的循环 BN。验证曲线显示 LN 不仅收敛更快，最终错误率也更低。
 
-### 3.3 Permutation-Invariant MNIST (Feedforward Networks)
+### 3.3 排列不变 MNIST（前馈网络）
 
-This experiment tests LN on feedforward MLPs and contrasts with BN under different batch sizes:
+该实验在前馈 MLP 上测试 LN，并在不同 batch size 下与 BN 进行对比：
 
-| Condition (batch size) | Baseline | BN | LN |
+| 条件（batch size） | 基线 | BN | LN |
 |---|---|---|---|
-| **Large batch (128)** | High NLL | Lower NLL | **Lowest NLL** |
-| **Small batch (4)** | Fails to converge | BN unstable (high variance) | **Most stable, fastest convergence** |
+| **大 batch（128）** | NLL 高 | NLL 较低 | **NLL 最低** |
+| **小 batch（4）** | 无法收敛 | BN 不稳定（高方差） | **最稳定，收敛最快** |
 
-The small-batch experiment is critical: at batch size 4, BN's variance estimates are extremely noisy, causing training instability. LN is **completely unaffected** by batch size.
+小 batch 实验具有关键意义：在 batch size = 4 时，BN 的方差估计极度嘈杂，导致训练不稳定。而 LN **完全不受 batch size 影响**。
 
-### 3.4 Convolutional Networks (Honest Assessment)
+### 3.4 CNN 评估（诚实的评估）
 
-The paper test CNNs and reports honestly: **LN underperforms BN for CNNs**. The test error on CIFAR-10:
+论文测试了 LN 在 CNN 上的表现，并诚实地报告了结果：**LN 在 CNN 上的表现不如 BN**。CIFAR-10 上的测试错误率：
 
-| Method | Test Error |
+| 方法 | 测试错误率 |
 |---|---|
-| Baseline (no norm) | 8.96% |
+| 基线（无归一化） | 8.96% |
 | BatchNorm | **8.25%** |
 | LayerNorm | 10.49% |
 
-LN actually **hurts** CNN performance compared to baseline. The paper explains: "With fully connected layers, all the hidden units in a layer tend to make similar contributions to the final prediction... However, the assumption of similar contributions is no longer true for convolutional neural networks." Specifically, boundary neurons (near image edges) have very different statistics from interior neurons, and normalizing them together harms performance.
+LN 甚至**损害**了 CNN 的表现——比基线还差 1.53%。论文解释道："在全连接层中，所有隐藏单元对最终预测的贡献趋于一致……然而对于卷积神经网络，这一假设不再成立。"具体而言，边界神经元（靠近图像边缘）的统计量与内部神经元差异巨大，将它们放在一起归一化损害了性能。
 
-### 3.5 Additional Experiments
+### 3.5 其他实验结果汇总
 
-| Task | Model | LN Impact |
+| 任务 | 模型 | LN 的影响 |
 |---|---|---|
-| Skip-thought vectors | Sentence encoder RNN | Improves all downstream tasks (MR: +2.2%, CR: +0.8%, SUBJ: +0.8%) |
-| Handwriting generation | RNN with 500-length sequences | LN reduces NLL from ~0 to -700 over baseline |
-| DRAW (MNIST generation) | Recurrent attention model | LN converges 2x faster, better final NLL (82.09 vs 82.36 nats) |
+| Skip-thought vectors | 句子编码器 RNN | 提升所有下游任务（MR: +2.2%, CR: +0.8%, SUBJ: +0.8%） |
+| 手写体生成 | 500 步长序列 RNN | LN 将 NLL 从约 0 降至 -700（相比基线） |
+| DRAW（MNIST 生成） | 循环注意力模型 | LN 收敛快 2 倍，最终 NLL 更优（82.09 vs 82.36 nats） |
 
-## 四、Limitations and Challenges
+## 四、局限性与挑战
 
-### 4.1 Poor Performance on CNNs
+LN 并非万能。它在 CNN 上的糟糕表现是一个显著的短板，而其理论理解的完善程度也落后于 BN。
 
-As shown in Section 3.4, LN underperforms BN on CNNs. The fundamental issue is that CNNs features have different spatial statistics -- edge detectors near image boundaries behave differently from those at the center. Normalizing them jointly destroys this useful diversity.
+### 4.1 CNN 上的糟糕表现
 
-### 4.2 Mathematical Understanding Lags BN
+如 3.4 节所示，LN 在 CNN 上的表现劣于 BN。根本原因在于 CNN 特征的空间统计特性不一致——图像边缘附近的边缘检测器与图像中心区域的检测器具有完全不同的统计量。将它们一起归一化会破坏这种有用的多样性。
 
-BN's effect of smoothing the loss landscape has been rigorously analyzed (Santurkar et al., 2018). For LN, the theoretical understanding is less complete. The paper provides a Fisher information matrix analysis in the supplementary material, but the connection to training dynamics is less direct.
+这导致了一个现在已经广为人知的经验法则：**CNN 优先使用 BN，序列模型优先使用 LN**。
 
-### 4.3 Computational Overhead
+### 4.2 理论理解落后于 BN
 
-LN adds two operations per layer:
-1. Computing $\mu$ and $\sigma$ over the feature dimension
-2. Applying the affine transform ($g \odot \hat{x} + b$)
+BN 平滑损失景观的效应已经有了严谨的分析（Santurkar et al., 2018）。对于 LN，理论上的理解相对不够完备。论文在补充材料中提供了 Fisher 信息矩阵分析，但与训练动态的联系不那么直接。
 
-While moderate, this overhead became a motivation for [[RMSNorm]], which removes the $\mu$ computation.
+### 4.3 计算开销
 
-## 五、Relationship with Subsequent Work / Impact on the Field
+LN 为每层增加了两个计算操作：
+1. 在特征维度上计算 $\mu$ 和 $\sigma$
+2. 应用仿射变换（$g \odot \hat{x} + b$）
 
-### 5.1 Pre-LN vs. Post-LN: The Transformer Architecture Debate
+虽然开销相对适中，但这也成为了 [[RMSNorm]] 的提出动机——RMSNorm 移除了均值 $\mu$ 的计算，在大型 Transformer 上节省约 10% 的计算量。
 
-The original Transformer ([[Attention Is All You Need]], 2017) used **Post-LN**: LN was applied AFTER the residual addition:
+## 五、与后续工作的关系/对领域的影响
+
+LN 在深度学习历史中占据了一个极其特殊的位置：它是 Transformer 架构正常工作的基石，Pre-LN vs Post-LN 的设计决策影响了几乎所有后续大语言模型的架构。从 LN 到 RMSNorm 再到 AdaLN 的演化链，直接构成了 VLA 领域的归一化技术基础设施。
+
+### 5.1 Pre-LN vs Post-LN：Transformer 架构的关键争论
+
+原始 Transformer（[[Attention Is All You Need]], 2017）使用了 **Post-LN**：LN 应用在残差连接之后：
 $$\text{Output} = \text{LN}(x + \text{Sublayer}(x))$$
 
-Later work discovered that **Pre-LN** (applying LN BEFORE the sublayer) provides more stable training:
+后续工作发现 **Pre-LN**（在子层之前应用 LN）提供了更稳定的训练：
 $$\text{Output} = x + \text{Sublayer}(\text{LN}(x))$$
 
-| Property | Post-LN | Pre-LN |
+| 属性 | Post-LN | Pre-LN |
 |---|---|---|
-| Gradient signal | Residual path has LN, blocking clean gradient flow | Residual path is clean (no LN), gradients flow freely |
-| Warmup required | Yes (careful warmup needed) | No standard warmup suffices |
-| Deep model stability (< 100 layers) | Tends to diverge | Stable |
-| Used in | Original Transformer (2017) | GPT-2 onward, all modern LLMs |
-| Theoretical analysis | Harder (LN interacts with residual) | Easier (LN is before each block) |
+| 梯度信号 | 残差路径上有 LN，阻碍干净梯度流 | 残差路径干净（无 LN），梯度自由流动 |
+| 是否需 Warmup | 是（需要仔细的 warmup 策略） | 一般 warmup 即可 |
+| 深层模型稳定性（< 100 层） | 容易发散 | 稳定 |
+| 用于 | 原始 Transformer（2017） | GPT-2 之后的所有现代 LLM |
+| 理论分析 | 困难（LN 与残差交互复杂） | 容易（LN 在每个 block 之前） |
 
-Every modern VLA architecture ([[Llama 2]], Gemma, Qwen, PaliGemma) uses Pre-LN exclusively.
+所有现代 VLA 架构（[[Llama 2]]、Gemma、Qwen、PaliGemma）都使用 Pre-LN。
 
-### 5.2 Evolution: LN → RMSNorm → AdaLN
+### 5.2 完整演化：LN → RMSNorm → AdaLN
 
-The normalization for Transformers evolved in a clear chain:
+| 方法 | 提出年份 | 与 LN 的关系 | 关键创新 | 代表使用 |
+|---|---|---|---|---|
+| **LayerNorm** | 2016 | 原始方法 | 均值+方差归一化 | 原始 Transformer |
+| **[[RMSNorm]]** | 2019 | 去均值化 | 仅 RMS 缩放，省去均值计算约 10% | Llama 系列 |
+| **AdaLN** | 2023 | 条件化 $\gamma, \beta$ | $\gamma$ 和 $\beta$ 由条件输入（timestep、class）预测 | [[DiT]], pi-zero |
 
-1. **LayerNorm (2016)**: Original formulation, mean + variance normalization
-2. **[[RMSNorm]] (2019)**: Removes mean-centering, only uses RMS scaling. Saves ~7-15% computation. Used by the Llama series.
-3. **AdaLN (2023)**: Adaptive LayerNorm where the scale $\gamma$ and shift $\beta$ are predicted from conditioning signals (timestep $t$, class labels). Used by [[DiT]] (Diffusion Transformers).
+在三者之中：
+- **LayerNorm** 是理论基础，定义了"归一化 → 仿射变换"的模式
+- **[[RMSNorm]]** 是最实用的工程改进，Llama 3 70B 使用 RMSNorm 相比 LN 节省了数十亿次浮点运算
+- **AdaLN** 是最具创新性的架构扩展，将归一化参数变成了**条件信息的注入接口**
 
-In VLA:
-- **pi-zero (2024)**: Uses AdaLN for timestep conditioning in the DiT action expert
-- **FLOWER (2024)**: Uses AdaLN as the conditioning interface structure (a key innovation)
-- **OpenVLA**: Llama 2 backbone uses RMSNorm
+在 VLA 中的应用：
+- **pi-zero（2024）**：使用 AdaLN 向 DiT 动作专家注入 timestep 条件
+- **FLOWER（2024）**：将 AdaLN 的 $\gamma, \beta$ 参数作为核心条件接口——这是 FLOWER 的关键架构创新之一
+- **OpenVLA**：Llama 2 骨干网络使用 RMSNorm
 
-## 六、Implications for You / Hardware Compatibility
+### 5.3 与 LN 相关的论文双链
 
-### 6.1 Practical Guidelines
+本笔记与其他论文的关联：
 
-1. **Default normalization for Transformer = RMSNorm**: In any new Transformer-based VLA model, use RMSNorm (without mean centering) as a drop-in replacement for LN. It saves computation with no quality loss.
+| 相关论文 | 关系 | 链接 |
+|---|---|---|
+| [[Attention Is All You Need]] | 原始 Transformer 使用 Post-LN | 开创性工作 |
+| [[Batch Normalization]] | LN 的前身，为 LN 提供问题背景 | 直接对比对象 |
+| [[RMSNorm]] | LN 的工程简化版，用于 Llama 系列 | 直系后代 |
+| [[Group Normalization]] | 同期工作，解决 BN 小 batch 问题 | 互补方案 |
+| [[ResNet]] | 残差连接与 LN 共同构成现代 Transformer block | 架构组件 |
 
-2. **Pre-LN by default**: Always use Pre-LN (normalize before sublayer) for Transformer blocks. This is the standard in all post-GPT-2 architectures.
+## 六、对你的启示/硬件兼容性
 
-3. **Watch the $\epsilon$ parameter**: The $\epsilon$ in LN prevents division by zero. For fp16/bf16 training, increase $\epsilon$ to $10^{-5}$ (from the default $10^{-6}$) for numerical stability.
+针对 VLA 研究者和 RTX 3090 24GB / RTX 4070 Ti Super 16GB 的实际条件，以下是在归一化选择上的实用建议。
 
-4. **LN is NOT always the answer**: For CNN-based vision encoders, use BN (batch >= 16) or GN (batch < 16). LN is for sequence models and Transformers.
+### 6.1 实践建议
 
-### 6.2 PyTorch Implementation
+1. **✅ Transformer 默认归一化 = RMSNorm**：在任何新的基于 Transformer 的 VLA 模型中，使用 RMSNorm（无均值中心化）直接替换 LN，可节省计算量且不损失质量
+
+2. **✅ Pre-LN 是默认配置**：始终在 Transformer block 中使用 Pre-LN（子层前归一化）。这是所有 GPT-2 之后架构的标准做法。具体位置：`x = x + Sublayer(LN(x))`
+
+3. **⚠️ 注意 $\epsilon$ 参数**：LN 中的 $\epsilon$ 防止除零。在 fp16/bf16 训练时，将 $\epsilon$ 从默认的 $10^{-6}$ 提升到 $10^{-5}$ 以获得更好的数值稳定性
+
+4. **❌ LN 并非万能**：对于基于 CNN 的视觉编码器，batch >= 16 时使用 BN，batch < 16 时使用 GN。LN 是为序列模型和 Transformer 设计的
+
+### 6.2 PyTorch 实现
 
 ```python
-# Standard LayerNorm
-ln = nn.LayerNorm(hidden_size)  # elementwise_affine=True by default
+# 标准 LayerNorm
+ln = nn.LayerNorm(hidden_size)  # elementwise_affine=True 默认
+ln_no_bias = nn.LayerNorm(hidden_size, bias=False)  # 仅 scale 不 shift
 
-# Without learnable parameters
+# 无可学习参数的固定 LN
 ln_fixed = nn.LayerNorm(hidden_size, elementwise_affine=False)
 
-# RMSNorm (manual implementation)
+# RMSNorm（手动实现，约 10% 更快）
 class RMSNorm(nn.Module):
     def __init__(self, hidden_size, eps=1e-5):
         super().__init__()
@@ -266,14 +307,55 @@ class RMSNorm(nn.Module):
     def forward(self, x):
         rms = torch.sqrt(torch.mean(x ** 2, dim=-1, keepdim=True) + self.eps)
         return x / rms * self.weight
+
+# 在 Transformer block 中使用 Pre-LN
+class TransformerBlock(nn.Module):
+    def __init__(self, d_model, nhead):
+        super().__init__()
+        self.norm1 = nn.LayerNorm(d_model)
+        self.attn = nn.MultiheadAttention(d_model, nhead)
+        self.norm2 = nn.LayerNorm(d_model)
+        self.ffn = nn.Sequential(...)
+
+    def forward(self, x):
+        # Pre-LN 模式：LN 在子层前
+        x = x + self.attn(self.norm1(x))  # 注意这里
+        x = x + self.ffn(self.norm2(x))   # 注意这里
+        return x
 ```
 
-### 6.3 Understanding LN for VLA Innovation
+### 6.3 为什么理解 LN 对 VLA 创新至关重要
 
-LN might seem like "just a normalization trick," but it has become an innovation surface:
-- **FLOWER's core contribution** is using AdaLN's $\gamma, \beta$ parameters as the conditioning interface
-- **DiT's innovation** is conditioning the LN parameters on the diffusion timestep
-- **Understanding $\gamma$ and $\beta$** as learnable parameters that can carry conditional information is essential for reading modern VLA papers
+LN 看似只是一个"归一化技巧"，但它已经成为一个创新面：
+
+- **FLOWER 的核心贡献**正是利用 AdaLN 的 $\gamma, \beta$ 参数作为条件接口——将归一化参数重新定义为信息载体
+- **DiT 的创新**在于将 LN 参数以扩散 timestep 为条件——打开了"归一化参数 = 条件信号"的设计空间
+- **理解 $\gamma$ 和 $\beta$** 作为可学习的、能够携带条件信息的参数，是阅读现代 VLA 论文的必备知识
+
+### 6.4 硬件兼容性
+
+| 硬件 | LN/RMSNorm 表现 | 显存影响 |
+|---|---|---|
+| RTX 3090 24GB | ✅ 无任何问题，是 LN 的理想运行环境 | LN 本身无额外显存开销 |
+| RTX 4070 Ti Super 16GB | ✅ 同样无问题 | 16GB 可运行 7B 模型（fp16）的 LN 计算 |
+| fp16/bf16 混合精度 | ✅ 将 eps 设为 1e-5 即可 | 无额外精度损失 |
+| 量化推理（INT8/INT4） | ⚠️ LN 的数值范围在量化时需注意 | 建议使用 nn.LayerNorm 的量化版本 |
+
+### 6.5 归一化技术选择总决策树
+
+```
+你的模型是什么类型？
+├── CNN-based 视觉编码器
+│   ├── batch size >= 16 → ✅ BatchNorm
+│   ├── batch size < 16  → ✅ GroupNorm
+│   └── 视频/3D 大输入    → ✅ GroupNorm（强制）
+├── Transformer（任何变体）
+│   ├── 标准 Transformer   → ✅ RMSNorm（替代 LN）
+│   ├── Diffusion Transformer → ✅ AdaLN（条件归一化）
+│   └── 混合模型（CNN+Transformer）→ 视觉部分用 GN/GN，Transformer 部分用 RMSNorm
+└── RNN/LSTM（极少见）
+    └── ✅ LayerNorm（原始方法）
+```
 
 ## PDF
 
