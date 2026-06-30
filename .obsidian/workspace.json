@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "4782e049c60c4d0c",
+        "id": "82264d18feae2fae",
         "type": "tabs",
         "children": [
           {
-            "id": "93a4e2068069dc83",
+            "id": "e1e79831d7b717b0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-                "mode": "preview",
+                "file": "08_论文/01_Open_X-Embodiment/Open X-Embodiment & RT-X.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "计算机组成原理_截图整理笔记"
+              "title": "Open X-Embodiment & RT-X"
             }
           }
         ]
@@ -90,64 +90,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5e82ed01ad562814",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "karuko-temp-notes/hbj/前端界面.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "前端界面 的反向链接列表"
-            }
-          },
-          {
-            "id": "7ae5c0eaba9202e6",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "数学公式/基本积分公式表.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "基本积分公式表 的出链列表"
-            }
-          },
-          {
-            "id": "b64e83a5dc205d3f",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "标签"
-            }
-          },
-          {
-            "id": "6c48c89253c2084a",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
-            }
-          },
-          {
             "id": "e597b8ba97aeb6d0",
             "type": "leaf",
             "state": {
@@ -166,13 +108,28 @@
               "icon": "bot",
               "title": "Claudian"
             }
+          },
+          {
+            "id": "3296ff1a0c52db15",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "08_论文/01_Open_X-Embodiment/Open X-Embodiment & RT-X.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Open X-Embodiment & RT-X 的大纲"
+            }
           }
         ],
         "currentTab": 2
       }
     ],
     "direction": "horizontal",
-    "width": 383.5
+    "width": 253.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -189,13 +146,44 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "93a4e2068069dc83",
+  "active": "e1e79831d7b717b0",
   "lastOpenFiles": [
-    "03_计算机组成原理/408 计组高频计算题训练单.md",
+    "08_论文/01_Open_X-Embodiment/Open X-Embodiment & RT-X 原文.pdf",
+    "08_论文/20_LDA-1B/LDA-1B.md",
+    "08_论文/20_LDA-1B/LDA-1B.pdf",
+    "LDA-1B 原文.md",
+    "08_论文/VLA论文精讲.md",
+    "08_论文/16_FastWAM/FastWAM.md",
+    "08_论文/12_FLOWER/FLOWER.md",
+    "08_论文/12_FLOWER/FLOWER.pdf",
+    "08_论文/11_SimpleVLA-RL/SimpleVLA-RL.md",
+    "08_论文/11_SimpleVLA-RL/SimpleVLA-RL.pdf",
+    "08_论文/10_MolmoAct/MolmoAct 原文.pdf",
+    "08_论文/19_AttenA+/AttenA+.md",
+    "08_论文/19_AttenA+/AttenA+.pdf",
+    "08_论文/18_Cosmos_Policy/Cosmos Policy.md",
+    "08_论文/13_X-VLA/X-VLA.md",
+    "08_论文/17_VLA-Adapter/VLA-Adapter.md",
+    "08_论文/15_HybridVLA/HybridVLA.md",
+    "08_论文/14_Motus/Motus.md",
+    "08_论文/09_GR00T_N1/GR00T N1.md",
+    "08_论文/19_AttenA+",
+    "08_论文/18_Cosmos_Policy/Cosmos_Policy.pdf",
+    "08_论文/17_VLA-Adapter/VLA-Adapter.pdf",
+    "08_论文/16_FastWAM/FastWAM.pdf",
+    "08_论文/15_HybridVLA/HybridVLA.pdf",
+    "08_论文/10_MolmoAct/MolmoAct.md",
+    "08_论文/08_pi0/π0.md",
+    "08_论文/07_OpenVLA/OpenVLA.md",
+    "08_论文/06_Octo/Octo.md",
+    "08_论文/05_ACT/ACT.md",
+    "08_论文/04_Diffusion_Policy/Diffusion Policy.md",
+    "08_论文/03_RT-2/RT-2.md",
+    "08_论文/02_PaLM-E/PaLM-E.md",
+    "08_论文/01_Open_X-Embodiment/Open X-Embodiment & RT-X.md",
+    "π0 原文.md",
     "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-    "未命名 1.base",
-    "未命名.base",
-    "未命名.md",
+    "03_计算机组成原理/408 计组高频计算题训练单.md",
     "03_计算机组成原理/计算机组成原理截图/微程序控控制单元的设计2.png",
     "03_计算机组成原理/计算机组成原理截图/微程序控制器回顾.png",
     "03_计算机组成原理/计算机组成原理截图/微程序控制单元的设计.png",
@@ -206,37 +194,7 @@
     "03_计算机组成原理/计算机组成原理截图/流水线控制相关（控制冒险）.png",
     "03_计算机组成原理/计算机组成原理截图/流水线-加速比.png",
     "03_计算机组成原理/计算机组成原理截图/机器周期的设置.png",
-    "03_计算机组成原理/计算机组成原理_全览.md",
     "03_计算机组成原理/计算机组成原理_全览.canvas",
-    "03_计算机组成原理/计算机组成原理_全览.excalidraw",
-    "Excalidraw/Drawing 2026-06-23 00.29.36.excalidraw.md",
-    "Excalidraw",
-    "_gen_excalidraw.py",
-    "_gen_canvas.py",
-    "07_工具/Obsidian/Obsidian 完全使用指南.md",
-    "Claude Code 已安装 Skills 列表.md",
-    "07_工具/Obsidian",
-    "99_Archive/karuko-screenshots/26张宇基础30讲（高数）-195-219.pdf",
-    "07_工具/Tmux/Tmux 终极速查表 (自定义增强版).md",
-    "06_英语/长难句.md",
-    "02_DSP/习题/第一章 离散信号与系统分析习题全解（题目+详解+知识点深度剖析）.md",
-    "02_DSP/习题/汉明窗与汉宁窗对比.md",
-    "00_Inbox/未命名.md",
-    "00_Inbox/草稿.md",
-    "00_Inbox/【重点复习】.md",
-    "00_Inbox/【计划】.md",
-    "01_数学/公式定理/🌟不等思想.md",
-    "01_数学/公式定理/🌟 🌟重要函数关系图像.md",
-    "02_DSP/基础概念/调制器.md",
-    "02_DSP/基础概念/单音信号.md",
-    "02_DSP/基础概念/采样信息是否消失.md",
-    "02_DSP/基础概念/🌟一些频率关系.md",
-    "02_DSP/基础概念/🌟解卷积.md",
-    "03_计算机组成原理/计算机组成原理_截图整理笔记.md.bak",
-    "01_数学/线性代数/🧵2.行列式.md",
-    "01_数学/高等数学/函数与数列的单调有界准则对比.md",
-    "01_数学/高等数学/伯努利Bernoulli.md",
-    "99_Archive/karuko-screenshots/空间图形（一定要会画）.pdf",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"
   ]
