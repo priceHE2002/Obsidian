@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "entries": {
+    "466399dafa2d20f60587180bad0a07358eb7f2bce724df0ff682f038ad33f5ad": {
+      "last_emitted_at_ms": 1782896133552,
+      "message": "Read multiple files in parallel when possible for faster analysis."
+    },
+    "347f6f7b8cbe478b99e6fba9fa722d3a5931232a345c4b8fe472360f879db4b2": {
+      "last_emitted_at_ms": 1782896129584,
+      "message": "Spawning agent: general-purpose (inherit) | Task: Read paper notes batch 2"
+    },
+    "79a93d4a2f8f50b95f852280616242fee1855dc99a3c75211917f55e72e95fae": {
+      "last_emitted_at_ms": 1782896109401,
+      "message": "Use parallel execution for independent tasks. Use run_in_background for long operations (npm install, builds, tests)."
+    },
+    "445ed27a3872b681d98190bae61ccb84954e1bc4e140df5370be958dee776b3a": {
+      "last_emitted_at_ms": 1782896047486,
+      "message": "Verify changes work after editing. Test functionality before marking complete."
+    },
+    "f94415bda92e5b10656f44902811bcc30e8a00e02f5ceb456d241af793cba9f6": {
+      "last_emitted_at_ms": 1782895301320,
+      "message": "Spawning agent: general-purpose (inherit) | Task: Read paper notes batch 1"
+    },
+    "75cfb32261ba67448fb042b8baed1e4d9897a57865afabec6e3c1a57822ad7ef": {
+      "last_emitted_at_ms": 1782895289234,
+      "message": "Spawning agent: oh-my-claudecode:executor (opus) [BACKGROUND] | Task: Generate code for 训练基础设施 papers"
+    },
+    "196e430947fe903b3896ef9b3cd9d55935866fdd016bf56c7e3e3b272b9e7d1e": {
+      "last_emitted_at_ms": 1782895262905,
+      "message": "Spawning agent: oh-my-claudecode:executor (opus) [BACKGROUND] | Task: Generate code for 深度学习基础 papers"
+    },
+    "f015546be7f853f2f9a4e1a366ee065b021317b4c6d39d4553fe135e9d4cbae0": {
+      "last_emitted_at_ms": 1782895256551,
+      "message": "Spawning agent: oh-my-claudecode:explore (inherit) | Task: Read notes for papers 17-20"
+    },
+    "57e19163dc83f9c5426d9a89ada55ba22866ac9245ffd0b439bf0538b4ae251a": {
+      "last_emitted_at_ms": 1782895254585,
+      "message": "Spawning agent: oh-my-claudecode:explore (inherit) | Task: Read notes for papers 13-16"
+    },
+    "613b5018c00ae7c2cda3cf6021800163165a8ce069b71fbea119e6bffa4cbcea": {
+      "last_emitted_at_ms": 1782895252727,
+      "message": "Spawning agent: oh-my-claudecode:explore (inherit) | Task: Read notes for papers 09-12"
+    },
+    "d4044c3d2a2f00582e9c138a80c8b7a087c7fc112a744a0eb971aae218a901c4": {
+      "last_emitted_at_ms": 1782895250763,
+      "message": "Spawning agent: oh-my-claudecode:explore (inherit) | Task: Read notes for papers 05-08"
+    },
+    "14f6752a214072b04d60c6c15f0841e3cf15d436604fcddb7b7d76ee95df09b0": {
+      "last_emitted_at_ms": 1782895248939,
+      "message": "Spawning agent: oh-my-claudecode:explore (inherit) | Task: Read notes for papers 01-04"
+    },
+    "84fee1e1108ef612593ae279e9fe41940f01735fce2ad8a221b527e52bdb748e": {
+      "last_emitted_at_ms": 1782895235237,
+      "message": "Spawning agent: oh-my-claudecode:executor (opus) [BACKGROUND] | Task: Generate code for 具身智能 papers"
+    }
+  },
+  "updated_at": "2026-07-01T08:55:33.552Z"
+}
