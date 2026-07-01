@@ -182,12 +182,11 @@
               "title": "Calendar"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 250.5
+    "width": 333.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -200,11 +199,10 @@
       "command-palette:打开命令面板": false,
       "obsidian-git:Open Git source control": false,
       "markdown-importer:打开 Markdown 格式转换器": false,
-      "realclaudian:Open Claudian": false,
-      "obsidian-excalidraw-plugin:新建绘图文件": false
+      "realclaudian:Open Claudian": false
     }
   },
-  "active": "2a0b2c21f867c062",
+  "active": "e597b8ba97aeb6d0",
   "lastOpenFiles": [
     "08_论文/01_深度学习基础/01_Attention_Is_All_You_Need/model.py.md",
     "08_论文/01_具身智能/VLA论文精讲.md",
