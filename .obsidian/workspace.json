@@ -11,10 +11,14 @@
             "id": "26d2b20af3ebf296",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "08_论文/03_训练基础设施/03_训练基础设施论文精讲.md",
+                "mode": "preview",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "03_训练基础设施论文精讲"
             }
           }
         ]
@@ -111,12 +115,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "08_论文/03_训练基础设施/03_训练基础设施论文精讲.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "03_训练基础设施论文精讲 的大纲"
             }
           },
           {
@@ -176,7 +181,8 @@
               "title": "Calendar"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -196,9 +202,11 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "e597b8ba97aeb6d0",
+  "active": "26d2b20af3ebf296",
   "lastOpenFiles": [
     "08_论文/02_具身智能/具身智能论文精讲.md",
+    "未命名.base",
+    "08_论文.zip",
     "08_论文/01_深度学习基础/01_Attention_Is_All_You_Need/model.py.md",
     "08_论文/01_具身智能/VLA论文精讲.md",
     "08_论文/CLAUDE.md",
@@ -227,13 +235,10 @@
     "08_论文/03_训练基础设施/04_3D_Parallelism/model.py.md",
     "08_论文/03_训练基础设施/03_Megatron-LM/model.py.md",
     "08_论文/03_训练基础设施/02_Gradient_Checkpointing/model.py.md",
-    "08_论文/01_深度学习基础/18_DiT/model.py.md",
     "08_论文/01_具身智能/12_FLOWER/__pycache__/model.cpython-313.pyc",
     "08_论文/01_具身智能/12_FLOWER/__pycache__",
     "08_论文/01_具身智能/11_SimpleVLA-RL/__pycache__/model.cpython-313.pyc",
     "08_论文/01_具身智能/11_SimpleVLA-RL/__pycache__",
-    "08_论文/01_具身智能/10_MolmoAct/__pycache__/model.cpython-313.pyc",
-    "08_论文/01_具身智能/10_MolmoAct/__pycache__",
     "03_计算机组成原理/计算机组成原理截图/微程序控控制单元的设计2.png",
     "03_计算机组成原理/计算机组成原理截图/微程序控制器回顾.png",
     "03_计算机组成原理/计算机组成原理截图/微程序控制单元的设计.png",
