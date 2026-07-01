@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "9d56342167ddb7af",
+        "id": "5981a47f4d778864",
         "type": "tabs",
         "children": [
           {
-            "id": "eaaaa6515dde2e42",
+            "id": "5e5c040d9f1083fe",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "08_DL基础及论文进阶/DL知识库维护.md",
-                "mode": "preview",
+                "file": "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DL知识库维护"
+              "title": "Orca"
             }
           }
         ]
@@ -115,13 +115,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "08_DL基础及论文进阶/DL知识库维护.md",
+                "file": "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "DL知识库维护 的大纲"
+              "title": "Orca 的大纲"
             }
           },
           {
@@ -182,11 +182,11 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 303.5
+    "width": 476.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -202,10 +202,16 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "eaaaa6515dde2e42",
+  "active": "dbb561080db75c9a",
   "lastOpenFiles": [
-    "08_论文/00_基础知识/03_量化技术/00_量化基础/量化基础.md",
+    "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+    "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca.md",
+    "08_DL基础及论文进阶/02_具身智能/21_Orca/model.py.md",
+    "08_DL基础及论文进阶/02_具身智能/21_Orca.zip",
+    "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca 原文.pdf",
     "08_DL基础及论文进阶/DL知识库维护.md",
+    "08_DL基础及论文进阶/02_具身智能/21_Orca",
+    "08_论文/00_基础知识/03_量化技术/00_量化基础/量化基础.md",
     "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/01_NumPy语法.md",
     "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/00_PyTorch语法.md",
     "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/06_实战案例/实战案例.md",
@@ -232,14 +238,8 @@
     "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/01_神经网络/神经网络.md",
     "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/01_数组基础/数组基础.md",
     "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/03_运算与广播/运算与广播.md",
-    "00_基础知识/01_NumPy语法/06_PyTorch对照/PyTorch对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/02_索引切片/索引切片.md",
     "00_基础知识/01_NumPy语法/06_PyTorch对照",
     "00_基础知识/01_NumPy语法",
-    "00_基础知识",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/07_实战案例",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照",
-    "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/04_数据加载/数据加载.md",
     "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-41.png",
     "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-40.png",
     "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-39.png",
