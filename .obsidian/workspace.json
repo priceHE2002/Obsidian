@@ -11,14 +11,13 @@
             "id": "e1e79831d7b717b0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
-                "mode": "source",
-                "source": false
+                "file": "未命名.base",
+                "viewName": "表格"
               },
-              "icon": "lucide-file",
-              "title": "深度学习基础论文精讲"
+              "icon": "lucide-table",
+              "title": "未命名"
             }
           }
         ]
@@ -115,13 +114,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "未命名.base",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "深度学习基础论文精讲 的大纲"
+              "title": "未命名 的大纲"
             }
           },
           {
@@ -130,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "未命名.base",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -140,7 +139,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "深度学习基础论文精讲 的反向链接列表"
+              "title": "未命名 的反向链接列表"
             }
           },
           {
@@ -149,12 +148,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+                "file": "未命名.base",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "深度学习基础论文精讲 的出链列表"
+              "title": "未命名 的出链列表"
             }
           },
           {
@@ -206,6 +205,8 @@
   },
   "active": "e1e79831d7b717b0",
   "lastOpenFiles": [
+    "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
+    "未命名.base",
     "08_论文/02_深度学习基础/01_Attention_Is_All_You_Need/Attention Is All You Need.md",
     "08_论文/02_深度学习基础/11_ViT/model.py",
     "08_论文/02_深度学习基础/10_DenseNet/model.py",
@@ -222,13 +223,11 @@
     "08_论文/03_训练基础设施/07_FlashAttention/FlashAttention.md",
     "08_论文/02_深度学习基础/04_Layer_Normalization/model.py",
     "08_论文/02_深度学习基础/03_GPT/model.py",
-    "08_论文/02_深度学习基础/02_BERT/model.py",
     "08_论文/02_深度学习基础/22_Adam/Adam.md",
     "08_论文/02_深度学习基础/21_Scaling_Laws/Scaling Laws.md",
     "08_论文/02_深度学习基础/20_Llama2/Llama 2.md",
     "08_论文/02_深度学习基础/19_RMSNorm/RMSNorm.md",
     "08_论文/03_训练基础设施/03_训练基础设施论文精讲.md",
-    "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
     "08_论文/02_深度学习基础/21_Llama2/Llama 2.md",
     "08_论文/02_深度学习基础/18_DiT/DiT.md",
     "08_论文/02_深度学习基础/16_DDPM/DDPM.md",
