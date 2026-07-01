@@ -271,4 +271,4 @@ GaLore 使 7B 全参数训练在单张 24GB GPU 上**首次成为可能**。
 
 ## PDF
 
-[[GaLore.pdf]]
+[[GaLore 原文.pdf]]
