@@ -5,9 +5,9 @@ tags:
   - 深度学习
   - 图像算法
   - 面试题
-source: "深度学习面试题-图像算法 (1).doc"
+source: 深度学习面试题-图像算法 (1).doc
 created: 2026-07-01
-up: "[[00_基础知识/深度学习面试题-图像算法/深度学习面试题-图像算法|深度学习面试题-图像算法]]"
+up: "[[深度学习面试题|深度学习面试题-图像算法]]"
 ---
 
 # 3. RNN
@@ -24,7 +24,7 @@ $$
 y_t = g(W_y h_t)
 $$
 
-![[00_基础知识/深度学习面试题-图像算法/assets/image-24.png]]
+![[image-24.png]]
 
 RNN 应用场景：
 
@@ -34,7 +34,7 @@ RNN 应用场景：
 - 生成图像描述
 - 视频标记
 
-![[00_基础知识/深度学习面试题-图像算法/assets/image-25.png]]
+![[image-25.png]]
 
 缺点：
 
@@ -83,7 +83,7 @@ print(f"输出形状: {out.shape}, 最后隐状态: {h_n.shape}")
 
 ## 3.5 CNN 与 RNN
 
-![[00_基础知识/深度学习面试题-图像算法/assets/image-26.png]]
+![[image-26.png]]
 
 不同点：
 
@@ -95,6 +95,6 @@ print(f"输出形状: {out.shape}, 最后隐状态: {h_n.shape}")
 
 Keras 中搭建 RNN 通常使用 `SimpleRNN`、`LSTM` 或 `GRU` 层。输入形状一般是 `(timesteps, features)`，如果需要返回每个时间步的输出，设置 `return_sequences=True`；如果只需要最后一个时间步的输出，用默认设置即可。实际任务中，普通 `SimpleRNN` 较少直接使用，更多使用 `LSTM` 或 `GRU`。
 
-![[00_基础知识/深度学习面试题-图像算法/assets/image-27.png]]
+![[image-27.png]]
 
-![[00_基础知识/深度学习面试题-图像算法/assets/image-28.png]]
+![[image-28.png]]
