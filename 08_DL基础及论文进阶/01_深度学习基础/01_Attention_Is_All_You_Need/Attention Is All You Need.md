@@ -28,7 +28,7 @@ github: "https://github.com/tensorflow/tensor2tensor"
 
 ### 1.1 此前序列建模的困境：RNN 的致命缺陷
 
-在 Transformer 之前（2017 年以前），序列建模的标准方案是 RNN（LSTM/GRU），如 [[1706.03762_Attention_Is_All_You_Need.pdf|原论文]] 所述。RNN 的核心问题在于其**顺序计算的本质**——每个时间步必须等待前一个时间步计算完成才能继续，这使得训练**完全无法并行化**。对于长度为 n 的序列，RNN 需要 O(n) 步顺序操作，而 Transformer 只需要 O(1) 步。
+在 Transformer 之前（2017 年以前），序列建模的标准方案是 RNN（LSTM/GRU），如 [[Attention Is All You Need 原文.pdf|原论文]] 所述。RNN 的核心问题在于其**顺序计算的本质**——每个时间步必须等待前一个时间步计算完成才能继续，这使得训练**完全无法并行化**。对于长度为 n 的序列，RNN 需要 O(n) 步顺序操作，而 Transformer 只需要 O(1) 步。
 
 RNN 的另一问题是**梯度消失/爆炸**。即便使用 LSTM 的门控机制，当序列长度超过 100-200 token 时，早期位置的梯度信息仍然会指数级衰减。原论文（第 2 页）明确指出："This inherently sequential nature precludes parallelization within training examples。"
 

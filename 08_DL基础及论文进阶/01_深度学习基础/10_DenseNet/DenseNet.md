@@ -355,4 +355,4 @@ DenseNet 最大的实际限制是**训练时的显存消耗**。原因在于：
 
 ## PDF
 
-[[Densely Connected Convolutional Networks.pdf]]
+[[DenseNet 原文.pdf]]

@@ -252,4 +252,4 @@ flowchart LR
 
 ## PDF
 
-[[LLM.int8 原文.pdf]]
+[[LLM.int8() 原文.pdf]]

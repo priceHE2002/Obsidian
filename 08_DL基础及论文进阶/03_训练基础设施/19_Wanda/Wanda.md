@@ -230,4 +230,4 @@ $$
 
 ## PDF
 
-[[Wanda.pdf]]
+[[Wanda 原文.pdf]]
