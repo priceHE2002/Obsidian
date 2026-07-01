@@ -4,20 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "82264d18feae2fae",
+        "id": "cbd64501f84cd943",
         "type": "tabs",
         "children": [
           {
-            "id": "e1e79831d7b717b0",
+            "id": "d286f523589304a5",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "未命名.base",
-                "viewName": "表格"
+                "file": "08_论文/02_具身智能/具身智能论文精讲.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "未命名"
+              "icon": "lucide-file",
+              "title": "具身智能论文精讲"
             }
           }
         ]
@@ -114,13 +115,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "未命名.base",
+                "file": "08_论文/02_具身智能/具身智能论文精讲.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "未命名 的大纲"
+              "title": "具身智能论文精讲 的大纲"
             }
           },
           {
@@ -129,7 +130,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "未命名.base",
+                "file": "08_论文/02_具身智能/具身智能论文精讲.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +140,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "未命名 的反向链接列表"
+              "title": "具身智能论文精讲 的反向链接列表"
             }
           },
           {
@@ -148,12 +149,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "未命名.base",
+                "file": "08_论文/02_具身智能/具身智能论文精讲.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "未命名 的出链列表"
+              "title": "具身智能论文精讲 的出链列表"
             }
           },
           {
@@ -203,43 +204,44 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "e1e79831d7b717b0",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
-    "08_论文/02_深度学习基础/深度学习基础论文精讲.md",
-    "未命名.base",
-    "08_论文/02_深度学习基础/01_Attention_Is_All_You_Need/Attention Is All You Need.md",
-    "08_论文/02_深度学习基础/11_ViT/model.py",
-    "08_论文/02_深度学习基础/10_DenseNet/model.py",
-    "08_论文/03_训练基础设施/05_ZeRO/!_READ_ME_ZeRO.md",
-    "08_论文/03_训练基础设施/04_3D_Parallelism/!_READ_ME_3D_Parallelism.md",
-    "08_论文/03_训练基础设施/03_Megatron-LM/!_READ_ME_Megatron-LM.md",
-    "08_论文/03_训练基础设施/02_Gradient_Checkpointing/!_READ_ME_Gradient_Checkpointing.md",
-    "08_论文/03_训练基础设施/01_Mixed_Precision_Training/!_READ_ME_Mixed_Precision_Training.md",
-    "08_论文/02_深度学习基础/09_ResNet/model.py",
-    "08_论文/02_深度学习基础/08_GoogLeNet/model.py",
-    "08_论文/02_深度学习基础/07_VGG/model.py",
-    "08_论文/02_深度学习基础/06_AlexNet/model.py",
-    "08_论文/02_深度学习基础/05_Batch_Normalization/model.py",
-    "08_论文/03_训练基础设施/07_FlashAttention/FlashAttention.md",
-    "08_论文/02_深度学习基础/04_Layer_Normalization/model.py",
-    "08_论文/02_深度学习基础/03_GPT/model.py",
-    "08_论文/02_深度学习基础/22_Adam/Adam.md",
-    "08_论文/02_深度学习基础/21_Scaling_Laws/Scaling Laws.md",
-    "08_论文/02_深度学习基础/20_Llama2/Llama 2.md",
-    "08_论文/02_深度学习基础/19_RMSNorm/RMSNorm.md",
-    "08_论文/03_训练基础设施/03_训练基础设施论文精讲.md",
-    "08_论文/02_深度学习基础/21_Llama2/Llama 2.md",
-    "08_论文/02_深度学习基础/18_DiT/DiT.md",
-    "08_论文/02_深度学习基础/16_DDPM/DDPM.md",
-    "08_论文/02_深度学习基础/17_Flow_Matching/Flow Matching.md",
+    "08_论文/01_深度学习基础/01_Attention_Is_All_You_Need/model.py.md",
     "08_论文/01_具身智能/VLA论文精讲.md",
-    "08_论文/03_训练基础设施/06_FSDP/FSDP.md",
-    "08_论文/03_训练基础设施/12_LoRA/LoRA.md",
-    "08_论文/03_训练基础设施/10_Lion/Lion.md",
-    "08_论文/03_训练基础设施/05_ZeRO/ZeRO.md",
-    "08_论文/03_训练基础设施/09_AdamW/AdamW.md",
-    "08_论文/03_训练基础设施/17_SmoothQuant/SmoothQuant.md",
-    "08_论文/03_训练基础设施/04_3D_Parallelism/3D Parallelism.md",
+    "08_论文/02_具身智能/具身智能论文精讲.md",
+    "08_论文/CLAUDE.md",
+    "08_论文/01_深度学习基础/01_Attention_Is_All_You_Need/Attention Is All You Need 原文.pdf",
+    "08_论文/01_深度学习基础/01_Attention_Is_All_You_Need/Attention Is All You Need.md",
+    "08_论文/03_训练基础设施/01_Mixed_Precision_Training/Mixed Precision Training.md",
+    "08_论文/03_训练基础设施/01_Mixed_Precision_Training/Mixed Precision Training 原文.pdf",
+    "08_论文/03_训练基础设施/01_Mixed_Precision_Training/model.py.md",
+    "08_论文/02_具身智能/08_pi0/model.py.md",
+    "08_论文/01_具身智能/13_X-VLA/model.py.md.tmp.85349.2b2199e12341",
+    "08_论文/02_具身智能/04_Diffusion_Policy/Diffusion Policy.md",
+    "08_论文/02_具身智能/04_Diffusion_Policy/Diffusion Policy 原文.pdf",
+    "08_论文/02_具身智能/04_Diffusion_Policy/model.py.md",
+    "08_论文/02_具身智能/06_Octo/model.py.md",
+    "08_论文/03_训练基础设施/20_GaLore/model.py.md",
+    "08_论文/03_训练基础设施/19_Wanda/model.py.md",
+    "08_论文/03_训练基础设施/18_SparseGPT/model.py.md",
+    "08_论文/03_训练基础设施/17_SmoothQuant/model.py.md",
+    "08_论文/03_训练基础设施/16_AWQ/model.py.md",
+    "08_论文/03_训练基础设施/15_GPTQ/model.py.md",
+    "08_论文/03_训练基础设施/14_LLM.int8/model.py.md",
+    "08_论文/03_训练基础设施/13_QLoRA/model.py.md",
+    "08_论文/03_训练基础设施/07_FlashAttention/model.py.md",
+    "08_论文/03_训练基础设施/06_FSDP/model.py.md",
+    "08_论文/03_训练基础设施/05_ZeRO/model.py.md",
+    "08_论文/03_训练基础设施/04_3D_Parallelism/model.py.md",
+    "08_论文/03_训练基础设施/03_Megatron-LM/model.py.md",
+    "08_论文/03_训练基础设施/02_Gradient_Checkpointing/model.py.md",
+    "08_论文/01_深度学习基础/18_DiT/model.py.md",
+    "08_论文/01_具身智能/12_FLOWER/__pycache__/model.cpython-313.pyc",
+    "08_论文/01_具身智能/12_FLOWER/__pycache__",
+    "08_论文/01_具身智能/11_SimpleVLA-RL/__pycache__/model.cpython-313.pyc",
+    "08_论文/01_具身智能/11_SimpleVLA-RL/__pycache__",
+    "08_论文/01_具身智能/10_MolmoAct/__pycache__/model.cpython-313.pyc",
+    "08_论文/01_具身智能/10_MolmoAct/__pycache__",
     "03_计算机组成原理/计算机组成原理截图/微程序控控制单元的设计2.png",
     "03_计算机组成原理/计算机组成原理截图/微程序控制器回顾.png",
     "03_计算机组成原理/计算机组成原理截图/微程序控制单元的设计.png",

@@ -1,9 +1,97 @@
 {
   "version": 1,
   "entries": {
+    "79a93d4a2f8f50b95f852280616242fee1855dc99a3c75211917f55e72e95fae": {
+      "last_emitted_at_ms": 1782903909645,
+      "message": "Use parallel execution for independent tasks. Use run_in_background for long operations (npm install, builds, tests)."
+    },
+    "445ed27a3872b681d98190bae61ccb84954e1bc4e140df5370be958dee776b3a": {
+      "last_emitted_at_ms": 1782903826018,
+      "message": "Verify changes work after editing. Test functionality before marking complete."
+    },
+    "11734504cf7e783269ae8a5aa1bb84432c2e91c3e9f512088feb168b425c4bea": {
+      "last_emitted_at_ms": 1782903750175,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 训练基础设施 09-20 剩余"
+    },
+    "dc25f4be5850cfb21d464c40919f6dc36be9a21a587b9d4431e140994ff32dc4": {
+      "last_emitted_at_ms": 1782903744932,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 训练基础设施 01-07"
+    },
+    "2797b458f099df55da335bcabc793e521980d94b814972f393627929f02141b7": {
+      "last_emitted_at_ms": 1782903740845,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 13-18 剩余6篇"
+    },
+    "3bc60de64dbd8ab6ba3a9a6f12126fea0adfcbb3011aa953d33d5c02c8521198": {
+      "last_emitted_at_ms": 1782903737168,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 07-09+18_DiT"
+    },
+    "f52cc26f0025ef367c66a84a641b2a973ad3ddc215382af4abf54415da47197d": {
+      "last_emitted_at_ms": 1782903732670,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 01-04 前4篇"
+    },
     "466399dafa2d20f60587180bad0a07358eb7f2bce724df0ff682f038ad33f5ad": {
-      "last_emitted_at_ms": 1782902121274,
+      "last_emitted_at_ms": 1782903657924,
       "message": "Read multiple files in parallel when possible for faster analysis."
+    },
+    "38fb269fda74da29aa124142d8c7b68758dd24d132bb0237fa744412883e62f2": {
+      "last_emitted_at_ms": 1782903417418,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 训练基础设施剩余8篇"
+    },
+    "03042a7c6dd28f25add73c8dceba0d156b60244546bd4c1e62a3d1f45a5e9a38": {
+      "last_emitted_at_ms": 1782903412732,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 深度学习基础剩余5篇"
+    },
+    "3315f60cb2795af19b22bbf8a5e3c2d46a0ed7acb13169cd5b518af94cadb92f": {
+      "last_emitted_at_ms": 1782903408698,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 05-20 剩余"
+    },
+    "7305740c731731cbb0d0968a30b1939490636e8c77472494cb4f6d1717133acd": {
+      "last_emitted_at_ms": 1782903349774,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 补完深度学习基础 Flow_Matching"
+    },
+    "fcd8cdef119479f26db2335c6c431d4323923f2c20841131dd8626d8205b9606": {
+      "last_emitted_at_ms": 1782903346382,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 补完训练基础设施剩余10篇"
+    },
+    "648f291fa60cccd9107d6bef2870b1c5cda192c7b38670d9d6981284d7966390": {
+      "last_emitted_at_ms": 1782903340496,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 补完具身智能剩余8篇"
+    },
+    "fab66807b06910961b995d88c99c648a72d30e2f46136186554997de6b0ab719": {
+      "last_emitted_at_ms": 1782902972872,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 训练基础设施 13-20"
+    },
+    "a69486156bc0de5c187763bc9c111d5a82a0c721363fbcf1010857d1281a27e7": {
+      "last_emitted_at_ms": 1782902945389,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 深度学习基础 13-17"
+    },
+    "1f185c7c8a7d55b45c7f5fdd57966ba885bd07df7a329ee3f666eb53902c3fc6": {
+      "last_emitted_at_ms": 1782902716159,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 训练基础设施 11-20"
+    },
+    "e0f018842c1dd2e56dff502c10ad72481c9f100147da42dd768c7404cf2ce90d": {
+      "last_emitted_at_ms": 1782902709419,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 训练基础设施 01-10"
+    },
+    "fdc4d04d4a19aebb4a06bb8070b935e97061735fb7e6836c3724b373b2825a5c": {
+      "last_emitted_at_ms": 1782902701980,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 13-20"
+    },
+    "657b94df0c9377f50636082a0d049de9888118d1f577aea86131c1aabace683b": {
+      "last_emitted_at_ms": 1782902697867,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 07-12"
+    },
+    "b25178a158fd23f88185f218466c50b99bde1ee74499f30e428b011a9c068e10": {
+      "last_emitted_at_ms": 1782902693734,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 具身智能 01-06"
+    },
+    "6d55d0130fa5031bea3d664e4fa9312c27c1a370c05c8080b985d528023cc83e": {
+      "last_emitted_at_ms": 1782902688432,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 深度学习基础 18-22"
+    },
+    "2e97863ba2cf6fe1465d1ee184892abc05fda192ee4770a2b639fdd748476969": {
+      "last_emitted_at_ms": 1782902683423,
+      "message": "Spawning agent: unknown (sonnet) [BACKGROUND] | Task: 深度学习基础 12-17"
     },
     "349ba7e55c52cde1697595e942597840a5dde5954e7f115ba4d8342ae13b9bda": {
       "last_emitted_at_ms": 1782902117750,
@@ -16,11 +104,7 @@
     "633da634a5b46e968cd313dc35d1b6782f462376c88ea05368480a453e4ac8d7": {
       "last_emitted_at_ms": 1782902104496,
       "message": "Spawning agent: oh-my-claudecode:executor (inherit) [BACKGROUND] | Task: 具身智能 model.py (01-07)"
-    },
-    "79a93d4a2f8f50b95f852280616242fee1855dc99a3c75211917f55e72e95fae": {
-      "last_emitted_at_ms": 1782902083966,
-      "message": "Use parallel execution for independent tasks. Use run_in_background for long operations (npm install, builds, tests)."
     }
   },
-  "updated_at": "2026-07-01T10:35:21.274Z"
+  "updated_at": "2026-07-01T11:05:09.645Z"
 }
