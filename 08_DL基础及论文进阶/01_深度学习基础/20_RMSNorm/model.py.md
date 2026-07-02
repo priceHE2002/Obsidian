@@ -26,8 +26,8 @@ RMSNorm (Root Mean Square Layer Normalization)
 
 与后续论文的关系:
   - [[../04_Layer_Normalization/Layer Normalization|LayerNorm]] 是 RMSNorm 的前身
-  - [[../20_Llama2/Llama 2|Llama 2]] 全系列使用 RMSNorm + Pre-LN
-  - [[../18_DiT/DiT|DiT]] 在 AdaLN 中使用 RMSNorm 作为基底
+  - [[../21_Llama2/Llama 2|Llama 2]] 全系列使用 RMSNorm + Pre-LN
+  - [[../19_DiT/DiT|DiT]] 在 AdaLN 中使用 RMSNorm 作为基底
 """
 
 import torch

@@ -16,7 +16,7 @@ Llama 2: Open Foundation and Fine-Tuned Chat Models
 论文: "Llama 2" (Touvron et al., Meta AI, 2023)
 核心架构: Decoder-only Transformer + RMSNorm (Pre-Norm) + RoPE + SwiGLU + GQA
 代码结构:
-  1. RMSNorm —— Pre-LN 归一化 (见 [[../19_RMSNorm/RMSNorm|RMSNorm]])
+  1. RMSNorm —— Pre-LN 归一化 (见 [[../20_RMSNorm/RMSNorm|RMSNorm]])
   2. RoPE —— Rotary Position Embedding (旋转位置编码)
   3. SwiGLU —— 门控 FFN (SiLU 激活 + 门控线性单元)
   4. GQA —— Grouped-Query Attention (分组查询注意力)

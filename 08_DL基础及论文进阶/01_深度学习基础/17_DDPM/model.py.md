@@ -33,7 +33,7 @@ DDPM (Denoising Diffusion Probabilistic Models)
          等价于学习 score function，简化损失使训练稳定。
 架构: 前向扩散(重参数化) → U-Net 噪声预测 → DDPM/DDIM 采样
 
-与 [[../17_Flow_Matching/Flow Matching.md|Flow Matching]] 的关系: DDPM 是随机扩散，
+与 [[../18_Flow_Matching/Flow Matching.md|Flow Matching]] 的关系: DDPM 是随机扩散，
   Flow Matching 是确定性传播，后者在 VLA 动作生成中渐进取代前者
 """
 

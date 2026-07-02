@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey/World Models Survey.md",
-                "mode": "preview",
+                "file": "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "World Models Survey"
+              "title": "KL散度"
             }
           }
         ]
@@ -115,13 +115,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey/World Models Survey.md",
+                "file": "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "World Models Survey 的大纲"
+              "title": "KL散度 的大纲"
             }
           },
           {
@@ -186,7 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 296.5
+    "width": 375.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -202,54 +202,54 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "5e5c040d9f1083fe",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
-    "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey/model.py.md",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/L1正则化稀疏性.md",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_07_总结.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_06_梯度对比.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_05_梯度角度解释.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_04_几何直观.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_03_几何角度解释.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_02_L2与L1对比.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_01_标题与概览.jpg",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets",
+    "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性",
+    "08_DL基础及论文进阶/00_基础知识/xiaohongshu-to-obsidian-skill.md",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets/KL散度_04_计算应用.jpg",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets/KL散度_03_性质与RLHF.jpg",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets/KL散度_02_定义.jpg",
+    "08_DL基础及论文进阶/02_具身智能/16_FastWAM/FastWAM.md",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度",
+    "08_DL基础及论文进阶/01_深度学习基础/20_RMSNorm/RMSNorm 原文.pdf",
+    "08_DL基础及论文进阶/01_深度学习基础/20_RMSNorm/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/20_RMSNorm/RMSNorm.md",
+    "08_DL基础及论文进阶/01_深度学习基础/20_RMSNorm",
+    "08_DL基础及论文进阶/01_深度学习基础/17_DDPM/DDPM.md",
+    "08_DL基础及论文进阶/01_深度学习基础/17_DDPM/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/17_DDPM/DDPM 原文.pdf",
+    "08_DL基础及论文进阶/01_深度学习基础/17_DDPM",
+    "08_DL基础及论文进阶/01_深度学习基础/18_Flow_Matching/Flow Matching.md",
+    "08_DL基础及论文进阶/01_深度学习基础/18_Flow_Matching/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/18_Flow_Matching/Flow Matching 原文.pdf",
+    "08_DL基础及论文进阶/01_深度学习基础/18_Flow_Matching",
+    "08_DL基础及论文进阶/01_深度学习基础/19_DiT/DiT.md",
+    "08_DL基础及论文进阶/01_深度学习基础/19_DiT/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/21_Llama2/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/21_Llama2/Llama 2.md",
+    "08_DL基础及论文进阶/01_深度学习基础/22_Scaling_Laws/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/22_Scaling_Laws/Scaling Laws.md",
+    "08_DL基础及论文进阶/01_深度学习基础/23_Adam/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/23_Adam/Adam.md",
+    "08_DL基础及论文进阶/01_深度学习基础/16_VAE/model.py.md",
+    "08_DL基础及论文进阶/01_深度学习基础/16_VAE/VAE.md",
     "08_DL基础及论文进阶/02_具身智能/14_Motus/Motus.md",
     "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey/World Models Survey.md",
-    "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey/World Models Survey 原文.pdf",
-    "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey",
+    "08_DL基础及论文进阶/02_具身智能/22_World_Models_Survey/model.py.md",
     "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca.md",
     "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
     "08_DL基础及论文进阶/02_具身智能/21_Orca/model.py.md",
-    "08_DL基础及论文进阶/02_具身智能/21_Orca.zip",
-    "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca 原文.pdf",
-    "08_DL基础及论文进阶/DL知识库维护.md",
-    "08_DL基础及论文进阶/02_具身智能/21_Orca",
-    "08_论文/00_基础知识/03_量化技术/00_量化基础/量化基础.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/01_NumPy语法.md",
-    "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/00_PyTorch语法.md",
-    "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/06_实战案例/实战案例.md",
-    "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/05_训练流程/训练流程.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/PyTorch对照.md",
-    "08_论文/00_基础知识/03_量化技术/01_量化算法",
-    "08_论文/00_基础知识/03_量化技术/00_量化基础",
-    "08_论文/00_基础知识/03_量化技术",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/06.6_架构组装对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/06.5_Transformer层对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/06.4_注意力机制对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/06.3_优化器对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/06.2_基础层对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/06_PyTorch对照/06.1_基础操作对照.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/07_实战案例/实战案例.md",
-    "未命名.base",
-    "08_DL基础及论文进阶/01_深度学习基础/20_Llama2/Llama 2.md",
-    "08_DL基础及论文进阶/00_基础知识/00_PyTorch语法/03_模型定义/模型定义.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/05_随机数与统计/随机数与统计.md",
-    "08_DL基础及论文进阶/00_基础知识/01_NumPy语法/04_线性代数/线性代数.md",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/深度学习面试题.md",
-    "08_论文/00_基础知识/01_NumPy语法/07_实战案例/实战案例.md.tmp.78912.d0c86d104827",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/02_CNN/CNN.md",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-41.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-40.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-39.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-38.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-37.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-36.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-35.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-34.png",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-33.jpeg",
-    "08_DL基础及论文进阶/00_基础知识/02_深度学习面试题/assets/image-32.png",
     "03_计算机组成原理/计算机组成原理_全览.canvas",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"
