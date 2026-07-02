@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
-                "mode": "source",
+                "file": "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/L1正则化稀疏性.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "KL散度"
+              "title": "L1正则化稀疏性"
             }
           }
         ]
@@ -115,13 +115,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
+                "file": "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/L1正则化稀疏性.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "KL散度 的大纲"
+              "title": "L1正则化稀疏性 的大纲"
             }
           },
           {
@@ -186,7 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 375.5
+    "width": 208.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -202,8 +202,10 @@
       "realclaudian:Open Claudian": false
     }
   },
-  "active": "2a0b2c21f867c062",
+  "active": "5e5c040d9f1083fe",
   "lastOpenFiles": [
+    "08_DL基础及论文进阶/00_基础知识/xiaohongshu-to-obsidian-skill.md",
+    "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
     "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/L1正则化稀疏性.md",
     "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_07_总结.jpg",
     "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_06_梯度对比.jpg",
@@ -214,8 +216,6 @@
     "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets/L1正则化_01_标题与概览.jpg",
     "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性/assets",
     "08_DL基础及论文进阶/00_基础知识/04_L1正则化稀疏性",
-    "08_DL基础及论文进阶/00_基础知识/xiaohongshu-to-obsidian-skill.md",
-    "08_DL基础及论文进阶/00_基础知识/03_KL散度/KL散度.md",
     "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets/KL散度_04_计算应用.jpg",
     "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets/KL散度_03_性质与RLHF.jpg",
     "08_DL基础及论文进阶/00_基础知识/03_KL散度/assets/KL散度_02_定义.jpg",
