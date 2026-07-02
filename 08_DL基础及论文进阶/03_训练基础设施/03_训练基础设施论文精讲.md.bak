@@ -673,7 +673,6 @@ graph TD
 - 给定 10,000 GPU·小时的计算预算，应训练多大参数的模型和多少数据？
 - Wanda 是 SparseGPT 的什么近似？这个近似在什么条件下失效？
 - GaLore 的梯度投影和 LoRA 的权重更新有什么本质不同？
-  - Newton-Schulz 迭代为何能在 bf16 中稳定运行？Muon 的正交化与 Lion 的 sign 操作有什么相同效果？
 
 ---
 
