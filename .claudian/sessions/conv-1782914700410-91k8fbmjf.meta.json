@@ -4,13 +4,12 @@
   "title": "Explain Orca's core Equation 1",
   "titleGenerationStatus": "success",
   "createdAt": 1782914700410,
-  "updatedAt": 1782915043133,
+  "updatedAt": 1782917210545,
   "lastResponseAt": 1782915043133,
   "sessionId": "f70fd77c-faa6-4aa6-95f1-79ee2b43c68e",
   "providerState": {
     "providerSessionId": "f70fd77c-faa6-4aa6-95f1-79ee2b43c68e"
   },
-  "currentNote": "08_DL基础及论文进阶/02_具身智能/21_Orca/Orca.md",
   "usage": {
     "model": "opus[1m]",
     "inputTokens": 1343,

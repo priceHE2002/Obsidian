@@ -259,14 +259,14 @@ if __name__ == "__main__":
     print("  LayerNorm:      沿 (C, H, W) 归一化 → 逐样本")
     print("  InstanceNorm:   沿 (H, W) 归一化   → 逐样本逐通道")
     print("  GroupNorm:      沿 (H, W) 归一化   → 逐样本逐通道组")
-    print("  [[../19_RMSNorm/RMSNorm|RMSNorm]]:      仅 RMS 缩放（无均值中心化）")
+    print("  [[../20_RMSNorm/RMSNorm|RMSNorm]]:      仅 RMS 缩放（无均值中心化）")
 
     # ---- 4. BN 为什么不适合 Transformer ----
     print("\n--- 4. BN 为什么不适合序列模型？ ---")
     print("  1. RNN: 不同时间步需要不同的统计量，推理时可能遇到未见时间步")
     print("  2. Transformer: 序列长度可变，padding 破坏 batch 统计量")
     print("  3. 小 batch: 大模型训练时 batch size 通常很小，BN 统计量噪声大")
-    print("  → 因此 Transformer 使用 [[../04_Layer_Normalization/Layer Normalization|LayerNorm]]/[[../19_RMSNorm/RMSNorm|RMSNorm]]")
+    print("  → 因此 Transformer 使用 [[../04_Layer_Normalization/Layer Normalization|LayerNorm]]/[[../20_RMSNorm/RMSNorm|RMSNorm]]")
     print("  → 但 CNN 视觉编码器仍推荐 BN（batch>=16 时）")
 
 ```

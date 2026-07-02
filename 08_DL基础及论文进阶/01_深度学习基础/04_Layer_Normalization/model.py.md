@@ -36,7 +36,7 @@ Layer Normalization
 与 [[../05_Batch_Normalization/Batch Normalization|BatchNorm]] 的对比:
   BN: 沿 (N, H, W) 归一化 — 跨样本
   LN: 沿 (C, H, W) 归一化 — 单样本内
-与 [[../19_RMSNorm/RMSNorm|RMSNorm]] 的关系:
+与 [[../20_RMSNorm/RMSNorm|RMSNorm]] 的关系:
   RMSNorm = LN 去掉均值中心化步骤（节省约 10% 计算量）
 """
 
@@ -341,6 +341,6 @@ if __name__ == "__main__":
     print("    - batch_size=1 也能工作")
     print("    - 适合 RNN/Transformer/序列模型")
     print("\n  → CNN 用 BN，Transformer/RNN 用 LN")
-    print("  → 现代 LLM 用 [[../19_RMSNorm/RMSNorm|RMSNorm]]（去掉均值中心化）")
+    print("  → 现代 LLM 用 [[../20_RMSNorm/RMSNorm|RMSNorm]]（去掉均值中心化）")
 
 ```

@@ -1,0 +1,24 @@
+{
+  "id": "conv-1782917226357-yej4frn6m",
+  "providerId": "claude",
+  "title": "Explain MOTUS network architecture",
+  "titleGenerationStatus": "success",
+  "createdAt": 1782917226357,
+  "updatedAt": 1782917300428,
+  "lastResponseAt": 1782917300428,
+  "sessionId": "9ad39187-eaf2-49d8-845f-55874010eb26",
+  "providerState": {
+    "providerSessionId": "9ad39187-eaf2-49d8-845f-55874010eb26"
+  },
+  "currentNote": "08_DL基础及论文进阶/02_具身智能/14_Motus/Motus.md",
+  "usage": {
+    "model": "opus[1m]",
+    "inputTokens": 255,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 44544,
+    "contextWindow": 1000000,
+    "contextTokens": 44799,
+    "percentage": 4,
+    "contextWindowIsAuthoritative": true
+  }
+}

@@ -29,7 +29,7 @@ Transformer (Attention Is All You Need)
 与后续论文的关系:
   - [[../02_BERT/BERT|BERT]] 只用了 Encoder 部分
   - [[../03_GPT/GPT|GPT]] 只用了 Decoder 部分（去掉 Cross-Attention）
-  - [[../20_Llama2/Llama 2|Llama 2]] 继承了 Decoder-only 架构
+  - [[../21_Llama2/Llama 2|Llama 2]] 继承了 Decoder-only 架构
 """
 
 import torch

@@ -26,7 +26,7 @@ Scaling Laws for Neural Language Models
 
 与后续论文的关系:
   - [[Chinchilla]] 修正了 Kaplan 的 D∝N 比例 (N^0.74 → N^1.0)
-  - [[../20_Llama2/Llama 2|Llama 2]] 的 2T tokens 预训练体现了数据规模的重要性
+  - [[../21_Llama2/Llama 2|Llama 2]] 的 2T tokens 预训练体现了数据规模的重要性
 """
 
 import numpy as np
