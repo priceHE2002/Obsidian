@@ -103,25 +103,159 @@ $$q \times K_{cache}^T = [1 \times d] \times [d \times t]$$
 
 ### KV Cache 大小公式
 
-$$\text{KV\_Size} = 2 \times n\_\text{layers} \times n\_\text{kv\_heads} \times d\_\text{head} \times \text{seq\_len} \times \text{dtype\_size}$$
+$$\text{KV\_Cache\_Size} = 2 \times n_{\text{layers}} \times n_{\text{kv\_heads}} \times d_{\text{head}} \times \text{seq\_len} \times \text{dtype\_size}$$
+
+#### 公式逐项详解
+
+| 符号 | 含义 | 说明 |
+|------|------|------|
+| **2** | K + V 两份缓存 | 每个 token 在每个 layer 都要存 Key 和 Value 两份，所以乘 2 |
+| $n_{\text{layers}}$ | Transformer 层数 | 每层都有独立的 K、V 投影，KV Cache 需为**每一层**存储 |
+| $n_{\text{kv\_heads}}$ | KV Head 数量 | MHA 时 = $n_{\text{heads}}$；GQA 时 < $n_{\text{heads}}$（多个 Q head 共享一个 KV head） |
+| $d_{\text{head}}$ | 每个 head 的维度 | 通常 = $d_{\text{model}} / n_{\text{heads}}$，常见值 64 或 128 |
+| $\text{seq\_len}$ | 序列长度（token 数） | 已生成的全部 token 数（prompt tokens + generated tokens） |
+| $\text{dtype\_size}$ | 每个元素的字节数 | FP16 = 2B，BF16 = 2B，FP32 = 4B，INT8 = 1B，FP8 = 1B |
+
+#### 为什么是 “2×”（K + V）？
+
+Attention 机制中，每个 token 在每个 head 需要存储两份向量：
+
+- **Key 向量 $K$**：用于计算当前 token 与历史 token 的注意力分数（$Q \cdot K^T$）
+- **Value 向量 $V$**：用于加权求和得到注意力输出（$\text{softmax}(QK^T) \cdot V$）
+
+Query $Q$ 只在当前 token 计算时用到，**不需要缓存**——所以 KV Cache 只存 K 和 V，不存 Q。
+
+```
+每个 token × 每层 × 每个 head:
+  K: [d_head]  ← 需缓存
+  V: [d_head]  ← 需缓存
+  Q: [d_head]  ← 不需要缓存（仅当前 token 使用）
+
+→ 每 token 每 head 存储量 = 2 × d_head × dtype_size
+```
+
+#### MHA / GQA / MQA 对 KV Cache 的影响
+
+这是理解 KV Cache 大小的关键——不同注意力机制下 $n_{\text{kv\_heads}}$ 不同：
+
+| 机制 | $n_{\text{kv\_heads}}$ | KV Cache 特点 | 典型模型 |
+|------|----------------------|--------------|---------|
+| **MHA** (Multi-Head Attention) | $= n_{\text{heads}}$ | 每个 Q head 有独立 KV head，KV Cache 最大 | LLaMA-7B, GPT-3 |
+| **GQA** (Grouped-Query Attention) | $< n_{\text{heads}}$ | 多个 Q head 共享一个 KV head，KV Cache 显著减小 | LLaMA-2 70B, LLaMA-3, Mixtral |
+| **MQA** (Multi-Query Attention) | $= 1$ | 所有 Q head 共享同一个 KV head，KV Cache 最小 | PaLM, Gemini 早期版本 |
+
+```
+MHA 示例 (LLaMA-7B):           GQA 示例 (LLaMA-2 70B):
+  Q heads: 32 个独立              Q heads: 64 个（分 8 组，每组 8 个 Q）
+  K heads: 32 个独立              K heads: 8 个（每组共享 1 个 K）
+  V heads: 32 个独立              V heads: 8 个（每组共享 1 个 V）
+  
+  KV 开销 ∝ 32 heads             KV 开销 ∝ 8 heads → 节省 75%！
+```
+
+> **关键洞察：** GQA 是 LLaMA-2 70B 虽然参数量是 7B 的 10 倍，但**单 token KV Cache 反而更小**（0.3MB vs 0.5MB）的原因——KV head 数从 32 降到了 8。
+
+#### 一步步手算：LLaMA-7B 单 token KV Cache
+
+已知参数：$n_{\text{layers}} = 32$，$n_{\text{heads}} = 32$（MHA，$n_{\text{kv\_heads}} = 32$），$d_{\text{model}} = 4096$，$d_{\text{head}} = 4096/32 = 128$，FP16。
+
+```
+步骤 ①：单个 head 的 K 向量大小
+  = d_head × dtype_size = 128 × 2B = 256B
+
+步骤 ②：单层所有 head 的 K 缓存
+  = n_kv_heads × 256B = 32 × 256B = 8,192B = 8 KB
+
+步骤 ③：单层的 KV 缓存（K + V）
+  = 2 × 8 KB = 16 KB
+
+步骤 ④：所有层的 KV 缓存
+  = 32 × 16 KB = 512 KB = 0.5 MB
+
+验证：2 × 32 × 32 × 128 × 1 × 2B = 524,288 B = 0.5 MB ✓
+```
+
+#### 一步步手算：LLaMA-2 70B 单 token KV Cache
+
+已知参数：$n_{\text{layers}} = 80$，$n_{\text{heads}} = 64$，GQA 分组数 = 8，$n_{\text{kv\_heads}} = 8$，$d_{\text{head}} = 128$，FP16。
+
+```
+步骤 ①：单个 head 的 K 向量大小
+  = d_head × dtype_size = 128 × 2B = 256B
+
+步骤 ②：单层所有 KV head 的 K 缓存（GQA，只有 8 个 KV head）
+  = n_kv_heads × 256B = 8 × 256B = 2,048B = 2 KB
+
+步骤 ③：单层的 KV 缓存
+  = 2 × 2 KB = 4 KB
+
+步骤 ④：所有层的 KV 缓存
+  = 80 × 4 KB = 320 KB ≈ 0.31 MB
+
+验证：2 × 80 × 8 × 128 × 1 × 2B = 327,680 B ≈ 0.31 MB ✓
+```
+
+#### 为什么 LLaMA-7B 的 KV/token (0.5MB) 比 LLaMA-70B (0.3MB) 还大？
+
+这看起来反直觉，但完全合理：
+
+| 因素 | LLaMA-7B | LLaMA-2 70B | 对 KV 大小的影响 |
+|------|----------|-------------|----------------|
+| 层数 | 32 | 80 | 70B 更大（×2.5） |
+| KV heads | 32 (MHA) | 8 (GQA) | 70B 更小（÷4） |
+| Net 效果 | 32×32 = 1024 | 80×8 = 640 | 70B 的 KV Cache ≈ 7B 的 62% |
+
+> GQA 将 KV head 从 32 压缩到 8，**效果远超**层数增加带来的开销。这也是 GQA 被 LLaMA-2/3 等大模型广泛采用的核心原因——降低推理时的 KV Cache 内存压力。
 
 ### 典型模型单 token KV 开销（FP16）
 
-| 模型 | KV 大小 / token | 配置说明 |
-|------|----------------|---------|
-| LLaMA-7B | 0.5 MB | 32 layers × 32 heads（MHA） |
-| LLaMA-70B | 0.3 MB | 80 layers × 8 KV heads（GQA） |
-| Mixtral-8×7B | 0.1 MB | 32 layers × 8 KV heads（GQA） |
+| 模型 | KV 大小 / token | $n_{\text{layers}}$ | $n_{\text{kv\_heads}}$ | $d_{\text{head}}$ | 注意力类型 |
+|------|----------------|------|------|------|-----------|
+| LLaMA-7B | 0.5 MB | 32 | 32 | 128 | MHA |
+| LLaMA-2 7B | 0.5 MB | 32 | 32 | 128 | MHA |
+| LLaMA-2 13B | 0.5 MB | 40 | 40 | 128 | MHA |
+| LLaMA-2 70B | 0.31 MB | 80 | 8 | 128 | GQA (8 groups) |
+| LLaMA-3 8B | 0.25 MB | 32 | 8 | 128 | GQA (4 groups) |
+| LLaMA-3 70B | 0.31 MB | 80 | 8 | 128 | GQA (8 groups) |
+| Mixtral-8×7B | 0.13 MB | 32 | 8 | 128 | GQA (4 groups) |
+| DeepSeek-V2 | ~0.06 MB | 60 | 1 (MLA) | 128 | MLA (≈MQA) |
+
+> **量化可进一步压缩：** KV Cache 使用 INT8 量化后，上表中的值可再减半；FP8 同理。
+
+### 完整序列的 KV Cache 总大小
+
+单 token 开销 × 序列长度 = 完整序列的 KV Cache。但注意：**seq_len 是动态增长的**：
+
+```
+生成第 1 个 token 时：KV Cache = 单token开销 × prompt_len
+生成第 2 个 token 时：KV Cache = 单token开销 × (prompt_len + 1)
+生成第 3 个 token 时：KV Cache = 单token开销 × (prompt_len + 2)
+...
+生成第 n 个 token 时：KV Cache = 单token开销 × (prompt_len + n)
+```
+
+**峰值 KV Cache（生成完成时）：**
+
+$$\text{KV\_Cache\_Peak} = \text{KV\_per\_token} \times (\text{prompt\_len} + \text{max\_output\_len})$$
 
 ### 实际内存压力计算
 
-一个 2×A100（80GB）部署 LLaMA-70B 场景，同时处理 100 个请求，平均 seq_len=4096：
+**场景：** 2×A100（80GB）部署 LLaMA-2 70B（模型权重 ≈ 140GB，TP 分到每卡 70GB），同时处理 100 个请求，平均 seq_len=4096：
 
-$$100 \times 4096 \times 0.3\text{ MB} = 122.9\text{ GB}$$
+```
+单请求 KV Cache = 4096 × 0.31 MB = 1,270 MB ≈ 1.24 GB
+100 请求 KV Cache = 100 × 1.24 GB = 124 GB
 
-KV Cache 占了 90%+ 的显存，而模型权重本身才约 140GB。
+每张 A100 显存分配（TP=2）：
+  模型权重：70 GB
+  KV Cache：62 GB（124GB / 2 卡）
+  其他（激活值等）：~5 GB
+  总计：~137 GB / 80 GB ❌ 显存不足！
+```
 
-**内存压力本质：** 增大 batch size → KV Cache 占满显存 → 即使 GPU 算力空闲也无法处理更多请求。RadixAttention 通过共享 KV Cache 直接解决这个瓶颈。
+> 实际部署中，100 个并发请求在 seq_len=4096 时 LLaMA-70B 需要至少 4×A100（80GB），或用 INT8 KV Cache 量化压缩到约 3×A100。
+
+**内存压力本质：** 增大 batch size → KV Cache 占满显存 → 即使 GPU 算力空闲也无法处理更多请求。RadixAttention 通过共享 KV Cache 直接解决这个瓶颈——在共享前缀场景下，多个请求的相同前缀只需存储一份 KV Cache。
 
 ## 五、Radix Tree：KV Cache 管理的基石
 
