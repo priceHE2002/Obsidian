@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dca7a94bb2895985",
+        "id": "a58a70cc0e2120d5",
         "type": "tabs",
         "children": [
           {
-            "id": "6d0c2546ec11749e",
+            "id": "8d71d92e5940e48b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/03_模型执行引擎/模型执行引擎总览.md",
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "模型执行引擎总览"
+              "title": "计算机组成原理_截图整理笔记"
             }
           }
         ]
@@ -95,45 +95,23 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/03_模型执行引擎/模型执行引擎总览.md",
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "模型执行引擎总览 的大纲"
+              "title": "计算机组成原理_截图整理笔记 的大纲"
             }
           },
           {
-            "id": "3d1e8cc575be800f",
+            "id": "645ed5bb9c72dfbe",
             "type": "leaf",
             "state": {
-              "type": "backlink",
-              "state": {
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "反向链接"
-            }
-          },
-          {
-            "id": "976a432e0e081bb1",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "08_论文/02_具身智能/具身智能论文精讲.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "具身智能论文精讲 的出链列表"
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
             }
           },
           {
@@ -143,7 +121,7 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true,
+                "useHierarchy": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
@@ -152,21 +130,43 @@
             }
           },
           {
-            "id": "50586cc0cd4f2a95",
+            "id": "3d1e8cc575be800f",
             "type": "leaf",
             "state": {
-              "type": "calendar",
-              "state": {},
-              "icon": "calendar-with-checkmark",
-              "title": "Calendar"
+              "type": "backlink",
+              "state": {
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "计算机组成原理_截图整理笔记 的反向链接列表"
+            }
+          },
+          {
+            "id": "976a432e0e081bb1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "计算机组成原理_截图整理笔记 的出链列表"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 299.5
+    "width": 304.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,8 +182,13 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "0af118301013ccc7",
+  "active": "8d71d92e5940e48b",
   "lastOpenFiles": [
+    "03_计算机组成原理/408 计组高频计算题训练单.md",
+    "未命名.base",
+    "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
+    "08_DL基础及论文进阶/03_训练基础设施/01_Mixed_Precision_Training/Mixed Precision Training 原文.pdf",
+    "04_音频算法/BS-Roformer.md",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/03_模型执行引擎/模型执行引擎总览.md",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/03_模型执行引擎/03.1_LLMEngine主循环/LLMEngine主循环.md",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/02_调度引擎/02.1_调度器核心/调度器核心.md",
@@ -206,10 +211,6 @@
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.6_激活函数与归一化/激活函数与归一化.md",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.5_Embed与LM_Head/Embed与LM_Head.md",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.4_RoPE位置编码/RoPE位置编码.md",
-    "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/模型层实现总览.md",
-    "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/03_模型执行引擎/03.2_ModelRunner详解/ModelRunner详解.md",
-    "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/02_调度引擎/02.3_块管理与前缀缓存/块管理与前缀缓存.md",
-    "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/SGLang推理框架.md",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/06_性能优化专题/06.4_Triton_Kernel详解",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/06_性能优化专题/06.3_Tensor_Parallelism详解",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/06_性能优化专题/06.2_Prefix_Caching详解",
@@ -218,8 +219,6 @@
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.6_激活函数与归一化",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.5_Embed与LM_Head",
     "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.4_RoPE位置编码",
-    "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.3_线性层与张量并行",
-    "08_DL基础及论文进阶/03_训练基础设施/nano-vllm 源码剖析/04_模型层实现/04.2_注意力机制与FlashAttention",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/15_SGLang_vs_vLLM对比总结.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/14_性能优化与Tensor_Parallelism.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/13_DSL编程原语_gen_select_fork.jpg",
