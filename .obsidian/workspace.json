@@ -79,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 271.5
+    "width": 224.5
   },
   "right": {
     "id": "7f4b4e0b83f1f22d",
@@ -166,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 304.5
+    "width": 250.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,7 +182,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "8d71d92e5940e48b",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
     "03_计算机组成原理/408 计组高频计算题训练单.md",
     "未命名.base",
