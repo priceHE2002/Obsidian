@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "11_数据结构/刷题记录/005_M01_2018_最小未出现正整数.md",
+                "file": "11_数据结构/总览.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "005_M01_2018_最小未出现正整数"
+              "title": "总览"
             }
           }
         ]
@@ -97,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11_数据结构/刷题记录/005_M01_2018_最小未出现正整数.md",
+                "file": "11_数据结构/总览.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -186,8 +186,8 @@
   },
   "active": "8d71d92e5940e48b",
   "lastOpenFiles": [
-    "11_数据结构/总览.md",
     "11_数据结构/刷题记录/005_M01_2018_最小未出现正整数.md",
+    "11_数据结构/总览.md",
     "11_数据结构/刷题记录/025_M05_LC102_二叉树的层序遍历.md",
     "11_数据结构/刷题记录/013_M03_LC21_合并两个有序链表.md",
     "11_数据结构/刷题记录/009_M03_LC203_移除链表元素.md",
