@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "a58a70cc0e2120d5",
+        "id": "35c6c48a9a04226d",
         "type": "tabs",
         "children": [
           {
-            "id": "8d71d92e5940e48b",
+            "id": "dd3f497e4a8e833b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "11_数据结构/总览.md",
-                "mode": "preview",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "总览"
+              "title": "新标签页"
             }
           }
         ]
@@ -97,7 +93,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11_数据结构/总览.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -184,10 +179,11 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "8d71d92e5940e48b",
+  "active": "dd3f497e4a8e833b",
   "lastOpenFiles": [
-    "11_数据结构/刷题记录/008_M02_2020_三个有序数组的最小距离.md",
+    "11_数据结构/刷题记录/015_M03_2019_单链表重排.md",
     "11_数据结构/总览.md",
+    "11_数据结构/刷题记录/008_M02_2020_三个有序数组的最小距离.md",
     "11_数据结构/刷题记录/006_M01_2025_数组后缀最大乘积.md",
     "11_数据结构/刷题记录/005_M01_2018_最小未出现正整数.md",
     "11_数据结构/刷题记录/025_M05_LC102_二叉树的层序遍历.md",
@@ -211,7 +207,6 @@
     "11_数据结构/母题模板/M04_栈与队列按定义模拟.md",
     "11_数据结构/刷题记录/057_M12_LC164_最大间距.md",
     "11_数据结构/刷题记录/056_M12_LC75_颜色分类.md",
-    "11_数据结构/刷题记录/055_M12_LC148_排序链表.md",
     "11_数据结构/真题",
     "11_数据结构/母题模板",
     "11_数据结构/刷题记录",
