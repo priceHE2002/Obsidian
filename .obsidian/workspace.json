@@ -20,37 +20,8 @@
               "icon": "lucide-file",
               "title": "总览"
             }
-          },
-          {
-            "id": "deaa085879885ed9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10_数学大观/线代大观/6_特征值与特征向量（核心思想）.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "6_特征值与特征向量（核心思想）"
-            }
-          },
-          {
-            "id": "745afdb7bdf4dcf0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10_数学大观/线代大观/4_线性方程组（本质理解）.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "4_线性方程组（本质理解）"
-            }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -126,7 +97,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "10_数学大观/线代大观/4_线性方程组（本质理解）.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -208,7 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 409.78125
+    "width": 205.05078125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -226,6 +196,8 @@
   },
   "active": "10fe99cf6591a2c1",
   "lastOpenFiles": [
+    "10_数学大观/线代大观/6_特征值与特征向量（核心思想）.md",
+    "10_数学大观/线代大观/4_线性方程组（本质理解）.md",
     "10_数学大观.zip",
     "10_数学大观/线代大观/5_行满秩（6条核心结论）.md",
     "10_数学大观/线代大观/1_线性代数完整大观（总纲）.md",
@@ -233,7 +205,6 @@
     "10_数学大观/高数大观/多元微分/多元微分 MOC.md",
     "10_数学大观/高数大观/一元积分/一元积分大观.md",
     "10_数学大观/线代大观/3_矩阵的秩（10条性质）.md",
-    "10_数学大观/线代大观/4_线性方程组（本质理解）.md",
     "10_数学大观/高数大观/一元积分/1_预备知识/代数与三角公式.md",
     "10_数学大观/线代大观/线代大观 MOC.md",
     "10_数学大观/高数大观/一元积分/7_经典题型/有理函数积分.md",
@@ -261,7 +232,6 @@
     "10_数学大观/高数大观/一元积分/1_预备知识",
     "10_数学大观/高数大观/多元微分/6_常用不等式",
     "10_数学大观/高数大观/多元微分/5_极值与最值",
-    "10_数学大观/高数大观/多元微分/4_复合与隐函数",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/15_SGLang_vs_vLLM对比总结.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/14_性能优化与Tensor_Parallelism.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/13_DSL编程原语_gen_select_fork.jpg",
