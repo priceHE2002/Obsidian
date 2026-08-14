@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1783349675227,
+  "lastScanned": 1786705567115,
   "projectRoot": "/Users/heyuhang/Documents/Obsidian Vault",
   "techStack": {
     "languages": [],
@@ -24,7 +24,9 @@
   "structure": {
     "isMonorepo": false,
     "workspaces": [],
-    "mainDirectories": [],
+    "mainDirectories": [
+      "docs"
+    ],
     "gitBranches": {
       "defaultBranch": "main",
       "branchingStrategy": null
@@ -36,7 +38,7 @@
       "path": "00_Inbox",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1783349675215,
+      "lastAccessed": 1786705567102,
       "keyFiles": [
         "草稿.md"
       ]
@@ -44,22 +46,22 @@
     "01_数学": {
       "path": "01_数学",
       "purpose": null,
-      "fileCount": 0,
-      "lastAccessed": 1783349675215,
+      "fileCount": 1,
+      "lastAccessed": 1786705567103,
       "keyFiles": []
     },
     "02_DSP": {
       "path": "02_DSP",
       "purpose": null,
-      "fileCount": 0,
-      "lastAccessed": 1783349675216,
+      "fileCount": 1,
+      "lastAccessed": 1786705567104,
       "keyFiles": []
     },
     "03_计算机组成原理": {
       "path": "03_计算机组成原理",
       "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1783349675219,
+      "fileCount": 3,
+      "lastAccessed": 1786705567104,
       "keyFiles": [
         "408 计组高频计算题训练单.md",
         "计算机组成原理_截图整理笔记.md"
@@ -69,7 +71,7 @@
       "path": "04_音频算法",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1783349675221,
+      "lastAccessed": 1786705567104,
       "keyFiles": [
         "BS-Roformer.md",
         "HB Demucs.md"
@@ -78,15 +80,15 @@
     "05_编程": {
       "path": "05_编程",
       "purpose": null,
-      "fileCount": 0,
-      "lastAccessed": 1783349675221,
+      "fileCount": 1,
+      "lastAccessed": 1786705567105,
       "keyFiles": []
     },
     "06_英语": {
       "path": "06_英语",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1783349675221,
+      "lastAccessed": 1786705567105,
       "keyFiles": [
         "长难句.md"
       ]
@@ -94,31 +96,62 @@
     "07_工具": {
       "path": "07_工具",
       "purpose": null,
-      "fileCount": 0,
-      "lastAccessed": 1783349675222,
+      "fileCount": 1,
+      "lastAccessed": 1786705567106,
       "keyFiles": []
     },
     "08_DL基础及论文进阶": {
       "path": "08_DL基础及论文进阶",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1783349675222,
+      "lastAccessed": 1786705567106,
       "keyFiles": []
+    },
+    "09_计算机网络": {
+      "path": "09_计算机网络",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1786705567107,
+      "keyFiles": []
+    },
+    "10_数学大观": {
+      "path": "10_数学大观",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1786705567107,
+      "keyFiles": []
+    },
+    "11_数据结构": {
+      "path": "11_数据结构",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1786705567107,
+      "keyFiles": [
+        "使用说明.md",
+        "总览.md"
+      ]
     },
     "99_Archive": {
       "path": "99_Archive",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1783349675222,
+      "lastAccessed": 1786705567107,
       "keyFiles": [
         "计算机组成原理.zip"
       ]
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1786705567107,
+      "keyFiles": []
     },
     "02_DSP/assets": {
       "path": "02_DSP/assets",
       "purpose": "Static assets",
       "fileCount": 35,
-      "lastAccessed": 1783349675223,
+      "lastAccessed": 1786705567108,
       "keyFiles": [
         "DFT分辨率_瑞利判据vs严格不重叠.png",
         "DFT参数设计与补零验证.png",
@@ -129,7 +162,7 @@
       "path": "03_计算机组成原理/assets",
       "purpose": "Static assets",
       "fileCount": 0,
-      "lastAccessed": 1783349675223,
+      "lastAccessed": 1786705567108,
       "keyFiles": []
     }
   },
