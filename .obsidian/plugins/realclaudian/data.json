@@ -7,13 +7,13 @@
         "conversationId": null
       },
       {
-        "draftModel": "opus[1m]",
-        "tabId": "tab-1782142301485-cyn5p02",
-        "conversationId": null
-      },
-      {
         "tabId": "tab-1782144960625-iywdj6c",
         "conversationId": "conv-1786705565896-zchd9cy97"
+      },
+      {
+        "draftModel": "sonnet[1m]",
+        "tabId": "tab-1786706093952-thz5eia",
+        "conversationId": null
       }
     ],
     "activeTabId": "tab-1782144960625-iywdj6c"
