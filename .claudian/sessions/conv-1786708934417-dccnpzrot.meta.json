@@ -1,0 +1,24 @@
+{
+  "id": "conv-1786708934417-dccnpzrot",
+  "providerId": "claude",
+  "title": "Add derivation for full-rank invertibility",
+  "titleGenerationStatus": "success",
+  "createdAt": 1786708934417,
+  "updatedAt": 1786709099584,
+  "lastResponseAt": 1786709099584,
+  "sessionId": "6ff9879e-4dee-43d0-87a9-cf17b78d1450",
+  "providerState": {
+    "providerSessionId": "6ff9879e-4dee-43d0-87a9-cf17b78d1450"
+  },
+  "currentNote": "10_数学大观/线代大观/矩阵的秩（本质直觉）.md",
+  "usage": {
+    "model": "sonnet[1m]",
+    "inputTokens": 457,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 67584,
+    "contextWindow": 1000000,
+    "contextTokens": 68041,
+    "percentage": 7,
+    "contextWindowIsAuthoritative": true
+  }
+}
