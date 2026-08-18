@@ -342,15 +342,75 @@ class MigrateFrontmatterTest < Minitest::Test
     end
   end
 
+  def test_directory_sync_failure_after_install_rolls_back_all_notes_and_modes
+    with_vault do |root|
+      problem = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      mother = write_note(root, "母题模板", "M01.md", "母题编号: M01\n")
+      File.chmod(0o600, problem)
+      originals = [problem, mother].to_h { |path| [path, File.binread(path)] }
+      operations = FailingFileOperations.new(fail_sync_directory_number: 2)
+
+      output, status = run_runner(root, operations)
+
+      refute_equal 0, status
+      assert_includes output, "injected directory sync failure"
+      originals.each { |path, bytes| assert_equal bytes, File.binread(path) }
+      assert_equal 0o600, File.stat(problem).mode & 0o777
+      assert_no_transaction_artifacts(root)
+    end
+  end
+
+  def test_copy_backup_fallback_restores_modes_after_second_replacement_failure
+    with_vault do |root|
+      problem = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      mother = write_note(root, "母题模板", "M01.md", "母题编号: M01\n")
+      [problem, mother].each { |path| File.chmod(0o600, path) }
+      originals = [problem, mother].to_h { |path| [path, File.binread(path)] }
+      operations = FailingFileOperations.new(force_copy_backup: true, fail_replacement_number: 2)
+
+      output, status = run_runner(root, operations)
+
+      refute_equal 0, status
+      assert_includes output, "injected replacement failure"
+      originals.each do |path, bytes|
+        assert_equal bytes, File.binread(path)
+        assert_equal 0o600, File.stat(path).mode & 0o777
+      end
+      assert_no_transaction_artifacts(root)
+    end
+  end
+
+  def test_partial_copy_backup_failure_cleans_all_artifacts_and_preserves_notes
+    with_vault do |root|
+      problem = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      mother = write_note(root, "母题模板", "M01.md", "母题编号: M01\n")
+      File.chmod(0o600, problem)
+      originals = [problem, mother].to_h { |path| [path, File.binread(path)] }
+      operations = FailingFileOperations.new(force_copy_backup: true, fail_copy_after_bytes: 8)
+
+      output, status = run_runner(root, operations)
+
+      refute_equal 0, status
+      assert_includes output, "injected partial copy failure"
+      originals.each { |path, bytes| assert_equal bytes, File.binread(path) }
+      assert_equal 0o600, File.stat(problem).mode & 0o777
+      assert_no_transaction_artifacts(root)
+    end
+  end
+
   class FailingFileOperations
-    def initialize(fail_stage_number: nil, fail_replacement_number: nil, fail_backup_cleanup_number: nil)
+    def initialize(fail_stage_number: nil, fail_replacement_number: nil, fail_backup_cleanup_number: nil, fail_sync_directory_number: nil, force_copy_backup: false, fail_copy_after_bytes: nil)
       @fail_stage_number = fail_stage_number
       @fail_replacement_number = fail_replacement_number
       @fail_backup_cleanup_number = fail_backup_cleanup_number
+      @fail_sync_directory_number = fail_sync_directory_number
+      @force_copy_backup = force_copy_backup
+      @fail_copy_after_bytes = fail_copy_after_bytes
       @stage_calls = 0
       @replacement_calls = 0
       @backup_cleanup_calls = 0
       @replacement_target_observations = []
+      @sync_directory_calls = 0
     end
 
     def write_stage(path, contents, mode)
@@ -391,12 +451,20 @@ class MigrateFrontmatterTest < Minitest::Test
     end
 
     def hard_link(source, destination)
+      raise Errno::EPERM, "injected hard-link failure" if @force_copy_backup
+
       File.link(source, destination)
     end
 
-    def copy_backup(source, destination)
+    def copy_backup(source, destination, mode = nil)
       File.open(source, "rb") do |input|
         File.open(destination, "wb") do |output|
+          output.chmod(mode) if mode
+          if @fail_copy_after_bytes
+            output.write(input.read(@fail_copy_after_bytes))
+            output.flush
+            raise IOError, "injected partial copy failure"
+          end
           IO.copy_stream(input, output)
           output.flush
           output.fsync
@@ -413,6 +481,9 @@ class MigrateFrontmatterTest < Minitest::Test
     end
 
     def sync_directory(_path)
+      @sync_directory_calls += 1
+      raise IOError, "injected directory sync failure" if @sync_directory_calls == @fail_sync_directory_number
+
       nil
     end
 

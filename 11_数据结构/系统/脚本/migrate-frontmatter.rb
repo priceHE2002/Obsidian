@@ -43,10 +43,11 @@ module TrainingFrontmatterMigration
       File.link(source, destination)
     end
 
-    def copy_backup(source, destination)
+    def copy_backup(source, destination, mode = File.stat(source).mode & 0o777)
       File.open(source, "rb") do |input|
         File.open(destination, "wb") do |output|
           IO.copy_stream(input, output)
+          output.chmod(mode)
           output.flush
           output.fsync
         end
@@ -279,7 +280,7 @@ module TrainingFrontmatterMigration
       end
 
       rollback_errors = rollback_records(records || [])
-      cleanup_errors = cleanup_stages(records || [])
+      cleanup_errors = rollback_errors.empty? ? cleanup_transaction_artifacts(records || []) : cleanup_stages(records || [])
       detail = ([e.message] + rollback_errors + cleanup_errors).join("; ")
       raise MigrationError, "transaction failed: #{detail}"
     ensure
@@ -304,8 +305,8 @@ module TrainingFrontmatterMigration
       records.each do |record|
         create_backup(record)
         @file_operations.rename(record.stage, record.path)
-        @file_operations.sync_directory(record.path)
         record.installed = true
+        @file_operations.sync_directory(record.path)
       end
     end
 
@@ -313,7 +314,7 @@ module TrainingFrontmatterMigration
       begin
         @file_operations.hard_link(record.path, record.backup)
       rescue SystemCallError, NotImplementedError
-        @file_operations.copy_backup(record.path, record.backup)
+        @file_operations.copy_backup(record.path, record.backup, record.mode)
       end
       record.backed_up = true
       @file_operations.sync_directory(record.path)
@@ -326,8 +327,6 @@ module TrainingFrontmatterMigration
           if record.installed && @file_operations.exist?(record.backup)
             @file_operations.rename(record.backup, record.path)
             @file_operations.sync_directory(record.path)
-          elsif record.backed_up && @file_operations.exist?(record.backup)
-            @file_operations.delete(record.backup)
           end
         rescue SystemCallError, IOError => e
           errors << "rollback #{record.path}: #{e.message}"
@@ -338,6 +337,10 @@ module TrainingFrontmatterMigration
 
     def cleanup_stages(records)
       cleanup_artifacts(records, :stage)
+    end
+
+    def cleanup_transaction_artifacts(records)
+      cleanup_artifacts(records, :stage) + cleanup_artifacts(records, :backup)
     end
 
     def report_post_commit_cleanup(records)
