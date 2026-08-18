@@ -18,12 +18,26 @@ var api = (function () {
     throw new Error(message);
   }
 
-  function isRecord(value) {
-    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  function isPlainRecord(value) {
+    if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
+    var prototype = Object.getPrototypeOf(value);
+    return prototype === Object.prototype || prototype === null;
   }
 
   function hasOwn(object, key) {
     return Object.prototype.hasOwnProperty.call(object, key);
+  }
+
+  function ownValue(object, key) {
+    return hasOwn(object, key) ? object[key] : undefined;
+  }
+
+  function copyOwnRecord(record) {
+    var copy = Object.create(null);
+    Object.keys(record).forEach(function (key) {
+      copy[key] = record[key];
+    });
+    return copy;
   }
 
   function statusIndex(status) {
@@ -52,12 +66,12 @@ var api = (function () {
   }
 
   function paperTotal(evidence) {
-    if (!isRecord(evidence)) fail('纸笔评分必须为对象');
+    if (!isPlainRecord(evidence)) fail('纸笔评分必须为对象');
 
     var total = 0;
     Object.keys(SCORE_RULES).forEach(function (field) {
       var range = SCORE_RULES[field];
-      var value = evidence[field];
+      var value = ownValue(evidence, field);
       if (!nonEmpty(value)) fail(field + '评分不能为空');
       if (typeof value !== 'number' || !Number.isFinite(value)) {
         fail(field + '评分必须是有限数值');
@@ -73,50 +87,97 @@ var api = (function () {
 
   function evidenceSatisfied(evidence, status) {
     if (status === '未开始' || status === '学习中') return true;
-    if (!isRecord(evidence)) return false;
+    if (!isPlainRecord(evidence)) return false;
     if (status === '已AC') {
-      return nonEmpty(evidence.首刷日期)
-        && (evidence.首刷结果 === '独立通过' || evidence.首刷结果 === '订正通过');
+      return nonEmpty(ownValue(evidence, '首刷日期'))
+        && (ownValue(evidence, '首刷结果') === '独立通过' || ownValue(evidence, '首刷结果') === '订正通过');
     }
     if (status === '已二刷') {
-      return nonEmpty(evidence.二刷日期) && evidence.二刷结果 === '独立通过';
+      return nonEmpty(ownValue(evidence, '二刷日期')) && ownValue(evidence, '二刷结果') === '独立通过';
     }
     if (status === '可纸笔') {
-      return nonEmpty(evidence.纸笔日期)
-        && typeof evidence.纸笔得分 === 'number'
-        && Number.isFinite(evidence.纸笔得分)
-        && evidence.纸笔得分 >= 8;
+      return nonEmpty(ownValue(evidence, '纸笔日期'))
+        && typeof ownValue(evidence, '纸笔得分') === 'number'
+        && Number.isFinite(ownValue(evidence, '纸笔得分'))
+        && ownValue(evidence, '纸笔得分') >= 8;
     }
     return false;
   }
 
   function validateCurrent(current) {
-    if (!isRecord(current)) fail('current 必须是对象');
-    if (statusIndex(current.状态) < 0) fail('current 的状态非法');
-    if (typeof current.复习次数 !== 'number' || !Number.isFinite(current.复习次数)
-      || !Number.isInteger(current.复习次数) || current.复习次数 < 0) {
+    if (!isPlainRecord(current)) fail('current 必须是对象');
+    var status = ownValue(current, '状态');
+    var reviewCount = ownValue(current, '复习次数');
+    if (statusIndex(status) < 0) fail('current 的状态非法');
+    if (typeof reviewCount !== 'number' || !Number.isSafeInteger(reviewCount)
+      || reviewCount < 0 || reviewCount >= Number.MAX_SAFE_INTEGER) {
       fail('current 的复习次数必须是非负整数');
+    }
+    return { status: status, reviewCount: reviewCount, evidenceStatus: ownValue(current, '证据状态') };
+  }
+
+  function validateEvidenceValue(field, value) {
+    if (typeof value === 'object' || typeof value === 'function') fail('证据字段必须是标量：' + field);
+    if (field === '首刷结果') {
+      if (['未完成', '独立通过', '订正通过', '失败'].indexOf(value) < 0) fail('证据字段首刷结果取值非法');
+      return;
+    }
+    if (field === '二刷结果') {
+      if (['未完成', '独立通过', '失败'].indexOf(value) < 0) fail('证据字段二刷结果取值非法');
+      return;
+    }
+    if (field === '首刷耗时') {
+      if (typeof value !== 'number' || !Number.isFinite(value) || !Number.isInteger(value) || value < 0) {
+        fail('证据字段首刷耗时必须是非负整数');
+      }
+      return;
+    }
+    var range = SCORE_RULES[field];
+    if (typeof value !== 'number' || !Number.isFinite(value) || !Number.isInteger(value)
+      || value < range[0] || value > range[1]) {
+      fail('证据字段' + field + '取值非法');
     }
   }
 
   function applyEvidence(draft, patch, evidence) {
     if (evidence === undefined) return;
-    if (!isRecord(evidence)) fail('证据必须是对象');
+    if (!isPlainRecord(evidence)) fail('证据必须是对象');
     Object.keys(evidence).forEach(function (field) {
       if (EVIDENCE_FIELDS.indexOf(field) < 0) fail('证据字段不被允许：' + field);
-      if (nonEmpty(evidence[field])) {
-        if (typeof evidence[field] === 'object' || typeof evidence[field] === 'function') {
-          fail('证据字段必须是标量：' + field);
-        }
-        draft[field] = evidence[field];
-        patch[field] = evidence[field];
+      var value = ownValue(evidence, field);
+      if (nonEmpty(value)) {
+        validateEvidenceValue(field, value);
+        draft[field] = value;
+        patch[field] = value;
       }
     });
   }
 
-  function setCommonTrainingPatch(patch, current, today) {
+  function setCommonTrainingPatch(patch, reviewCount, today) {
     patch.最后训练 = today;
-    patch.复习次数 = current.复习次数 + 1;
+    patch.复习次数 = reviewCount + 1;
+  }
+
+  function validateAction(action) {
+    if (!isPlainRecord(action)) fail('action 必须是对象');
+    var kind = ownValue(action, 'kind');
+    if (typeof kind !== 'string') fail('动作类型非法');
+    if (kind === 'transition') {
+      var target = ownValue(action, 'target');
+      if (statusIndex(target) < 0) fail('目标状态非法');
+      return { kind: kind, target: target };
+    }
+    if (kind === 'failure') {
+      var stage = ownValue(action, 'stage');
+      if (stage !== '首刷' && stage !== '二刷') fail('失败阶段必须是首刷或二刷');
+      return { kind: kind, stage: stage };
+    }
+    if (kind === 'retention') {
+      var passed = ownValue(action, 'passed');
+      if (!hasOwn(action, 'passed') || typeof passed !== 'boolean') fail('retention 的 passed 必须是布尔值');
+      return { kind: kind, passed: passed };
+    }
+    fail('动作类型非法');
   }
 
   function setTransitionEvidence(patch, draft, target, today) {
@@ -161,43 +222,41 @@ var api = (function () {
   }
 
   function buildAction(current, action, today) {
-    validateCurrent(current);
+    var currentInfo = validateCurrent(current);
     validDate(today);
-    if (!isRecord(action)) fail('action 必须是对象');
-    if (typeof action.kind !== 'string') fail('动作类型非法');
+    var actionInfo = validateAction(action);
 
-    var draft = Object.assign({}, current);
+    var draft = copyOwnRecord(current);
     var patch = {};
-    applyEvidence(draft, patch, action.evidence);
+    applyEvidence(draft, patch, ownValue(action, 'evidence'));
 
-    if (action.kind === 'transition') {
-      if (statusIndex(action.target) < 0) fail('目标状态非法');
-      var currentIndex = statusIndex(current.状态);
-      var targetIndex = statusIndex(action.target);
-      var calibratingCurrent = action.target === current.状态 && current.证据状态 === '待校准';
-      var needsEvidence = targetIndex > currentIndex || calibratingCurrent;
+    if (actionInfo.kind === 'transition') {
+      var currentIndex = statusIndex(currentInfo.status);
+      var targetIndex = statusIndex(actionInfo.target);
+      var isPending = currentInfo.evidenceStatus === '待校准';
+      var needsEvidence = targetIndex > currentIndex || (actionInfo.target === currentInfo.status && isPending);
+      var canClearPending = isPending && targetIndex >= currentIndex;
 
-      setCommonTrainingPatch(patch, current, today);
-      patch.状态 = action.target;
-      if (needsEvidence) setTransitionEvidence(patch, draft, action.target, today);
-      if (calibratingCurrent && evidenceSatisfied(draft, action.target)) {
+      setCommonTrainingPatch(patch, currentInfo.reviewCount, today);
+      patch.状态 = actionInfo.target;
+      if (needsEvidence) setTransitionEvidence(patch, draft, actionInfo.target, today);
+      if (canClearPending && evidenceSatisfied(draft, actionInfo.target)) {
         patch.证据状态 = '有效';
       }
       return patch;
     }
 
-    if (action.kind === 'failure') {
-      if (action.stage !== '首刷' && action.stage !== '二刷') fail('失败阶段必须是首刷或二刷');
-      patch[action.stage === '首刷' ? '首刷结果' : '二刷结果'] = '失败';
-      setCommonTrainingPatch(patch, current, today);
+    if (actionInfo.kind === 'failure') {
+      patch[actionInfo.stage === '首刷' ? '首刷结果' : '二刷结果'] = '失败';
+      setCommonTrainingPatch(patch, currentInfo.reviewCount, today);
       patch.下次复习 = addDays(today, 1);
       return patch;
     }
 
-    if (action.kind === 'retention') {
-      if (current.状态 !== '可纸笔') fail('retention 仅适用于可纸笔状态');
-      setCommonTrainingPatch(patch, current, today);
-      patch.下次复习 = addDays(today, action.passed === true ? 30 : 1);
+    if (actionInfo.kind === 'retention') {
+      if (currentInfo.status !== '可纸笔') fail('retention 仅适用于可纸笔状态');
+      setCommonTrainingPatch(patch, currentInfo.reviewCount, today);
+      patch.下次复习 = addDays(today, actionInfo.passed ? 30 : 1);
       return patch;
     }
 

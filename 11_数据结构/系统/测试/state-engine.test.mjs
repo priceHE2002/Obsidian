@@ -41,7 +41,7 @@ test('transition：独立通过首刷设置三天后的复习日期', () => {
   }, TODAY);
   assert.deepEqual(patch, {
     首刷结果: '独立通过', 最后训练: TODAY, 复习次数: 1, 状态: '已AC',
-    首刷日期: TODAY, 下次复习: '2026-08-21',
+    首刷日期: TODAY, 下次复习: '2026-08-21', 证据状态: '有效',
   });
 });
 
@@ -102,6 +102,16 @@ test('transition：已AC待校准反向至学习中保留待校准状态', () =>
   assert.equal(Object.hasOwn(patch, '首刷结果'), false);
 });
 
+test('transition：已AC待校准向前至已二刷后清除待校准', () => {
+  const patch = buildAction(current({
+    状态: '已AC', 证据状态: '待校准', 首刷日期: '2026-08-01', 首刷结果: '独立通过',
+  }), {
+    kind: 'transition', target: '已二刷', evidence: { 二刷结果: '独立通过' },
+  }, TODAY);
+  assert.equal(patch.状态, '已二刷');
+  assert.equal(patch.证据状态, '有效');
+});
+
 test('failure：首刷失败不推进状态且次日复习', () => {
   const patch = buildAction(current(), { kind: 'failure', stage: '首刷' }, TODAY);
   assert.deepEqual(patch, { 首刷结果: '失败', 最后训练: TODAY, 复习次数: 1, 下次复习: '2026-08-19' });
@@ -124,6 +134,17 @@ test('retention：可纸笔通过延后30天，失败延后1天', () => {
 
 test('retention：非可纸笔状态拒绝', () => {
   assert.throws(() => buildAction(current(), { kind: 'retention', passed: true }, TODAY), /可纸笔/);
+});
+
+test('retention：passed 必须是 action 自有布尔值', () => {
+  for (const action of [
+    { kind: 'retention' },
+    { kind: 'retention', passed: 'true' },
+    { kind: 'retention', passed: 1 },
+    Object.create({ kind: 'retention', passed: true }),
+  ]) {
+    assert.throws(() => buildAction(current({ 状态: '可纸笔' }), action, TODAY), /passed|action/);
+  }
 });
 
 test('同阶段待校准已AC可补证据并转为有效', () => {
@@ -163,6 +184,45 @@ test('递归冻结的嵌套证据值被拒绝且异常不改变外部输入', ()
   assert.equal(Object.isFrozen(evidence.首刷结果.未知嵌套值), true);
 });
 
+test('任何动作均拒绝非空白证据的非规范值', () => {
+  const invalidEvidence = [
+    { 首刷结果: '通过' },
+    { 二刷结果: '订正通过' },
+    { 首刷耗时: '10' },
+    { 首刷耗时: -1 },
+    { 思想得分: 3 },
+    { 正确性得分: -1 },
+    { 代码得分: 5 },
+    { 复杂度得分: 1.5 },
+    { 首刷结果: {} },
+    { 二刷结果: [] },
+  ];
+  for (const evidence of invalidEvidence) {
+    assert.throws(() => buildAction(current({ 状态: '已AC' }), {
+      kind: 'failure', stage: '二刷', evidence,
+    }, TODAY), /证据字段/);
+  }
+});
+
+test('动作判别字段先于 evidence 校验', () => {
+  assert.throws(() => buildAction(current(), {
+    kind: 'failure', stage: '三刷', evidence: { 未知字段: 'x' },
+  }, TODAY), /阶段/);
+});
+
+test('current 的自有 __proto__ 与继承证据均不能绕过已AC门槛或污染原型', () => {
+  const ownProto = JSON.parse('{"状态":"已AC","复习次数":0,"证据状态":"待校准","__proto__":{"首刷结果":"独立通过","首刷日期":"2026-08-01"}}');
+  assert.throws(() => buildAction(ownProto, { kind: 'transition', target: '已AC' }, TODAY), /首刷结果/);
+  assert.equal(Object.prototype.首刷结果, undefined);
+
+  const inherited = Object.create({ 首刷结果: '独立通过', 首刷日期: '2026-08-01' });
+  inherited.状态 = '已AC';
+  inherited.复习次数 = 0;
+  inherited.证据状态 = '待校准';
+  assert.throws(() => buildAction(inherited, { kind: 'transition', target: '已AC' }, TODAY), /current/);
+  assert.equal(Object.prototype.首刷日期, undefined);
+});
+
 test('paperTotal 拒绝缺失、空白、NaN、Infinity、小数及越界评分', () => {
   const invalid = [
     {},
@@ -199,6 +259,7 @@ test('非法状态、动作、stage、today 与复习次数均拒绝', () => {
   assert.throws(() => buildAction(current({ 复习次数: '1.5' }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
   assert.throws(() => buildAction(current({ 复习次数: NaN }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
   assert.throws(() => buildAction(current({ 复习次数: Infinity }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
+  assert.throws(() => buildAction(current({ 复习次数: Number.MAX_SAFE_INTEGER }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
   assert.throws(() => buildAction(current({ 复习次数: '0' }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
   assert.throws(() => buildAction(null, { kind: 'failure', stage: '首刷' }, TODAY), /current/);
   assert.throws(() => buildAction(current(), null, TODAY), /action/);
