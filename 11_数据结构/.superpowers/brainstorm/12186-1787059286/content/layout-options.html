@@ -1,0 +1,128 @@
+<style>
+  #apex-408-layouts {
+    --apex-ink: light-dark(#16231d, #edf7f0);
+    --apex-muted: light-dark(#65716b, #9bad9f);
+    --apex-panel: light-dark(#f4f8f5, #18221d);
+    --apex-card: light-dark(#ffffff, #222e28);
+    --apex-line: light-dark(#dbe5de, #34443a);
+    --apex-green: light-dark(#2f7d58, #75d6a1);
+    --apex-amber: light-dark(#a36512, #f0bd62);
+    --apex-red: light-dark(#b44b49, #ff8c87);
+    color: var(--apex-ink);
+  }
+  #apex-408-layouts .apex-subtitle { color: var(--apex-muted); margin: 0 0 1.2rem; }
+  #apex-408-layouts .apex-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+  #apex-408-layouts .apex-choice {
+    appearance: none;
+    width: 100%;
+    padding: 0;
+    border: 1px solid var(--apex-line);
+    border-radius: 18px;
+    background: var(--apex-panel);
+    color: var(--apex-ink);
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  #apex-408-layouts .apex-choice:hover { transform: translateY(-3px); border-color: var(--apex-green); }
+  #apex-408-layouts .apex-choice.selected { border-color: var(--apex-green); box-shadow: 0 0 0 3px color-mix(in srgb, var(--apex-green) 24%, transparent); }
+  #apex-408-layouts .apex-window { min-height: 440px; padding: .72rem; background: linear-gradient(145deg, var(--apex-panel), color-mix(in srgb, var(--apex-green) 8%, var(--apex-panel))); }
+  #apex-408-layouts .apex-top { display: flex; align-items: center; gap: .38rem; padding: .2rem .15rem .65rem; color: var(--apex-muted); }
+  #apex-408-layouts .apex-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--apex-line); }
+  #apex-408-layouts .apex-brand { margin-left: .25rem; font-weight: 500; color: var(--apex-ink); }
+  #apex-408-layouts .apex-hero { border-radius: 13px; padding: .8rem; background: var(--apex-card); border: 1px solid var(--apex-line); }
+  #apex-408-layouts .apex-kicker { font-size: .72rem; color: var(--apex-green); }
+  #apex-408-layouts .apex-title { margin-top: .22rem; font-weight: 500; }
+  #apex-408-layouts .apex-caption { margin-top: .25rem; color: var(--apex-muted); font-size: .72rem; }
+  #apex-408-layouts .apex-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .55rem; margin-top: .55rem; }
+  #apex-408-layouts .apex-panel { border-radius: 11px; padding: .68rem; background: color-mix(in srgb, var(--apex-card) 88%, transparent); border: 1px solid var(--apex-line); }
+  #apex-408-layouts .apex-wide { grid-column: 1 / -1; }
+  #apex-408-layouts .apex-label { color: var(--apex-muted); font-size: .68rem; }
+  #apex-408-layouts .apex-value { margin-top: .12rem; font-size: 1.15rem; font-weight: 500; }
+  #apex-408-layouts .apex-row { display: flex; align-items: center; gap: .42rem; margin-top: .48rem; font-size: .72rem; }
+  #apex-408-layouts .apex-pill { padding: .12rem .38rem; border-radius: 999px; background: color-mix(in srgb, var(--apex-green) 18%, transparent); color: var(--apex-green); }
+  #apex-408-layouts .apex-progress { height: 6px; margin-top: .35rem; border-radius: 999px; background: var(--apex-line); overflow: hidden; }
+  #apex-408-layouts .apex-progress > span { display: block; height: 100%; border-radius: inherit; background: var(--apex-green); }
+  #apex-408-layouts .apex-bars { display: flex; align-items: flex-end; gap: .24rem; height: 62px; margin-top: .45rem; }
+  #apex-408-layouts .apex-bars span { flex: 1; border-radius: 4px 4px 2px 2px; background: color-mix(in srgb, var(--apex-green) 66%, var(--apex-card)); }
+  #apex-408-layouts .apex-modules { display: grid; grid-template-columns: repeat(4, 1fr); gap: .35rem; margin-top: .52rem; }
+  #apex-408-layouts .apex-module { padding: .38rem .18rem; text-align: center; border-radius: 7px; background: var(--apex-panel); font-size: .65rem; }
+  #apex-408-layouts .apex-alert { color: var(--apex-red); }
+  #apex-408-layouts .apex-choice-copy { padding: .9rem 1rem 1rem; background: var(--apex-card); border-top: 1px solid var(--apex-line); }
+  #apex-408-layouts .apex-choice-copy h3 { margin: 0 0 .25rem; }
+  #apex-408-layouts .apex-choice-copy p { margin: 0; color: var(--apex-muted); }
+  #apex-408-layouts .apex-rec { display: inline-flex; margin-bottom: .45rem; padding: .14rem .48rem; border-radius: 999px; background: color-mix(in srgb, var(--apex-green) 18%, transparent); color: var(--apex-green); font-size: .72rem; }
+  @media (max-width: 900px) {
+    #apex-408-layouts .apex-choices { grid-template-columns: 1fr; }
+    #apex-408-layouts .apex-window { min-height: 0; }
+  }
+</style>
+
+<section id="apex-408-layouts">
+  <h2>Apex Dashboard 的 408 首页，哪种信息层级最适合你？</h2>
+  <p class="apex-subtitle">三种方案都保留母题、题目与复习数据；区别在于打开首页后，第一眼推动你做什么。</p>
+
+  <div class="cards apex-choices">
+    <button type="button" class="card apex-choice" data-choice="a" onclick="toggleSelect(this)">
+      <div class="apex-window">
+        <div class="apex-top"><span class="apex-dot"></span><span class="apex-dot"></span><span class="apex-dot"></span><span class="apex-brand">408 · 今日作战台</span></div>
+        <div class="apex-hero">
+          <div class="apex-kicker">距离今日目标还差 2 题</div>
+          <div class="apex-title">先做 2020 三数组最小距离</div>
+          <div class="apex-caption">S+ · 真题 · 限时 20 分钟 · 已到期</div>
+        </div>
+        <div class="apex-grid">
+          <div class="apex-panel"><div class="apex-label">今日训练</div><div class="apex-value">0 / 3</div><div class="apex-progress"><span style="width:12%"></span></div></div>
+          <div class="apex-panel"><div class="apex-label">待复习</div><div class="apex-value apex-alert">15</div><div class="apex-caption">3 道真题优先</div></div>
+          <div class="apex-panel apex-wide">
+            <div class="apex-label">下一步</div>
+            <div class="apex-row"><span class="apex-pill">纸笔</span><span>2018 最小未出现正整数</span></div>
+            <div class="apex-row"><span class="apex-pill">二刷</span><span>LC 41 缺失的第一个正数</span></div>
+            <div class="apex-row"><span class="apex-pill">首刷</span><span>2025 数组后缀最大乘积</span></div>
+          </div>
+          <div class="apex-panel apex-wide"><div class="apex-label">本周得分链</div><div class="apex-progress"><span style="width:48%"></span></div><div class="apex-caption">思想 → 代码 → 正确性 → 复杂度 → 纸笔复现</div></div>
+        </div>
+      </div>
+      <div class="card-body apex-choice-copy"><span class="apex-rec">推荐</span><h3>A · 今日作战台</h3><p>首页只回答“现在做哪题”，最利于把笔记系统转化为稳定得分。</p></div>
+    </button>
+
+    <button type="button" class="card apex-choice" data-choice="b" onclick="toggleSelect(this)">
+      <div class="apex-window">
+        <div class="apex-top"><span class="apex-dot"></span><span class="apex-dot"></span><span class="apex-dot"></span><span class="apex-brand">408 · 母题地图</span></div>
+        <div class="apex-hero">
+          <div class="apex-kicker">12 个母题模块</div>
+          <div class="apex-title">从结构化知识地图进入训练</div>
+          <div class="apex-caption">先选模块，再看模板、训练题与对应真题</div>
+        </div>
+        <div class="apex-panel" style="margin-top:.55rem">
+          <div class="apex-label">模块掌握度</div>
+          <div class="apex-modules">
+            <div class="apex-module">M01<br>67%</div><div class="apex-module">M02<br>75%</div><div class="apex-module">M03<br>57%</div><div class="apex-module">M04<br>0%</div>
+            <div class="apex-module">M05<br>0%</div><div class="apex-module">M06<br>0%</div><div class="apex-module">M07<br>0%</div><div class="apex-module">M08<br>0%</div>
+            <div class="apex-module">M09<br>0%</div><div class="apex-module">M10<br>0%</div><div class="apex-module">M11<br>0%</div><div class="apex-module">M12<br>0%</div>
+          </div>
+        </div>
+        <div class="apex-grid">
+          <div class="apex-panel apex-wide"><div class="apex-label">M01 · 数组原地操作</div><div class="apex-row"><span class="apex-pill">模板</span><span>循环不变量与 O(n) 优化</span></div><div class="apex-row"><span class="apex-pill">真题</span><span>2018 · 2025</span></div></div>
+          <div class="apex-panel"><div class="apex-label">已覆盖</div><div class="apex-value">3 / 12</div></div>
+          <div class="apex-panel"><div class="apex-label">薄弱模块</div><div class="apex-value">9</div></div>
+        </div>
+      </div>
+      <div class="card-body apex-choice-copy"><h3>B · 母题地图</h3><p>知识导航最清楚，适合按章节系统推进；但每日行动感弱一些。</p></div>
+    </button>
+
+    <button type="button" class="card apex-choice" data-choice="c" onclick="toggleSelect(this)">
+      <div class="apex-window">
+        <div class="apex-top"><span class="apex-dot"></span><span class="apex-dot"></span><span class="apex-dot"></span><span class="apex-brand">408 · 数据驾驶舱</span></div>
+        <div class="apex-grid" style="margin-top:0">
+          <div class="apex-panel"><div class="apex-label">加权掌握度</div><div class="apex-value">16.7%</div><div class="apex-progress"><span style="width:17%"></span></div></div>
+          <div class="apex-panel"><div class="apex-label">纸笔达标</div><div class="apex-value">4 / 57</div><div class="apex-caption">真题 3 / 10</div></div>
+          <div class="apex-panel apex-wide"><div class="apex-label">近 7 日训练量</div><div class="apex-bars"><span style="height:20%"></span><span style="height:45%"></span><span style="height:30%"></span><span style="height:70%"></span><span style="height:52%"></span><span style="height:85%"></span><span style="height:64%"></span></div></div>
+          <div class="apex-panel apex-wide"><div class="apex-label">能力雷达（文字化）</div><div class="apex-row"><span>代码正确性</span><div class="apex-progress" style="flex:1"><span style="width:58%"></span></div></div><div class="apex-row"><span>纸笔复现力</span><div class="apex-progress" style="flex:1"><span style="width:22%"></span></div></div><div class="apex-row"><span>复杂度表达</span><div class="apex-progress" style="flex:1"><span style="width:35%"></span></div></div></div>
+        </div>
+      </div>
+      <div class="card-body apex-choice-copy"><h3>C · 数据驾驶舱</h3><p>趋势与指标最丰富，复盘很强；但容易“看数据多、开始做题慢”。</p></div>
+    </button>
+  </div>
+</section>

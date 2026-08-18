@@ -1,0 +1,115 @@
+<style>
+  #apex-408-loop {
+    --loop-ink: light-dark(#18251e, #eef8f1);
+    --loop-muted: light-dark(#66736c, #a6b6aa);
+    --loop-surface: light-dark(#ffffff, #202c25);
+    --loop-soft: light-dark(#edf4ef, #17221c);
+    --loop-line: light-dark(#d8e4dc, #35483c);
+    --loop-green: light-dark(#2d7b55, #74d6a0);
+    --loop-amber: light-dark(#9a6415, #efbd63);
+    --loop-red: light-dark(#b64b4b, #ff8e88);
+    color: var(--loop-ink);
+  }
+  #apex-408-loop .loop-subtitle { color: var(--loop-muted); margin: 0 0 1.35rem; }
+  #apex-408-loop .loop-track { display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: .7rem; align-items: stretch; }
+  #apex-408-loop .loop-step { position: relative; min-height: 178px; padding: 1rem; border-radius: 16px; background: var(--loop-surface); border: 1px solid var(--loop-line); }
+  #apex-408-loop .loop-step:not(:last-child)::after { content: "→"; position: absolute; right: -.62rem; top: 46%; z-index: 2; color: var(--loop-green); font-weight: 500; }
+  #apex-408-loop .loop-index { color: var(--loop-green); font-size: .72rem; }
+  #apex-408-loop .loop-step h3 { margin: .3rem 0 .55rem; }
+  #apex-408-loop .loop-step p { margin: .3rem 0; color: var(--loop-muted); font-size: .82rem; }
+  #apex-408-loop .loop-gate { display: inline-flex; margin-top: .55rem; padding: .22rem .5rem; border-radius: 999px; background: color-mix(in srgb, var(--loop-green) 17%, transparent); color: var(--loop-green); font-size: .72rem; }
+  #apex-408-loop .loop-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: .85rem; margin-top: .9rem; }
+  #apex-408-loop .loop-panel { padding: 1rem; border-radius: 16px; background: var(--loop-soft); border: 1px solid var(--loop-line); }
+  #apex-408-loop .loop-panel h3 { margin: 0 0 .7rem; }
+  #apex-408-loop .score-row { display: grid; grid-template-columns: 1fr 58px 1.6fr; gap: .55rem; align-items: center; margin-top: .52rem; font-size: .8rem; }
+  #apex-408-loop .score-points { text-align: right; color: var(--loop-green); }
+  #apex-408-loop .score-bar { height: 7px; border-radius: 999px; background: var(--loop-line); overflow: hidden; }
+  #apex-408-loop .score-bar span { display: block; height: 100%; background: var(--loop-green); }
+  #apex-408-loop .audit { display: flex; gap: .65rem; align-items: flex-start; padding: .72rem; border-radius: 12px; background: color-mix(in srgb, var(--loop-amber) 12%, transparent); color: var(--loop-ink); }
+  #apex-408-loop .audit b { color: var(--loop-amber); }
+  #apex-408-loop .audit p { margin: .12rem 0 0; color: var(--loop-muted); font-size: .8rem; }
+  #apex-408-loop .rule-list { margin: .72rem 0 0 1.15rem; color: var(--loop-muted); }
+  #apex-408-loop .rule-list li { margin: .36rem 0; }
+  #apex-408-loop .options { margin-top: 1rem; }
+  @media (max-width: 920px) {
+    #apex-408-loop .loop-track { grid-template-columns: 1fr; }
+    #apex-408-loop .loop-step { min-height: 0; }
+    #apex-408-loop .loop-step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -.78rem; }
+    #apex-408-loop .loop-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<section id="apex-408-loop">
+  <h2>408 算法题训练闭环</h2>
+  <p class="loop-subtitle">状态不再只是手动颜色标签，而是由可核验的训练证据支撑。</p>
+
+  <div class="loop-track">
+    <article class="loop-step">
+      <div class="loop-index">01 · 未开始</div>
+      <h3>独立审题</h3>
+      <p>写出输入、输出、约束与朴素解。</p>
+      <p>禁止先展开思路提示。</p>
+      <span class="loop-gate">限时开始</span>
+    </article>
+    <article class="loop-step">
+      <div class="loop-index">02 · 学习中</div>
+      <h3>首刷实现</h3>
+      <p>记录日期、耗时、是否独立完成。</p>
+      <p>补全边界与复杂度依据。</p>
+      <span class="loop-gate">通过 / 订正</span>
+    </article>
+    <article class="loop-step">
+      <div class="loop-index">03 · 已 AC</div>
+      <h3>闭卷二刷</h3>
+      <p>间隔 1–3 天，不看旧代码重做。</p>
+      <p>失败则回到学习中并进入错因库。</p>
+      <span class="loop-gate">独立通过</span>
+    </article>
+    <article class="loop-step">
+      <div class="loop-index">04 · 已二刷</div>
+      <h3>纸笔作答</h3>
+      <p>按考研答题格式写思想、代码、正确性、复杂度。</p>
+      <p>在原题限时内完成。</p>
+      <span class="loop-gate">评分 ≥ 8/10</span>
+    </article>
+    <article class="loop-step">
+      <div class="loop-index">05 · 可纸笔</div>
+      <h3>迁移与保温</h3>
+      <p>改换接口、存储结构或数据范围复写。</p>
+      <p>按 7 / 14 / 30 天进入复习队列。</p>
+      <span class="loop-gate">稳定得分</span>
+    </article>
+  </div>
+
+  <div class="loop-grid">
+    <section class="loop-panel">
+      <h3>纸笔评分尺 · 10 分</h3>
+      <div class="score-row"><span>算法思想</span><span class="score-points">2 分</span><div class="score-bar"><span style="width:50%"></span></div></div>
+      <div class="score-row"><span>正确性与边界</span><span class="score-points">2 分</span><div class="score-bar"><span style="width:50%"></span></div></div>
+      <div class="score-row"><span>核心代码</span><span class="score-points">4 分</span><div class="score-bar"><span style="width:100%"></span></div></div>
+      <div class="score-row"><span>复杂度及依据</span><span class="score-points">2 分</span><div class="score-bar"><span style="width:50%"></span></div></div>
+    </section>
+
+    <section class="loop-panel">
+      <div class="audit">
+        <div>⚠</div>
+        <div><b>15 道旧进度待校准</b><p>已有“已 AC / 可纸笔”状态，但日期、结果和得分为空。</p></div>
+      </div>
+      <ul class="rule-list">
+        <li>保留原状态，不自动降级。</li>
+        <li>添加“证据待补”标记并在首页提醒。</li>
+        <li>完成一次闭卷验证后解除标记。</li>
+        <li>以后状态切换同步写入日期、结果与下次复习。</li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="options">
+    <div class="option" data-choice="approve-loop" onclick="toggleSelect(this)">
+      <div class="letter">✓</div><div class="content"><h3>批准这套闭环</h3><p>保留五级状态，并增加证据门槛、10 分评分尺和旧数据校准队列。</p></div>
+    </div>
+    <div class="option" data-choice="adjust-loop" onclick="toggleSelect(this)">
+      <div class="letter">↺</div><div class="content"><h3>需要调整</h3><p>返回终端说明希望修改的状态、复习间隔或评分标准。</p></div>
+    </div>
+  </div>
+</section>
