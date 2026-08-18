@@ -117,6 +117,32 @@ class MigrateFrontmatterTest < Minitest::Test
     end
   end
 
+  def test_absent_cssclasses_are_persisted_for_problems_and_mothers_and_are_idempotent
+    with_vault do |root|
+      problem = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      mother = write_note(root, "母题模板", "M01.md", "母题编号: M01\n")
+
+      output, status = run_migration(root)
+
+      assert_equal 0, status, output
+      assert_includes output, "changed=2"
+      assert_includes output, "scanned=2"
+      problem_fm, = frontmatter_and_body(problem)
+      mother_fm, = frontmatter_and_body(mother)
+      assert_equal ["ds-408-problem"], problem_fm["cssclasses"]
+      assert_equal "有效", problem_fm["证据状态"]
+      %w[最后训练 思想得分 正确性得分 代码得分 复杂度得分].each { |key| assert_equal "", problem_fm[key] }
+      assert_equal ["ds-408-pattern"], mother_fm["cssclasses"]
+      assert_equal "未开始", mother_fm["模板状态"]
+      %w[上次复写 下次复写 复写得分].each { |key| assert_equal "", mother_fm[key] }
+
+      output, status = run_migration(root)
+      assert_equal 0, status, output
+      assert_includes output, "changed=0"
+      assert_includes output, "scanned=2"
+    end
+  end
+
   def test_malformed_input_aborts_without_writing_any_file
     with_vault do |root|
       valid = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")

@@ -37,7 +37,7 @@ module TrainingFrontmatterMigration
       notes.select { |note| note.instance_variable_get(:@changed) }.each { |note| write_note(note) }
       problems = notes.count { |note| note.kind == :problem }
       patterns = notes.count { |note| note.kind == :pattern }
-      @out.puts "changed=#{changed} problems=#{problems} patterns=#{patterns}"
+      @out.puts "changed=#{changed} scanned=#{notes.length} problems=#{problems} patterns=#{patterns}"
       0
     rescue MigrationError, SystemCallError => e
       @err.puts "ERROR #{e.message}"
@@ -106,7 +106,6 @@ module TrainingFrontmatterMigration
       changed = !had_key
       classes = if !had_key
                   frontmatter["cssclasses"] = []
-                  []
                 elsif frontmatter["cssclasses"].is_a?(String)
                   frontmatter["cssclasses"] = [frontmatter["cssclasses"]]
                   changed = true
