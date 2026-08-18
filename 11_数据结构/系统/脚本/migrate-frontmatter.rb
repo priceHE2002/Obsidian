@@ -22,6 +22,7 @@ module TrainingFrontmatterMigration
     "下次复写" => "",
     "复写得分" => ""
   }.freeze
+  CLEANUP_ATTEMPTS = 3
   Note = Struct.new(:path, :kind, :frontmatter, :body, :line_ending, keyword_init: true)
   PreparedWrite = Struct.new(:path, :contents, keyword_init: true)
   TransactionRecord = Struct.new(:path, :contents, :stage, :backup, :backed_up, :installed, keyword_init: true)
@@ -215,6 +216,7 @@ module TrainingFrontmatterMigration
     def transactional_write(prepared_writes)
       return if prepared_writes.empty?
 
+      committed = false
       records = prepared_writes.map do |prepared|
         TransactionRecord.new(
           path: prepared.path,
@@ -227,8 +229,14 @@ module TrainingFrontmatterMigration
       end
       stage_records(records)
       replace_records(records)
-      cleanup_backups(records)
+      committed = true
+      report_post_commit_cleanup(records)
     rescue SystemCallError, IOError => e
+      if committed
+        @err.puts "WARNING migration committed; post-commit cleanup interrupted: #{e.message}"
+        return
+      end
+
       rollback_errors = rollback_records(records || [])
       cleanup_errors = cleanup_stages(records || [])
       detail = ([e.message] + rollback_errors + cleanup_errors).join("; ")
@@ -274,20 +282,38 @@ module TrainingFrontmatterMigration
       cleanup_artifacts(records, :stage)
     end
 
-    def cleanup_backups(records)
-      failures = cleanup_artifacts(records, :backup)
-      raise IOError, failures.join("; ") unless failures.empty?
+    def report_post_commit_cleanup(records)
+      failures = cleanup_artifacts_with_retries(records, :backup)
+      return if failures.empty?
+
+      @err.puts "WARNING migration committed; backup cleanup incomplete: #{failures.join("; ")}"
     end
 
-    def cleanup_artifacts(records, attribute)
+    def cleanup_artifacts_with_retries(records, attribute)
+      pending = records.map { |record| record.public_send(attribute) }
       failures = []
-      records.each do |record|
-        path = record.public_send(attribute)
+      CLEANUP_ATTEMPTS.times do
+        failures = cleanup_paths(pending)
+        pending = pending.select { |path| @file_operations.exist?(path) }
+        return [] if pending.empty?
+      end
+      failures.empty? ? pending.map { |path| "cleanup #{path}: artifact remains" } : failures
+    rescue SystemCallError, IOError => e
+      ["cleanup #{attribute}: #{e.message}"]
+    end
+
+    def cleanup_paths(paths)
+      failures = []
+      paths.each do |path|
         @file_operations.delete(path) if @file_operations.exist?(path)
       rescue SystemCallError, IOError => e
         failures << "cleanup #{path}: #{e.message}"
       end
       failures
+    end
+
+    def cleanup_artifacts(records, attribute)
+      cleanup_paths(records.map { |record| record.public_send(attribute) })
     end
   end
 

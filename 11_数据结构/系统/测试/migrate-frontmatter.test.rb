@@ -285,12 +285,36 @@ class MigrateFrontmatterTest < Minitest::Test
     end
   end
 
+  def test_second_backup_cleanup_failure_keeps_all_committed_notes_and_retries_cleanup
+    with_vault do |root|
+      problem = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      mother = write_note(root, "母题模板", "M01.md", "母题编号: M01\n")
+      originals = [problem, mother].to_h { |path| [path, File.binread(path)] }
+      operations = FailingFileOperations.new(fail_backup_cleanup_number: 2)
+
+      output, status = run_runner(root, operations)
+
+      assert_equal 0, status, output
+      [problem, mother].each do |path|
+        assert File.exist?(path), "missing committed file: #{path}"
+        refute_equal originals[path], File.binread(path)
+      end
+      problem_fm, = frontmatter_and_body(problem)
+      mother_fm, = frontmatter_and_body(mother)
+      assert_equal ["ds-408-problem"], problem_fm["cssclasses"]
+      assert_equal ["ds-408-pattern"], mother_fm["cssclasses"]
+      assert_no_transaction_artifacts(root)
+    end
+  end
+
   class FailingFileOperations
-    def initialize(fail_stage_number: nil, fail_replacement_number: nil)
+    def initialize(fail_stage_number: nil, fail_replacement_number: nil, fail_backup_cleanup_number: nil)
       @fail_stage_number = fail_stage_number
       @fail_replacement_number = fail_replacement_number
+      @fail_backup_cleanup_number = fail_backup_cleanup_number
       @stage_calls = 0
       @replacement_calls = 0
+      @backup_cleanup_calls = 0
     end
 
     def write_stage(path, contents)
@@ -313,6 +337,13 @@ class MigrateFrontmatterTest < Minitest::Test
     end
 
     def delete(path)
+      if path.to_s.end_with?(".backup")
+        @backup_cleanup_calls += 1
+        if @backup_cleanup_calls == @fail_backup_cleanup_number
+          @fail_backup_cleanup_number = nil
+          raise IOError, "injected backup cleanup failure"
+        end
+      end
       File.delete(path) if File.exist?(path)
     end
 
