@@ -2,9 +2,11 @@
 # frozen_string_literal: true
 
 require "yaml"
+require "psych"
 require "date"
 require "pathname"
 require "optparse"
+require "securerandom"
 
 module TrainingFrontmatterMigration
   PROBLEM_DEFAULTS = {
@@ -21,25 +23,51 @@ module TrainingFrontmatterMigration
     "复写得分" => ""
   }.freeze
   Note = Struct.new(:path, :kind, :frontmatter, :body, :line_ending, keyword_init: true)
+  PreparedWrite = Struct.new(:path, :contents, keyword_init: true)
+  TransactionRecord = Struct.new(:path, :contents, :stage, :backup, :backed_up, :installed, keyword_init: true)
 
   class MigrationError < StandardError; end
 
+  class FileOperations
+    def write_stage(path, contents)
+      File.open(path, "wb") do |file|
+        file.write(contents)
+        file.flush
+        file.fsync
+      end
+    end
+
+    def rename(source, destination)
+      File.rename(source, destination)
+    end
+
+    def delete(path)
+      File.delete(path) if File.exist?(path)
+    end
+
+    def exist?(path)
+      File.exist?(path)
+    end
+  end
+
   class Runner
-    def initialize(root:, out:, err:)
+    def initialize(root:, out:, err:, file_operations: FileOperations.new)
       @root = Pathname.new(root.to_s)
       @out = out
       @err = err
+      @file_operations = file_operations
     end
 
     def run
       notes = load_all_notes
-      changed = notes.count { |note| migrate(note) }
-      notes.select { |note| note.instance_variable_get(:@changed) }.each { |note| write_note(note) }
+      changed_notes = notes.select { |note| migrate(note) }
+      prepared_writes = changed_notes.map { |note| PreparedWrite.new(path: note.path, contents: serialized_note(note)) }
+      transactional_write(prepared_writes)
       problems = notes.count { |note| note.kind == :problem }
       patterns = notes.count { |note| note.kind == :pattern }
-      @out.puts "changed=#{changed} scanned=#{notes.length} problems=#{problems} patterns=#{patterns}"
+      @out.puts "changed=#{changed_notes.length} scanned=#{notes.length} problems=#{problems} patterns=#{patterns}"
       0
-    rescue MigrationError, SystemCallError => e
+    rescue MigrationError, SystemCallError, IOError => e
       @err.puts "ERROR #{e.message}"
       1
     end
@@ -67,6 +95,7 @@ module TrainingFrontmatterMigration
       match = raw.match(/\A---(\r?\n)(.*?)\r?\n---(\r?\n)(.*)\z/m)
       raise MigrationError, "#{path}: missing or malformed leading YAML frontmatter" unless match
 
+      reject_duplicate_yaml_keys!(match[2], path)
       frontmatter = begin
         YAML.safe_load(match[2], permitted_classes: [Date], aliases: false)
       rescue Psych::Exception => e
@@ -84,6 +113,40 @@ module TrainingFrontmatterMigration
       raise MigrationError, "#{path}: cannot read file (#{e.message})"
     end
 
+    def reject_duplicate_yaml_keys!(yaml, path)
+      document = Psych.parse(yaml)
+      walk_yaml_node_for_duplicate_keys(document, path)
+    rescue Psych::SyntaxError => e
+      raise MigrationError, "#{path}: invalid YAML frontmatter (#{e.message})"
+    end
+
+    def walk_yaml_node_for_duplicate_keys(node, path)
+      case node
+      when Psych::Nodes::Document, Psych::Nodes::Sequence
+        node.children.each { |child| walk_yaml_node_for_duplicate_keys(child, path) }
+      when Psych::Nodes::Mapping
+        seen = {}
+        node.children.each_slice(2) do |key, value|
+          raise MigrationError, "#{path}: malformed YAML mapping" unless key && value
+
+          key_name = yaml_mapping_key_name(key, path)
+          raise MigrationError, "#{path}: duplicate YAML key #{key_name.inspect}" if seen.key?(key_name)
+
+          seen[key_name] = true
+          walk_yaml_node_for_duplicate_keys(key, path)
+          walk_yaml_node_for_duplicate_keys(value, path)
+        end
+      end
+    end
+
+    def yaml_mapping_key_name(key, path)
+      unless key.is_a?(Psych::Nodes::Scalar)
+        raise MigrationError, "#{path}: complex YAML mapping keys are not supported"
+      end
+
+      key.value
+    end
+
     def migrate(note)
       changed = normalize_cssclasses(note.frontmatter, note.kind == :problem ? "ds-408-problem" : "ds-408-pattern", note.path)
       defaults = note.kind == :problem ? PROBLEM_DEFAULTS : PATTERN_DEFAULTS
@@ -97,7 +160,6 @@ module TrainingFrontmatterMigration
         note.frontmatter["证据状态"] = evidence_state(note.frontmatter)
         changed = true
       end
-      note.instance_variable_set(:@changed, changed)
       changed
     end
 
@@ -143,11 +205,89 @@ module TrainingFrontmatterMigration
       false
     end
 
-    def write_note(note)
+    def serialized_note(note)
       yaml = YAML.dump(note.frontmatter).sub(/\A---\s*\n/, "")
-      note.path.binwrite("---#{note.line_ending}#{yaml}---#{note.line_ending}#{note.body}")
-    rescue SystemCallError => e
-      raise MigrationError, "#{note.path}: cannot write file (#{e.message})"
+      "---#{note.line_ending}#{yaml}---#{note.line_ending}#{note.body}"
+    rescue Psych::Exception => e
+      raise MigrationError, "#{note.path}: cannot serialize YAML frontmatter (#{e.message})"
+    end
+
+    def transactional_write(prepared_writes)
+      return if prepared_writes.empty?
+
+      records = prepared_writes.map do |prepared|
+        TransactionRecord.new(
+          path: prepared.path,
+          contents: prepared.contents,
+          stage: artifact_path(prepared.path, ".tmp"),
+          backup: artifact_path(prepared.path, ".backup"),
+          backed_up: false,
+          installed: false
+        )
+      end
+      stage_records(records)
+      replace_records(records)
+      cleanup_backups(records)
+    rescue SystemCallError, IOError => e
+      rollback_errors = rollback_records(records || [])
+      cleanup_errors = cleanup_stages(records || [])
+      detail = ([e.message] + rollback_errors + cleanup_errors).join("; ")
+      raise MigrationError, "transaction failed: #{detail}"
+    ensure
+      cleanup_stages(records || []) if defined?(records)
+    end
+
+    def artifact_path(path, suffix)
+      loop do
+        candidate = Pathname.new("#{path}.migrate-frontmatter-#{SecureRandom.hex(12)}#{suffix}")
+        return candidate unless @file_operations.exist?(candidate)
+      end
+    end
+
+    def stage_records(records)
+      records.each { |record| @file_operations.write_stage(record.stage, record.contents) }
+    end
+
+    def replace_records(records)
+      records.each do |record|
+        @file_operations.rename(record.path, record.backup)
+        record.backed_up = true
+        @file_operations.rename(record.stage, record.path)
+        record.installed = true
+      end
+    end
+
+    def rollback_records(records)
+      errors = []
+      records.reverse_each do |record|
+        begin
+          @file_operations.delete(record.path) if record.installed && @file_operations.exist?(record.path)
+          @file_operations.rename(record.backup, record.path) if record.backed_up && @file_operations.exist?(record.backup)
+        rescue SystemCallError, IOError => e
+          errors << "rollback #{record.path}: #{e.message}"
+        end
+      end
+      errors
+    end
+
+    def cleanup_stages(records)
+      cleanup_artifacts(records, :stage)
+    end
+
+    def cleanup_backups(records)
+      failures = cleanup_artifacts(records, :backup)
+      raise IOError, failures.join("; ") unless failures.empty?
+    end
+
+    def cleanup_artifacts(records, attribute)
+      failures = []
+      records.each do |record|
+        path = record.public_send(attribute)
+        @file_operations.delete(path) if @file_operations.exist?(path)
+      rescue SystemCallError, IOError => e
+        failures << "cleanup #{path}: #{e.message}"
+      end
+      failures
     end
   end
 
