@@ -101,6 +101,21 @@ class ValidatorRegressionTest < Minitest::Test
     assert_includes err, "408作战台.md"
   end
 
+  def test_structure_phase_accepts_planned_apex_columns_shape
+    Dir[@root.join("刷题记录", "*.md").to_s].each do |path|
+      File.open(path, "a") { |file| file.write("dv.view(\"11_数据结构/系统/状态控件\") dv.view(\"11_数据结构/系统/题目导航\")") }
+    end
+    (@root / "总览.md").write("---\n---\n系统/统计卡 系统/复习队列 系统/题库表")
+    (@root / "408作战台.md").write("---\ndashboard: true\ncolumns:\n  - type: dataview\n---\n")
+    (@root / "错题回炉.md").write("")
+    (@root / "训练数据校准.md").write("")
+    (@root / "真题").mkpath
+    (@root / "真题" / "真题冲刺.md").write("")
+    rc, out, err = execute("structure")
+    assert_equal 0, rc, err
+    assert_includes out, "PASS phase=structure"
+  end
+
   private
 
   def write_problem(number, source)

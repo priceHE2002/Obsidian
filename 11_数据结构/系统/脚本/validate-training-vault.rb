@@ -16,7 +16,7 @@ module TrainingVaultValidator
   SOURCES = %w[408真题 LeetCode].freeze
   DATE_FIELDS = %w[首刷日期 二刷日期 纸笔日期 下次复习 最后训练].freeze
   SCORE_FIELDS = %w[思想得分 正确性得分 代码得分 复杂度得分 纸笔得分].freeze
-  Note = Struct.new(:path, :frontmatter, :body, :valid, keyword_init: true)
+  Note = Struct.new(:path, :frontmatter, :body, keyword_init: true)
 
   class Runner
     def initialize(root:, out:, err:)
@@ -33,8 +33,8 @@ module TrainingVaultValidator
       patterns = load_notes(pattern_paths)
       @errors << "problem count is #{problem_paths.length}; expected 57" unless problem_paths.length == 57
       @errors << "pattern count is #{pattern_paths.length}; expected 12" unless pattern_paths.length == 12
-      problems.each { |note| validate_problem(note, phase) if note.valid }
-      patterns.each { |note| validate_pattern(note, phase) if note.valid }
+      problems.each { |note| validate_problem(note, phase) }
+      patterns.each { |note| validate_pattern(note, phase) }
       exam_count = problems.count { |note| note.frontmatter["来源"] == "408真题" }
       pending_count = problems.count { |note| note.frontmatter["证据状态"] == "待校准" }
       @errors << "exam problem count is #{exam_count}; expected 10" unless exam_count == 10
@@ -71,7 +71,7 @@ module TrainingVaultValidator
     def load_notes(paths)
       paths.map do |path|
         parsed = parse_note(path)
-        parsed && Note.new(path: path, frontmatter: parsed[0], body: parsed[1], valid: true)
+        parsed && Note.new(path: path, frontmatter: parsed[0], body: parsed[1])
       end.compact
     end
 
@@ -210,15 +210,17 @@ module TrainingVaultValidator
     def validate_pages
       %w[408作战台.md 总览.md 错题回炉.md 训练数据校准.md 真题/真题冲刺.md].each { |relative| @errors << "missing required page #{@root.join(relative)}" unless @root.join(relative).file? }
       overview = @root.join("总览.md")
-      if (text = safe_text(overview))
+      if overview.file? && (text = safe_text(overview))
         %w[系统/统计卡 系统/复习队列 系统/题库表].each { |label| @errors << "#{overview}: missing component view path #{label}" unless text.include?(label) }
       end
       dashboard = @root.join("408作战台.md")
-      if safe_text(dashboard)
+      if dashboard.file?
         parsed = parse_note(dashboard)
         fm = parsed && parsed[0]
         @errors << "#{dashboard}: missing dashboard: true" unless fm && fm["dashboard"] == true
-        @errors << "#{dashboard}: missing type: dataview" unless fm && fm["type"] == "dataview"
+        columns = fm && fm["columns"]
+        valid_columns = columns.is_a?(Array) && columns.any? { |column| column.is_a?(Hash) && column["type"] == "dataview" }
+        @errors << "#{dashboard}: columns must contain a dataview column" unless valid_columns
       end
     end
   end
