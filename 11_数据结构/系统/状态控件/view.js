@@ -1,4 +1,3 @@
-(async () => {
 const root = dv.el("section", "", {
   cls: `ds408-control${input?.compact ? " is-compact" : ""}`,
 });
@@ -222,4 +221,3 @@ makeButton(actionGroup, "迁移失败", "ds408-control__action-button is-seconda
 });
 
 renderCurrentState();
-})();
