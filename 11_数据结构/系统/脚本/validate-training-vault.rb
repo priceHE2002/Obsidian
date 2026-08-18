@@ -27,10 +27,12 @@ module TrainingVaultValidator
     def run(argv)
       phase = phase_from(argv)
       return 1 unless phase
-      problems = load_notes(@root.join("刷题记录"))
-      patterns = load_notes(@root.join("母题模板"))
-      @errors << "problem count is #{problems.length}; expected 57" unless problems.length == 57
-      @errors << "pattern count is #{patterns.length}; expected 12" unless patterns.length == 12
+      problem_paths = markdown_paths(@root.join("刷题记录"))
+      pattern_paths = markdown_paths(@root.join("母题模板"))
+      problems = load_notes(problem_paths)
+      patterns = load_notes(pattern_paths)
+      @errors << "problem count is #{problem_paths.length}; expected 57" unless problem_paths.length == 57
+      @errors << "pattern count is #{pattern_paths.length}; expected 12" unless pattern_paths.length == 12
       problems.each { |note| validate_problem(note, phase) if note.valid }
       patterns.each { |note| validate_pattern(note, phase) if note.valid }
       exam_count = problems.count { |note| note.frontmatter["来源"] == "408真题" }
@@ -62,9 +64,12 @@ module TrainingVaultValidator
       nil
     end
 
-    def load_notes(directory)
-      return [] unless directory.directory?
-      directory.glob("*.md").sort.map do |path|
+    def markdown_paths(directory)
+      directory.directory? ? directory.glob("*.md").sort : []
+    end
+
+    def load_notes(paths)
+      paths.map do |path|
         parsed = parse_note(path)
         parsed && Note.new(path: path, frontmatter: parsed[0], body: parsed[1], valid: true)
       end.compact

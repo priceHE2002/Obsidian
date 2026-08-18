@@ -49,6 +49,16 @@ class ValidatorRegressionTest < Minitest::Test
     assert_includes err, "not valid UTF-8"
   end
 
+  def test_physical_counts_are_checked_even_when_every_note_has_bad_frontmatter
+    Dir[@root.join("刷题记录", "*.md").to_s].each { |path| File.write(path, "not frontmatter\n") }
+    Dir[@root.join("母题模板", "*.md").to_s].each { |path| File.write(path, "not frontmatter\n") }
+    rc, _, err = execute
+    refute_equal 0, rc
+    assert_includes err, "missing leading YAML frontmatter"
+    refute_includes err, "problem count is 0; expected 57"
+    refute_includes err, "pattern count is 0; expected 12"
+  end
+
   def test_source_typo_and_partial_score_are_rejected
     path = @root / "刷题记录" / "001.md"
     text = path.read.gsub("来源: 408真题", "来源: 408真题X").gsub("思想得分: ''", "思想得分: 0.1")
