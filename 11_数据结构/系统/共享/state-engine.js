@@ -93,8 +93,9 @@ var api = (function () {
   function validateCurrent(current) {
     if (!isRecord(current)) fail('current 必须是对象');
     if (statusIndex(current.状态) < 0) fail('current 的状态非法');
-    if (typeof current.复习次数 !== 'number' || !Number.isFinite(current.复习次数) || current.复习次数 < 0) {
-      fail('current 的复习次数必须是非负有限数值');
+    if (typeof current.复习次数 !== 'number' || !Number.isFinite(current.复习次数)
+      || !Number.isInteger(current.复习次数) || current.复习次数 < 0) {
+      fail('current 的复习次数必须是非负整数');
     }
   }
 
@@ -104,6 +105,9 @@ var api = (function () {
     Object.keys(evidence).forEach(function (field) {
       if (EVIDENCE_FIELDS.indexOf(field) < 0) fail('证据字段不被允许：' + field);
       if (nonEmpty(evidence[field])) {
+        if (typeof evidence[field] === 'object' || typeof evidence[field] === 'function') {
+          fail('证据字段必须是标量：' + field);
+        }
         draft[field] = evidence[field];
         patch[field] = evidence[field];
       }
@@ -170,13 +174,13 @@ var api = (function () {
       if (statusIndex(action.target) < 0) fail('目标状态非法');
       var currentIndex = statusIndex(current.状态);
       var targetIndex = statusIndex(action.target);
-      var needsEvidence = targetIndex > currentIndex
-        || (action.target === current.状态 && current.证据状态 === '待校准');
+      var calibratingCurrent = action.target === current.状态 && current.证据状态 === '待校准';
+      var needsEvidence = targetIndex > currentIndex || calibratingCurrent;
 
       setCommonTrainingPatch(patch, current, today);
       patch.状态 = action.target;
       if (needsEvidence) setTransitionEvidence(patch, draft, action.target, today);
-      if (current.证据状态 === '待校准' && evidenceSatisfied(draft, action.target)) {
+      if (calibratingCurrent && evidenceSatisfied(draft, action.target)) {
         patch.证据状态 = '有效';
       }
       return patch;

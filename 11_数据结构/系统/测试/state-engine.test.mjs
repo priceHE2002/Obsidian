@@ -19,6 +19,14 @@ function current(overrides = {}) {
   };
 }
 
+function deepFreeze(value) {
+  if (value !== null && typeof value === 'object' && !Object.isFrozen(value)) {
+    for (const key of Object.keys(value)) deepFreeze(value[key]);
+    Object.freeze(value);
+  }
+  return value;
+}
+
 test('CommonJS 与 Dataview Function 加载均公开相同 API', () => {
   const source = readFileSync(sourcePath, 'utf8');
   const dataviewApi = Function(`${source}\nreturn api;`)();
@@ -33,7 +41,7 @@ test('transition：独立通过首刷设置三天后的复习日期', () => {
   }, TODAY);
   assert.deepEqual(patch, {
     首刷结果: '独立通过', 最后训练: TODAY, 复习次数: 1, 状态: '已AC',
-    首刷日期: TODAY, 下次复习: '2026-08-21', 证据状态: '有效',
+    首刷日期: TODAY, 下次复习: '2026-08-21',
   });
 });
 
@@ -84,6 +92,16 @@ test('transition：回退至学习中不清空历史证据', () => {
   assert.equal(Object.hasOwn(patch, '二刷结果'), false);
 });
 
+test('transition：已AC待校准反向至学习中保留待校准状态', () => {
+  const patch = buildAction(current({
+    状态: '已AC', 证据状态: '待校准', 首刷日期: '2026-08-01', 首刷结果: '独立通过',
+  }), { kind: 'transition', target: '学习中' }, TODAY);
+  assert.equal(patch.状态, '学习中');
+  assert.equal(Object.hasOwn(patch, '证据状态'), false);
+  assert.equal(Object.hasOwn(patch, '首刷日期'), false);
+  assert.equal(Object.hasOwn(patch, '首刷结果'), false);
+});
+
 test('failure：首刷失败不推进状态且次日复习', () => {
   const patch = buildAction(current(), { kind: 'failure', stage: '首刷' }, TODAY);
   assert.deepEqual(patch, { 首刷结果: '失败', 最后训练: TODAY, 复习次数: 1, 下次复习: '2026-08-19' });
@@ -125,6 +143,26 @@ test('输入 current、action 与 evidence 均不被修改', () => {
   assert.equal(JSON.stringify({ item, action, evidence }), before);
 });
 
+test('递归冻结的 current、action 与 evidence 能完成有效 transition', () => {
+  const item = deepFreeze(current({ 元数据: { 标签: ['408'] } }));
+  const evidence = deepFreeze({ 首刷结果: '独立通过' });
+  const action = deepFreeze({ kind: 'transition', target: '已AC', evidence });
+  const patch = buildAction(item, action, TODAY);
+  assert.equal(patch.状态, '已AC');
+  assert.equal(Object.isFrozen(item.元数据.标签), true);
+  assert.equal(Object.isFrozen(action.evidence), true);
+});
+
+test('递归冻结的嵌套证据值被拒绝且异常不改变外部输入', () => {
+  const item = deepFreeze(current({ 元数据: { 标签: ['保留'] } }));
+  const evidence = deepFreeze({ 首刷结果: { 未知嵌套值: ['x'] } });
+  const action = deepFreeze({ kind: 'failure', stage: '首刷', evidence });
+  const before = JSON.stringify({ item, action, evidence });
+  assert.throws(() => buildAction(item, action, TODAY), /证据字段.*标量/);
+  assert.equal(JSON.stringify({ item, action, evidence }), before);
+  assert.equal(Object.isFrozen(evidence.首刷结果.未知嵌套值), true);
+});
+
 test('paperTotal 拒绝缺失、空白、NaN、Infinity、小数及越界评分', () => {
   const invalid = [
     {},
@@ -157,6 +195,10 @@ test('非法状态、动作、stage、today 与复习次数均拒绝', () => {
   assert.throws(() => buildAction(current(), { kind: 'failure', stage: '三刷' }, TODAY), /阶段/);
   assert.throws(() => buildAction(current(), { kind: 'failure', stage: '首刷' }, '2026-02-29'), /日期/);
   assert.throws(() => buildAction(current({ 复习次数: -1 }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
+  assert.throws(() => buildAction(current({ 复习次数: 1.5 }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
+  assert.throws(() => buildAction(current({ 复习次数: '1.5' }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
+  assert.throws(() => buildAction(current({ 复习次数: NaN }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
+  assert.throws(() => buildAction(current({ 复习次数: Infinity }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
   assert.throws(() => buildAction(current({ 复习次数: '0' }), { kind: 'failure', stage: '首刷' }, TODAY), /复习次数/);
   assert.throws(() => buildAction(null, { kind: 'failure', stage: '首刷' }, TODAY), /current/);
   assert.throws(() => buildAction(current(), null, TODAY), /action/);
