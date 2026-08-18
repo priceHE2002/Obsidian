@@ -1,0 +1,166 @@
+.ds408-control {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-m);
+  background: var(--background-secondary);
+}
+
+.ds408-control__status-row,
+.ds408-control__status-group,
+.ds408-control__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.ds408-control__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-s);
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+  font-size: var(--font-ui-smaller);
+  font-weight: var(--font-semibold);
+}
+
+.ds408-control__badge.is-warning {
+  background: var(--background-modifier-error);
+  color: var(--text-on-accent);
+}
+
+.ds408-control__status-button,
+.ds408-control__action-button {
+  min-height: 2.25rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.ds408-control__status-button.is-current,
+.ds408-control__action-button:not(.is-secondary) {
+  border-color: var(--interactive-accent);
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.ds408-control__action-button.is-secondary {
+  background: var(--background-secondary-alt);
+}
+
+.ds408-control__form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+}
+
+.ds408-control__field {
+  display: grid;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.ds408-control__field label {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.ds408-control__field input,
+.ds408-control__field select {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+  color: var(--text-normal);
+}
+
+.ds408-control__summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.ds408-control__summary-item {
+  min-width: 0;
+  padding: 0.55rem;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--radius-s);
+  background: var(--background-primary);
+}
+
+.ds408-control__summary-item dt {
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.ds408-control__summary-item dd {
+  margin: 0.2rem 0 0;
+  overflow-wrap: anywhere;
+  color: var(--text-normal);
+}
+
+.ds408-control__message {
+  min-height: 1.25rem;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--font-ui-smaller);
+}
+
+.ds408-control__message.is-error {
+  color: var(--text-error);
+}
+
+.ds408-control :is(button, input, select):focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 2px;
+}
+
+.ds408-control :is(button, input, select):disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ds408-control.is-compact {
+  gap: 0.5rem;
+  padding: 0.7rem;
+}
+
+.ds408-control.is-compact .ds408-control__form {
+  gap: 0.4rem;
+  padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .ds408-control__form,
+  .ds408-control__summary {
+    grid-template-columns: 1fr;
+  }
+
+  .ds408-control__status-button,
+  .ds408-control__action-button,
+  .ds408-control__field input,
+  .ds408-control__field select {
+    min-height: 44px;
+  }
+
+  .ds408-control__status-group,
+  .ds408-control__actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
