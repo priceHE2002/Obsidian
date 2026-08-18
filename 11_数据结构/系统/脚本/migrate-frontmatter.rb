@@ -25,17 +25,43 @@ module TrainingFrontmatterMigration
   CLEANUP_ATTEMPTS = 3
   Note = Struct.new(:path, :kind, :frontmatter, :body, :line_ending, keyword_init: true)
   PreparedWrite = Struct.new(:path, :contents, keyword_init: true)
-  TransactionRecord = Struct.new(:path, :contents, :stage, :backup, :backed_up, :installed, keyword_init: true)
+  TransactionRecord = Struct.new(:path, :contents, :stage, :backup, :mode, :backed_up, :installed, keyword_init: true)
 
   class MigrationError < StandardError; end
 
   class FileOperations
-    def write_stage(path, contents)
+    def write_stage(path, contents, mode)
       File.open(path, "wb") do |file|
         file.write(contents)
+        file.chmod(mode)
         file.flush
         file.fsync
       end
+    end
+
+    def hard_link(source, destination)
+      File.link(source, destination)
+    end
+
+    def copy_backup(source, destination)
+      File.open(source, "rb") do |input|
+        File.open(destination, "wb") do |output|
+          IO.copy_stream(input, output)
+          output.flush
+          output.fsync
+        end
+      end
+    end
+
+    def mode(path)
+      File.stat(path).mode & 0o777
+    end
+
+    def sync_directory(path)
+      File.open(File.dirname(path.to_s), "r") { |directory| directory.fsync }
+    rescue Errno::EACCES, Errno::EINVAL, Errno::EISDIR, Errno::EPERM, NotImplementedError
+      # Some filesystems and platforms do not expose directory fsync through Ruby.
+      nil
     end
 
     def rename(source, destination)
@@ -145,7 +171,21 @@ module TrainingFrontmatterMigration
         raise MigrationError, "#{path}: complex YAML mapping keys are not supported"
       end
 
-      key.value
+      if key.tag && !yaml_string_tag?(key.tag)
+        raise MigrationError, "#{path}: YAML mapping key #{key.value.inspect} must resolve to a string"
+      end
+      return key.value if key.quoted || yaml_string_tag?(key.tag)
+
+      value = YAML.safe_load(key.value, permitted_classes: [Date], aliases: false)
+      return value if value.is_a?(String)
+
+      raise MigrationError, "#{path}: YAML mapping key #{key.value.inspect} must resolve to a string"
+    rescue Psych::Exception => e
+      raise MigrationError, "#{path}: invalid YAML mapping key #{key.value.inspect} (#{e.message})"
+    end
+
+    def yaml_string_tag?(tag)
+      tag == "!!str" || tag == "tag:yaml.org,2002:str"
     end
 
     def migrate(note)
@@ -223,6 +263,7 @@ module TrainingFrontmatterMigration
           contents: prepared.contents,
           stage: artifact_path(prepared.path, ".tmp"),
           backup: artifact_path(prepared.path, ".backup"),
+          mode: nil,
           backed_up: false,
           installed: false
         )
@@ -253,24 +294,41 @@ module TrainingFrontmatterMigration
     end
 
     def stage_records(records)
-      records.each { |record| @file_operations.write_stage(record.stage, record.contents) }
+      records.each do |record|
+        record.mode = @file_operations.mode(record.path)
+        @file_operations.write_stage(record.stage, record.contents, record.mode)
+      end
     end
 
     def replace_records(records)
       records.each do |record|
-        @file_operations.rename(record.path, record.backup)
-        record.backed_up = true
+        create_backup(record)
         @file_operations.rename(record.stage, record.path)
+        @file_operations.sync_directory(record.path)
         record.installed = true
       end
+    end
+
+    def create_backup(record)
+      begin
+        @file_operations.hard_link(record.path, record.backup)
+      rescue SystemCallError, NotImplementedError
+        @file_operations.copy_backup(record.path, record.backup)
+      end
+      record.backed_up = true
+      @file_operations.sync_directory(record.path)
     end
 
     def rollback_records(records)
       errors = []
       records.reverse_each do |record|
         begin
-          @file_operations.delete(record.path) if record.installed && @file_operations.exist?(record.path)
-          @file_operations.rename(record.backup, record.path) if record.backed_up && @file_operations.exist?(record.backup)
+          if record.installed && @file_operations.exist?(record.backup)
+            @file_operations.rename(record.backup, record.path)
+            @file_operations.sync_directory(record.path)
+          elsif record.backed_up && @file_operations.exist?(record.backup)
+            @file_operations.delete(record.backup)
+          end
         rescue SystemCallError, IOError => e
           errors << "rollback #{record.path}: #{e.message}"
         end

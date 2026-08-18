@@ -280,8 +280,43 @@ class MigrateFrontmatterTest < Minitest::Test
 
       refute_equal 0, status
       assert_includes output, "injected replacement failure"
+      assert operations.replacement_targets_always_present?
       originals.each { |path, bytes| assert_equal bytes, File.binread(path) }
       assert_no_transaction_artifacts(root)
+    end
+  end
+
+  def test_plain_non_string_yaml_mapping_keys_abort_whole_batch_without_writes
+    with_vault do |root|
+      valid = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      invalid = write_note(root, "母题模板", "M01.md", <<~YAML)
+        嵌套:
+          true: first
+          True: second
+          null: third
+          1: fourth
+      YAML
+      original = File.binread(valid)
+
+      output, status = run_migration(root)
+
+      refute_equal 0, status
+      assert_includes output, invalid
+      assert_match(/must resolve to a string/, output)
+      assert_equal original, File.binread(valid)
+    end
+  end
+
+  def test_replacement_preserves_existing_file_mode
+    with_vault do |root|
+      problem = write_note(root, "刷题记录", "001.md", "状态: 未开始\n")
+      write_note(root, "母题模板", "M01.md", "母题编号: M01\n")
+      File.chmod(0o600, problem)
+
+      output, status = run_migration(root)
+
+      assert_equal 0, status, output
+      assert_equal 0o600, File.stat(problem).mode & 0o777
     end
   end
 
@@ -315,14 +350,16 @@ class MigrateFrontmatterTest < Minitest::Test
       @stage_calls = 0
       @replacement_calls = 0
       @backup_cleanup_calls = 0
+      @replacement_target_observations = []
     end
 
-    def write_stage(path, contents)
+    def write_stage(path, contents, mode)
       @stage_calls += 1
       raise IOError, "injected staging failure" if @stage_calls == @fail_stage_number
 
       File.open(path, "wb") do |file|
         file.write(contents)
+        file.chmod(mode)
         file.flush
         file.fsync
       end
@@ -331,9 +368,11 @@ class MigrateFrontmatterTest < Minitest::Test
     def rename(source, destination)
       if source.to_s.end_with?(".tmp") && !destination.to_s.end_with?(".tmp")
         @replacement_calls += 1
+        @replacement_target_observations << File.exist?(destination)
         raise IOError, "injected replacement failure" if @replacement_calls == @fail_replacement_number
       end
       File.rename(source, destination)
+      @replacement_target_observations << File.exist?(destination) if source.to_s.end_with?(".tmp") && !destination.to_s.end_with?(".tmp")
     end
 
     def delete(path)
@@ -349,6 +388,36 @@ class MigrateFrontmatterTest < Minitest::Test
 
     def exist?(path)
       File.exist?(path)
+    end
+
+    def hard_link(source, destination)
+      File.link(source, destination)
+    end
+
+    def copy_backup(source, destination)
+      File.open(source, "rb") do |input|
+        File.open(destination, "wb") do |output|
+          IO.copy_stream(input, output)
+          output.flush
+          output.fsync
+        end
+      end
+    end
+
+    def mode(path)
+      File.stat(path).mode & 0o777
+    end
+
+    def chmod(mode, path)
+      File.chmod(mode, path)
+    end
+
+    def sync_directory(_path)
+      nil
+    end
+
+    def replacement_targets_always_present?
+      !@replacement_target_observations.empty? && @replacement_target_observations.all?
     end
   end
 end
