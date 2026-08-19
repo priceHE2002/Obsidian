@@ -145,7 +145,7 @@ class ApexDashboardContractTest < Minitest::Test
     refute_match(/wrk-[A-Za-z0-9_-]+|(?:cookie|csrf)\s*[:=]\s*[^\s\"']+/i, JSON.generate(settings))
   end
 
-  def test_dashboard_parses_to_exact_actions_and_forward_compatible_columns
+  def test_dashboard_parses_to_exact_actions_and_apex_186_persisted_query_shape
     assert_equal true, @frontmatter.fetch("dashboard")
     assert_equal({ "quote" => "数据结构的每一分，都来自限时、手写与复盘。", "author" => "408 备考" }, @frontmatter.fetch("banner"))
 
@@ -161,10 +161,7 @@ class ApexDashboardContractTest < Minitest::Test
     columns.each do |column|
       assert_equal "dataview", column.fetch("type")
       config = column.fetch("dataview")
-      assert_equal 5, config.fetch("pageSize")
-      assert_equal "compact", config.fetch("density")
-      assert_equal false, config.fetch("striped")
-      assert_equal false, config.fetch("rowNumbers")
+      assert_equal %w[query title], config.keys.sort
       assert_balanced_dql(config.fetch("query"))
       refute_empty config.fetch("title")
     end
@@ -206,7 +203,8 @@ class ApexDashboardContractTest < Minitest::Test
 
     scores = queries.fetch("本周得分链")
     %w[思想得分 正确性得分 代码得分 复杂度得分 总分].each { |term| assert_includes scores, term }
-    assert_includes scores, '最后训练) >= date("today") - dur("7 days")'
+    assert_includes scores, 'date(choice(最后训练, 最后训练, "2999-12-31")) >= date("today") - dur("7 days")'
+    assert_match(/LIMIT\s+50\z/i, scores)
 
     stages = queries.fetch("训练阶段分布")
     assert_includes stages, "GROUP BY 状态"
