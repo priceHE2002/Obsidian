@@ -20,7 +20,15 @@ const tableWrap = root.createEl("div", { cls: "ds408-bank__table-wrap" });
 
 function value(p, field) { return p && p[field] !== undefined && p[field] !== null && String(p[field]).trim() !== "" ? p[field] : ""; }
 function pathOf(p) { return p && p.file && p.file.path ? String(p.file.path) : ""; }
-function dateKey(v) { const date = String(v || "").slice(0, 10); return /^\d{4}-\d{2}-\d{2}$/.test(date) && !Number.isNaN(Date.parse(`${date}T00:00:00Z`)) ? date : "9999-12-31"; }
+function dateKey(value) {
+  if (value && typeof value.toISODate === "function") value = value.toISODate();
+  const raw = value === undefined || value === null ? "" : String(value).slice(0, 10);
+  const matched = /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw);
+  if (!matched) return "9999-12-31";
+  const year = Number(matched[1]); const month = Number(matched[2]); const date = Number(matched[3]);
+  const utc = new Date(Date.UTC(year, month - 1, date));
+  return utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === date ? raw : "9999-12-31";
+}
 function sortValue(p, key) {
   if (key === "题号") return Number(value(p, "题号")) || Number.MAX_SAFE_INTEGER;
   if (key === "母题") return String(value(p, "母题"));
@@ -36,10 +44,10 @@ function matches(p) { return (state.filters.mother === "全部" || value(p, "母
   && (state.filters.priority === "全部" || value(p, "优先级") === state.filters.priority)
   && (state.filters.source === "全部" || value(p, "来源") === state.filters.source)
   && (state.filters.evidence === "全部" || value(p, "证据状态") === state.filters.evidence); }
-function button(parent, label, cls, handler) { const node = text(parent, "button", label, cls); node.type = "button"; node.addEventListener("click", handler); return node; }
+function button(parent, label, cls, handler) { const node = text(parent, "button", label, cls); node.type = "button"; node.disabled = state.busy; node.addEventListener("click", handler); return node; }
 function makeFilter(labelText, filter, options) {
   const item = controls.createEl("label", { cls: "ds408-bank__filter" }); text(item, "span", labelText);
-  const select = item.createEl("select"); select.setAttribute("data-filter", filter); select.value = state.filters[filter];
+  const select = item.createEl("select"); select.setAttribute("data-filter", filter); select.value = state.filters[filter]; select.disabled = state.busy;
   options.forEach(option => { const node = select.createEl("option"); node.value = option; node.textContent = option; });
   select.addEventListener("change", () => { state.filters[filter] = select.value; render(); });
 }
@@ -48,12 +56,18 @@ makeFilter("状态", "status", ["全部", ...engine.STATUSES]);
 makeFilter("优先级", "priority", ["全部", "S+", "S", "A", "B"]);
 makeFilter("来源", "source", ["全部", "408真题", "LeetCode"]);
 makeFilter("证据", "evidence", ["全部", "有效", "待校准"]);
-button(controls, "清空筛选", "ds408-bank__clear", () => { Object.keys(state.filters).forEach(key => { state.filters[key] = "全部"; }); render(); });
+button(controls, "清空筛选", "ds408-bank__clear", () => { if (state.busy) return; Object.keys(state.filters).forEach(key => { state.filters[key] = "全部"; }); render(); });
 
 function makeLink(parent, page, label) { const link = text(parent, "a", label, "internal-link ds408-bank__link"); link.setAttribute("data-href", pathOf(page)); link.setAttribute("href", pathOf(page)); }
 function rowText(row, content) { text(row, "td", content === "" ? "—" : String(content)); }
-function setBusy(busy) { state.busy = busy; root.setAttribute("aria-busy", String(busy)); render(); }
+function setBusy(busy) {
+  state.busy = busy; root.setAttribute("aria-busy", String(busy));
+  root.querySelectorAll("button").forEach(node => { node.disabled = busy; });
+  root.querySelectorAll("select").forEach(node => { node.disabled = busy; });
+  render();
+}
 async function saveAction(page, action) {
+  if (state.busy) return;
   const file = page && page.file && page.file.path ? dv.app.vault.getAbstractFileByPath(page.file.path) : null;
   if (!file || !file.path) { message("题目文件不存在，未执行任何写入。", true); return; }
   setBusy(true); message("正在保存训练记录…");
@@ -106,7 +120,7 @@ function render() {
   if (!filtered.length) { text(tableWrap, "p", "没有符合当前组合筛选条件的题目。", "ds408-bank__empty"); return; }
   const table = tableWrap.createEl("table", { cls: "ds408-bank__table" }); const head = table.createEl("thead").createEl("tr");
   const columns = [["题号", "题号"], ["母题", "母题"], ["标题", null], ["优先级", "优先级"], ["来源", null], ["证据", null], ["下次复习", "下次复习"], ["纸笔分", "纸笔得分"], ["状态", "状态"], ["状态操作", null]];
-  columns.forEach(([label, key]) => { const th = head.createEl("th"); if (!key) { text(th, "span", label); return; } const sort = button(th, label, "ds408-bank__sort", () => { state.sort = { key, direction: state.sort.key === key && state.sort.direction === "asc" ? "desc" : "asc" }; render(); }); sort.setAttribute("aria-sort", state.sort.key === key ? (state.sort.direction === "asc" ? "ascending" : "descending") : "none"); });
+  columns.forEach(([label, key]) => { const th = head.createEl("th"); if (!key) { text(th, "span", label); return; } th.setAttribute("aria-sort", state.sort.key === key ? (state.sort.direction === "asc" ? "ascending" : "descending") : "none"); const sort = button(th, label, "ds408-bank__sort", () => { state.sort = { key, direction: state.sort.key === key && state.sort.direction === "asc" ? "desc" : "asc" }; render(); }); sort.setAttribute("aria-label", `按${label}排序`); });
   const body = table.createEl("tbody"); filtered.forEach(page => { const row = body.createEl("tr"); const first = row.createEl("td"); makeLink(first, page, String(value(page, "题号") || "—")); rowText(row, value(page, "母题")); rowText(row, value(page, "标题")); rowText(row, value(page, "优先级")); rowText(row, value(page, "来源")); rowText(row, value(page, "证据状态")); rowText(row, value(page, "下次复习")); rowText(row, value(page, "纸笔得分")); rowText(row, value(page, "状态")); statusButtons(row, page); });
 }
 render();

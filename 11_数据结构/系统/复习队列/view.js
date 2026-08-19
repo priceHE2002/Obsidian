@@ -7,11 +7,15 @@ const stateOrder = { "未开始": 0, "学习中": 1, "已AC": 2, "已二刷": 3,
 
 function text(parent, tag, value, cls) { const node = parent.createEl(tag, cls ? { cls } : undefined); node.textContent = value; return node; }
 function day(value) {
-  if (value && typeof value.toISODate === "function") return value.toISODate() || null;
+  if (value && typeof value.toISODate === "function") value = value.toISODate();
   const raw = value === undefined || value === null ? "" : String(value).slice(0, 10);
-  return /^\d{4}-\d{2}-\d{2}$/.test(raw) && !Number.isNaN(Date.parse(`${raw}T00:00:00Z`)) ? raw : null;
+  const matched = /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw);
+  if (!matched) return null;
+  const year = Number(matched[1]); const month = Number(matched[2]); const date = Number(matched[3]);
+  const utc = new Date(Date.UTC(year, month - 1, date));
+  return utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === date ? raw : null;
 }
-const today = day(typeof dv.date === "function" ? dv.date("today") : null) || (window.moment ? window.moment().format("YYYY-MM-DD") : new Date().toISOString().slice(0, 10));
+const today = day(typeof dv.date === "function" ? dv.date("today") : null) || day(window.moment ? window.moment().format("YYYY-MM-DD") : null) || day(new Date().toISOString());
 const sevenDays = window.moment ? window.moment(today).add(7, "days").format("YYYY-MM-DD") : today;
 function value(p, key) { return p && p[key] !== undefined && p[key] !== null ? String(p[key]) : ""; }
 function pathOf(p) { return p && p.file && p.file.path ? String(p.file.path) : ""; }

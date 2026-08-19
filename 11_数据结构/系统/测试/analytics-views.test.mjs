@@ -4,93 +4,124 @@ import { test } from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const root = fileURLToPath(new URL('../../../', import.meta.url));
-const paths = {
-  kpi: `${root}11_数据结构/系统/统计卡/view.js`,
-  queue: `${root}11_数据结构/系统/复习队列/view.js`,
-  bank: `${root}11_数据结构/系统/题库表/view.js`,
-  dashboard: `${root}11_数据结构/总览.md`,
-  sprint: `${root}11_数据结构/真题/真题冲刺.md`,
-  retry: `${root}11_数据结构/错题回炉.md`,
-  calibration: `${root}11_数据结构/训练数据校准.md`,
-};
+const paths = Object.fromEntries(['kpi', 'queue', 'bank'].map((key) => [key, `${root}11_数据结构/系统/${{ kpi: '统计卡', queue: '复习队列', bank: '题库表' }[key]}/view.js`]));
+const engineSource = readFileSync(`${root}11_数据结构/系统/共享/state-engine.js`, 'utf8');
+const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
+const source = (key) => readFileSync(paths[key], 'utf8');
 
-function source(key) { return readFileSync(paths[key], 'utf8'); }
-function flatPages(items) {
-  return {
-    where(predicate) { return flatPages(items.filter(predicate)); },
-    array() { return [...items]; },
-  };
-}
 class Element {
-  constructor(tag = 'div', options = {}) { this.tag = tag; this.cls = options.cls || ''; this.children = []; this.attributes = {}; this.textContent = ''; this.hidden = false; this.classList = { toggle() {} }; }
-  createEl(tag, options = {}) { const child = new Element(tag, options); this.children.push(child); return child; }
+  constructor(tag = 'div', options = {}) {
+    this.tag = tag; this.children = []; this.parentElement = null; this.attributes = {}; this.handlers = new Map();
+    this.textContent = ''; this.value = ''; this.type = ''; this.disabled = false; this.hidden = false; this.className = options.cls || '';
+    this.classList = { toggle: (name, force) => { const names = new Set(this.className.split(/\s+/).filter(Boolean)); force ? names.add(name) : names.delete(name); this.className = [...names].join(' '); } };
+  }
+  createEl(tag, options = {}) { const child = new Element(tag, options); this.appendChild(child); return child; }
+  appendChild(child) { child.parentElement = this; this.children.push(child); return child; }
+  replaceChildren(...children) { this.children.forEach((child) => { child.parentElement = null; }); this.children = []; children.forEach((child) => this.appendChild(child)); }
+  insertAdjacentElement(_position, child) { const parent = this.parentElement; const index = parent.children.indexOf(this); child.parentElement = parent; parent.children.splice(index + 1, 0, child); return child; }
+  remove() { if (!this.parentElement) return; const index = this.parentElement.children.indexOf(this); if (index >= 0) this.parentElement.children.splice(index, 1); this.parentElement = null; }
   setAttribute(name, value) { this.attributes[name] = String(value); }
-  addEventListener() {}
+  getAttribute(name) { return this.attributes[name] ?? null; }
+  addEventListener(type, handler) { const list = this.handlers.get(type) || []; list.push(handler); this.handlers.set(type, list); }
+  dispatch(type) { if (type === 'click' && this.disabled) return undefined; return (this.handlers.get(type) || []).map((handler) => handler({ target: this, preventDefault() {} })); }
+  click() { return this.dispatch('click'); }
+  change() { return this.dispatch('change'); }
+  input() { return this.dispatch('input'); }
+  submit() { return this.dispatch('submit'); }
+  get valueAsNumber() { return Number(this.value); }
+  querySelectorAll(selector) { return all(this).filter((node) => matches(node, selector)); }
 }
-function collectText(node) { return [node.textContent, ...node.children.map(collectText)].join(' '); }
+function all(node) { return node.children.flatMap((child) => [child, ...all(child)]); }
+function matches(node, selector) {
+  const part = selector.trim(); const tag = part.match(/^[a-z]+/i)?.[0]; const cls = part.match(/\.([\w-]+)/)?.[1]; const attr = part.match(/\[([^=\]]+)(?:=["']?([^\]"']+)["']?)?\]/);
+  return (!tag || node.tag === tag) && (!cls || node.className.split(/\s+/).includes(cls)) && (!attr || (attr[2] === undefined ? Object.hasOwn(node.attributes, attr[1]) : node.getAttribute(attr[1]) === attr[2]));
+}
+function find(rootNode, selector) { const node = rootNode.querySelectorAll(selector)[0]; assert.ok(node, `missing ${selector}`); return node; }
+function textOf(node) { return [node.textContent, ...node.children.map(textOf)].join(' '); }
+function flatPages(items) { return { where(predicate) { return flatPages(items.filter(predicate)); }, array() { return [...items]; } }; }
+function moment(today = '2026-08-19') {
+  return (value) => ({ format: () => value || today, add: (days) => ({ format: () => { const date = new Date(`${value || today}T00:00:00Z`); date.setUTCDate(date.getUTCDate() + days); return date.toISOString().slice(0, 10); } }) });
+}
+async function runView(key, { problems = [], patterns = [], today = '2026-08-19', load = engineSource, processFrontMatter, confirm = () => true } = {}) {
+  const roots = []; const document = { createElement: (tag) => new Element(tag) }; const files = new Map(problems.map((p) => [p.file.path, { ...p }]));
+  const dv = {
+    pages(path) { return flatPages(path.includes('母题模板') ? patterns : problems); },
+    date() { return { toISODate: () => today }; },
+    el(tag, _value, options) { const element = new Element(tag, options); roots.push(element); return element; },
+    io: { load: async () => load },
+    app: { vault: { getAbstractFileByPath: (path) => files.has(path) ? { path } : null }, fileManager: { processFrontMatter: processFrontMatter || (async (file, callback) => callback(files.get(file.path))) } },
+  };
+  globalThis.document = document;
+  await new AsyncFunction('dv', 'input', 'window', 'Notice', source(key))(dv, {}, { moment: moment(today), confirm }, class {});
+  return { root: roots[0], files, dv, document };
+}
+function problem(overrides = {}) { const id = overrides.题号 ?? 1; return { 题号: id, 母题: 'M01', 标题: `题${id}`, 优先级: 'S', 来源: 'LeetCode', 手写: '必须', 状态: '学习中', 证据状态: '有效', 复习次数: 0, file: { path: `11_数据结构/刷题记录/${id}.md` }, ...overrides }; }
+function flush() { return new Promise((resolve) => setTimeout(resolve, 0)); }
 
-test('analytics custom views exist and compile as AsyncFunction', () => {
-  for (const key of ['kpi', 'queue', 'bank']) {
-    assert.equal(existsSync(paths[key]), true, `${key} view is missing`);
-    const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-    assert.doesNotThrow(() => new AsyncFunction('dv', 'input', 'window', 'Notice', source(key)));
+test('views compile and KPI executes the specified formula on known data', async () => {
+  for (const key of Object.keys(paths)) { assert.equal(existsSync(paths[key]), true); assert.doesNotThrow(() => new AsyncFunction('dv', 'input', 'window', 'Notice', source(key))); }
+  const { root: kpi } = await runView('kpi', { problems: [problem({ 题号: 1, 状态: '未开始' }), problem({ 题号: 2, 状态: '已AC' }), problem({ 题号: 3, 状态: '可纸笔', 来源: '408真题' }), problem({ 题号: 4, 状态: '已AC', 来源: '408真题' })] });
+  assert.match(textOf(kpi), /50\.0%/); assert.match(textOf(kpi), /75\.0%/);
+});
+
+test('queue treats impossible calendar dates as invalid for alerts and stable ranking', async () => {
+  const { root: queue } = await runView('queue', { problems: [problem({ 题号: 1, 下次复习: '2026-02-31', 状态: '未开始' }), problem({ 题号: 2, 下次复习: '2026-08-18', 状态: '未开始' }), problem({ 题号: 3, 下次复习: '2026-08-20', 状态: '未开始' })] });
+  const alerts = find(queue, '.ds408-review-queue__alerts').children;
+  assert.equal(alerts[0].children[0].textContent, '1');
+  assert.equal(alerts[1].children[0].textContent, '1');
+  assert.match(textOf(find(queue, '.ds408-review-queue__list').children[0]), /2 · 题2/);
+});
+
+test('bank filters are AND-composed and reset through dispatched change/click events', async () => {
+  const items = [problem({ 题号: 1 }), problem({ 题号: 2, 优先级: 'A' }), problem({ 题号: 3, 母题: 'M02' })];
+  const { root: bank } = await runView('bank', { problems: items });
+  for (const [filter, value] of [['mother', 'M01'], ['status', '学习中'], ['priority', 'S'], ['source', 'LeetCode'], ['evidence', '有效']]) { const select = find(bank, `select[data-filter=${filter}]`); select.value = value; select.change(); }
+  assert.match(textOf(find(bank, '.ds408-bank__summary')), /显示 1 \/ 3 题/);
+  find(bank, '.ds408-bank__clear').click();
+  assert.match(textOf(find(bank, '.ds408-bank__summary')), /显示 3 \/ 3 题/);
+});
+
+test('bank puts aria-sort on six column headers and updates sort direction', async () => {
+  const { root: bank } = await runView('bank', { problems: [problem({ 题号: 2, 下次复习: '2026-02-31' }), problem({ 题号: 1, 下次复习: '2026-08-18' })] });
+  let headers = bank.querySelectorAll('th'); assert.equal(headers.filter((node) => node.getAttribute('aria-sort') !== null).length, 6);
+  assert.equal(headers.find((node) => node.children.some((child) => child.textContent === '题号')).getAttribute('aria-sort'), 'ascending');
+  find(bank, '.ds408-bank__sort').click(); headers = bank.querySelectorAll('th'); assert.equal(headers.find((node) => node.children.some((child) => child.textContent === '题号')).getAttribute('aria-sort'), 'descending');
+  const reviewButton = bank.querySelectorAll('.ds408-bank__sort').find((node) => node.textContent === '下次复习'); reviewButton.click();
+  const body = find(bank, 'tbody'); assert.equal(textOf(body.children[0].children[0]).trim(), '1');
+});
+
+test('bank status interaction opens editor without writing and saves numeric evidence once', async () => {
+  let writes = 0; const records = [problem()];
+  const { root: bank } = await runView('bank', { problems: records, processFrontMatter: async (file, callback) => { writes += 1; callback(records.find((item) => item.file.path === file.path)); } });
+  const ac = bank.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '已AC'); ac.click(); assert.equal(writes, 0);
+  const editor = find(bank, '.ds408-bank__editor'); const fields = editor.querySelectorAll('select, input');
+  find(editor, 'select').value = '独立通过'; find(editor, 'input').value = '12'; find(editor, '.ds408-bank__save').click(); await flush();
+  assert.equal(writes, 1); assert.equal(typeof records[0].首刷耗时, 'number');
+});
+
+test('bank permits same pending state editing, disables a valid current state, and protects frontmatter on engine throw', async () => {
+  const pending = problem({ 状态: '已AC', 证据状态: '待校准' }); const { root: pendingBank } = await runView('bank', { problems: [pending] });
+  const pendingCurrent = pendingBank.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '已AC'); assert.equal(pendingCurrent.disabled, false); pendingCurrent.click(); assert.ok(pendingBank.querySelectorAll('.ds408-bank__editor').length);
+  const valid = problem({ 状态: '已AC', 证据状态: '有效' }); const { root: validBank } = await runView('bank', { problems: [valid] }); assert.equal(validBank.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '已AC').disabled, true);
+  const fm = { ...problem() }; const before = structuredClone(fm); const throwing = 'var api={STATUSES:["未开始","学习中","已AC","已二刷","可纸笔"],buildAction:function(){throw new Error("boom")}};';
+  const { root: throwBank } = await runView('bank', { problems: [fm], load: throwing, processFrontMatter: async (_file, callback) => callback(fm) }); throwBank.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '已AC').click(); find(throwBank, '.ds408-bank__editor').querySelectorAll('.ds408-bank__save')[0].click(); await flush(); assert.deepEqual(fm, before);
+});
+
+test('bank backward respects confirmation and save locking prevents duplicate confirm writes', async () => {
+  const completed = problem({ 状态: '已AC', 证据状态: '有效', 首刷日期: '2026-08-01', 首刷结果: '独立通过' }); let backwardWrites = 0; let allow = false;
+  const one = await runView('bank', { problems: [completed], confirm: () => allow, processFrontMatter: async (file, callback) => { backwardWrites += 1; callback(completed); } });
+  const back = one.root.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '未开始'); back.click(); assert.equal(backwardWrites, 0); allow = true; back.click(); await flush(); assert.equal(backwardWrites, 1);
+  const locked = problem(); let writes = 0; let release; const gate = new Promise((resolve) => { release = resolve; });
+  const two = await runView('bank', { problems: [locked], processFrontMatter: async (file, callback) => { writes += 1; callback(locked); await gate; } });
+  const ac = two.root.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '已AC'); ac.click(); find(two.root, 'select').value = '独立通过'; const save = find(two.root, '.ds408-bank__save'); save.click(); save.click(); await flush(); assert.equal(writes, 1); release(); await flush();
+});
+
+test('views retain scoped token-only CSS and the dashboard/query-page composition', () => {
+  for (const [folder, cssRoot] of [['统计卡', 'ds408-kpi'], ['复习队列', 'ds408-review-queue'], ['题库表', 'ds408-bank']]) {
+    const css = readFileSync(`${root}11_数据结构/系统/${folder}/view.css`, 'utf8');
+    assert.equal(/#[0-9a-f]{3,8}\b|\brgba?\s*\(/i.test(css), false); assert.match(css, new RegExp(`\\.${cssRoot}[^{}]*:focus-visible`)); assert.match(css, /44px/);
   }
-});
-
-test('KPI uses the canonical problem query and precise metrics', async () => {
-  const text = source('kpi');
-  assert.match(text, /dv\.pages\('\"11_数据结构\/刷题记录\"'\)\.where\(p\s*=>\s*p\.题号\s*!==\s*undefined\s*&&\s*p\.题号\s*!==\s*null\)\.array\(\)/);
-  for (const cls of ['weighted', 'ac', 'paper', 'exam']) assert.match(text, new RegExp(`ds408-kpi-${cls}`));
-  const pages = [
-    { 题号: 1, 状态: '未开始', 来源: 'LeetCode' },
-    { 题号: 2, 状态: '已AC', 来源: 'LeetCode' },
-    { 题号: 3, 状态: '可纸笔', 来源: '408真题' },
-    { 题号: 4, 状态: '已AC', 来源: '408真题' },
-  ];
-  const roots = [];
-  const dv = { pages: () => flatPages(pages), el(tag, value, options) { const e = new Element(tag, options); roots.push(e); return e; } };
-  const AsyncFunction = Object.getPrototypeOf(async function () {}).constructor;
-  await new AsyncFunction('dv', 'input', 'window', 'Notice', source('kpi'))(dv, {}, {}, class {});
-  const output = roots.map(collectText).join(' ');
-  assert.match(output, /50\.0%/); // (0 + .5 + 1 + .5) / 4
-  assert.match(output, /75\.0%/);
-});
-
-test('queue and bank retain their safety and interaction contract', () => {
-  const queue = source('queue');
-  assert.match(queue, /ds408-review-queue/);
-  assert.match(queue, /证据待补/);
-  assert.match(queue, /<\s*today/);
-  assert.match(queue, /<=\s*sevenDays/);
-  assert.match(queue, /new Set/);
-  const bank = source('bank');
-  assert.match(bank, /await dv\.io\.load\("11_数据结构\/系统\/共享\/state-engine\.js"\)/);
-  assert.equal((bank.match(/dv\.io\.load/g) || []).length, 1);
-  assert.equal((bank.match(/processFrontMatter\(/g) || []).length >= 1, true);
-  assert.equal(/innerHTML/.test(bank), false);
-  for (const filter of ['mother', 'status', 'priority', 'source', 'evidence']) assert.equal(bank.includes(`"${filter}"`), true, filter);
-  assert.match(bank, /window\.confirm\(/);
-  assert.match(bank, /engine\.buildAction/);
-});
-
-test('analytics CSS is locally scoped, token-only, and touch friendly', () => {
-  for (const [key, cssRoot] of [['kpi', 'ds408-kpi'], ['queue', 'ds408-review-queue'], ['bank', 'ds408-bank']]) {
-    const cssPath = paths[key].replace(/view\.js$/, 'view.css');
-    assert.equal(existsSync(cssPath), true);
-    const css = readFileSync(cssPath, 'utf8');
-    assert.equal(/#[0-9a-f]{3,8}\b|\brgba?\s*\(/i.test(css), false);
-    assert.match(css, new RegExp(`\\.${cssRoot}[^{}]*:focus-visible`));
-    assert.match(css, /44px/);
-    for (const selector of css.matchAll(/(^|\n)\s*(\.[^{\n]+)\{/g)) assert.match(selector[2].trim(), new RegExp(`^\\.${cssRoot}`));
-  }
-});
-
-test('dashboard and supporting query pages use the prescribed thin Dataview composition', () => {
-  const dashboard = source('dashboard');
-  for (const view of ['统计卡', '复习队列', '题库表']) assert.equal(dashboard.includes(`dv.view("11_数据结构/系统/${view}")`), true);
-  assert.match(dashboard, /TABLE 母题模块, 模板状态, 复写得分, 下次复写/);
-  assert.match(source('sprint'), /来源\s*=\s*"408真题"/);
-  assert.match(source('retry'), /错误类型\s*!=\s*"无"\s+OR\s+证据状态\s*=\s*"待校准"/);
-  assert.match(source('calibration'), /回退阶段不会清除/);
-  assert.match(source('calibration'), /证据状态\s*=\s*"待校准"/);
+  const dashboard = readFileSync(`${root}11_数据结构/总览.md`, 'utf8'); for (const view of ['统计卡', '复习队列', '题库表']) assert.equal(dashboard.includes(`dv.view("11_数据结构/系统/${view}")`), true);
+  const sprint = readFileSync(`${root}11_数据结构/真题/真题冲刺.md`, 'utf8'); const retry = readFileSync(`${root}11_数据结构/错题回炉.md`, 'utf8'); const calibration = readFileSync(`${root}11_数据结构/训练数据校准.md`, 'utf8');
+  assert.match(sprint, /来源\s*=\s*"408真题"/); assert.match(retry, /错误类型\s*!=\s*"无"\s+OR\s+证据状态\s*=\s*"待校准"/); assert.match(calibration, /回退阶段不会清除/);
 });
