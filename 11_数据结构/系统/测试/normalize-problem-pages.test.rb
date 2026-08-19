@@ -297,4 +297,43 @@ class NormalizeProblemPagesTest < Minitest::Test
       end
     end
   end
+
+  def test_leetcode_unknown_h2_and_fenced_h2_in_goal_and_notes_survive_second_run
+    note = "第一段\n\n## 自定义分析\n\n```cpp\n## 不是页面章节\n```\n\n末段"
+    page = legacy(note: note).sub("保持目标", "保持目标\n\n## 目标子标题")
+    with_fixture("a.md" => page) do |root, directory|
+      assert_equal 0, run_normalizer(root).first
+      path = File.join(directory, "a.md")
+      first = File.binread(path)
+      assert_includes first, "## 目标子标题\n".b
+      assert_includes first, note.b
+      assert_equal 0, run_normalizer(root).first
+      assert_equal first, File.binread(path)
+    end
+  end
+
+  def test_exam_unknown_h2_and_fenced_h2_are_quoted_and_idempotent
+    note = "2018 答案\n\n## 自定义分析\n\n```cpp\n## 代码内标题\n```"
+    with_fixture("a.md" => legacy(source: "408真题", note: note)) do |root, directory|
+      assert_equal 0, run_normalizer(root).first
+      path = File.join(directory, "a.md")
+      first = File.binread(path)
+      assert_includes first, "> ## 自定义分析\n>\n> ```cpp\n> ## 代码内标题\n> ```".b
+      assert_equal 0, run_normalizer(root).first
+      assert_equal first, File.binread(path)
+    end
+  end
+
+  def test_unknown_h2_after_navigation_is_unclassified_tail_not_protected_note_content
+    with_fixture("a.md" => legacy) do |root, directory|
+      assert_equal 0, run_normalizer(root).first
+      path = File.join(directory, "a.md")
+      broken = File.binread(path) + "## 导航后的未知标题\n".b
+      File.binwrite(path, broken)
+      status, _out, err = run_normalizer(root)
+      assert_equal 1, status
+      assert_match(/missing legacy boundary/, err)
+      assert_equal broken, File.binread(path)
+    end
+  end
 end

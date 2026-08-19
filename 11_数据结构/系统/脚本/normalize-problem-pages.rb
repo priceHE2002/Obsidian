@@ -178,7 +178,7 @@ module NormalizeProblemPages
     end
 
     def top_level_positions(body, heading)
-      body.to_enum(:scan, /^#{Regexp.escape(heading)}\r?$/).map { Regexp.last_match.begin(0) }
+      known_heading_positions(body, [heading])[heading]
     end
 
     def boundary_line_end(body, position)
@@ -247,9 +247,9 @@ module NormalizeProblemPages
       expected = ["## 🎯 训练目标", "## ✍️ 独立作答", "## 🧭 训练控制台", source_heading, "## 🔁 错因复盘", "## 🧭 导航"]
       positions = expected.map { |heading| unique_top_level_position(note.body, heading) }
       return false if positions.any?(&:nil?) || !positions.each_cons(2).all? { |left, right| left < right }
-      all_headings = note.body.to_enum(:scan, /^## .*?\r?$/).map { Regexp.last_match[0].delete_suffix("\r") }
-      first = all_headings.index("## 🎯 训练目标")
-      return false unless first && all_headings[first, all_headings.length - first] == expected
+      known_positions = known_heading_positions(note.body, expected)
+      known_in_order = known_positions.sort_by { |_heading, positions| positions.first }.map(&:first)
+      return false unless known_in_order == expected
 
       eol = note.line_ending
       sections = positions.each_with_index.map do |position, index|
@@ -271,6 +271,25 @@ module NormalizeProblemPages
     def unique_top_level_position(body, heading)
       positions = top_level_positions(body, heading)
       positions.length == 1 ? positions.first : nil
+    end
+
+    # Only known, unquoted page headings outside fenced code are structural.
+    # Other H2 lines belong to the protected goal or note content.
+    def known_heading_positions(body, headings)
+      positions = Hash.new { |hash, key| hash[key] = [] }
+      fenced = false
+      offset = 0
+      body.each_line do |line|
+        normalized = line.delete_suffix("\n").delete_suffix("\r")
+        if normalized.match?(/\A[ \t]{0,3}(?:```|~~~)/)
+          fenced = !fenced
+        elsif !fenced && headings.include?(normalized)
+          positions[normalized] << offset
+        end
+        offset += line.length
+      end
+      headings.each { |heading| positions[heading] }
+      positions
     end
 
     def valid_source_section?(section, source, eol)
