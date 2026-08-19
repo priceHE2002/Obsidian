@@ -47,6 +47,37 @@ function mediaHas(media, selectorFragment, property, value) {
   return found;
 }
 
+function exactRule(selector, container = ast) {
+  const matches = [];
+  container.walkRules((rule) => { if (branches(rule.selector).includes(selector)) matches.push(rule); });
+  assert.equal(matches.length, 1, `expected one rule branch for ${selector}`);
+  return matches[0];
+}
+
+function directDeclarations(rule) {
+  return new Map(rule.nodes.filter((node) => node.type === 'decl').map((decl) => [decl.prop, decl.value]));
+}
+
+function rgb(hex) {
+  assert.match(hex, /^#[0-9a-f]{6}$/i);
+  return [1, 3, 5].map((offset) => Number.parseInt(hex.slice(offset, offset + 2), 16));
+}
+
+function mix(foreground, background, foregroundWeight) {
+  return rgb(foreground).map((channel, index) => channel * foregroundWeight + rgb(background)[index] * (1 - foregroundWeight));
+}
+
+function luminance(color) {
+  const channels = Array.isArray(color) ? color : rgb(color);
+  return channels.map((value) => value / 255).map((value) => value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4)
+    .reduce((sum, value, index) => sum + value * [0.2126, 0.7152, 0.0722][index], 0);
+}
+
+function contrast(a, b) {
+  const [lighter, darker] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
 function splitFrontmatter(source) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   assert.ok(match, 'page must retain YAML frontmatter');
@@ -74,7 +105,7 @@ test('Matcha tokens, max width, dark mode, focus and responsive contracts exist'
   for (const [property, value] of Object.entries({
     '--ds408-matcha-900': '#30483a', '--ds408-matcha-700': '#58725f', '--ds408-matcha-500': '#7f9d82',
     '--ds408-matcha-200': '#cbd8c7', '--ds408-paper': '#f6f2e7', '--ds408-ink': '#26342c',
-    '--h1-color': 'var(--ds408-matcha-900)', '--h2-color': 'var(--ds408-matcha-700)',
+    '--h1-color': 'var(--ds408-strong-text)', '--h2-color': 'var(--ds408-matcha-700)',
     '--link-color': 'var(--ds408-matcha-700)', '--interactive-accent': 'var(--ds408-matcha-700)'
   })) assert.equal(tokens.get(property), value, property);
   for (const scope of ['dashboard', 'problem', 'pattern']) {
@@ -85,10 +116,63 @@ test('Matcha tokens, max width, dark mode, focus and responsive contracts exist'
   assert.ok(hasAtRule('media', 'max-width: 700px'));
 });
 
+test('light and dark semantic foreground tokens meet WCAG contrast', () => {
+  const light = declarations('.ds-408-dashboard');
+  const dark = declarations('.theme-dark .ds-408-dashboard');
+  assert.equal(light.get('--ds408-strong-text'), '#30483a');
+  assert.equal(dark.get('--ds408-strong-text'), '#dce8dc');
+  assert.equal(light.get('--ds408-warning-text'), '#7a3f3a');
+  assert.equal(dark.get('--ds408-warning-text'), '#f0aaa2');
+  assert.equal(light.get('--ds408-focus'), '#58725f');
+  assert.equal(dark.get('--ds408-focus'), '#aac3ad');
+  for (const background of ['#f6f2e7', '#ffffff', mix('#cbd8c7', '#ffffff', 0.72), mix('#cbd8c7', '#ffffff', 0.62)])
+    assert.ok(contrast(light.get('--ds408-strong-text'), background) >= 4.5, 'light strong text contrast');
+  for (const background of ['#202822', mix('#435548', '#202822', 0.72), mix('#435548', '#202822', 0.62)])
+    assert.ok(contrast(dark.get('--ds408-strong-text'), background) >= 4.5, 'dark strong text contrast');
+  assert.ok(contrast(light.get('--ds408-warning-text'), mix('#9f5f58', '#ffffff', 0.14)) >= 4.5, 'light warning contrast');
+  assert.ok(contrast(dark.get('--ds408-warning-text'), mix('#9f5f58', '#202822', 0.14)) >= 4.5, 'dark warning contrast');
+  assert.ok(contrast(light.get('--ds408-focus'), '#f6f2e7') >= 3, 'light focus contrast');
+  assert.ok(contrast(dark.get('--ds408-focus'), '#202822') >= 3, 'dark focus contrast');
+});
+
+test('real component overrides have three-class specificity and semantic declarations', () => {
+  const contracts = [
+    ['.ds408-kpi .ds408-kpi__card', 'background', 'var(--ds408-surface)'],
+    ['.ds408-review-queue .ds408-review-queue__card', 'background', 'var(--ds408-surface)'],
+    ['.ds408-control .ds408-control__badge', 'color', 'var(--ds408-strong-text)'],
+    ['.ds408-problem-nav .ds408-problem-nav__link', 'color', 'var(--ds408-strong-text)'],
+    ['.ds408-bank .ds408-bank__table-wrap', 'overflow-x', 'auto'],
+    ['.ds408-bank .ds408-bank__table', 'background', 'var(--ds408-surface)'],
+    ['.ds408-bank .ds408-bank__table th', 'color', 'var(--ds408-strong-text)']
+  ];
+  for (const scope of ['dashboard', 'problem', 'pattern']) for (const [suffix, property, value] of contracts) {
+    const selector = `.ds-408-${scope} ${suffix}`;
+    assert.equal((selector.match(/\.[a-z0-9_-]+/gi) || []).length, 3, `${selector} specificity`);
+    assert.equal(directDeclarations(exactRule(selector)).get(property), value, `${selector} ${property}`);
+  }
+});
+
+test('focus and callout borders use valid direct semantic tokens', () => {
+  const focus = exactRule('.ds-408-dashboard :is(button, input, select):focus-visible');
+  assert.equal(directDeclarations(focus).get('outline'), '3px solid var(--ds408-focus)');
+  const callout = directDeclarations(exactRule('.ds-408-dashboard .callout'));
+  assert.equal(callout.get('border-left-color'), 'rgb(var(--callout-color))');
+  assert.equal(callout.get('border-left-width'), '4px');
+  assert.equal(callout.has('border-left'), false);
+  ast.walkDecls('color', (decl) => assert.notEqual(decl.value, 'var(--ds408-matcha-900)'));
+  const warning = directDeclarations(exactRule('.ds-408-dashboard :is(.ds408-control__badge.is-warning, .ds408-evidence-badge[data-evidence="待校准"])'));
+  assert.equal(warning.get('color'), 'var(--ds408-warning-text)');
+});
+
 test('mobile and print declarations stay inside their approved media blocks', () => {
   const mobile = onlyMedia('(max-width: 700px)');
   assert.ok(mediaHas(mobile, '.ds408-kpi', 'grid-template-columns', 'minmax(0, 1fr)'));
   assert.ok(mediaHas(mobile, '.table-wrapper', 'overflow-x', 'auto'));
+  const wrapper = directDeclarations(exactRule('.ds-408-dashboard :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap)', mobile));
+  assert.equal(wrapper.get('width'), '100%');
+  assert.equal(wrapper.get('max-width'), '100%');
+  assert.equal(wrapper.get('box-sizing'), 'border-box');
+  assert.equal(wrapper.get('min-width'), '0');
   const print = onlyMedia('print');
   assert.ok(mediaHas(print, '.ds408-control', 'display', 'none'));
   assert.ok(mediaHas(print, '.ds408-kpi__card', 'box-shadow', 'none'));
