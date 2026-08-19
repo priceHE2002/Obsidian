@@ -317,6 +317,43 @@
   outline-offset: 3px;
 }
 
+.ds-408-dashboard .ds408-control :is(button, input, select):focus-visible,
+.ds-408-problem .ds408-control :is(button, input, select):focus-visible,
+.ds-408-pattern .ds408-control :is(button, input, select):focus-visible,
+.ds-408-dashboard .ds408-problem-nav .ds408-problem-nav__link:focus-visible,
+.ds-408-problem .ds408-problem-nav .ds408-problem-nav__link:focus-visible,
+.ds-408-pattern .ds408-problem-nav .ds408-problem-nav__link:focus-visible,
+.ds-408-dashboard .ds408-review-queue .ds408-review-queue__link:focus-visible,
+.ds-408-problem .ds408-review-queue .ds408-review-queue__link:focus-visible,
+.ds-408-pattern .ds408-review-queue .ds408-review-queue__link:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__filter select:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__filter select:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__filter select:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__clear:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__clear:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__clear:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__sort:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__sort:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__sort:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__status:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__status:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__status:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__cancel:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__cancel:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__cancel:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__save:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__save:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__save:focus-visible,
+.ds-408-dashboard .ds408-bank .ds408-bank__link:focus-visible,
+.ds-408-problem .ds408-bank .ds408-bank__link:focus-visible,
+.ds-408-pattern .ds408-bank .ds408-bank__link:focus-visible,
+.ds-408-dashboard .ds408-kpi .ds408-kpi__card:focus-visible,
+.ds-408-problem .ds408-kpi .ds408-kpi__card:focus-visible,
+.ds-408-pattern .ds408-kpi .ds408-kpi__card:focus-visible {
+  outline: 3px solid var(--ds408-focus);
+  outline-offset: 3px;
+}
+
 @media (max-width: 700px) {
   .ds-408-dashboard .markdown-preview-sizer,
   .ds-408-problem .markdown-preview-sizer,

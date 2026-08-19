@@ -78,6 +78,22 @@ function contrast(a, b) {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
+function focusSources() {
+  const sources = [];
+  for (const folder of ['状态控件', '题目导航', '复习队列', '题库表', '统计卡']) {
+    const sourceAst = postcss.parse(readFileSync(new URL(`../${folder}/view.css`, import.meta.url), 'utf8'));
+    sourceAst.walkRules((rule) => branches(rule.selector).filter((selector) => selector.includes(':focus-visible')).forEach((selector) => sources.push({ folder, selector })));
+  }
+  return sources;
+}
+
+function classAndPseudoSpecificity(selector) {
+  const classes = selector.match(/\.[a-z0-9_-]+/gi) || [];
+  const attributes = selector.match(/\[[^\]]+\]/g) || [];
+  const pseudos = (selector.match(/:(?!:)[a-z0-9_-]+/gi) || []).filter((name) => name !== ':is');
+  return classes.length + attributes.length + pseudos.length;
+}
+
 function splitFrontmatter(source) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   assert.ok(match, 'page must retain YAML frontmatter');
@@ -162,6 +178,30 @@ test('focus and callout borders use valid direct semantic tokens', () => {
   ast.walkDecls('color', (decl) => assert.notEqual(decl.value, 'var(--ds408-matcha-900)'));
   const warning = directDeclarations(exactRule('.ds-408-dashboard :is(.ds408-control__badge.is-warning, .ds408-evidence-badge[data-evidence="待校准"])'));
   assert.equal(warning.get('color'), 'var(--ds408-warning-text)');
+});
+
+test('every real component focus rule has a strictly stronger semantic snippet override', () => {
+  const sources = focusSources();
+  assert.deepEqual(sources.map(({ folder, selector }) => `${folder}:${selector}`).sort(), [
+    '复习队列:.ds408-review-queue .ds408-review-queue__link:focus-visible',
+    '状态控件:.ds408-control :is(button, input, select):focus-visible',
+    '统计卡:.ds408-kpi .ds408-kpi__card:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__cancel:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__clear:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__filter select:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__link:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__save:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__sort:focus-visible',
+    '题库表:.ds408-bank .ds408-bank__status:focus-visible',
+    '题目导航:.ds408-problem-nav .ds408-problem-nav__link:focus-visible'
+  ].sort());
+  for (const scope of ['dashboard', 'problem', 'pattern']) for (const { selector: source } of sources) {
+    const override = `.ds-408-${scope} ${source}`;
+    assert.ok(classAndPseudoSpecificity(override) > classAndPseudoSpecificity(source), `${override} must outrank late component CSS`);
+    const declarations = directDeclarations(exactRule(override));
+    assert.equal(declarations.get('outline'), '3px solid var(--ds408-focus)', override);
+    assert.equal(declarations.get('outline-offset'), '3px', override);
+  }
 });
 
 test('mobile and print declarations stay inside their approved media blocks', () => {
