@@ -160,7 +160,7 @@ module NormalizeProblemPages
 
     def parse_legacy(note)
       boundaries = LEGACY_HEADINGS.map do |heading|
-        positions = top_level_positions(note.body, heading)
+        positions = top_level_positions(note.body, heading, note.path)
         raise NormalizeError, "#{note.path}: missing legacy boundary #{heading}" if positions.empty?
         raise NormalizeError, "#{note.path}: duplicate legacy boundary #{heading}" if positions.length > 1
         positions.first
@@ -177,8 +177,8 @@ module NormalizeProblemPages
       [prefix, goal, notes]
     end
 
-    def top_level_positions(body, heading)
-      known_heading_positions(body, [heading])[heading]
+    def top_level_positions(body, heading, path = "page")
+      known_heading_positions(body, [heading], path)[heading]
     end
 
     def boundary_line_end(body, position)
@@ -242,12 +242,14 @@ module NormalizeProblemPages
     end
 
     def standardized?(note)
-      return false if LEGACY_HEADINGS.any? { |heading| heading != "## 🎯 训练目标" && note.body.include?(heading) }
       source_heading = note.source == "LeetCode" ? "## 📝 我的实现与复盘" : "## 🧠 满分参考答案"
       expected = ["## 🎯 训练目标", "## ✍️ 独立作答", "## 🧭 训练控制台", source_heading, "## 🔁 错因复盘", "## 🧭 导航"]
-      positions = expected.map { |heading| unique_top_level_position(note.body, heading) }
+      headings = (LEGACY_HEADINGS + expected).uniq
+      scanned = known_heading_positions(note.body, headings, note.path)
+      return false if LEGACY_HEADINGS.any? { |heading| heading != "## 🎯 训练目标" && !scanned[heading].empty? }
+      positions = expected.map { |heading| unique_top_level_position(note.body, heading, scanned) }
       return false if positions.any?(&:nil?) || !positions.each_cons(2).all? { |left, right| left < right }
-      known_positions = known_heading_positions(note.body, expected)
+      known_positions = scanned.slice(*expected)
       known_in_order = known_positions.sort_by { |_heading, positions| positions.first }.map(&:first)
       return false unless known_in_order == expected
 
@@ -268,28 +270,42 @@ module NormalizeProblemPages
       true
     end
 
-    def unique_top_level_position(body, heading)
-      positions = top_level_positions(body, heading)
+    def unique_top_level_position(body, heading, scanned = nil)
+      positions = scanned ? scanned[heading] : top_level_positions(body, heading)
       positions.length == 1 ? positions.first : nil
     end
 
     # Only known, unquoted page headings outside fenced code are structural.
     # Other H2 lines belong to the protected goal or note content.
-    def known_heading_positions(body, headings)
+    def known_heading_positions(body, headings, path)
       positions = Hash.new { |hash, key| hash[key] = [] }
-      fenced = false
+      fence = nil
       offset = 0
       body.each_line do |line|
         normalized = line.delete_suffix("\n").delete_suffix("\r")
-        if normalized.match?(/\A[ \t]{0,3}(?:```|~~~)/)
-          fenced = !fenced
-        elsif !fenced && headings.include?(normalized)
+        if fence
+          fence = nil if closing_fence?(normalized, fence)
+        elsif (opening = opening_fence(normalized))
+          fence = opening
+        elsif headings.include?(normalized)
           positions[normalized] << offset
         end
         offset += line.length
       end
+      raise NormalizeError, "#{path}: unclosed Markdown fence" if fence
       headings.each { |heading| positions[heading] }
       positions
+    end
+
+    def opening_fence(line)
+      match = line.match(/\A[ \t]{0,3}([`~])\1\1+/)
+      return nil unless match
+
+      { character: match[1], length: match[0].lstrip.length }
+    end
+
+    def closing_fence?(line, fence)
+      line.match?(Regexp.new("\\A[ \\t]{0,3}#{Regexp.escape(fence[:character])}{#{fence[:length]},}[ \\t]*\\z"))
     end
 
     def valid_source_section?(section, source, eol)

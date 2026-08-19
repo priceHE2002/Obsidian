@@ -336,4 +336,46 @@ class NormalizeProblemPagesTest < Minitest::Test
       assert_equal broken, File.binread(path)
     end
   end
+
+  def test_lc_fence_hides_all_known_page_headings_on_both_runs
+    headings = (NormalizeProblemPages::LEGACY_HEADINGS + ["## ✍️ 独立作答", "## 🧭 训练控制台", "## 🧭 导航"]).join("\n")
+    note = "正文\n\n```md\n#{headings}\n```\n\n结束"
+    with_fixture("a.md" => legacy(note: note)) do |root, directory|
+      assert_equal 0, run_normalizer(root).first
+      path = File.join(directory, "a.md")
+      first = File.binread(path)
+      assert_includes first, headings.b
+      assert_equal 0, run_normalizer(root).first
+      assert_equal first, File.binread(path)
+    end
+  end
+
+  def test_fence_closes_only_with_matching_character_and_sufficient_length
+    cases = [
+      "````md\n```\n## 📚 错题复盘\n````",
+      "~~~~md\n~~~\n## 📚 错题复盘\n~~~~",
+      "```md\n~~~\n## 📚 错题复盘\n```"
+    ]
+    cases.each_with_index do |fence, index|
+      with_fixture("#{index}.md" => legacy(note: "前言\n\n#{fence}\n\n后记")) do |root, directory|
+        assert_equal 0, run_normalizer(root).first
+        path = File.join(directory, "#{index}.md")
+        first = File.binread(path)
+        assert_includes first, fence.b
+        assert_equal 0, run_normalizer(root).first
+        assert_equal first, File.binread(path)
+      end
+    end
+  end
+
+  def test_unclosed_legacy_fence_is_rejected_without_writes
+    bad = legacy(note: "安全保留\n```md\n## 📚 错题复盘")
+    with_fixture("good.md" => legacy, "bad.md" => bad) do |root, directory|
+      original = File.binread(File.join(directory, "good.md"))
+      status, _out, err = run_normalizer(root)
+      assert_equal 1, status
+      assert_match(/unclosed Markdown fence/, err)
+      assert_equal original, File.binread(File.join(directory, "good.md"))
+    end
+  end
 end
