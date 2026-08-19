@@ -12,7 +12,7 @@ if (!engine || !Array.isArray(engine.STATUSES) || typeof engine.buildAction !== 
 
 const priorityOrder = { "S+": 0, S: 1, A: 2, B: 3 };
 const stateOrder = Object.fromEntries(engine.STATUSES.map((state, index) => [state, index]));
-const state = { filters: { mother: "全部", status: "全部", priority: "全部", source: "全部", evidence: "全部" }, sort: { key: "题号", direction: "asc" }, busy: false };
+const state = { filters: { mother: "全部", status: "全部", priority: "全部", source: "全部", evidence: "全部" }, sort: { key: "题号", direction: "asc" }, busy: false, editor: null };
 let pages = dv.pages('"11_数据结构/刷题记录"').where(p=>p.题号!==undefined&&p.题号!==null).array();
 const controls = root.createEl("div", { cls: "ds408-bank__controls" });
 const summary = text(controls, "p", "", "ds408-bank__summary");
@@ -24,21 +24,30 @@ function dateKey(value) {
   if (value && typeof value.toISODate === "function") value = value.toISODate();
   const raw = value === undefined || value === null ? "" : String(value).slice(0, 10);
   const matched = /^(\d{4})-(\d{2})-(\d{2})$/.exec(raw);
-  if (!matched) return "9999-12-31";
+  if (!matched) return null;
   const year = Number(matched[1]); const month = Number(matched[2]); const date = Number(matched[3]);
   const utc = new Date(Date.UTC(year, month - 1, date));
-  return utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === date ? raw : "9999-12-31";
+  return utc.getUTCFullYear() === year && utc.getUTCMonth() === month - 1 && utc.getUTCDate() === date ? raw : null;
 }
 function sortValue(p, key) {
-  if (key === "题号") return Number(value(p, "题号")) || Number.MAX_SAFE_INTEGER;
-  if (key === "母题") return String(value(p, "母题"));
-  if (key === "优先级") return priorityOrder[value(p, "优先级")] ?? 4;
-  if (key === "状态") return stateOrder[value(p, "状态")] ?? 5;
+  const numeric = field => { const raw = value(p, field); const number = raw === "" ? NaN : Number(raw); return Number.isFinite(number) ? number : null; };
+  if (key === "题号") return numeric("题号");
+  if (key === "母题") return value(p, "母题") || null;
+  if (key === "优先级") return Object.hasOwn(priorityOrder, value(p, "优先级")) ? priorityOrder[value(p, "优先级")] : null;
+  if (key === "状态") return Object.hasOwn(stateOrder, value(p, "状态")) ? stateOrder[value(p, "状态")] : null;
   if (key === "下次复习") return dateKey(value(p, "下次复习"));
-  if (key === "纸笔得分") return value(p, "纸笔得分") === "" ? -1 : Number(value(p, "纸笔得分"));
-  return "";
+  if (key === "纸笔得分") return numeric("纸笔得分");
+  return null;
 }
-function compare(a, b) { const av = sortValue(a, state.sort.key); const bv = sortValue(b, state.sort.key); if (av !== bv) { const raw = av < bv ? -1 : 1; return state.sort.direction === "asc" ? raw : -raw; } return pathOf(a).localeCompare(pathOf(b), "zh-Hans-CN"); }
+function compare(a, b) {
+  const av = sortValue(a, state.sort.key); const bv = sortValue(b, state.sort.key);
+  if (av === null && bv === null) return pathOf(a).localeCompare(pathOf(b), "zh-Hans-CN");
+  if (av === null) return 1;
+  if (bv === null) return -1;
+  if (av === bv) return pathOf(a).localeCompare(pathOf(b), "zh-Hans-CN");
+  const raw = av < bv ? -1 : 1;
+  return state.sort.direction === "asc" ? raw : -raw;
+}
 function matches(p) { return (state.filters.mother === "全部" || value(p, "母题") === state.filters.mother)
   && (state.filters.status === "全部" || value(p, "状态") === state.filters.status)
   && (state.filters.priority === "全部" || value(p, "优先级") === state.filters.priority)
@@ -66,23 +75,38 @@ function setBusy(busy) {
   root.querySelectorAll("select").forEach(node => { node.disabled = busy; });
   render();
 }
+function restoreStatusFocus(path, target) {
+  const button = Array.from(root.querySelectorAll(".ds408-bank__status")).find(node => node.getAttribute("data-path") === path && node.getAttribute("data-status") === target);
+  if (button && button.isConnected && typeof button.focus === "function") button.focus();
+}
 async function saveAction(page, action) {
   if (state.busy) return;
   const file = page && page.file && page.file.path ? dv.app.vault.getAbstractFileByPath(page.file.path) : null;
   if (!file || !file.path) { message("题目文件不存在，未执行任何写入。", true); return; }
-  setBusy(true); message("正在保存训练记录…");
+  const focusPath = state.editor && state.editor.trigger.getAttribute("data-path");
+  const focusTarget = action.kind === "transition" ? action.target : null;
+  closeEditor(false); setBusy(true); message("正在保存训练记录…");
   try {
     let patch;
     await dv.app.fileManager.processFrontMatter(file, fm=>{ patch=engine.buildAction({...fm}, action, window.moment().format('YYYY-MM-DD')); Object.assign(fm,patch); });
     pages = pages.map(item => pathOf(item) === pathOf(page) ? { ...item, ...patch } : item);
     message("训练记录已保存。"); new Notice("训练记录已保存。");
   } catch (error) { message(`未保存：${error instanceof Error && error.message ? error.message : "请检查证据"}`, true); }
-  finally { setBusy(false); }
+  finally { setBusy(false); if (focusPath && focusTarget) restoreStatusFocus(focusPath, focusTarget); }
 }
-function editor(row, page, target) {
+function closeEditor(restoreFocus) {
+  if (!state.editor) return;
+  const active = state.editor; state.editor = null; active.row.remove();
+  active.trigger.setAttribute("aria-expanded", "false"); active.trigger.removeAttribute("aria-controls");
+  if (restoreFocus && active.trigger.isConnected && typeof active.trigger.focus === "function") active.trigger.focus();
+}
+function editor(row, page, target, trigger) {
+  closeEditor(false);
   const editorRow = document.createElement("tr"); editorRow.className = "ds408-bank__editor-row"; row.insertAdjacentElement("afterend", editorRow);
   const editorCell = document.createElement("td"); editorCell.className = "ds408-bank__editor-cell"; editorCell.setAttribute("colspan", "10"); editorRow.appendChild(editorCell);
-  const box = editorCell.createEl("div", { cls: "ds408-bank__editor" }); box.setAttribute("role", "region"); box.setAttribute("aria-label", `补充${target}训练证据`);
+  const editorId = `ds408-bank-editor-${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  const box = editorCell.createEl("div", { cls: "ds408-bank__editor" }); box.setAttribute("id", editorId); box.setAttribute("role", "region"); box.setAttribute("aria-label", `补充${target}训练证据`);
+  trigger.setAttribute("aria-expanded", "true"); trigger.setAttribute("aria-controls", editorId); state.editor = { row: editorRow, trigger };
   const fields = [];
   function field(labelText, name, config) {
     const id = `ds408-bank-${Date.now()}-${name}`; const label = text(box, "label", labelText); label.setAttribute("for", id);
@@ -96,11 +120,14 @@ function editor(row, page, target) {
   if (target === "已二刷") field("二刷结果", "二刷结果", { select: ["", "独立通过"] });
   if (target === "可纸笔") { field("思想得分（0–2）", "思想得分", { min: 0, max: 2 }); field("正确性得分（0–2）", "正确性得分", { min: 0, max: 2 }); field("代码得分（0–4）", "代码得分", { min: 0, max: 4 }); field("复杂度得分（0–2）", "复杂度得分", { min: 0, max: 2 }); }
   const actions = box.createEl("div", { cls: "ds408-bank__editor-actions" });
-  button(actions, "取消", "ds408-bank__cancel", () => { editorRow.remove(); });
-  button(actions, "确认保存", "ds408-bank__save", () => {
+  button(actions, "取消", "ds408-bank__cancel", () => { closeEditor(true); message("已取消补充训练证据。"); });
+  const save = button(actions, "确认保存", "ds408-bank__save", () => {
     const evidence = {}; fields.forEach(([name, input]) => { if (input.type === "number") { if (input.value.trim() !== "") evidence[name] = input.valueAsNumber; } else if (input.value.trim() !== "") evidence[name] = input.value; });
     saveAction(page, { kind: "transition", target, evidence });
   });
+  const focusTarget = fields.length ? fields[0][1] : save;
+  if (typeof focusTarget.focus === "function") focusTarget.focus();
+  message(`已打开${target}训练证据编辑器。`);
 }
 function statusButtons(row, page) {
   const group = row.createEl("td", { cls: "ds408-bank__status-cell" }); const currentIndex = stateOrder[value(page, "状态")] ?? 0;
@@ -109,9 +136,9 @@ function statusButtons(row, page) {
     const action = button(group, target, "ds408-bank__status", () => {
       if (state.busy) return;
       if (targetIndex < currentIndex) { if (window.confirm("将回退训练阶段；历史训练证据会保留。是否继续？")) saveAction(page, { kind: "transition", target }); return; }
-      editor(row, page, target);
+      editor(row, page, target, action);
     });
-    action.disabled = state.busy || (current && !pending); action.setAttribute("aria-pressed", String(current));
+    action.disabled = state.busy || (current && !pending); action.setAttribute("aria-pressed", String(current)); action.setAttribute("aria-expanded", "false"); action.setAttribute("data-path", pathOf(page)); action.setAttribute("data-status", target);
   });
 }
 function render() {
