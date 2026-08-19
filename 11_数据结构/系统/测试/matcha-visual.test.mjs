@@ -2,12 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
-import { homedir } from 'node:os';
 import { readFileSync, existsSync } from 'node:fs';
 
-const root = new URL('../../../', import.meta.url);
 const require = createRequire(import.meta.url);
-const postcss = require(`${homedir()}/Documents/408/node_modules/postcss`);
+const postcss = require('postcss');
 const cssPath = new URL('../../../.obsidian/snippets/408-training.css', import.meta.url);
 const css = existsSync(cssPath) ? readFileSync(cssPath, 'utf8') : '';
 const ast = postcss.parse(css);
@@ -19,6 +17,36 @@ const hasSelector = (fragment) => selectors().some((selector) => selector.includ
 const hasAtRule = (name, fragment) => { let hit = false; ast.walkAtRules(name, (node) => { if (node.params.includes(fragment)) hit = true; }); return hit; };
 const declarations = (selector) => { const map = new Map(); rules().filter((rule) => rule.parent.type === 'root' && branches(rule.selector).includes(selector)).forEach((rule) => rule.walkDecls((decl) => map.set(decl.prop, decl.value))); return map; };
 
+function cssContractViolations(source) {
+  const parsed = postcss.parse(source);
+  const violations = [];
+  const allowedMedia = new Set(['(max-width: 700px)', 'print']);
+  parsed.walkAtRules((atRule) => {
+    const allowed = atRule.name === 'media' && allowedMedia.has(atRule.params.trim()) && atRule.parent.type === 'root';
+    if (!allowed) violations.push(`unsupported at-rule: @${atRule.name} ${atRule.params}`.trim());
+  });
+  parsed.walkRules((rule) => branches(rule.selector).forEach((selector) => {
+    if (!scopes.test(selector)) violations.push(`unscoped selector: ${selector}`);
+  }));
+  return violations;
+}
+
+function onlyMedia(params) {
+  const matches = [];
+  ast.walkAtRules('media', (atRule) => { if (atRule.params.trim() === params) matches.push(atRule); });
+  assert.equal(matches.length, 1, `expected exactly one @media ${params}`);
+  return matches[0];
+}
+
+function mediaHas(media, selectorFragment, property, value) {
+  let found = false;
+  media.walkRules((rule) => {
+    if (!rule.selector.includes(selectorFragment)) return;
+    rule.walkDecls(property, (decl) => { if (decl.value === value) found = true; });
+  });
+  return found;
+}
+
 function splitFrontmatter(source) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   assert.ok(match, 'page must retain YAML frontmatter');
@@ -28,8 +56,17 @@ function splitFrontmatter(source) {
 test('snippet exists, parses, and every selector branch is project-scoped', () => {
   assert.ok(existsSync(cssPath), '408-training.css is missing');
   assert.ok(rules().length > 0, 'snippet must contain CSS rules');
-  assert.deepEqual(selectors().filter((selector) => !scopes.test(selector)), []);
+  assert.deepEqual(cssContractViolations(css), []);
   ast.walkDecls((decl) => assert.equal(Boolean(decl.important), false, `${decl.prop} must not use !important`));
+});
+
+test('root-level global at-rules are rejected by the CSS contract', () => {
+  for (const probe of [
+    '@font-face { font-family: Leak; src: url(leak.woff2); }',
+    '@import url("leak.css");',
+    '@property --leak { syntax: "<color>"; inherits: true; initial-value: red; }',
+    '@page { margin: 1cm; }'
+  ]) assert.match(cssContractViolations(probe).join('\n'), /unsupported at-rule/);
 });
 
 test('Matcha tokens, max width, dark mode, focus and responsive contracts exist', () => {
@@ -46,6 +83,15 @@ test('Matcha tokens, max width, dark mode, focus and responsive contracts exist'
   }
   assert.ok(hasSelector(':focus-visible'));
   assert.ok(hasAtRule('media', 'max-width: 700px'));
+});
+
+test('mobile and print declarations stay inside their approved media blocks', () => {
+  const mobile = onlyMedia('(max-width: 700px)');
+  assert.ok(mediaHas(mobile, '.ds408-kpi', 'grid-template-columns', 'minmax(0, 1fr)'));
+  assert.ok(mediaHas(mobile, '.table-wrapper', 'overflow-x', 'auto'));
+  const print = onlyMedia('print');
+  assert.ok(mediaHas(print, '.ds408-control', 'display', 'none'));
+  assert.ok(mediaHas(print, '.ds408-kpi__card', 'box-shadow', 'none'));
 });
 
 test('snippet covers real 408 cards, badges, content, controls and internal table scrolling', () => {

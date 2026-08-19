@@ -1,0 +1,12 @@
+{
+  "name": "ds408-vault-contract-tests",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test:visual": "node --test matcha-visual.test.mjs"
+  },
+  "devDependencies": {
+    "postcss": "8.5.15"
+  }
+}
