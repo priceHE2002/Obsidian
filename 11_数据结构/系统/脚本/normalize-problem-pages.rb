@@ -298,14 +298,14 @@ module NormalizeProblemPages
     end
 
     def opening_fence(line)
-      match = line.match(/\A[ \t]{0,3}([`~])\1\1+/)
+      match = line.match(/\A {0,3}([`~])\1\1+/)
       return nil unless match
 
       { character: match[1], length: match[0].lstrip.length }
     end
 
     def closing_fence?(line, fence)
-      line.match?(Regexp.new("\\A[ \\t]{0,3}#{Regexp.escape(fence[:character])}{#{fence[:length]},}[ \\t]*\\z"))
+      line.match?(Regexp.new("\\A {0,3}#{Regexp.escape(fence[:character])}{#{fence[:length]},} *\\z"))
     end
 
     def valid_source_section?(section, source, eol)

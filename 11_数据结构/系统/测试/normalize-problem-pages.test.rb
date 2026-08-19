@@ -378,4 +378,26 @@ class NormalizeProblemPagesTest < Minitest::Test
       assert_equal original, File.binread(File.join(directory, "good.md"))
     end
   end
+
+  def test_only_zero_to_three_plain_spaces_indent_a_top_level_fence
+    (0..3).each do |spaces|
+      fence = (" " * spaces) + "```md\n## 📚 错题复盘\n" + (" " * spaces) + "```"
+      with_fixture("#{spaces}.md" => legacy(note: "前言\n\n#{fence}\n\n后记")) do |root, _directory|
+        assert_equal 0, run_normalizer(root).first
+      end
+    end
+  end
+
+  def test_tab_or_four_space_indented_fence_is_not_a_top_level_fence_and_aborts_batch
+    ["\t", "    "].each do |indent|
+      bad = legacy(note: "前言\n#{indent}```md\n## 📚 错题复盘\n#{indent}```\n后记")
+      with_fixture("good.md" => legacy, "bad.md" => bad) do |root, directory|
+        original = File.binread(File.join(directory, "good.md"))
+        status, _out, err = run_normalizer(root)
+        assert_equal 1, status
+        assert_match(/duplicate legacy boundary/, err)
+        assert_equal original, File.binread(File.join(directory, "good.md"))
+      end
+    end
+  end
 end
