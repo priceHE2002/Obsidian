@@ -15,6 +15,7 @@ module NormalizeProblemPages
   LEGACY_HEADINGS = ["## ⚡ 状态快速切换", "## 🎯 训练目标", "## 📊 状态追踪", "## 📝 解题笔记", "## 📚 错题复盘"].freeze
   PROBLEM_VIEW = 'await dv.view("11_数据结构/系统/状态控件", { mode: "problem" });'
   NAVIGATION_VIEW = 'await dv.view("11_数据结构/系统/题目导航");'
+  CLEANUP_ATTEMPTS = 3
   Note = Struct.new(:path, :frontmatter_bytes, :body, :source, :line_ending, :mode, keyword_init: true)
   Write = Struct.new(:path, :contents, :mode, keyword_init: true)
   Record = Struct.new(:write, :stage, :backup, :backed_up, :installed, keyword_init: true)
@@ -37,6 +38,25 @@ module NormalizeProblemPages
 
     def delete(path)
       File.delete(path) if File.exist?(path)
+    end
+
+    def exist?(path)
+      File.exist?(path)
+    end
+
+    def hard_link(source, destination)
+      File.link(source, destination)
+    end
+
+    def copy_backup(source, destination, mode)
+      File.open(source, "rb") do |input|
+        File.open(destination, "wb") do |output|
+          IO.copy_stream(input, output)
+          output.chmod(mode)
+          output.flush
+          output.fsync
+        end
+      end
     end
 
     def mode(path)
@@ -132,7 +152,7 @@ module NormalizeProblemPages
 
     def normalized_write(note)
       if standardized?(note)
-        return repair_legacy_prefix_spacing(note)
+        return nil
       end
       prefix, goal, notes = parse_legacy(note)
       Write.new(path: note.path, contents: note.frontmatter_bytes + build_body(prefix, goal, notes, note.source, note.line_ending), mode: note.mode)
@@ -222,64 +242,130 @@ module NormalizeProblemPages
     end
 
     def standardized?(note)
-      return false if (LEGACY_HEADINGS - ["## 🎯 训练目标"]).any? { |heading| note.body.include?(heading) }
+      return false if LEGACY_HEADINGS.any? { |heading| heading != "## 🎯 训练目标" && note.body.include?(heading) }
       source_heading = note.source == "LeetCode" ? "## 📝 我的实现与复盘" : "## 🧠 满分参考答案"
       expected = ["## 🎯 训练目标", "## ✍️ 独立作答", "## 🧭 训练控制台", source_heading, "## 🔁 错因复盘", "## 🧭 导航"]
-      headings = note.body.to_enum(:scan, /^## .*?\r?$/).map { Regexp.last_match[0].delete_suffix("\r") }
-      first = headings.index("## 🎯 训练目标")
-      return false unless first && headings[first, headings.length - first] == expected
+      positions = expected.map { |heading| unique_top_level_position(note.body, heading) }
+      return false if positions.any?(&:nil?) || !positions.each_cons(2).all? { |left, right| left < right }
+      all_headings = note.body.to_enum(:scan, /^## .*?\r?$/).map { Regexp.last_match[0].delete_suffix("\r") }
+      first = all_headings.index("## 🎯 训练目标")
+      return false unless first && all_headings[first, all_headings.length - first] == expected
+
+      eol = note.line_ending
+      sections = positions.each_with_index.map do |position, index|
+        ending = index == positions.length - 1 ? note.body.length : positions[index + 1]
+        note.body[position...ending]
+      end
+      return false unless sections[1] == independent_answer(eol) + eol + eol
+      return false unless sections[2] == "## 🧭 训练控制台#{eol}#{fence(PROBLEM_VIEW, eol)}#{eol}#{eol}"
+      return false unless valid_source_section?(sections[3], note.source, eol)
+      return false unless sections[4] == review(eol) + eol + eol
+      return false unless sections[5] == "## 🧭 导航#{eol}#{fence(NAVIGATION_VIEW, eol)}#{eol}"
       return false unless note.body.scan('dv.view("11_数据结构/系统/状态控件"').length == 1
       return false unless note.body.scan('dv.view("11_数据结构/系统/题目导航"').length == 1
-      return false unless note.body.include?(PROBLEM_VIEW) && note.body.include?(NAVIGATION_VIEW)
-      return false unless note.body.include?("> [!question] 闭卷作答区") && note.body.include?("- 算法思想：")
-      return false unless note.body.include?("## 🔁 错因复盘") && note.body.include?("- 错误类型：以顶部属性为准。")
       return false if note.body.include?("const statuses = ['未开始'") || note.body.include?("当前状态：**未开始**")
-      note.source != "408真题" || note.body.include?("> [!success]- 展开满分参考答案（完成闭卷作答后再看）")
+
+      true
     end
 
-    # Earlier local drafts collapsed the original extra separator line before
-    # the training heading.  LeetCode legacy cards consistently use three
-    # terminal newlines; repair that historical draft once while retaining
-    # idempotence for every subsequently normalized page.
-    def repair_legacy_prefix_spacing(note)
-      return nil unless note.source == "LeetCode"
-      goal_position = note.body.index("## 🎯 训练目标")
-      prefix = note.body[0...goal_position]
-      eol = note.line_ending
-      return nil unless prefix.end_with?(eol + eol) && !prefix.end_with?(eol + eol + eol)
+    def unique_top_level_position(body, heading)
+      positions = top_level_positions(body, heading)
+      positions.length == 1 ? positions.first : nil
+    end
 
-      Write.new(path: note.path, contents: note.frontmatter_bytes + prefix + eol + note.body[goal_position..-1], mode: note.mode)
+    def valid_source_section?(section, source, eol)
+      heading = source == "LeetCode" ? "## 📝 我的实现与复盘" : "## 🧠 满分参考答案"
+      return false unless section.start_with?(heading + eol) && section.end_with?(eol + eol)
+      return true if source == "LeetCode"
+
+      content = section[(heading.length + eol.length)...-(eol.length * 2)]
+      callout = "> [!success]- 展开满分参考答案（完成闭卷作答后再看）"
+      return false unless content.start_with?(callout + eol)
+      content[(callout.length + eol.length)..-1].split(/\r?\n/, -1).all? { |line| line == ">" || line.start_with?("> ") }
     end
 
     def transactional_write(writes)
       return if writes.empty?
+      committed = false
       records = writes.map do |write|
-        stage = "#{write.path}.normalize-stage-#{Process.pid}-#{SecureRandom.hex(6)}"
-        @file_operations.write_stage(stage, write.contents, write.mode)
-        Record.new(write: write, stage: stage, backup: "#{write.path}.normalize-backup-#{Process.pid}-#{SecureRandom.hex(6)}", backed_up: false, installed: false)
+        Record.new(write: write, stage: artifact_path(write.path, "stage"), backup: artifact_path(write.path, "backup"), backed_up: false, installed: false)
       end
+      records.each { |record| @file_operations.write_stage(record.stage, record.write.contents, record.write.mode) }
       records.each do |record|
-        @file_operations.rename(record.write.path, record.backup)
-        record.backed_up = true
+        create_backup(record)
         @file_operations.rename(record.stage, record.write.path)
         record.installed = true
         @file_operations.sync_directory(record.write.path)
       end
-      records.each { |record| @file_operations.delete(record.backup) }
+      committed = true
+      cleanup_with_retries(records, :backup)
     rescue SystemCallError, IOError => error
-      records&.reverse_each do |record|
+      return if committed && warn_post_commit_cleanup(error)
+
+      rollback_errors = rollback(records || [])
+      cleanup_errors = rollback_errors.empty? ? cleanup_artifacts(records || []) : cleanup_stages(records || [])
+      raise NormalizeError, "transaction failed: #{([error.message] + rollback_errors + cleanup_errors).join("; ")}"
+    ensure
+      cleanup_stages(records || []) if defined?(records)
+    end
+
+    def artifact_path(path, kind)
+      loop do
+        candidate = "#{path}.normalize-#{kind}-#{SecureRandom.hex(12)}"
+        return candidate unless @file_operations.exist?(candidate)
+      end
+    end
+
+    def create_backup(record)
+      begin
+        @file_operations.hard_link(record.write.path, record.backup)
+      rescue SystemCallError, NotImplementedError
+        @file_operations.copy_backup(record.write.path, record.backup, record.write.mode)
+      end
+      record.backed_up = true
+      @file_operations.sync_directory(record.write.path)
+    end
+
+    def rollback(records)
+      errors = []
+      records.reverse_each do |record|
+        next unless record.installed && @file_operations.exist?(record.backup)
         begin
-          @file_operations.delete(record.write.path) if record.installed
-          @file_operations.rename(record.backup, record.write.path) if record.backed_up && File.exist?(record.backup)
-        rescue SystemCallError, IOError
-          # Preserve the original triggering error; all remaining records are still attempted.
+          @file_operations.rename(record.backup, record.write.path)
+          @file_operations.sync_directory(record.write.path)
+        rescue SystemCallError, IOError => error
+          errors << "rollback #{record.write.path}: #{error.message}"
         end
       end
-      raise error
-    ensure
-      records&.each do |record|
-        @file_operations.delete(record.stage) rescue nil
-        @file_operations.delete(record.backup) rescue nil
+      errors
+    end
+
+    def cleanup_with_retries(records, attribute)
+      CLEANUP_ATTEMPTS.times do
+        failures = cleanup_paths(records.map { |record| record.public_send(attribute) })
+        return if failures.empty?
+      end
+      @err.puts "WARNING normalization committed; backup cleanup incomplete"
+    end
+
+    def warn_post_commit_cleanup(error)
+      @err.puts "WARNING normalization committed; post-commit cleanup interrupted: #{error.message}"
+      true
+    end
+
+    def cleanup_stages(records)
+      cleanup_paths(records.map(&:stage))
+    end
+
+    def cleanup_artifacts(records)
+      cleanup_paths(records.map(&:stage)) + cleanup_paths(records.map(&:backup))
+    end
+
+    def cleanup_paths(paths)
+      paths.each_with_object([]) do |path, failures|
+        @file_operations.delete(path) if @file_operations.exist?(path)
+      rescue SystemCallError, IOError => error
+        failures << "cleanup #{path}: #{error.message}"
       end
     end
   end
