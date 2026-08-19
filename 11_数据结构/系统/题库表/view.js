@@ -83,7 +83,7 @@ async function saveAction(page, action) {
   if (state.busy) return;
   const file = page && page.file && page.file.path ? dv.app.vault.getAbstractFileByPath(page.file.path) : null;
   if (!file || !file.path) { message("题目文件不存在，未执行任何写入。", true); return; }
-  const focusPath = state.editor && state.editor.trigger.getAttribute("data-path");
+  const focusPath = pathOf(page);
   const focusTarget = action.kind === "transition" ? action.target : null;
   closeEditor(false); setBusy(true); message("正在保存训练记录…");
   try {
@@ -142,6 +142,7 @@ function statusButtons(row, page) {
   });
 }
 function render() {
+  if (state.editor) closeEditor(false);
   controls.querySelectorAll && controls.querySelectorAll("select[data-filter]").forEach(select => { select.value = state.filters[select.getAttribute("data-filter")]; });
   tableWrap.replaceChildren(); const filtered = pages.filter(matches).sort(compare); summary.textContent = `显示 ${filtered.length} / ${pages.length} 题`;
   if (!filtered.length) { text(tableWrap, "p", "没有符合当前组合筛选条件的题目。", "ds408-bank__empty"); return; }

@@ -122,6 +122,15 @@ test('bank keeps one labelled editor, focuses it, and restores the triggering bu
   find(editor, '.ds408-bank__cancel').click(); assert.equal(bank.querySelectorAll('.ds408-bank__editor').length, 0); assert.equal(globalThis.document.activeElement, twice); assert.equal(twice.getAttribute('aria-expanded'), 'false');
 });
 
+test('bank clears an open editor on render and restores backward-save focus to that saved problem', async () => {
+  const a = problem({ 题号: 1, 母题: 'M01' }); const b = problem({ 题号: 2, 母题: 'M02', 状态: '已AC', 首刷日期: '2026-08-01', 首刷结果: '独立通过' });
+  const { root: bank } = await runView('bank', { problems: [a, b], processFrontMatter: async (file, callback) => callback(file.path.endsWith('2.md') ? b : a) });
+  const aAc = bank.querySelectorAll('.ds408-bank__status').find((node) => node.getAttribute('data-path') === a.file.path && node.textContent === '已AC'); aAc.click(); assert.ok(bank.querySelectorAll('.ds408-bank__editor').length);
+  const mother = find(bank, 'select[data-filter=mother]'); mother.value = 'M02'; mother.change(); assert.equal(bank.querySelectorAll('.ds408-bank__editor').length, 0); assert.equal(aAc.getAttribute('aria-expanded'), 'false'); assert.equal(aAc.getAttribute('aria-controls'), null);
+  const bBack = bank.querySelectorAll('.ds408-bank__status').find((node) => node.getAttribute('data-path') === b.file.path && node.textContent === '未开始'); bBack.click(); await flush();
+  const focused = bank.querySelectorAll('.ds408-bank__status').find((node) => node.getAttribute('data-path') === b.file.path && node.textContent === '未开始'); assert.equal(globalThis.document.activeElement, focused); assert.notEqual(globalThis.document.activeElement, aAc);
+});
+
 test('bank permits same pending state editing, disables a valid current state, and protects frontmatter on engine throw', async () => {
   const pending = problem({ 状态: '已AC', 证据状态: '待校准' }); const { root: pendingBank } = await runView('bank', { problems: [pending] });
   const pendingCurrent = pendingBank.querySelectorAll('.ds408-bank__status').find((node) => node.textContent === '已AC'); assert.equal(pendingCurrent.disabled, false); pendingCurrent.click(); assert.ok(pendingBank.querySelectorAll('.ds408-bank__editor').length);
