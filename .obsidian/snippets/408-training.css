@@ -1,0 +1,301 @@
+/* 408 training surfaces only. Apex Dashboard itself keeps its Matcha preset. */
+.ds-408-dashboard,
+.ds-408-problem,
+.ds-408-pattern {
+  --ds408-matcha-900: #30483a;
+  --ds408-matcha-700: #58725f;
+  --ds408-matcha-500: #7f9d82;
+  --ds408-matcha-200: #cbd8c7;
+  --ds408-paper: #f6f2e7;
+  --ds408-ink: #26342c;
+  --ds408-warm: #a9825a;
+  --ds408-alert: #9f5f58;
+  --ds408-surface: color-mix(in srgb, var(--ds408-paper) 72%, var(--background-primary));
+  --ds408-border: color-mix(in srgb, var(--ds408-matcha-500) 44%, var(--background-modifier-border));
+  --ds408-shadow: 0 8px 24px color-mix(in srgb, var(--ds408-matcha-900) 10%, transparent);
+  --h1-color: var(--ds408-matcha-900);
+  --h2-color: var(--ds408-matcha-700);
+  --link-color: var(--ds408-matcha-700);
+  --link-color-hover: var(--ds408-matcha-900);
+  --interactive-accent: var(--ds408-matcha-700);
+  --interactive-accent-hover: var(--ds408-matcha-900);
+  color: var(--ds408-ink);
+}
+
+.theme-dark .ds-408-dashboard,
+.theme-dark .ds-408-problem,
+.theme-dark .ds-408-pattern {
+  --ds408-paper: #202822;
+  --ds408-ink: #e7eee8;
+  --ds408-matcha-200: #435548;
+  --ds408-surface: color-mix(in srgb, var(--ds408-paper) 82%, var(--background-primary));
+  --ds408-border: color-mix(in srgb, var(--ds408-matcha-500) 56%, var(--background-modifier-border));
+  --ds408-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+  --h1-color: #dce8dc;
+  --h2-color: #b7cbb8;
+  --link-color: #aac3ad;
+  --link-color-hover: #dce8dc;
+}
+
+.ds-408-dashboard .markdown-preview-sizer,
+.ds-408-problem .markdown-preview-sizer,
+.ds-408-pattern .markdown-preview-sizer {
+  box-sizing: border-box;
+  max-width: 1120px;
+  padding-inline: clamp(1rem, 4vw, 3rem);
+}
+
+.ds-408-dashboard :is(h1, h2),
+.ds-408-problem :is(h1, h2),
+.ds-408-pattern :is(h1, h2) {
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+.ds-408-dashboard h2,
+.ds-408-problem h2,
+.ds-408-pattern h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ds408-border);
+}
+
+.ds-408-dashboard :is(.ds408-kpi, .ds408-review-queue__alerts, .ds408-review-queue__list),
+.ds-408-problem :is(.ds408-kpi, .ds408-review-queue__alerts, .ds408-review-queue__list),
+.ds-408-pattern :is(.ds408-kpi, .ds408-review-queue__alerts, .ds408-review-queue__list) {
+  gap: 0.85rem;
+}
+
+.ds-408-dashboard :is(.ds408-kpi__card, .ds408-review-queue__card, .ds408-review-queue__alert, .ds408-action-card),
+.ds-408-problem :is(.ds408-kpi__card, .ds408-review-queue__card, .ds408-review-queue__alert, .ds408-action-card),
+.ds-408-pattern :is(.ds408-kpi__card, .ds408-review-queue__card, .ds408-review-queue__alert, .ds408-action-card) {
+  border: 1px solid var(--ds408-border);
+  border-radius: 14px;
+  background: var(--ds408-surface);
+  box-shadow: var(--ds408-shadow);
+}
+
+.ds-408-dashboard :is(.ds408-kpi__card, .ds408-review-queue__card, .ds408-action-card):hover,
+.ds-408-problem :is(.ds408-kpi__card, .ds408-review-queue__card, .ds408-action-card):hover,
+.ds-408-pattern :is(.ds408-kpi__card, .ds408-review-queue__card, .ds408-action-card):hover {
+  border-color: var(--ds408-matcha-500);
+}
+
+.ds-408-dashboard :is(.ds408-kpi__value, .ds408-review-queue__alert strong),
+.ds-408-problem :is(.ds408-kpi__value, .ds408-review-queue__alert strong),
+.ds-408-pattern :is(.ds408-kpi__value, .ds408-review-queue__alert strong) {
+  color: var(--ds408-matcha-900);
+  font-variant-numeric: tabular-nums;
+}
+
+.theme-dark .ds-408-dashboard :is(.ds408-kpi__value, .ds408-review-queue__alert strong),
+.theme-dark .ds-408-problem :is(.ds408-kpi__value, .ds408-review-queue__alert strong),
+.theme-dark .ds-408-pattern :is(.ds408-kpi__value, .ds408-review-queue__alert strong) {
+  color: #dce8dc;
+}
+
+.ds-408-dashboard :is(.ds408-control__badge, .ds408-state-badge, .ds408-evidence-badge),
+.ds-408-problem :is(.ds408-control__badge, .ds408-state-badge, .ds408-evidence-badge),
+.ds-408-pattern :is(.ds408-control__badge, .ds408-state-badge, .ds408-evidence-badge) {
+  gap: 0.3rem;
+  border: 1px solid var(--ds408-matcha-700);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ds408-matcha-200) 72%, var(--background-primary));
+  color: var(--ds408-matcha-900);
+  font-weight: 650;
+}
+
+.ds-408-dashboard :is(.ds408-control__badge.is-warning, .ds408-evidence-badge[data-evidence="待校准"]),
+.ds-408-problem :is(.ds408-control__badge.is-warning, .ds408-evidence-badge[data-evidence="待校准"]),
+.ds-408-pattern :is(.ds408-control__badge.is-warning, .ds408-evidence-badge[data-evidence="待校准"]) {
+  border-color: var(--ds408-alert);
+  background: color-mix(in srgb, var(--ds408-alert) 14%, var(--background-primary));
+  color: var(--ds408-alert);
+}
+
+.ds-408-dashboard .callout,
+.ds-408-problem .callout,
+.ds-408-pattern .callout {
+  overflow: clip;
+  border: 1px solid var(--ds408-border);
+  border-left: 4px solid var(--callout-color);
+  border-radius: 12px;
+  background: color-mix(in srgb, rgb(var(--callout-color)) 7%, var(--ds408-surface));
+}
+
+.ds-408-dashboard .callout .callout-title,
+.ds-408-problem .callout .callout-title,
+.ds-408-pattern .callout .callout-title {
+  padding-block: 0.1rem;
+  color: var(--ds408-ink);
+  font-weight: 700;
+}
+
+.ds-408-dashboard :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap),
+.ds-408-problem :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap),
+.ds-408-pattern :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap) {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border-radius: 12px;
+  scrollbar-width: thin;
+}
+
+.ds-408-dashboard :is(table, .table-view-table, .ds408-bank__table),
+.ds-408-problem :is(table, .table-view-table, .ds408-bank__table),
+.ds-408-pattern :is(table, .table-view-table, .ds408-bank__table) {
+  width: 100%;
+  border: 1px solid var(--ds408-border);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--ds408-surface);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-408-dashboard :is(table, .table-view-table, .ds408-bank__table) :is(th, td),
+.ds-408-problem :is(table, .table-view-table, .ds408-bank__table) :is(th, td),
+.ds-408-pattern :is(table, .table-view-table, .ds408-bank__table) :is(th, td) {
+  padding: 0.65rem 0.75rem;
+  border-color: var(--ds408-border);
+  vertical-align: top;
+}
+
+.ds-408-dashboard :is(table, .table-view-table, .ds408-bank__table) th,
+.ds-408-problem :is(table, .table-view-table, .ds408-bank__table) th,
+.ds-408-pattern :is(table, .table-view-table, .ds408-bank__table) th {
+  background: color-mix(in srgb, var(--ds408-matcha-200) 62%, var(--background-primary));
+  color: var(--ds408-matcha-900);
+  font-weight: 700;
+}
+
+.ds-408-dashboard :is(table, .table-view-table, .ds408-bank__table) tbody tr:nth-child(even),
+.ds-408-problem :is(table, .table-view-table, .ds408-bank__table) tbody tr:nth-child(even),
+.ds-408-pattern :is(table, .table-view-table, .ds408-bank__table) tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--ds408-matcha-200) 18%, transparent);
+}
+
+.ds-408-dashboard pre,
+.ds-408-problem pre,
+.ds-408-pattern pre {
+  overflow-x: auto;
+  border: 1px solid var(--ds408-border);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--ds408-matcha-900) 6%, var(--background-secondary));
+  box-shadow: inset 3px 0 0 var(--ds408-matcha-500);
+}
+
+.ds-408-dashboard code,
+.ds-408-problem code,
+.ds-408-pattern code {
+  border-radius: 5px;
+  color: var(--ds408-ink);
+  font-variant-ligatures: none;
+}
+
+.ds-408-dashboard :is(.metadata-container, .metadata-properties),
+.ds-408-problem :is(.metadata-container, .metadata-properties),
+.ds-408-pattern :is(.metadata-container, .metadata-properties) {
+  border: 1px solid var(--ds408-border);
+  border-radius: 12px;
+  background: var(--ds408-surface);
+  box-shadow: var(--ds408-shadow);
+}
+
+.ds-408-dashboard .metadata-property,
+.ds-408-problem .metadata-property,
+.ds-408-pattern .metadata-property {
+  border-bottom-color: var(--ds408-border);
+  color: var(--ds408-ink);
+}
+
+.ds-408-dashboard :is(.ds408-problem-nav, .ds408-control),
+.ds-408-problem :is(.ds408-problem-nav, .ds408-control),
+.ds-408-pattern :is(.ds408-problem-nav, .ds408-control) {
+  border-color: var(--ds408-border);
+  background: var(--ds408-surface);
+}
+
+.ds-408-dashboard .ds408-problem-nav__link,
+.ds-408-problem .ds408-problem-nav__link,
+.ds-408-pattern .ds408-problem-nav__link {
+  border-color: var(--ds408-border);
+  border-radius: 999px;
+  background: var(--background-primary);
+  color: var(--ds408-matcha-900);
+  font-weight: 650;
+}
+
+.ds-408-dashboard .ds408-problem-nav__link:hover,
+.ds-408-problem .ds408-problem-nav__link:hover,
+.ds-408-pattern .ds408-problem-nav__link:hover {
+  border-color: var(--ds408-matcha-700);
+  background: color-mix(in srgb, var(--ds408-matcha-200) 56%, var(--background-primary));
+}
+
+.ds-408-dashboard :is(button, input, select),
+.ds-408-problem :is(button, input, select),
+.ds-408-pattern :is(button, input, select) {
+  border-color: var(--ds408-border);
+  border-radius: 8px;
+}
+
+.ds-408-dashboard :is(button, input, select):focus-visible,
+.ds-408-problem :is(button, input, select):focus-visible,
+.ds-408-pattern :is(button, input, select):focus-visible,
+.ds-408-dashboard :is(a, [tabindex]):focus-visible,
+.ds-408-problem :is(a, [tabindex]):focus-visible,
+.ds-408-pattern :is(a, [tabindex]):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--ds408-matcha-500) 76%, white);
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .ds-408-dashboard .markdown-preview-sizer,
+  .ds-408-problem .markdown-preview-sizer,
+  .ds-408-pattern .markdown-preview-sizer {
+    max-width: 100%;
+    padding-inline: 0.8rem;
+  }
+
+  .ds-408-dashboard :is(.ds408-kpi, .ds408-review-queue__alerts, .ds408-review-queue__list, .ds408-control__form, .ds408-control__summary),
+  .ds-408-problem :is(.ds408-kpi, .ds408-review-queue__alerts, .ds408-review-queue__list, .ds408-control__form, .ds408-control__summary),
+  .ds-408-pattern :is(.ds408-kpi, .ds408-review-queue__alerts, .ds408-review-queue__list, .ds408-control__form, .ds408-control__summary) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ds-408-dashboard :is(button, input, select, .ds408-problem-nav__link),
+  .ds-408-problem :is(button, input, select, .ds408-problem-nav__link),
+  .ds-408-pattern :is(button, input, select, .ds408-problem-nav__link) {
+    min-height: 44px;
+  }
+
+  .ds-408-dashboard :is(.ds408-control__status-group, .ds408-control__actions, .ds408-problem-nav),
+  .ds-408-problem :is(.ds408-control__status-group, .ds408-control__actions, .ds408-problem-nav),
+  .ds-408-pattern :is(.ds408-control__status-group, .ds408-control__actions, .ds408-problem-nav) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ds-408-dashboard :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap),
+  .ds-408-problem :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap),
+  .ds-408-pattern :is(.table-wrapper, .block-language-dataview, .ds408-bank__table-wrap) {
+    max-width: calc(100vw - 1.6rem);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media print {
+  .ds-408-dashboard :is(.ds408-control, .ds408-problem-nav, button),
+  .ds-408-problem :is(.ds408-control, .ds408-problem-nav, button),
+  .ds-408-pattern :is(.ds408-control, .ds408-problem-nav, button) {
+    display: none;
+  }
+
+  .ds-408-dashboard :is(.ds408-kpi__card, .ds408-review-queue__card, .callout, pre),
+  .ds-408-problem :is(.ds408-kpi__card, .ds408-review-queue__card, .callout, pre),
+  .ds-408-pattern :is(.ds408-kpi__card, .ds408-review-queue__card, .callout, pre) {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+}
