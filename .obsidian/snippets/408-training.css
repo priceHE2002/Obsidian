@@ -394,6 +394,12 @@
 }
 
 @media print {
+  .ds-408-dashboard,
+  .ds-408-problem,
+  .ds-408-pattern {
+    --ds408-shadow: none;
+  }
+
   .ds-408-dashboard :is(.ds408-control, .ds408-problem-nav, button),
   .ds-408-problem :is(.ds408-control, .ds408-problem-nav, button),
   .ds-408-pattern :is(.ds408-control, .ds408-problem-nav, button) {

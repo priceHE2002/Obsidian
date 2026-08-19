@@ -216,6 +216,11 @@ test('mobile and print declarations stay inside their approved media blocks', ()
   const print = onlyMedia('print');
   assert.ok(mediaHas(print, '.ds408-control', 'display', 'none'));
   assert.ok(mediaHas(print, '.ds408-kpi__card', 'box-shadow', 'none'));
+  for (const scope of ['dashboard', 'problem', 'pattern']) {
+    assert.equal(directDeclarations(exactRule(`.ds-408-${scope}`, print)).get('--ds408-shadow'), 'none');
+    assert.equal(directDeclarations(exactRule(`.ds-408-${scope} .ds408-kpi .ds408-kpi__card`)).get('box-shadow'), 'var(--ds408-shadow)');
+    assert.equal(directDeclarations(exactRule(`.ds-408-${scope} .ds408-review-queue .ds408-review-queue__card`)).get('box-shadow'), 'var(--ds408-shadow)');
+  }
 });
 
 test('snippet covers real 408 cards, badges, content, controls and internal table scrolling', () => {
