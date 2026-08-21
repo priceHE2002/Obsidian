@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "11_数据结构/刷题记录/002_M01_LC41_缺失的第一个正数.md",
+                "file": "08_DL基础及论文进阶/04_我的研究/DynaSyn_v3.2_纯实验方案_正式版.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "002_M01_LC41_缺失的第一个正数"
+              "title": "DynaSyn_v3.2_纯实验方案_正式版"
             }
           }
         ]
@@ -97,7 +97,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11_数据结构/刷题记录/002_M01_LC41_缺失的第一个正数.md",
+                "file": "08_DL基础及论文进阶/04_我的研究/DynaSyn_v3.2_纯实验方案_正式版.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -178,7 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 205.05078125
+    "width": 404.203125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,6 +196,7 @@
   },
   "active": "d5c12a7ddc6ce60e",
   "lastOpenFiles": [
+    "11_数据结构/刷题记录/002_M01_LC41_缺失的第一个正数.md",
     "11_数据结构/总览.md",
     "11_数据结构/docs/superpowers/plans/2026-08-18-408-apex-dashboard-implementation.md",
     "11_数据结构/docs/superpowers/plans",
@@ -223,7 +224,6 @@
     "10_数学大观/高数大观/做题本进度/00_题目/第03章 一元积分/C3-3.2.2-008.md",
     "10_数学大观/高数大观/做题本进度/00_题目/第03章 一元积分/C3-3.2.2-006.md",
     "10_数学大观/高数大观/做题本进度/00_题目/第03章 一元积分/C3-3.2.2-007.md",
-    "10_数学大观/高数大观/做题本进度/00_题目/第03章 一元积分/C3-3.2.2-005.md",
     "10_数学大观/高数大观/做题本进度/00_题目/第03章 一元积分",
     "10_数学大观/高数大观/做题本进度/数一强化进度总览.md.tmp.2019.fcb07965bfb9",
     "10_数学大观.zip",
