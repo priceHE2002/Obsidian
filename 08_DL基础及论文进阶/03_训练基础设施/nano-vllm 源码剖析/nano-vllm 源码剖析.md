@@ -59,3 +59,9 @@ nanovllm/                    ← 核心包（~1200 行）
 - [[05_工具与辅助/工具与辅助]]
 - [[06_性能优化专题/性能优化专题总览]]
 - [[07_端到端流程/端到端流程]]
+
+---
+
+## 相关规划
+
+这篇笔记属于 [[13_AI_Infra/13_MiniServe/00_MiniServe-Architecture|MiniServe 项目]] 的前置学习材料。完整的 AI Infra 学习路线见 [[13_AI_Infra/00_Home/01_Knowledge-Map|AI Infra Knowledge Map]]。

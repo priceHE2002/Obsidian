@@ -256,3 +256,9 @@ model = AutoModelForCausalLM.from_pretrained(
 ## PDF
 
 [[FlashAttention 原文.pdf]]
+
+---
+
+## 相关规划
+
+在 [[13_AI_Infra/00_Home/01_Knowledge-Map|AI Infra Knowledge Map]] 的 GPU 优化主线中，本文是第 4 月 Kernel 阶段的必读论文背景；落地实验见 [[13_AI_Infra/11_Performance/02_Nsight-Checklist|Nsight Checklist]]。
