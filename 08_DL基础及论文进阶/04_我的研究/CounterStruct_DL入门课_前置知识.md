@@ -7,6 +7,7 @@ tags:
   - CounterStruct
   - 基础知识
 created: 2026-08-21
+updated: 2026-08-22
 ---
 
 # CounterStruct DL 入门课 · 前置知识
@@ -616,6 +617,40 @@ $$
 $$
 
 CounterStruct 用 **低维 ridge critic** 而不是大 MLP，原因就是 shadow supervision 非常少。
+
+一个工程细节：ridge 不需要保存所有历史数据，只需维护两个「充分统计量」——
+
+$$
+A = X^\top X + \lambda I,
+\qquad
+b = X^\top y,
+$$
+
+之后 $\theta = A^{-1}b$ 随时可算。新数据来了就 $A \leftarrow A + xx^\top$、$b \leftarrow b + xy$，旧数据可以扔掉。这就是方案里 $A_G, b_G$（global）和 $A_t, b_t$（task-local）的真实身份：它们让 critic 可以跨任务累积知识，而存储量固定为 $10\times10$ 的矩阵，与任务数无关。
+
+另外，$A^{-1}$ 还能顺便给出「我对这个预测有多没把握」的度量：
+
+$$
+\sigma(x) = \sqrt{x^\top (A_G^{-1}+A_t^{-1})\, x}.
+$$
+
+直觉：如果输入方向 $x$ 落在已有数据覆盖很少的区域，这个值就大。CounterStruct 用它做 uncertainty penalty（$\beta=1$），越没见过的 action 越保守。它只是 leverage proxy，不是严格的 Bayesian 置信区间。
+
+---
+
+## 第 36.5 章：Percentile Feature（为什么用相对排名而不是原始数值）
+
+不同 task/event 的 gradient 量级可能差几个数量级：event A 里 $g=0.001$ 已经算大，event B 里 $g=0.1$ 只是普通水平。如果把原始数值直接喂给跨 event 的 critic，「0.1」会被误认为永远比「0.001」好。
+
+CounterStruct 的做法：对每个连续 feature，只记录它在 **当前候选集合里排第几百分位**（mid-rank percentile），再映射到 $[-1,1]$：
+
+$$
+\tilde x_e(a)=2F_e(x(a))-1.
+$$
+
+这样 feature 的语义固定为「该 action 在当前这批候选里的相对位置」，critic 就变成 **within-event ranking model**，而不是跨 task 的绝对 loss predictor。layer depth / matrix type / task progress 这三个本来就无量纲的特征则用固定编码，不做 rescaling。
+
+---
 
 ---
 

@@ -7,6 +7,7 @@ tags:
   - 结构可塑性
   - 论文导读
 created: 2026-08-21
+updated: 2026-08-22
 ---
 
 # CounterStruct v2.1 方案导读 · 逐章讲解
@@ -73,8 +74,10 @@ v2.1 明确把 v1.0 的 one-step AdamW + Fisher-style memory 降级为 LFS basel
 
 - **RigL / SRigL**：它们是 coordinate saliency，CounterStruct 是 state-transition value。
 - **LookAhead / RL Compression**：不能说第一次考虑未来，别人早就考虑过 future information。真正差别是 fixed N:M topology graph 上进行 online weight-level shadow intervention supervision。
-- **SMET**：更关注 newborn weight 怎样优化稳定；CounterStruct 关注哪个 newborn transition 值得发生。
+- **SMET**：更关注 newborn weight 怎样优化稳定；CounterStruct 关注哪个 newborn transition 值得发生。若实现中出现明显 newborn instability，应把 SMET-style warm-up 作为独立 ablation，不能把稳定化效果误归因给 horizon critic。
 - **EWC / Fisher**：CounterStruct full 不使用 $P, H$；LFS 保留它作为 predecessor。
+- **OSFT / PaRSP**：它们靠 subspace / region protection 减少历史干扰；CounterStruct 不「保护参数」，而是学习 topology state transition 的 action value。
+- **Bi-Level DST / 2:4 mask 优化**：「DST 是双层优化」「穷举 2:4 合法 mask」都已有工作做过，禁止单独当 novelty——六状态表示的价值在于给 action-value learning 和 structural memory 提供天然离散载体。
 
 ---
 
@@ -98,7 +101,7 @@ Scale backbone 是 **Qwen3-8B**，只改最后 2 层，但特意让 candidate co
 
 ## 第 6 章：Initial Topology
 
-所有 structural methods 都使用相同 $M_0$。规则：每个 4-group 保留 pretrained magnitude 最大的两个。
+所有 structural methods 都使用相同 $M_0$。规则：每个 4-group 保留 pretrained magnitude 最大的两个；dormant 数值置 0；active cooldown 初始化为 $C=2$（一开始就允许被 prune），dormant cooldown 初始化 $C=0$。
 
 例如 pretrained $[0.9, 0.2, -0.7, 0.1]$，absolute magnitude $[0.9, 0.2, 0.7, 0.1]$，保留 $w_1, w_3$，所以 $M = [1,0,1,0]$。这样所有方法从同一个 starting topology 开始。
 
@@ -266,7 +269,23 @@ $$
 全文最核心公式：
 
 $$
-U_{CS}(a) = \hat b_{t,H}(a) - D_R(a) - \beta \sigma_t(a).
+U_{CS}(a) = \hat b_{t,H}(a) - D_R(a) - \beta \sigma_t(a),
+\qquad
+\beta = 1.
+$$
+
+其中不确定性项：
+
+$$
+\sigma_t(a)
+=
+\sqrt{
+\phi(a)^\top
+\left(
+A_G^{-1}+A_t^{-1}
+\right)
+\phi(a)
+}.
 $$
 
 你以后写代码时可以直接把它记成：
@@ -279,6 +298,8 @@ score =
 ```
 
 翻译成人话：**最终分数 = 当前任务未来收益 − 历史任务风险 − 我有多不确定**。这就是整篇论文最值得记住的公式。
+
+顺带说一下 $\sigma_t$ 的直觉：它就是前置知识第 36 章那个 ridge 回归解 $(X^\top X+\lambda I)^{-1}$ 的「杠杆值」。某个 action 的 feature 方向如果落在已有 shadow 数据覆盖很少的区域，$\phi^\top(A_G^{-1}+A_t^{-1})\phi$ 就大，说明 critic 对这类 action 没什么把握。方案明确说它只是 leverage proxy，不是 Bayesian posterior CI。
 
 ---
 
@@ -348,7 +369,7 @@ for task:
 
 ## 第 27–30 章：四套 Benchmark
 
-- **TRACE-8**：Primary，8 tasks，负责主要方法证据。
+- **TRACE-8**：Primary，8 tasks（C-STANCE → FOMC → MeetingBank → Py150 → ScienceQA → NumGLUE-cm → NumGLUE-ds → 20Minuten），每 task 5000 样本，epochs 依次 $[5,3,7,5,3,5,5,7]$，AdamW、LR $1\times10^{-5}$、cosine、effective batch 32，负责主要方法证据。
 - **TRACE Order-2**：同样任务换顺序，回答「是不是只对一个 task order 有效？」
 - **Seq-GLUE-7**：不同 benchmark family，回答「是不是只对 TRACE 有效？」
 - **Long-CL-15**：15 tasks，回答「长期学习会不会 freezing / early erosion？」
@@ -361,13 +382,19 @@ for task:
 
 最重要 structural baselines：Dense Regional FT、Static 2:4、SRigL、IPGH、LFS、CounterStruct。
 
-Primary seeds 为 5。最重要 contrast 是 **CounterStruct vs LFS**，因为 LFS 已经包含旧版 one-step + Fisher 思路，如果 CounterStruct 不能超过它，horizon critic 的新颖性很难站住。
+Primary seeds 为 5（42–46；Dense Regional FT 只跑 3 seeds）。三组 primary contrast：
+
+1. **CounterStruct vs LFS**——最重要的新颖性 contrast；
+2. CounterStruct vs SRigL；
+3. LFS vs IPGH——验证 complete-action 前提本身是否成立。
+
+为什么 CounterStruct vs LFS 最关键？因为 LFS 已经包含旧版 one-step + Fisher 思路，如果 CounterStruct 不能超过它，horizon critic 的新颖性很难站住。IPGH 则是专门构造的 matched independent prune/grow heuristic baseline，用来排除「只是 heuristic 组合方式不同」的解释。
 
 ---
 
 ## 第 32 章：External Baselines
 
-这部分回答「和 CL 社区其他路线比怎么样？」例如 LoRA、O-LoRA、Meta-UCF、OSFT、PaRSP、Any-SSR。这里不要求它们参数形式和 CounterStruct 一样，重点是使用统一 backbone / task protocol 公平比较。
+这部分回答「和 CL 社区其他路线比怎么样？」mandatory suite 是 Naive FT、LoRA、O-LoRA、Meta-UCF、OSFT、PaRSP、Any-SSR，全部 3 seeds。这里不要求它们参数形式和 CounterStruct 一样，重点是使用统一 backbone / task protocol 公平比较，且必须做 official-code / replay / task-ID / contamination audit。GORP / TreeLoRA 降为可选 appendix——方案明确说「不用 baseline 数量替代机制证据」。
 
 ---
 
@@ -408,7 +435,7 @@ LFS = v1.0 核心，包括 one-step AdamW + $P,H$ + Fisher-style memory。它是
 
 ## 第 41–43 章：Temporal Calibration
 
-这几章是论文最核心的机制实验。固定 checkpoint（$T_4@60\%$ 和 $T_7@60\%$），然后真实跑 $H=1,8,32,64$，比较三种 predictor：
+这几章是论文最核心的机制实验。固定 checkpoint（$T_4@60\%$ 和 $T_7@60\%$，seeds 42/43/44），构造 held-out calibration bundles：按 predicted-value 分 10 个 decile、每 decile 3 个独立 family，primary $K=64$、secondary $K=256$，且全部与 online shadow-training equations 完全 disjoint。然后真实跑 $H=1,8,32,64$，比较三种 predictor：
 
 $$
 \rho_{\text{RigL}}(H),
