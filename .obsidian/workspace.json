@@ -174,8 +174,7 @@
               "title": "Source Control"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -195,7 +194,7 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "0f70be6bd769d1b4",
+  "active": "3296ff1a0c52db15",
   "lastOpenFiles": [
     "10_数学大观/高数大观/一元积分/一元积分 MOC.md",
     "10_数学大观/高数大观/一元积分/一元积分大观.md",
