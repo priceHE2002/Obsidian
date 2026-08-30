@@ -1,0 +1,107 @@
+/*
+ * 考研数学 Obsidian 教材级公式排版
+ * 适用于 Obsidian + MathJax
+ * 目标：接近标准 LaTeX / 大学数学教材的公式观感
+ */
+
+/* ------------------------------
+   1. 数学公式整体比例
+   ------------------------------ */
+
+.markdown-rendered mjx-container,
+.markdown-source-view.mod-cm6 mjx-container {
+  font-size: 1.04em;
+}
+
+/* 行间公式：略大、上下留白更接近教材 */
+.markdown-rendered mjx-container[display="true"],
+.markdown-source-view.mod-cm6 mjx-container[display="true"] {
+  font-size: 1.10em;
+  margin: 0.9em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.08em 0;
+}
+
+/* 行内公式：避免过度放大影响行高 */
+.markdown-rendered mjx-container:not([display="true"]),
+.markdown-source-view.mod-cm6 mjx-container:not([display="true"]) {
+  margin: 0 0.06em;
+}
+
+/* ------------------------------
+   2. 段落与公式间距
+   ------------------------------ */
+
+.markdown-rendered p {
+  line-height: 1.78;
+}
+
+.markdown-rendered .math-block {
+  margin-top: 0.9em;
+  margin-bottom: 0.9em;
+}
+
+/* ------------------------------
+   3. 长公式横向滚动
+   ------------------------------ */
+
+.markdown-rendered .math-block,
+.markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  max-width: 100%;
+}
+
+/* ------------------------------
+   4. 阅读模式中的标题节奏
+   ------------------------------ */
+
+.markdown-rendered h1 {
+  margin-top: 1.6em;
+  margin-bottom: 0.8em;
+}
+
+.markdown-rendered h2 {
+  margin-top: 1.4em;
+  margin-bottom: 0.7em;
+}
+
+.markdown-rendered h3 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+}
+
+/* ------------------------------
+   5. Callout：定理 / 结论 / 易错点
+   不强制指定颜色，尽量跟随主题
+   ------------------------------ */
+
+.callout[data-callout="theorem"] .callout-title,
+.callout[data-callout="conclusion"] .callout-title,
+.callout[data-callout="mistake"] .callout-title {
+  font-weight: 700;
+}
+
+.callout[data-callout="theorem"],
+.callout[data-callout="conclusion"],
+.callout[data-callout="mistake"] {
+  border-radius: 8px;
+}
+
+/* ------------------------------
+   6. 打印 / 导出 PDF 时优化
+   ------------------------------ */
+
+@media print {
+  .markdown-rendered mjx-container[display="true"] {
+    font-size: 1.06em;
+    margin: 0.75em 0 !important;
+  }
+
+  .markdown-rendered p {
+    line-height: 1.65;
+  }
+
+  .markdown-rendered mjx-container[display="true"] {
+    overflow: visible;
+  }
+}
