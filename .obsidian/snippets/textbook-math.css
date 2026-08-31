@@ -10,14 +10,14 @@
 
 .markdown-rendered mjx-container,
 .markdown-source-view.mod-cm6 mjx-container {
-  font-size: 1.04em;
+  font-size: 1.10em !important;
 }
 
 /* 行间公式：略大、上下留白更接近教材 */
 .markdown-rendered mjx-container[display="true"],
 .markdown-source-view.mod-cm6 mjx-container[display="true"] {
-  font-size: 1.10em;
-  margin: 0.9em 0 !important;
+  font-size: 1.16em !important;
+  margin: 1.0em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.08em 0;
@@ -72,8 +72,22 @@
 
 /* ------------------------------
    5. Callout：定理 / 结论 / 易错点
-   不强制指定颜色，尽量跟随主题
+   跟随主题，加粗 + 圆角，并给出明显配色 + 图标
    ------------------------------ */
+
+/* 配色走 Obsidian 默认 callout 的 --callout-color / --callout-icon 机制 */
+.callout[data-callout="theorem"] {
+  --callout-color: 108, 129, 190;
+  --callout-icon: lucide-book-open;
+}
+.callout[data-callout="conclusion"] {
+  --callout-color: 24, 146, 110;
+  --callout-icon: lucide-check;
+}
+.callout[data-callout="mistake"] {
+  --callout-color: 214, 86, 86;
+  --callout-icon: lucide-x;
+}
 
 .callout[data-callout="theorem"] .callout-title,
 .callout[data-callout="conclusion"] .callout-title,
