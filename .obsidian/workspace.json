@@ -11,14 +11,12 @@
             "id": "47f8d84847772975",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "03_计算机组成原理/王道强化/计组强化_P1_数据的表示和运算_Obsidian笔记.md",
-                "mode": "source",
-                "source": false
+                "file": "03_计算机组成原理/王道强化/计组强化 P1_数据的表示和运算.pdf"
               },
-              "icon": "lucide-file",
-              "title": "计组强化_P1_数据的表示和运算_Obsidian笔记"
+              "icon": "lucide-file-text",
+              "title": "计组强化 P1_数据的表示和运算"
             }
           }
         ]
@@ -97,7 +95,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_计算机组成原理/王道强化/计组强化_P1_数据的表示和运算_Obsidian笔记.md",
+                "file": "03_计算机组成原理/王道强化/计组强化 P1_数据的表示和运算.pdf",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -178,7 +176,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 378.34375
+    "width": 260.984375
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -194,12 +192,29 @@
       "markdown-importer:打开 Markdown 格式转换器": false
     }
   },
-  "active": "2a0b2c21f867c062",
+  "active": "47f8d84847772975",
   "lastOpenFiles": [
-    "03_计算机组成原理/王道强化",
+    "03_计算机组成原理/王道强化/计组强化P2_存储系统大串讲（计组×操作系统）_课前打印.pdf",
+    "03_计算机组成原理/王道强化/计组强化 P1_数据的表示和运算.pdf",
+    "00_Inbox/草稿.md",
+    "Claude Code 已安装 Skills 列表.md",
+    "99_Archive/karuko-screenshots/Pasted image 20251122125154.png",
+    "99_Archive/karuko-screenshots/空间图形（一定要会画）.pdf",
+    "99_Archive/karuko-screenshots/Pasted image 20251103165113.png",
+    "99_Archive/karuko-screenshots/1.2 离散LTI系统的时域分析 - 1 离散LTI系统的时域描述.jpeg",
+    "99_Archive/karuko-screenshots/26张宇《高等数学18讲》_含目录 14.jpeg",
+    "99_Archive/karuko-screenshots/截屏 2025-10-13 09.42.58.jpeg",
     "03_计算机组成原理/计算机组成原理_截图整理笔记.md",
-    "03_计算机组成原理/王道强化/计组强化_P1_数据的表示和运算_Obsidian笔记.md",
     "03_计算机组成原理/408 计组高频计算题训练单.md",
+    "06_英语/考研英语一阅读真题_A4装订版.pdf",
+    "06_英语/长难句.md",
+    "03_计算机组成原理/王道强化/计组强化P3_存储系统大题专项强化.pdf",
+    "03_计算机组成原理/王道强化/计组强化P4_一堆指令的执行（纯净版）.pdf",
+    "03_计算机组成原理/王道强化/计组强化P4_指令流水线解题技巧总结.pdf",
+    "03_计算机组成原理/王道强化/计组强化P5_一条指令的执行(纯净版).pdf",
+    "03_计算机组成原理/王道强化/计组强化P6_总线、IO大题.pdf",
+    "03_计算机组成原理/王道强化/计组强化_P1_数据的表示和运算_Obsidian笔记.md",
+    "03_计算机组成原理/王道强化",
     "10_数学大观/高数大观/一元积分/一元积分大观.md",
     "12_考研打卡/总览.md",
     "12_考研打卡/使用说明.md",
@@ -214,34 +229,16 @@
     "10_数学大观/高数大观/一元积分/一元积分 MOC.md",
     "Templates/kaoyan-math-template.md",
     "Templates/README.md",
-    "Templates",
     "09_计算机网络/01_网际层IP/协议层次分布与作用场景图.md",
-    "09_计算机网络.zip",
     "10_数学大观/高数大观/函数极限/泰勒公式.md",
     "10_数学大观/高数大观/函数极限/泰勒公式法求极限.md",
     "10_数学大观/线代大观/线代大观 MOC.md",
     "10_数学大观/线代大观/2_矩阵的秩（本质直觉）.md",
-    "10_数学大观/线代大观/1_线性代数完整大观（总纲）.md",
-    "10_数学大观/高数大观/多元微分/多元微分大观.md",
-    "10_数学大观/高数大观/多元微分/多元微分 MOC.md",
-    "12_考研打卡/27代码打卡营/做题本",
-    "12_考研打卡/27计网强化",
-    "12_考研打卡/27操作系统强化",
-    "12_考研打卡/27组成原理强化",
-    "12_考研打卡/27数据结构强化",
-    "12_考研打卡/27代码打卡营",
-    "12_考研打卡/27计网基础",
-    "12_考研打卡/27操作系统基础",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/15_SGLang_vs_vLLM对比总结.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/14_性能优化与Tensor_Parallelism.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/13_DSL编程原语_gen_select_fork.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/12_CFSM与Jump_Forward解码.jpg",
     "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/11_Paged_Attention与Copy_on_Write.jpg",
-    "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/10_Chunked_Prefill技术.jpg",
-    "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/09_Static_vs_Continuous_Batching.jpg",
-    "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/08_CacheAware_Scheduling与LPM调度.jpg",
-    "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/07_Radix_Tree匹配与插入操作.jpg",
-    "08_DL基础及论文进阶/00_基础知识/05_SGLang推理框架/assets/06_RadixAttention内部结构与KV_Block.jpg",
     "03_计算机组成原理/计算机组成原理_全览.canvas",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"
