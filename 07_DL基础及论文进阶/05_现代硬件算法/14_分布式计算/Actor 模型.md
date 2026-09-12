@@ -1,0 +1,12 @@
+---
+tags:
+  - 现代硬件算法
+  - 分布式计算
+created: 2026-09-11
+source: https://en.algorithmica.org/hpc/distributed/actor/
+original_title: Actor Model
+---
+
+# Actor 模型
+
+> 该章节原文仅含标题，正文待作者撰写。本笔记依据 en.algorithmica.org/hpc/distributed/actor/ 收录的目录占位生成。

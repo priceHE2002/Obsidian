@@ -1,0 +1,516 @@
+/* ============================================================
+   Obsidian 一体化排版配置
+   ------------------------------------------------------------
+   由三个 snippet 合并而成，规则等价于同时开启：
+     · quiet-notes    → 第一、四、七、八节
+     · custom-fonts   → 第二、三、六节
+     · textbook-math  → 第五、九、十节
+   （原 textbook-math 处于关闭状态，合并后其规则一并生效。）
+
+   合并时消掉的两处冲突：
+     1) 字体族变量 --font-text
+        quiet-notes 原本写 "PingFang SC"，custom-fonts 用更高优先级把它
+        改写成自己的族名。合并后只保留第三处的一份声明。
+     2) 正文行高
+        quiet-notes 用 --line-height-normal: 1.8，textbook-math 又给
+        阅读模式的 p 写死 1.78。合并后统一由 --line-height-normal 控制，
+        阅读模式与编辑模式行距一致（打印另见第十节）。
+
+   ★ 2026-09-11 换字体方案：整体对齐 Claude 桌面客户端的字体栈
+     正文/界面  西文 Anthropic Sans   /  中文 思源黑体 Noto Sans SC
+     等宽       西文 Quiet Mono West  /  中文 思源黑体·加宽版
+     详见第二节。等宽中文特意做成「1 个字 = 2 列」，
+     这样笔记里那些 ASCII 框图（├─┐│└┘）才能严丝合缝。
+
+   关闭方式：设置 → 外观 → CSS 代码片段，关掉本 snippet 即可。
+   注：设置 → 外观 里的「正文字体 / 界面字体 / 等宽字体」务必留空，
+       否则会盖掉这里（那是 Obsidian 内置注入，优先级更高）。
+   ============================================================ */
+
+
+/* ══════════════════════════════════════════════════════════
+   一、颜色变量                                  〔原 quiet-notes〕
+   原则：颜色是全局变量，可以在整个 Obsidian 里生效。
+   ══════════════════════════════════════════════════════════ */
+
+.theme-light {
+  --text-normal: #323232;
+  --text-muted: #6b6b6b;
+  --background-primary: #ffffff;
+  --code-background: #f3f3f3;
+  --text-highlight-bg: #ffffb4;
+  --blockquote-background-color: transparent;
+  --blockquote-color: #676a6f;
+  --blockquote-border-color: #bfc2c4;
+  --h1-color: #2a2a2a;
+  --h2-color: #2a2a2a;
+  --tbl-header-bg: #f3f3f3;
+  --tbl-border: #e6e6e6;
+}
+
+.theme-dark {
+  --text-normal: #d6d3cd;
+  --text-muted: #8a8a8a;
+  --background-primary: #1c1c1b;
+  --code-background: #2a2a28;
+  --text-highlight-bg: #8a7d3c;
+  --tbl-header-bg: #2a2a28;
+  --tbl-border: #3a3a38;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   二、字体定义                                  〔原 custom-fonts〕
+
+   ★ 字体栈（2026-09-11 起，按 Claude 桌面客户端对齐）
+       正文 400  外文 Anthropic Sans      / 中文 Noto Sans SC
+       标题 700  外文 Anthropic Sans Bold / 中文 Noto Sans SC Bold
+       等宽 400  外文 Quiet Mono West     / 中文 Noto Sans SC Wide
+       等宽 700  外文 Quiet Mono West Bold / 中文 Noto Sans SC Wide Bold
+
+   依赖本机已安装的字体（均在 ~/Library/Fonts/）：
+     · Anthropic Sans Regular / Bold
+        来源：Claude 客户端自带的变量字体，用 fontTools 实例化（光学尺寸 opsz=16）。
+        版权归 Anthropic 所有，仅本机个人使用，请勿再分发。
+     · Quiet Mono West Regular / Bold
+        = Anthropic Mono（同 Claude 客户端）＋补齐字形，见下方说明。
+     · Noto Sans SC Regular / Bold
+        = 思源黑体（Source Han Sans），Adobe/Google 同源发行，OFL 授权。
+     · Noto Sans SC Wide Regular / Bold
+        = 上面这套思源黑体，把每个字形的步进整体乘以 1.2，得到「1 字 = 2 列」。
+
+   实现思路：
+     同一 font-family 下定义多个 @font-face，用 unicode-range 把
+     「外文」与「中文」拆成互斥的两组，浏览器按码点自动选字体。
+     正文族叫 "Quiet Sans"，等宽族叫 "Quiet Mono"。
+
+   ★★ 等宽的关键约定（决定代码里 ASCII 图能不能对齐）★★
+       外文/符号/框线 = Quiet Mono West 0.6em = 1 列
+       中文/全角/圈号 = Noto Sans SC Wide 1.2em = 2 列
+     于是「中文正好是外文的两倍宽」，├─ │ ┌ └ 与中文才能严丝合缝。
+     因此下面刻意把 U+2500-257F（框线）、U+2190-21FF（箭头）、
+     U+2000-206F（破折号/‖/引号）等「宽度不明的符号」都划给外文侧，
+     而把 U+2460-24FF（①-⑳）划给中文侧 —— 圈号是全角宽度，
+     必须占满 2 列，编者写的那些图就是按 2 列画的。
+
+   ★ Quiet Mono West 为什么要「补齐字形」：
+     Anthropic Mono 的 ASCII / 框线 / 运算符步进恰好是 0.6000em，
+     但它缺 ├ ┤ ┬ ┴ ┼ ↕ →；一旦回退到系统等宽（SF Mono / Menlo 0.6182em），
+     一行的右侧边框就会累积歪掉（60 列能歪出半个字）。
+     所以做了这些补齐，补齐后整族 118 个特殊字符全部严格 0.6000em：
+       · ├ ┤ ┬ ┴ ┼  用本字体 ─ 与 │ 的矩形直接拼出来，度量与本色完全一致；
+                     同时把 │ ┌ ┐ └ ┘ 的竖线上下端从 ±(0.30/0.80)em 拉长到
+                     [-0.32, +1.02]em（即 1.34em），这样只要代码行高 ≤ 1.30em，
+                     相邻两行的竖线必然重叠 0.09em，取整到像素也不会露断缝。
+       · ↔ ↕        用本字体的 ← ∪ → 、↑ ∪ ↓ 求并；
+       · ⟹ ⟺       取 Menlo 的 ⇒ / ⇔ 横向拉伸成长双箭头；
+       · 希腊字母 / 数学符号 / ✔ ✅ ❌ ‖ ⊥ 等 50 个
+                    从 Menlo、Iosevka 借，按 x 高缩放、水平居中，
+                    符号类再把垂直中心对到 0.360em（本色运算符统一中心）。
+       · 🎉 📌 是纯 emoji，任何字体都没有单色字形，只能留给系统彩色 emoji，
+                它们只出现在正文/图表里，不影响代码块。
+     字重方案：@font-face 的 font-weight 才是匹配权威，字体文件里的
+     usWeightClass 不参与 CSS 匹配。
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────── 正文 · 外文：Anthropic Sans（拉丁 / 希腊 / 西里尔 / 常用符号）────────── */
+@font-face {
+  font-family: "Quiet Sans";
+  src: local("Anthropic Sans Regular"),
+       local("AnthropicSans-Regular");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1D00-1D7F, U+1E00-1EFF, U+1F00-1FFF,
+    U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F,
+    U+2190-21FF, U+2200-22FF, U+2300-23FF,
+    U+25A0-25FF, U+2600-26FF, U+2700-27BF, U+27F0-27FF,
+    U+FB00-FB06;
+}
+
+@font-face {
+  font-family: "Quiet Sans";
+  src: local("Anthropic Sans Bold"),
+       local("AnthropicSans-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1D00-1D7F, U+1E00-1EFF, U+1F00-1FFF,
+    U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F,
+    U+2190-21FF, U+2200-22FF, U+2300-23FF,
+    U+25A0-25FF, U+2600-26FF, U+2700-27BF, U+27F0-27FF,
+    U+FB00-FB06;
+}
+
+/* ────────── 正文 · 中文：思源黑体（CJK 及中文标点）────────── */
+@font-face {
+  font-family: "Quiet Sans";
+  src: local("Noto Sans SC Regular"),
+       local("NotoSansSC-Regular");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+2460-24FF,
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F;
+}
+
+/* 粗体：标题与 **强调** 用真粗体，避免 CJK 合成粗体的糊字 */
+@font-face {
+  font-family: "Quiet Sans";
+  src: local("Noto Sans SC Bold"),
+       local("NotoSansSC-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+2460-24FF,
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F;
+}
+
+/* ────────── 等宽 · 外文：Quiet Mono West（拉丁 / 框线 / 箭头 / 数学符号）──────────
+   由 Anthropic Mono 补齐而来，每个字符步进都严格 0.6000em。 */
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Quiet Mono West Regular"),
+       local("QuietMonoWest-Regular");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1D00-1D7F, U+1E00-1EFF, U+1F00-1FFF,
+    U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F,
+    U+2190-21FF, U+2200-22FF, U+2300-23FF, U+2400-245F,
+    U+2500-257F, U+2580-259F, U+25A0-25FF, U+2600-26FF, U+2700-27BF, U+27F0-27FF,
+    U+FB00-FB06;
+}
+
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Quiet Mono West Bold"),
+       local("QuietMonoWest-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1D00-1D7F, U+1E00-1EFF, U+1F00-1FFF,
+    U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F,
+    U+2190-21FF, U+2200-22FF, U+2300-23FF, U+2400-245F,
+    U+2500-257F, U+2580-259F, U+25A0-25FF, U+2600-26FF, U+2700-27BF, U+27F0-27FF,
+    U+FB00-FB06;
+}
+
+/* ────────── 等宽 · 中文：思源黑体·加宽版（CJK / 全角 / ①-⑳）──────────
+   步进 1.2em = 外文的整整两倍，这正是 ASCII 图对齐的依据。
+   用加宽版而不是 size-adjust，是为了让中文字号与正文一致（只拉步子，不放字号）。 */
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Noto Sans SC Wide Regular"),
+       local("NotoSansSCWide-Regular");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+2460-24FF,
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F;
+}
+
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Noto Sans SC Wide Bold"),
+       local("NotoSansSCWide-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+2460-24FF,
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   三、字体应用                                  〔原 custom-fonts〕
+
+   选择器带 body.theme-* 前缀，是为了确保盖过默认主题
+   与任何同名的变量声明（含原 quiet-notes 里的 --font-text）。
+   末尾留 PingFang SC / 系统字体，只用于兜住少数两边都没覆盖的码点。
+   ══════════════════════════════════════════════════════════ */
+
+body.theme-light,
+body.theme-dark,
+body .markdown-source-view.mod-cm6,
+body .markdown-rendered {
+  --font-text: "Quiet Sans", "PingFang SC", -apple-system, sans-serif;
+  --font-interface: "Quiet Sans", "PingFang SC", -apple-system, sans-serif;
+  --font-print: "Quiet Sans", "PingFang SC", -apple-system, sans-serif;
+
+  /* 等宽：先 Quiet Mono（中西已按码点分流），
+     万一有字符两边都没有，再退到系统等宽（保住网格）。 */
+  --font-monospace: "Quiet Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   四、正文排版与行距                            〔原 quiet-notes〕
+
+   原则：所有会影响布局的排版度量，只在笔记正文容器里生效。
+   不把布局相关规则写到全局 body，避免影响 Obsidian 侧边栏、
+   拖动条和其他界面组件。
+   ══════════════════════════════════════════════════════════ */
+
+/* 4.1 正文字号 / 行高 / 标题尺度
+      （字体族不在这里写，统一由第三节负责）
+      标题一律用真粗体（本机只装了 Regular 400 与 Bold 700 两档），
+      层级靠字号拉开。
+
+      正文 15px → 17px；H1~H4 全部是 em，跟着自动放大，不用动。
+
+      ★ 代码块字号单独钉死在 15px，不跟随正文：
+        Quiet Mono West 的西文步进恰好 0.6000em，于是「每列占多少像素」
+        完全由字号决定 —— 只有字号取 5 的倍数时，一列才是整数像素
+        （15px → 9.00px/列，17px → 10.20px/列，20px → 12.00px/列）。
+        ASCII 框图动辄几十列宽、十几行高，整数列宽能让框线在像素上
+        严丝合缝、长图零累积误差；而且 15px 比 Obsidian 默认的
+        0.875em（15px 下 = 13.125px）还大了一档，正好满足「字体调大」。
+        ★ 以后要改这里，请仍取 5 的倍数。 */
+.markdown-source-view.mod-cm6,
+.markdown-rendered {
+  --font-text-size: 17px;
+  --code-size: 15px;
+  --line-height-normal: 1.8;
+  --p-spacing: 1.7em;
+  --h1-size: 1.6em;
+  --h1-weight: 700;
+  --h2-size: 1.3em;
+  --h2-weight: 700;
+  --h3-size: 1.12em;
+  --h3-weight: 700;
+  --h4-size: 1em;
+  --h4-weight: 700;
+  --heading-spacing: 1.9em;
+}
+
+/* 4.2 编辑器行距 */
+.markdown-source-view.mod-cm6 .cm-line {
+  padding-top: 0.28em;
+  padding-bottom: 0.28em;
+}
+
+/* 4.3 中文字距（代码块会另外清零，见第六节） */
+.markdown-source-view.mod-cm6 .cm-line,
+.markdown-rendered p,
+.markdown-rendered li,
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3 {
+  letter-spacing: 0.03em;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   五、数学公式（教材级观感）                    〔原 textbook-math〕
+   ══════════════════════════════════════════════════════════ */
+
+/* 5.1 公式整体比例
+     正文提到 17px 后，公式再单独抬一档，保证「数字公式比正文明显大」：
+     行内 1.16em ≈ 19.7px，行间 1.26em ≈ 21.4px（正文 17px）。 */
+.markdown-rendered mjx-container,
+.markdown-source-view.mod-cm6 mjx-container {
+  font-size: 1.16em !important;
+}
+
+/* 行间公式：略大、上下留白更接近教材 */
+.markdown-rendered mjx-container[display="true"],
+.markdown-source-view.mod-cm6 mjx-container[display="true"] {
+  font-size: 1.26em !important;
+  margin: 1.05em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.08em 0;
+}
+
+/* 行内公式：避免过度放大影响行高 */
+.markdown-rendered mjx-container:not([display="true"]),
+.markdown-source-view.mod-cm6 mjx-container:not([display="true"]) {
+  margin: 0 0.06em;
+}
+
+/* 5.2 公式块间距 + 长公式横向滚动
+     注：原 textbook-math 在此处还给 .markdown-rendered p 写死过
+     line-height: 1.78，合并后统一交给 4.1 的 --line-height-normal。 */
+.markdown-rendered .math-block {
+  margin-top: 0.9em;
+  margin-bottom: 0.9em;
+  max-width: 100%;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   六、等宽 / 代码区域                    〔custom-fonts + textbook-math〕
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────── 代码区域：收紧行高、清零字距，让框线在行间连成整条 ──────────
+   Quiet Mono West 的 │、├、┤、┼ 竖线墨迹高度是 1.340em
+   （上下端刻意做成 -0.32em / +1.02em，比 hhea 行盒 1.25em 更高一点）。
+   只要代码行高 ≤ 1.30em，第 n 行的竖线就必然和第 n+1 行的重叠，
+   ┌─┐│└┘ 才会连成完整的框而不是虚线；这里取 1.25em，
+   既留出 0.05em 的余量（15px 下约 0.75px，取整到像素也不会断），
+   又正好是这套等宽字体自身的自然行高。
+   ★ 若之后想调大代码行距，请勿超过 1.30em。
+   第四节给 .cm-line 加了 0.28em 上下内距和 0.03em 字距，
+   这里对代码行一并清零，保证编辑模式与阅读模式表现一致。 */
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+body .markdown-rendered pre,
+body .markdown-rendered pre code {
+  font-size: var(--code-size, 15px);
+  line-height: 1.25;
+  letter-spacing: 0;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* 行内代码：只去字距，不动行高（避免影响所在段落的行距） */
+body .markdown-rendered code,
+body .markdown-source-view.mod-cm6 .cm-inline-code {
+  letter-spacing: 0;
+}
+
+/* 代码块宽度不溢出（原 textbook-math 的长公式滚动配套） */
+.markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  max-width: 100%;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   七、表格                                      〔原 quiet-notes〕
+   ══════════════════════════════════════════════════════════ */
+
+.markdown-rendered table,
+.markdown-source-view table {
+  border-collapse: collapse;
+  border: 1px solid var(--tbl-border);
+}
+
+.markdown-rendered th,
+.markdown-rendered td,
+.markdown-source-view th,
+.markdown-source-view td {
+  font-size: 0.92em !important;
+  padding: 7px 14px !important;
+  border: 1px solid var(--tbl-border);
+  line-height: 1.6;
+}
+
+.markdown-rendered th,
+.markdown-source-view th,
+.markdown-rendered td:first-child,
+.markdown-source-view td:first-child {
+  background: var(--tbl-header-bg) !important;
+  font-weight: 600;
+}
+
+.markdown-rendered td:focus,
+.markdown-rendered th:focus,
+.markdown-source-view td:focus-within,
+.markdown-source-view th:focus-within {
+  box-shadow: inset 0 0 0 1px #323232;
+  outline: none;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   八、其余正文元素                              〔原 quiet-notes〕
+   ══════════════════════════════════════════════════════════ */
+
+/* 8.1 下划线 */
+.markdown-rendered u,
+.markdown-source-view u {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* 8.2 分隔线 */
+.markdown-rendered hr,
+.markdown-source-view .cm-hr {
+  border: none !important;
+  border-top: 1px solid var(--tbl-border) !important;
+  height: 0 !important;
+  background: none !important;
+}
+
+/* 8.3 高亮 */
+.markdown-rendered mark {
+  background: var(--text-highlight-bg);
+}
+
+/* 8.4 引用块 */
+.markdown-rendered blockquote {
+  background: transparent;
+  color: var(--blockquote-color);
+  border-left: 3px solid var(--blockquote-border-color);
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   九、Callout：定理 / 结论 / 易错点              〔原 textbook-math〕
+   跟随主题，加粗 + 圆角，并给出明显配色 + 图标
+   ══════════════════════════════════════════════════════════ */
+
+/* 配色走 Obsidian 默认 callout 的 --callout-color / --callout-icon 机制 */
+.callout[data-callout="theorem"] {
+  --callout-color: 108, 129, 190;
+  --callout-icon: lucide-book-open;
+}
+.callout[data-callout="conclusion"] {
+  --callout-color: 24, 146, 110;
+  --callout-icon: lucide-check;
+}
+.callout[data-callout="mistake"] {
+  --callout-color: 214, 86, 86;
+  --callout-icon: lucide-x;
+}
+
+.callout[data-callout="theorem"] .callout-title,
+.callout[data-callout="conclusion"] .callout-title,
+.callout[data-callout="mistake"] .callout-title {
+  font-weight: 700;
+}
+
+.callout[data-callout="theorem"],
+.callout[data-callout="conclusion"],
+.callout[data-callout="mistake"] {
+  border-radius: 8px;
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   十、打印 / 导出 PDF 时的优化                  〔原 textbook-math〕
+   ══════════════════════════════════════════════════════════ */
+
+@media print {
+  .markdown-rendered mjx-container[display="true"] {
+    font-size: 1.06em;
+    margin: 0.75em 0 !important;
+  }
+
+  .markdown-rendered p {
+    line-height: 1.65;
+  }
+
+  .markdown-rendered mjx-container[display="true"] {
+    overflow: visible;
+  }
+}

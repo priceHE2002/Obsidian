@@ -4,13 +4,13 @@
   "title": "Add derivation for full-rank invertibility",
   "titleGenerationStatus": "success",
   "createdAt": 1786708934417,
-  "updatedAt": 1786709672918,
-  "lastResponseAt": 1786709672918,
+  "lastActivityAt": 1786709672918,
   "sessionId": "6ff9879e-4dee-43d0-87a9-cf17b78d1450",
+  "selectedModel": "opus",
   "providerState": {
     "providerSessionId": "6ff9879e-4dee-43d0-87a9-cf17b78d1450"
   },
-  "currentNote": "10_数学大观/线代大观/矩阵的秩（本质直觉）.md",
+  "linkedContentPath": "10_数学大观/线代大观/矩阵的秩（本质直觉）.md",
   "usage": {
     "model": "sonnet[1m]",
     "inputTokens": 582,
