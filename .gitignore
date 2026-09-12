@@ -13,3 +13,6 @@
 # 大文件不入库：讲义/教材 PDF 只在本地保留
 *.pdf
 .accelerate/
+
+# Claude Code 会话数据与工作树（内含 git 仓库，不能入库）
+.claude/
