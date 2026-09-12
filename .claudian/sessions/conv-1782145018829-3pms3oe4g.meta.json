@@ -4,11 +4,16 @@
   "title": "撰写Obsidian功能详解指南",
   "titleGenerationStatus": "success",
   "createdAt": 1782145018829,
-  "updatedAt": 1782203130045,
-  "lastResponseAt": 1782145967698,
+  "lastActivityAt": 1782145967698,
   "sessionId": "ce23d127-5aa6-4ffa-a85d-2f62ca9f8732",
   "providerState": {
     "providerSessionId": "ce23d127-5aa6-4ffa-a85d-2f62ca9f8732"
+  },
+  "modelRecoverySource": {
+    "sessionId": "ce23d127-5aa6-4ffa-a85d-2f62ca9f8732",
+    "providerState": {
+      "providerSessionId": "ce23d127-5aa6-4ffa-a85d-2f62ca9f8732"
+    }
   },
   "usage": {
     "model": "opus[1m]",

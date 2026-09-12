@@ -1,3 +1,11 @@
 
 /08_DL基础及论文进阶/.claude/worktrees/wizardly-gould-b23ea3
 .worktrees/
+
+# Claude/Codex 工作树（本身是本仓库的 worktree，不能作为子仓库提交）
+.claude/worktrees/
+.worktrees/
+
+# 超过 GitHub 100MB 限制的大文件（仅本地保留，不进 git）
+03_计算机系统/1_计算机组成原理/2_原书PDF/27王道《计算机组成原理》高清带书签.pdf
+03_计算机系统/3_计算机网络/2027计算机网络_高清带书签版.pdf

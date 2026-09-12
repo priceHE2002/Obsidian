@@ -4,11 +4,16 @@
   "title": "Add microprogram cycle differentiation",
   "titleGenerationStatus": "success",
   "createdAt": 1782203176990,
-  "updatedAt": 1782914683318,
-  "lastResponseAt": 1782203292911,
+  "lastActivityAt": 1782203292911,
   "sessionId": "7a739fd8-9f6c-4378-83ee-9c66f91814be",
   "providerState": {
     "providerSessionId": "7a739fd8-9f6c-4378-83ee-9c66f91814be"
+  },
+  "modelRecoverySource": {
+    "sessionId": "7a739fd8-9f6c-4378-83ee-9c66f91814be",
+    "providerState": {
+      "providerSessionId": "7a739fd8-9f6c-4378-83ee-9c66f91814be"
+    }
   },
   "usage": {
     "model": "opus[1m]",

@@ -4,13 +4,18 @@
   "title": "Explain MOTUS network architecture",
   "titleGenerationStatus": "success",
   "createdAt": 1782917226357,
-  "updatedAt": 1783349658740,
-  "lastResponseAt": 1782917300428,
+  "lastActivityAt": 1782917300428,
   "sessionId": "9ad39187-eaf2-49d8-845f-55874010eb26",
   "providerState": {
     "providerSessionId": "9ad39187-eaf2-49d8-845f-55874010eb26"
   },
-  "currentNote": "08_DL基础及论文进阶/02_具身智能/14_Motus/Motus.md",
+  "modelRecoverySource": {
+    "sessionId": "9ad39187-eaf2-49d8-845f-55874010eb26",
+    "providerState": {
+      "providerSessionId": "9ad39187-eaf2-49d8-845f-55874010eb26"
+    }
+  },
+  "linkedContentPath": "08_DL基础及论文进阶/02_具身智能/14_Motus/Motus.md",
   "usage": {
     "model": "opus[1m]",
     "inputTokens": 255,

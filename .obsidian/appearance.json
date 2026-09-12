@@ -1,7 +1,10 @@
 {
-  "baseFontSize": 16,
+  "baseFontSize": 18,
   "enabledCssSnippets": [
-    "textbook-math"
+    "quiet-notes",
+    "custom-fonts",
+    "quiet-notes-unified"
   ],
-  "translucency": true
+  "translucency": true,
+  "cssTheme": ""
 }

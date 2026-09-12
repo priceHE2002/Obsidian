@@ -1,0 +1,208 @@
+/* ============================================================
+   自定义字体 · 正文 中文思源宋体 Light / 外文 Anthropic Serif Regular
+             等宽 中文思源宋体 Light / 外文 Iosevka Fixed
+   ------------------------------------------------------------
+   依赖本机已安装的字体（均在 ~/Library/Fonts/）：
+     · Anthropic Serif Regular / Bold
+        来源：Claude 客户端自带的变量字体，已实例化。
+        版权归 Anthropic 所有，仅本机个人使用，请勿再分发。
+        注：Anthropic 官方没有等宽字体，故等宽西文改用 Iosevka。
+     · Noto Serif SC Light / Bold
+        = 思源宋体（Source Han Serif），Adobe/Google 同源发行，OFL 授权。
+     · Iosevka Fixed Light / Regular / Bold
+        Iosevka 官方 34.8.1（SIL OFL 授权）。
+        「Fixed」变体每个字形步进都严格等于 0.5em，且不含连字（calt/liga），
+        是等宽对齐最稳的一种。
+
+   实现思路：
+     同一 font-family 下定义多个 @font-face，用 unicode-range 把
+     「拉丁」与「CJK」拆成互斥的两组，浏览器按码点自动选字体。
+     正文族叫 "Quiet Serif"，等宽族叫 "Quiet Mono"。
+
+     ★ 等宽的关键约定（决定代码里 ASCII 图能不能对齐）：
+         西文/符号/框线 = Iosevka 0.5em = 1 列
+         CJK/全角/圈号  = 思源宋体 1em = 2 列
+       于是「中文正好是西文的两倍宽」，├─ │ ┌ └ 与中文才能严丝合缝。
+       因此下面刻意把 U+2500-257F（框线）、U+2190-21FF（箭头）、
+       U+2000-206F（破折号/‖/引号）等「全角宽度不明的符号」都划给
+       Iosevka，而把 U+2460-24FF（①-⑳）划给思源宋体（0.5em 的圈号太小看不清）。
+
+   关闭方式：设置 → 外观 → CSS 代码片段，关掉 custom-fonts 开关。
+   ------------------------------------------------------------
+   注：设置 → 外观 里的「正文字体 / 界面字体 / 等宽字体」务必留空，
+       否则会盖掉这里（那是 Obsidian 内置注入，优先级更高）。
+   ============================================================ */
+
+/* ══════════════════════════════════════════════════════════
+   一、正文 / 界面
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────── 外文：Anthropic Serif（拉丁 / 希腊 / 西里尔 / 符号）────────── */
+@font-face {
+  font-family: "Quiet Serif";
+  src: local("Anthropic Serif Regular"),
+       local("AnthropicSerif-Regular"),
+       local("Anthropic Serif");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1E00-1EFF, U+2000-2012, U+2015-2017, U+201E-2025,
+    U+2027-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2190-21FF,
+    U+2200-22FF, U+2300-23FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB06;
+}
+
+@font-face {
+  font-family: "Quiet Serif";
+  src: local("Anthropic Serif Bold"),
+       local("AnthropicSerif-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1E00-1EFF, U+2000-2012, U+2015-2017, U+201E-2025,
+    U+2027-206F, U+2070-209F, U+20A0-20CF, U+2100-214F, U+2190-21FF,
+    U+2200-22FF, U+2300-23FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB06;
+}
+
+/* ────────── 中文：思源宋体 Light（CJK 及中文标点）──────────
+   以 font-weight: 400 注册，于是正文（400）就直接取 Light 字形。 */
+@font-face {
+  font-family: "Quiet Serif";
+  src: local("Noto Serif SC Light"),
+       local("NotoSerifSC-Light");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F,
+    U+2013-2014, U+2018-201D, U+2026;
+}
+
+/* 粗体：标题与 **强调** 用真粗体，避免 CJK 合成粗体的糊字 */
+@font-face {
+  font-family: "Quiet Serif";
+  src: local("Noto Serif SC Bold"),
+       local("NotoSerifSC-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F,
+    U+2013-2014, U+2018-201D, U+2026;
+}
+
+/* ══════════════════════════════════════════════════════════
+   二、等宽（代码块、行内代码）
+   ══════════════════════════════════════════════════════════ */
+
+/* ────────── 西文：Iosevka Fixed（拉丁 / 框线 / 箭头 / 破折号 / 符号）──────────
+   Iosevka Fixed 每个字符步进都恰好 0.5em，框线、箭头也不例外。 */
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Iosevka-Fixed"),
+       local("Iosevka Fixed");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1E00-1EFF,
+    U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F,
+    U+2190-21FF, U+2200-22FF, U+2300-23FF, U+2400-245F,
+    U+2500-257F, U+2580-259F, U+25A0-25FF, U+2600-26FF, U+2700-27BF,
+    U+FB00-FB06;
+}
+
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Iosevka-Fixed-Bold"),
+       local("Iosevka Fixed Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+0000-024F, U+0250-02AF, U+02B0-02FF, U+0300-036F, U+0370-03FF,
+    U+0400-04FF, U+1E00-1EFF,
+    U+2000-206F, U+2070-209F, U+20A0-20CF, U+2100-214F,
+    U+2190-21FF, U+2200-22FF, U+2300-23FF, U+2400-245F,
+    U+2500-257F, U+2580-259F, U+25A0-25FF, U+2600-26FF, U+2700-27BF,
+    U+FB00-FB06;
+}
+
+/* ────────── 中文：思源宋体 Light（CJK / 全角 / ①-⑳）──────────
+   与正文同一套宋体，代码里的中文注释与全文风格一致。
+   1em 步进 = 西文的整整两倍，这正是 ASCII 图对齐的依据。 */
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Noto Serif SC Light"),
+       local("NotoSerifSC-Light");
+  font-weight: 400;
+  font-style: normal;
+  unicode-range:
+    U+2460-24FF,
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F;
+}
+
+@font-face {
+  font-family: "Quiet Mono";
+  src: local("Noto Serif SC Bold"),
+       local("NotoSerifSC-Bold");
+  font-weight: 700;
+  font-style: normal;
+  unicode-range:
+    U+2460-24FF,
+    U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+3040-30FF, U+3100-312F,
+    U+31A0-31BF, U+31C0-31EF, U+3200-33FF, U+3400-4DBF, U+4E00-9FFF,
+    U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF,
+    U+20000-2A6DF, U+2A700-2EBEF, U+2F800-2FA1F;
+}
+
+/* ══════════════════════════════════════════════════════════
+   三、应用
+   ══════════════════════════════════════════════════════════ */
+
+/* 选择器带 body.theme-* 前缀，是为了确保盖过默认主题
+   与 Quiet Notes 里同名的变量声明。 */
+body.theme-light,
+body.theme-dark,
+body .markdown-source-view.mod-cm6,
+body .markdown-rendered {
+  --font-text: "Quiet Serif", "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  --font-interface: "Quiet Serif", "Noto Serif SC", "PingFang SC", -apple-system, sans-serif;
+  --font-print: "Quiet Serif", "Noto Serif SC", "Songti SC", Georgia, serif;
+
+  /* 等宽：先 Quiet Mono（中西已按码点分流），
+     万一有字符两边都没有，再退到系统等宽（保住网格），最后才是中文衬线。 */
+  --font-monospace: "Quiet Mono", ui-monospace, "SF Mono", Menlo,
+    "Noto Serif SC", "Songti SC", monospace;
+}
+
+/* ────────── 代码区域：收紧行高、清零字距，让框线在行间连成整条 ──────────
+   Iosevka 的 │ 字形纵向高 1.25em，而字体自身行高只有 1.18em：
+   只要代码行高 ≤ 1.25em，第 n 行的竖线就能和第 n+1 行的接上，
+   ┌─┐│└┘ 才会连成完整的框而不是虚线。
+   Quiet Notes 给 .cm-line 加了 0.28em 上下内距和 0.03em 字距，
+   这里对代码行一并清零，保证编辑模式与阅读模式表现一致。 */
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock,
+body .markdown-rendered pre,
+body .markdown-rendered pre code {
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+body .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* 行内代码：只去字距，不动行高（避免影响所在段落的行距） */
+body .markdown-rendered code,
+body .markdown-source-view.mod-cm6 .cm-inline-code {
+  letter-spacing: 0;
+}
