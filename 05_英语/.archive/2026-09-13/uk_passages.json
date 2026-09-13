@@ -1,0 +1,464 @@
+[
+ {
+  "year": 2015,
+  "text": 1,
+  "hits": 8,
+  "groups": [
+   "制度",
+   "国家指称",
+   "脱欧",
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "British",
+   "Euro",
+   "inequality",
+   "monarch",
+   "monarchy"
+  ]
+ },
+ {
+  "year": 2020,
+  "text": 1,
+  "hits": 8,
+  "groups": [
+   "制度",
+   "国家指称",
+   "媒体/公共机构",
+   "福利/NHS",
+   "脱欧"
+  ],
+  "keywords": [
+   "Brexit",
+   "Britain",
+   "MPs",
+   "benefits",
+   "press",
+   "the UK",
+   "the crown"
+  ]
+ },
+ {
+  "year": 2018,
+  "text": 3,
+  "hits": 7,
+  "groups": [
+   "国家指称",
+   "福利/NHS"
+  ],
+  "keywords": [
+   "Britain",
+   "NHS",
+   "National Health Service"
+  ]
+ },
+ {
+  "year": 2016,
+  "text": 2,
+  "hits": 6,
+  "groups": [
+   "国家指称",
+   "撒切尔/市场",
+   "福利/NHS"
+  ],
+  "keywords": [
+   "Britain",
+   "England",
+   "NHS",
+   "National Health Service",
+   "free market"
+  ]
+ },
+ {
+  "year": 2017,
+  "text": 3,
+  "hits": 6,
+  "groups": [
+   "国家指称",
+   "脱欧"
+  ],
+  "keywords": [
+   "Brexit",
+   "Britain",
+   "European Union",
+   "the UK"
+  ]
+ },
+ {
+  "year": 2010,
+  "text": 1,
+  "hits": 5,
+  "groups": [
+   "国家指称",
+   "媒体/公共机构"
+  ],
+  "keywords": [
+   "England",
+   "newspaper",
+   "press"
+  ]
+ },
+ {
+  "year": 2014,
+  "text": 1,
+  "hits": 5,
+  "groups": [
+   "国家指称",
+   "福利/NHS",
+   "脱欧"
+  ],
+  "keywords": [
+   "British",
+   "benefits",
+   "the EU",
+   "welfare"
+  ]
+ },
+ {
+  "year": 2018,
+  "text": 1,
+  "hits": 5,
+  "groups": [
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "Oxford",
+   "grammar school",
+   "inequality",
+   "middle class"
+  ]
+ },
+ {
+  "year": 2019,
+  "text": 1,
+  "hits": 4,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "Britain",
+   "England"
+  ]
+ },
+ {
+  "year": 2020,
+  "text": 4,
+  "hits": 4,
+  "groups": [
+   "国家指称",
+   "帝国/殖民",
+   "脱欧"
+  ],
+  "keywords": [
+   "Britain",
+   "European Union",
+   "India"
+  ]
+ },
+ {
+  "year": 2012,
+  "text": 4,
+  "hits": 3,
+  "groups": [
+   "国家指称",
+   "福利/NHS"
+  ],
+  "keywords": [
+   "Britain",
+   "benefits"
+  ]
+ },
+ {
+  "year": 2016,
+  "text": 4,
+  "hits": 3,
+  "groups": [
+   "媒体/公共机构",
+   "帝国/殖民"
+  ],
+  "keywords": [
+   "legacy",
+   "newspaper"
+  ]
+ },
+ {
+  "year": 2020,
+  "text": 3,
+  "hits": 3,
+  "groups": [
+   "福利/NHS",
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "benefits",
+   "elite"
+  ]
+ },
+ {
+  "year": 2024,
+  "text": 2,
+  "hits": 3,
+  "groups": [
+   "国家指称",
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "Britain",
+   "Cambridge",
+   "the UK"
+  ]
+ },
+ {
+  "year": 2016,
+  "text": 3,
+  "hits": 2,
+  "groups": [
+   "国家指称",
+   "福利/NHS"
+  ],
+  "keywords": [
+   "Britain",
+   "benefits"
+  ]
+ },
+ {
+  "year": 2018,
+  "text": 2,
+  "hits": 2,
+  "groups": [
+   "国家指称",
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "Britain",
+   "Oxford"
+  ]
+ },
+ {
+  "year": 2019,
+  "text": 3,
+  "hits": 2,
+  "groups": [
+   "国家指称",
+   "帝国/殖民"
+  ],
+  "keywords": [
+   "Britain",
+   "India"
+  ]
+ },
+ {
+  "year": 2020,
+  "text": 2,
+  "hits": 2,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "Britain",
+   "British"
+  ]
+ },
+ {
+  "year": 2022,
+  "text": 2,
+  "hits": 2,
+  "groups": [
+   "国家指称",
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "social mobility",
+   "the UK"
+  ]
+ },
+ {
+  "year": 2023,
+  "text": 3,
+  "hits": 2,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "the UK"
+  ]
+ },
+ {
+  "year": 2024,
+  "text": 1,
+  "hits": 2,
+  "groups": [
+   "媒体/公共机构",
+   "苏格兰/权力下放"
+  ],
+  "keywords": [
+   "Scotland",
+   "press"
+  ]
+ },
+ {
+  "year": 2012,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "England"
+  ]
+ },
+ {
+  "year": 2013,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "媒体/公共机构"
+  ],
+  "keywords": [
+   "press"
+  ]
+ },
+ {
+  "year": 2013,
+  "text": 3,
+  "hits": 1,
+  "groups": [
+   "撒切尔/市场"
+  ],
+  "keywords": [
+   "strike"
+  ]
+ },
+ {
+  "year": 2014,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "Britain"
+  ]
+ },
+ {
+  "year": 2014,
+  "text": 4,
+  "hits": 1,
+  "groups": [
+   "福利/NHS"
+  ],
+  "keywords": [
+   "benefits"
+  ]
+ },
+ {
+  "year": 2015,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "establishment"
+  ]
+ },
+ {
+  "year": 2015,
+  "text": 3,
+  "hits": 1,
+  "groups": [
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "establishment"
+  ]
+ },
+ {
+  "year": 2016,
+  "text": 1,
+  "hits": 1,
+  "groups": [
+   "制度"
+  ],
+  "keywords": [
+   "parliament"
+  ]
+ },
+ {
+  "year": 2017,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "制度"
+  ],
+  "keywords": [
+   "monarch"
+  ]
+ },
+ {
+  "year": 2017,
+  "text": 4,
+  "hits": 1,
+  "groups": [
+   "福利/NHS"
+  ],
+  "keywords": [
+   "benefits"
+  ]
+ },
+ {
+  "year": 2021,
+  "text": 1,
+  "hits": 1,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "Britain"
+  ]
+ },
+ {
+  "year": 2021,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "inequality"
+  ]
+ },
+ {
+  "year": 2023,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "国家指称"
+  ],
+  "keywords": [
+   "England"
+  ]
+ },
+ {
+  "year": 2025,
+  "text": 1,
+  "hits": 1,
+  "groups": [
+   "阶级/精英教育"
+  ],
+  "keywords": [
+   "grammar school"
+  ]
+ },
+ {
+  "year": 2025,
+  "text": 2,
+  "hits": 1,
+  "groups": [
+   "苏格兰/权力下放"
+  ],
+  "keywords": [
+   "Wales"
+  ]
+ }
+]
