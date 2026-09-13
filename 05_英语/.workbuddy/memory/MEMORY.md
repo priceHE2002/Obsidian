@@ -39,6 +39,28 @@
   以及三个旧文件。用 `--themes + --defs + --examples --collocations --no-source --appendix`
   可零差异重建成品。
 
+## 背景知识专题笔记（2026-09-13 定稿体例）
+
+- **三段式骨架**，与 `美国政治背景/` 完全同构：
+  `01 历史与制度骨架`（历史主线 mermaid + 关键节点 + 制度关系图 + 最小脑图）/
+  `02 词汇与概念体系`（熟词僻义先导 + 分组词群表 + 借代地名 + 折叠自测）/
+  `03 冲突模型与真题对照`（冲突总表 + 条件反射 + 真题对照 + 考前 10 句 + 折叠自测）。
+- frontmatter：`title / tags（考研英语·<国别>政治·背景知识·<档位>） / type: 专题笔记 / updated`。
+- **全篇不用 LaTeX**：`\boxed{}` 之类一律改 `> [!important]` callout 或 mermaid flowchart。
+- callout 只用 abstract / important / warning / question / example / success / danger / note / quote。
+- **文件名必须加学科前缀**（`英国01 …`）——否则 `01 历史与制度骨架.md` 在仓库里与
+  `美国政治背景/01 …` 同名，`[[01 历史与制度骨架]]` 会歧义、把对方的链接指错。
+- **跨文件夹链接写仓库根全路径 + 别名**：`[[05_英语/美国政治背景/01 历史与制度骨架|美国 · 01]]`；
+  `[[美国政治背景/01 …]]` 这种缺根目录的写法解析不到。
+- 目录：`05_英语/<国别>政治背景/`；已有 `美国政治背景/`（3 md + 1 PDF 手册）、
+  `英国政治背景/`（3 md）。
+- **真题对照表必须挖出来、不能编**：用 `~/.workbuddy/skills/exam-background-to-obsidian/`
+  的 `mine_topic_evidence.py` 扫 PDF 关键词，再逐句读原文确认；笔记里 `> [!quote]` 一律带
+  `（2015 · Text 1）` 式出处。**务必区分「关键词命中」与「真题材背景」**
+  （反例：2018 T1 的 Oxford 只是研究出处、2016 T1 的 parliament 是法国议会）。
+- 交付前跑 `check_notes.py`：mermaid 引号/括号配对、callout 续行前缀、`<details>` 配对、
+  wiki 链接可达且无歧义 —— **问题数必须 0**。
+
 ## 例句语料
 
 - `考研英语一阅读真题_A4装订版.pdf`（135 页，2010–2025 全部 Text，**有文字层**）
