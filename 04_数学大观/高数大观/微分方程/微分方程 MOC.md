@@ -2,54 +2,28 @@
 
 > [!info] 来源
 > 本专题整理自《微分方程知识点_withMarginNotes.pdf》（考试大纲 ＋ 思维导图 ＋ 手写口诀），在原有口诀与框架基础上补充了标准公式与 LaTeX 表达，用于系统性复习微分方程。完整推导、例题与「补充说明」见 [[微分方程大观]]。
->
-> 2026-09-18 结构重整：原 36 节平铺笔记改为**六大板块**（总览 / 考试大纲 / 基本概念与解的结构 / 一阶微分方程 / 高阶微分方程 / 综合与应用 / 速查与易混），主文件由 `微分方程知识点_Obsidian详细笔记.md` 更名为 [[微分方程大观]]（旧名保留在 aliases 中，老链接仍可用）。
-> 三处主要改动：**判型信息由 5 处收拢为 2 处**（「总览 · 解题总顺序」＋「六、速查」）、**删去整体换元与待定系数表的重复节**、**二阶解的结构从原 §4 上提为独立板块**并与待定系数法接成一条线。
->
-> 2026-09-18 并入题型讲义例题（13 道）：补上原先完全空白的 [[微分方程大观#3.7 分式线性型：先消常数项|分式线性型]]（判型树新增一个菱形），并在各节补例题，含 **数一 2024 真题** 与两届初赛题。索引见文末。
 
 ## 知识结构总览
 
 微分方程的两条主线：**线性方程的"解的结构"（公理层）** 与 **按型识别的解法（操作层）**。
 
-```mermaid
-%%{init: {"fontFamily": "Quiet Sans, sans-serif", "themeVariables": {"fontFamily": "Quiet Sans, sans-serif"}}}%%
-flowchart LR
-    B[二、概念与解的结构<br/>通解 = 齐次通解 + 特解] --> D2[常系数非齐次<br/>待定系数]
-    A[三、一阶方程] --> A1[可分离变量]
-    A --> A2[一阶线性]
-    A2 --> A3[Bernoulli]
-    A --> A4[换元法<br/>整体 / 齐次 / 链式]
-    A --> A5[Mdx+Ndy=0<br/>可分离 / 全微分 / 次数比较 / 齐次]
-    A --> A6[分式线性型<br/>平移消常数项]
-    C[四、高阶方程] --> C1[常系数: 特征方程]
-    C --> C2[可降阶<br/>缺 y / 缺 x]
-    C --> C3[Euler 方程]
-    C --> C4[差分方程 数三]
-```
+<div class="dp-cards">
+<div class="dp-card"><b>二、概念与解的结构</b><span class="dp-chip">五个基本概念</span><span class="dp-chip">线性算子的四条性质</span><span class="dp-chip">解的结构定理</span></div>
+<div class="dp-card"><b>三、一阶方程</b><span class="dp-chip">可分离变量</span><span class="dp-chip">齐次方程</span><span class="dp-chip">整体换元</span><span class="dp-chip">分式线性型</span><span class="dp-chip">链式结构</span><span class="dp-chip">一阶线性</span><span class="dp-chip">Bernoulli</span><span class="dp-chip">全微分</span></div>
+<div class="dp-card"><b>四、高阶方程</b><span class="dp-chip">常系数齐次</span><span class="dp-chip">待定系数</span><span class="dp-chip">可降阶</span><span class="dp-chip">Euler 方程</span><span class="dp-chip">二阶变系数</span><span class="dp-chip">差分方程</span></div>
+<div class="dp-card"><b>五、综合与应用</b><span class="dp-chip">导数定义</span><span class="dp-chip">几何应用</span><span class="dp-chip">定积分 / 变限积分</span><span class="dp-chip">二重积分变区域</span><span class="dp-chip">三步建模</span></div>
+</div>
+
+> [!tip] 一条依赖关系
+> 「二」的**解的结构定理**（通解 ＝ 齐次通解 ＋ 一个特解）是「四」里待定系数法的全部依据；其余各节彼此独立。
 
 ## 解题总顺序（先判型，后出手）
 
-```mermaid
-%%{init: {"fontFamily": "Quiet Sans, sans-serif", "themeVariables": {"fontFamily": "Quiet Sans, sans-serif"}}}%%
-flowchart TD
-    S[拿到方程] --> S1{几阶?}
-    S1 -- 一阶 --> A{能分离 x 与 y?}
-    A -- 能 --> A0[可分离变量]
-    A -- 否 --> A1{只含 y/x?}
-    A1 -- 是 --> A2[齐次 u=y/x]
-    A1 -- 否 --> A2b{含整体 ax+by+c?}
-    A2b -- 是 --> A2c[整体换元]
-    A2b -- 否 --> A2d{两个一次式的商?}
-    A2d -- 是 --> A2e[分式线性型: 消常数项]
-    A2d -- 否 --> A3{能整理成 y'+P y=Q?}
-    A3 -- 是 --> A4[一阶线性]
-    A3 -- 否 --> A5{Bernoulli? 或 Mdx+Ndy=0?}
-    A5 -- 是 --> A6[Bernoulli / 全微分 / 次数比较]
-    S1 -- 高阶 --> B1{常系数还是变系数?}
-    B1 -- 常系数 --> B2[特征方程 → 非齐次待定系数]
-    B1 -- 变系数 --> B3[缺项降阶 / Euler / 题干换元]
-```
+**① 看阶数 → ② 一阶：按七问往下过滤（能分离？只含 $y/x$？含整体 $ax+by+c$？是两个一次式的商？能整理成线性？Bernoulli？写成 $M\mathrm dx+N\mathrm dy=0$？）→ ③ 高阶：先问是不是常系数。**
+
+- 一阶的完整决策图 → [[微分方程大观#3.1 一阶方程判型决策树|3.1 判型决策树]]
+- 八步扫描表 → [[微分方程大观#解题总顺序（八步扫描）|总览 · 解题总顺序]]
+- 高阶分类与适用卷种 → [[微分方程大观#4.1 高阶方程总分类|4.1 高阶方程总分类]]
 
 ## 板块导航
 
@@ -92,9 +66,9 @@ flowchart TD
 - **分式线性型**（原 PDF 未展开、后补）：$y'=f\!\left(\dfrac{ax+by+c}{a_1x+b_1y+c_1}\right)$。先查三个捷径（$c=c_1=0$ → 齐次；系数成比例 → 可分离；$b=-a_1$ → 全微分），都不满足再令 $x=X+h$、$y=Y+k$ **消常数项** → 齐次。
 - **两条万能自检**：把隐式结果 $F(x,y)=C$ 反推 $-\dfrac{F_x}{F_y}$ 是否等于题目的 $y'$；把解代回线性方程看等式是否成立。
 
-## 例题索引（并入的 13 道题）
+## 例题索引
 
-> 标**全**的给完整解析，标**简**的只给关键变形与答案。全部例题已重新验算。
+> 标**全**的给完整解析，标**简**的只给关键变形与答案。**解析在正文里统一折叠**（题干可见，点"点开看解析"核对）——先自己做一遍再对答案。
 
 | 例 | 题型 | 关键换元 / 招式 | 落位 | 出处 | 详略 |
 |:--:|------|------|------|:--:|:--:|
@@ -112,9 +86,9 @@ flowchart TD
 | 12 | 齐次（平方和整体） | $u=x^2+y^2$，再 $v=u/x$ | 3.5.2 | — | 简 |
 | 13 | Bernoulli（先整理再两步换元） | $u=\cos y$，再 $w=1/u$ | [[微分方程大观#3.4 Bernoulli 方程（数学一）\|3.4]] | 14 届初赛 | 全 |
 
-> [!warning] 三处讲义笔误（本笔记已按验算结果书写）
-> 例 5「后悔药」的 $\mathrm dy$ 项符号、例 11 与例 13 的积分因子内外符号，
-> 讲义原文有误。原处都留了**易错点提示与自检办法**，对着看一遍即可。
+> [!warning] 三处最容易写错的地方
+> 例 5「后悔药」的 $\mathrm dy$ 项符号、例 11 与例 13 的积分因子内外符号——这三处极容易写反，
+> 原处都留了**易错点提示与自检办法**，对着核一遍。
 
 ## 相关链接
 
