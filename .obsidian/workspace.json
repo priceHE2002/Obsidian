@@ -77,12 +77,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_数学大观/高数大观/微分方程/微分方程 MOC.md",
+                "file": "04_数学大观/高数大观/微分方程/微分方程大观.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "微分方程 MOC"
+              "title": "微分方程大观"
             }
           }
         ],
@@ -162,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04_数学大观/高数大观/微分方程/微分方程 MOC.md",
+                "file": "04_数学大观/高数大观/微分方程/微分方程大观.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -270,10 +270,10 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "3af679d74732785f",
+  "active": "3296ff1a0c52db15",
   "lastOpenFiles": [
-    "04_数学大观/高数大观/微分方程/微分方程大观.md",
     "04_数学大观/高数大观/微分方程/微分方程 MOC.md",
+    "04_数学大观/高数大观/微分方程/微分方程大观.md",
     "04_数学大观/高数大观/一元积分/一元积分大观.md",
     "04_数学大观/高数大观/微分方程/微分方程知识点_Obsidian详细笔记.md",
     "04_数学大观/高数大观/微分方程",
