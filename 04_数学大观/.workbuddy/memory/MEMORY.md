@@ -28,12 +28,13 @@
   `\lvert` 后必须紧跟空格，否则吞掉下一个字母。
 - 表格里写 wikilink 别名要转义：`[[#3.1 标题\|3.1]]`——**只用于 wikilink**，别和 MathJax 的 `\|` 混。
 - 锚点要**完整抄标题**，含括号：`### 4.7 差分方程（数学三）` → `[[#4.7 差分方程（数学三）]]`。
-- **mermaid 图必须加字体 init 指令**，否则中英混排标签**最后一个字会被裁掉**（mermaid 按默认字体量宽度、
-  却用本库的 Quiet Sans 渲染）。判据：被裁的全是含 Latin/数字的标签，纯中文标签不坏。写法：
-  ```
-  %%{init: {"fontFamily": "Quiet Sans, sans-serif", "themeVariables": {"fontFamily": "Quiet Sans, sans-serif"}}}%%
-  ```
-  同时标签要短、节号用 `<br/>` 放第二行；`{}` `[]` 内的圆括号必须整体加引号（否则整块报 parse error）。
+- **图画用 HTML/CSS，不要用 mermaid**：mermaid 按自己的字体宽度表估算节点尺寸，与本库的 Quiet Sans
+  差几像素就导致**含 Latin/数字的标签末字被裁**（`3.5.2` 的 `2`、`x,y?` 的 `?`）。加 `%%{init:…}%%`
+  钉字体**解决不了**（实测无效）。改用 `.dp` / `.dp-cards` 组件（样式在本库 snippet 第十一节），
+  盒子由文字撑开、原理上不裁字，且跟随主题明暗。生成器
+  `~/.workbuddy/skills/obsidian-daguan-restructure/scripts/make_dp_flow.py`。
+  另：mermaid 的 `{}` `[]` 内的圆括号必须整体加引号，否则整块报 parse error。
+  **HTML 块前后各留一个空行、块内不留空行**，否则 Obsidian 会断开它。
 
 ## 三、重构/整理既有笔记的标准动作
 
