@@ -35,8 +35,7 @@
               "title": "一元积分大观"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -112,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04_数学大观/高数大观/一元积分/一元积分大观.md",
+                "file": "04_数学大观/高数大观/微分方程/微分方程大观.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -220,10 +219,10 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "aa7788d53a12917f",
+  "active": "d435fcaf0529a181",
   "lastOpenFiles": [
-    "04_数学大观/高数大观/微分方程/微分方程大观.md",
     "04_数学大观/高数大观/一元积分/一元积分大观.md",
+    "04_数学大观/高数大观/微分方程/微分方程大观.md",
     "天大港理工与天大福州_考研与AI就业对比.md",
     "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P4_指令流水线解题技巧总结.pdf",
     "03_计算机系统/1_计算机组成原理/0_基础考点讲解/5_第五章 中央处理器/5.7_1 多处理器基本概念骚图.pdf",

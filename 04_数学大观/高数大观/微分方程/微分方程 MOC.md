@@ -10,7 +10,7 @@
 <div class="dp-cards">
 <div class="dp-card"><b>二、概念与解的结构</b><span class="dp-chip">五个基本概念</span><span class="dp-chip">线性算子的四条性质</span><span class="dp-chip">解的结构定理</span></div>
 <div class="dp-card"><b>三、一阶方程</b><span class="dp-chip">可分离变量</span><span class="dp-chip">齐次方程</span><span class="dp-chip">整体换元</span><span class="dp-chip">分式线性型</span><span class="dp-chip">链式结构</span><span class="dp-chip">一阶线性</span><span class="dp-chip">Bernoulli</span><span class="dp-chip">全微分</span></div>
-<div class="dp-card"><b>四、高阶方程</b><span class="dp-chip">常系数齐次</span><span class="dp-chip">待定系数</span><span class="dp-chip">可降阶</span><span class="dp-chip">Euler 方程</span><span class="dp-chip">二阶变系数</span><span class="dp-chip">差分方程</span></div>
+<div class="dp-card"><b>四、高阶方程</b><span class="dp-chip">常系数齐次</span><span class="dp-chip">待定系数</span><span class="dp-chip">算子法</span><span class="dp-chip">可降阶</span><span class="dp-chip">Euler 方程</span><span class="dp-chip">二阶变系数</span><span class="dp-chip">差分方程</span></div>
 <div class="dp-card"><b>五、综合与应用</b><span class="dp-chip">导数定义</span><span class="dp-chip">几何应用</span><span class="dp-chip">定积分 / 变限积分</span><span class="dp-chip">二重积分变区域</span><span class="dp-chip">三步建模</span></div>
 </div>
 
@@ -33,7 +33,7 @@
 | 一、考试大纲 | 考试内容、九条要求、数三附加、大纲反读 | [[微分方程大观#一、考试大纲与复习定位]] |
 | 二、概念与解的结构 | 五个基本概念、线性算子四条性质、解的结构定理 | [[微分方程大观#二、基本概念与解的结构]] |
 | 三、一阶方程 | 判型决策树、可分离变量、一阶线性、Bernoulli、三种换元、Mdx+Ndy=0 四条出路、分式线性型 | [[微分方程大观#三、一阶微分方程]] |
-| 四、高阶方程 | 总分类、特征方程、待定系数、可降阶、Euler、变系数原则、差分方程 | [[微分方程大观#四、高阶微分方程]] |
+| 四、高阶方程 | 总分类、特征方程、待定系数、**算子法**、可降阶、Euler、变系数原则、差分方程 | [[微分方程大观#四、高阶微分方程]] |
 | 五、综合与应用 | 导数定义、几何应用、定积分/变限积分、二重积分变区域、三步建模 | [[微分方程大观#五、综合与应用]] |
 | 六、速查与易混 | 三张速查表 ＋ 六组易混概念 | [[微分方程大观#六、速查与易混]] |
 
@@ -50,6 +50,26 @@
 | Bernoulli | $y'+Py=Qy^{\alpha}$ | $z=y^{1-\alpha}$ → 一阶线性 |
 | 全微分 | $M\mathrm dx+N\mathrm dy=0$ 且 $M_y=N_x$ | 求势函数 $U$，解 $U=C$ |
 
+## 二阶常系数非齐次：求特解速查
+
+**框架**（[[微分方程大观#2.3 解的结构定理|解的结构定理]]）：$y=y_h+y_p$。$y_h$ 走特征方程，**三种工具都躲不掉这一步**；$y_p$ 有三条路——待定系数法、算子法、拉普拉斯变换。
+
+| 右端 $f(x)$ | 待定系数法设 $y_p$ | 算子法 $\dfrac{1}{F(D)}f(x)$ | 撞根时 |
+|---|---|---|---|
+| $e^{\lambda x}P_m(x)$ | $x^ke^{\lambda x}Q_m(x)$ | 见 $D$ 就换 $k$ | 乘 $x^m$，分母换 $F^{(m)}(k)$ |
+| $e^{\alpha x}\left[P_m\cos\beta x+Q_n\sin\beta x\right]$ | $x^ke^{\alpha x}\left[R_l\cos\beta x+S_l\sin\beta x\right]$，$l=\max(m,n)$ | 提 $e^{\alpha x}$ 后见 $D^2$ 换 $-\beta^2$；带多项式时走欧拉公式 | 看 $\alpha+i\beta$ 是否为特征根 |
+| $P_m(x)$ | $x^kQ_m(x)$ | 等比级数展开，**展到 $D^m$ 即止** | $F(0)=0$ → 先提 $\dfrac{1}{D^k}$，最后积 $k$ 次 |
+| $e^{kx}\gamma(x)$ | 按 $\gamma$ 的形状设 | **移位大法**：$e^{kx}\dfrac{1}{F(D+k)}\gamma(x)$ | 提 $e^{kx}$ 与 $D\to D+k$ 同时做 |
+
+> **十六字诀**：指数照抄；多项式同次（三角取高次）；正余弦都写；冲突乘 $x^k$。
+> **算子法四句**：见 $D$ 换 $k$；见 $D^2$ 换 $-a^2$；多项式等比级数；$e$ 与三角先移位。
+> 完整推导与例题见 [[微分方程大观#4.3 常系数非齐次与待定系数法|4.3 待定系数法]] 与 [[微分方程大观#4.3.5 算子法：把"猜特解"变成"代数运算"|4.3.5 算子法]]。
+
+> [!warning] 算子法三条铁律
+> ① 动手前先判"$k$ 或 $\pm ai$ **是不是特征根**"（除零是最大雷区）；
+> ② 分母剩 $D$ 时**必须有理化**（同乘共轭，再用 $D^2=-a^2$）；
+> ③ 算完**代回原方程验一次**——算子法跳步多，这道工序省不得。
+
 ## 核心考点速查
 
 - **公理层一条**：非齐次通解 ＝ 对应齐次通解 ＋ 非齐次一个特解；待定系数法的全部依据。
@@ -59,6 +79,8 @@
 - **Mdx+Ndy=0 四条出路**（按成本从低到高）：$\mathrm dx$ 前只含 $y$ 且 $\mathrm dy$ 前只含 $x$ → **直接可分离**；再查 $M_y=N_x$（全微分）；再比 $x,y$ 次数定方向；同次则化 $y/x$。$y(x)$ 不线性时可倒换 $x(y)$。
 - **特征方程一条通吃**：导几次就是 $r$ 的几次方；重根乘 $x$ 的递增幂，复根 cos/sin 成对出现。
 - **待定系数十六字诀**：指数照抄；多项式同次（三角取高次）；正余弦都写；冲突乘 $x^k$（$k$ ＝ 该特征根的重数）。
+- **求特解的"框架 vs 工具"**：解的结构定理是**框架**（通解 ＝ 齐次通解 ＋ 一个特解），待定系数法／算子法／拉普拉斯变换只是**求那一个特解的工具**；换工具不改变框架，**特征方程那一步谁都躲不掉**。
+- **算子法四句**：$y^*=\dfrac{1}{F(D)}f(x)$——见 $D$ 换 $k$（撞根乘 $x^m$、分母换 $F^{(m)}(k)$）；见 $D^2$ 换 $-a^2$（残留 $D$ 要有理化）；多项式等比级数展开到 $D^n$；$e^{kx}\gamma(x)$ 与多项式 × 三角先移位（后者配合欧拉公式取实／虚部）。
 - **可降阶判据只有一个"缺谁"**：缺 $y$ → $p=y'$（$y''=p'$）；缺 $x$ → $p=p(y)$（$y''=p\,\mathrm dp/\mathrm dy$）。
 - **Euler 两个换算**：$xy'=Dy$，$x^2y''=D^2y-Dy$；非齐次项 $f(x)$ 必须一起换成 $t$ 的表达式。
 - **变限积分三种处理**：连续 → 直接求导；可导且给初值 → 一直导；导成高阶变系数 → 令变限积分 $=g(x)$ 重新构造。
