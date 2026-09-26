@@ -1,0 +1,148 @@
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=13mm,right=13mm,top=15mm,bottom=13mm,includeheadfoot]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{array}
+
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setlength{\parindent}{0pt}
+
+\definecolor{secc}{RGB}{22,40,72}     % 章标题
+\definecolor{subc}{RGB}{58,88,128}    % 节标题
+\definecolor{ansc}{RGB}{10,86,140}    % 答案
+\definecolor{leftc}{RGB}{74,84,100}   % 答案册中的题面（灰）
+\definecolor{mute}{RGB}{132,132,132}  % 编号
+\definecolor{dotc}{RGB}{178,178,178}  % 点线
+\definecolor{ruleg}{RGB}{120,140,170}
+
+\newcounter{fcnt}
+\makeatletter
+% 点导线：用 1fill（高于 \parfillskip 的 fil 阶），保证铺满整栏
+\newcommand{\dtf}{\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hskip 0pt plus 1fill\relax}
+\makeatother
+\newcommand{\dotlines}[1]{%
+  \ifnum#1>0 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+  \ifnum#1>1 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+  \ifnum#1>2 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+  \ifnum#1>3 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+}
+\newcommand{\ans}[1]{{\color{ansc}#1}}
+
+\newcommand{\Fsec}[1]{%
+  \par\vspace{0.85em}\nobreak
+  \noindent{\sffamily\bfseries\large\color{secc}#1}\par
+  \vspace{0.18em}\noindent{\color{ruleg}\rule{\linewidth}{0.9pt}}\par
+  \vspace{0.55em}\nobreak}
+\newcommand{\Fsub}[1]{%
+  \par\vspace{0.45em}\nobreak
+  \noindent{\sffamily\bfseries\color{subc}#1}\par\vspace{0.35em}\nobreak}
+
+\newcommand{\ANitem}[3]{%
+  \stepcounter{fcnt}%
+  \par\noindent\hangindent=2.0em\hangafter=1
+  \makebox[2.0em][l]{\sffamily\footnotesize\color{mute}\thefcnt.}%
+  #1$\displaystyle {\color{leftc}#2}\,\ans{#3}$\par\vspace{0.5em}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{mute}一元积分 · 考研核心公式默写本 · 答案册}
+\fancyhead[R]{\small\sffamily\color{mute}第 \thepage\ 页}
+\renewcommand{\headrulewidth}{0.4pt}\renewcommand{\footrulewidth}{0pt}
+\begin{document}
+{\sffamily\bfseries\LARGE\color{secc}一元积分 · 考研核心公式默写本 · 答案册}\par
+\vspace{0.35em}
+{\small\color{mute}编号与默写本一一对应 · 共 \textbf{72} 条 ·
+\textcolor{ansc}{蓝色}为待默写部分}\par
+\vspace{0.5em}
+{\color{ruleg}\rule{\linewidth}{1.1pt}}\par
+\vspace{0.8em}
+\Fsec{一、不定积分基本公式表}
+\Fsub{1.1　幂 · 指数 · 对数}
+\ANitem{}{\int x^{\alpha}\,\mathrm{d}x=}{\dfrac{x^{\alpha+1}}{\alpha+1}+C\quad(\alpha\neq-1)}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{x}=}{\ln\lvert x\rvert+C}
+\ANitem{}{\int e^{x}\,\mathrm{d}x=}{e^{x}+C}
+\ANitem{}{\int a^{x}\,\mathrm{d}x=}{\dfrac{a^{x}}{\ln a}+C}
+\ANitem{}{\int \ln x\,\mathrm{d}x=}{x\ln x-x+C}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{1+x^{2}}=}{\arctan x+C}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{1-x^{2}}}=}{\arcsin x+C}
+\Fsub{1.2　三角函数}
+\ANitem{}{\int \sin x\,\mathrm{d}x=}{-\cos x+C}
+\ANitem{}{\int \cos x\,\mathrm{d}x=}{\sin x+C}
+\ANitem{}{\int \tan x\,\mathrm{d}x=}{-\ln\lvert\cos x\rvert+C}
+\ANitem{}{\int \cot x\,\mathrm{d}x=}{\ln\lvert\sin x\rvert+C}
+\ANitem{}{\int \sec x\,\mathrm{d}x=}{\ln\lvert\sec x+\tan x\rvert+C}
+\ANitem{}{\int \csc x\,\mathrm{d}x=}{\ln\lvert\csc x-\cot x\rvert+C}
+\ANitem{}{\int \sec^{2}x\,\mathrm{d}x=}{\tan x+C}
+\ANitem{}{\int \csc^{2}x\,\mathrm{d}x=}{-\cot x+C}
+\ANitem{}{\int \sec x\tan x\,\mathrm{d}x=}{\sec x+C}
+\ANitem{}{\int \csc x\cot x\,\mathrm{d}x=}{-\csc x+C}
+\Fsub{1.3　含参数推广}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{x^{2}+a^{2}}=}{\dfrac{1}{a}\arctan\dfrac{x}{a}+C}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{a^{2}-x^{2}}}=}{\arcsin\dfrac{x}{a}+C}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{x^{2}-a^{2}}=}{\dfrac{1}{2a}\ln\left\lvert\dfrac{x-a}{x+a}\right\rvert+C}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{x^{2}+a^{2}}}=}{\ln\left\lvert x+\sqrt{x^{2}+a^{2}}\right\rvert+C}
+\ANitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{x^{2}-a^{2}}}=}{\ln\left\lvert x+\sqrt{x^{2}-a^{2}}\right\rvert+C}
+\ANitem{}{\int \sqrt{a^{2}-x^{2}}\,\mathrm{d}x=}{\dfrac{x}{2}\sqrt{a^{2}-x^{2}}+\dfrac{a^{2}}{2}\arcsin\dfrac{x}{a}+C}
+\ANitem{}{\int \sqrt{x^{2}+a^{2}}\,\mathrm{d}x=}{\dfrac{x}{2}\sqrt{x^{2}+a^{2}}+\dfrac{a^{2}}{2}\ln\left\lvert x+\sqrt{x^{2}+a^{2}}\right\rvert+C}
+\ANitem{}{\int \sqrt{x^{2}-a^{2}}\,\mathrm{d}x=}{\dfrac{x}{2}\sqrt{x^{2}-a^{2}}-\dfrac{a^{2}}{2}\ln\left\lvert x+\sqrt{x^{2}-a^{2}}\right\rvert+C}
+\ANitem{}{\int \sinh x\,\mathrm{d}x=}{\cosh x+C}
+\ANitem{}{\int \cosh x\,\mathrm{d}x=}{\sinh x+C}
+\Fsec{二、定积分核心结论}
+\Fsub{2.1　对称 · 分解 · 周期 · 平移}
+\ANitem{}{\int_{-a}^{a}f(x)\,\mathrm{d}x=}{\begin{cases}2\displaystyle\int_{0}^{a}f(x)\,\mathrm{d}x, & f\ \text{为偶函数}\\[7pt] 0, & f\ \text{为奇函数}\end{cases}}
+\ANitem{偶 + 奇分解：}{f(x)=}{\tfrac{1}{2}\left[f(x)+f(-x)\right]+\tfrac{1}{2}\left[f(x)-f(-x)\right]}
+\ANitem{}{\int_{a}^{a+T}f(x)\,\mathrm{d}x=}{\int_{0}^{T}f(x)\,\mathrm{d}x\quad(T\ \text{为周期})}
+\ANitem{}{[\,a,b\,]\ \xrightarrow{\ x=\frac{a+b}{2}+t\ }}{\left[-\dfrac{b-a}{2},\ \dfrac{b-a}{2}\right]}
+\Fsub{2.2　区间再现}
+\ANitem{}{\int_{a}^{b}f(x)\,\mathrm{d}x\ \xrightarrow{\ x=a+b-t\ }}{\int_{a}^{b}f(a+b-t)\,\mathrm{d}t}
+\ANitem{推论 A：}{\int_{0}^{\pi/2}f(\sin x)\,\mathrm{d}x=}{\int_{0}^{\pi/2}f(\cos x)\,\mathrm{d}x}
+\ANitem{推论 B：}{\int_{0}^{\pi}xf(\sin x)\,\mathrm{d}x=}{\dfrac{\pi}{2}\int_{0}^{\pi}f(\sin x)\,\mathrm{d}x}
+\ANitem{推论 B 应用：}{\int_{0}^{\pi}x\sin^{2}x\,\mathrm{d}x=}{\dfrac{\pi^{2}}{4}}
+\Fsub{2.3　Wallis 公式}
+\ANitem{}{\int_{0}^{\pi/2}\sin^{n}x\,\mathrm{d}x=\int_{0}^{\pi/2}\cos^{n}x\,\mathrm{d}x=}{\begin{cases}\dfrac{(2k-1)!!}{(2k)!!}\cdot\dfrac{\pi}{2}, & n=2k\ \text{（偶次，带 }\frac{\pi}{2}\text{）}\\[8pt] \dfrac{(2k)!!}{(2k+1)!!}, & n=2k+1\ \text{（奇次）}\end{cases}}
+\ANitem{递推：}{I_{n}=}{\dfrac{n-1}{n}I_{n-2}\qquad\left(I_{0}=\dfrac{\pi}{2},\ I_{1}=1\right)}
+\ANitem{}{\int_{0}^{\pi/2}\sin^{2}x\,\mathrm{d}x=}{\dfrac{\pi}{4}}
+\ANitem{}{\int_{0}^{\pi/2}\sin^{3}x\,\mathrm{d}x=}{\dfrac{2}{3}}
+\ANitem{}{\int_{0}^{\pi/2}\sin^{4}x\,\mathrm{d}x=}{\dfrac{3\pi}{16}}
+\ANitem{}{\int_{0}^{\pi/2}\sin^{6}x\,\mathrm{d}x=}{\dfrac{5\pi}{32}}
+\ANitem{}{\int_{0}^{\pi}\cos^{6}\theta\,\mathrm{d}\theta=}{\dfrac{5\pi}{16}}
+\ANitem{}{\int_{0}^{2\pi}\sin^{6}x\,\mathrm{d}x=}{\dfrac{5\pi}{8}}
+\Fsub{2.4　几何意义 · 面积}
+\ANitem{}{\int_{-a}^{a}\sqrt{a^{2}-x^{2}}\,\mathrm{d}x=}{\dfrac{\pi a^{2}}{2}\quad\text{（上半圆）}}
+\ANitem{}{\int_{0}^{a}\sqrt{a^{2}-x^{2}}\,\mathrm{d}x=}{\dfrac{\pi a^{2}}{4}\quad\text{（四分之一圆）}}
+\ANitem{两曲线间的面积：}{S=}{\int_{a}^{b}\lvert f(x)-g(x)\rvert\,\mathrm{d}x}
+\Fsec{三、特殊反常积分}
+\Fsub{3.1　指数型（结果是阶乘）}
+\ANitem{}{\int_{0}^{\infty}x^{n}e^{-x}\,\mathrm{d}x=}{n!}
+\ANitem{}{\int_{0}^{\infty}x^{n}e^{-ax}\,\mathrm{d}x=}{\dfrac{n!}{a^{n+1}}\quad(a>0)}
+\ANitem{}{\int_{0}^{\infty}e^{-ax}\,\mathrm{d}x=}{\dfrac{1}{a}\quad(a>0)}
+\ANitem{}{\int_{0}^{\infty}xe^{-ax}\,\mathrm{d}x=}{\dfrac{1}{a^{2}}}
+\ANitem{}{\int_{0}^{\infty}x^{2}e^{-ax}\,\mathrm{d}x=}{\dfrac{2}{a^{3}}}
+\ANitem{}{\int_{0}^{\infty}xe^{-x^{2}}\,\mathrm{d}x=}{\dfrac{1}{2}}
+\ANitem{}{\int_{0}^{\infty}x^{3}e^{-x^{2}}\,\mathrm{d}x=}{\dfrac{1}{2}}
+\Fsub{3.2　泊松积分}
+\ANitem{}{\int_{0}^{\infty}e^{-x^{2}}\,\mathrm{d}x=}{\dfrac{\sqrt{\pi}}{2}}
+\ANitem{}{\int_{-\infty}^{+\infty}e^{-x^{2}}\,\mathrm{d}x=}{\sqrt{\pi}}
+\ANitem{}{\int_{-\infty}^{+\infty}e^{-x^{2}/2}\,\mathrm{d}x=}{\sqrt{2\pi}}
+\ANitem{}{\int_{0}^{\infty}e^{-ax^{2}}\,\mathrm{d}x=}{\dfrac{1}{2}\sqrt{\dfrac{\pi}{a}}\quad(a>0)}
+\Fsub{3.3　伽马函数 $\Gamma$}
+\ANitem{定义：}{\Gamma(s)=}{\int_{0}^{\infty}x^{s-1}e^{-x}\,\mathrm{d}x\quad(s>0)}
+\ANitem{递推：}{\Gamma(s+1)=}{s\,\Gamma(s)}
+\ANitem{}{\Gamma(1)=}{1}
+\ANitem{}{\Gamma\!\left(\dfrac{1}{2}\right)=}{\sqrt{\pi}}
+\ANitem{}{\Gamma(n+1)=}{n!\quad(n\ \text{为非负整数})}
+\ANitem{}{\int_{0}^{\infty}\sqrt{x}\,e^{-x}\,\mathrm{d}x=}{\Gamma\!\left(\dfrac{3}{2}\right)=\dfrac{\sqrt{\pi}}{2}}
+\ANitem{}{\int_{0}^{\infty}x^{-1/2}e^{-x}\,\mathrm{d}x=}{\Gamma\!\left(\dfrac{1}{2}\right)=\sqrt{\pi}}
+\Fsub{3.4　贝塔函数 $B$}
+\ANitem{定义：}{B(p,q)=}{\int_{0}^{1}x^{p-1}(1-x)^{q-1}\,\mathrm{d}x\quad(p>0,\ q>0)}
+\ANitem{对称性：}{B(p,q)=}{B(q,p)}
+\ANitem{与 $\Gamma$ 的关系：}{B(p,q)=}{\dfrac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}}
+\ANitem{}{B(1,1)=}{1}
+\ANitem{}{B\!\left(\dfrac{1}{2},\dfrac{1}{2}\right)=}{\pi}
+\ANitem{}{B(p,q)\ \xrightarrow{\ x=\frac{t}{1+t}\ }}{\int_{0}^{\infty}\dfrac{t^{\,p-1}}{(1+t)^{\,p+q}}\,\mathrm{d}t}
+\ANitem{}{\int_{0}^{1}\dfrac{\mathrm{d}x}{\sqrt{x(1-x)}}=}{B\!\left(\dfrac{1}{2},\dfrac{1}{2}\right)=\pi}
+\ANitem{}{\int_{0}^{\pi/2}\sin^{2p-1}\theta\cos^{2q-1}\theta\,\mathrm{d}\theta=}{\dfrac{1}{2}B(p,q)\quad\left(\text{令 }x=\sin^{2}\theta\right)}
+\end{document}
