@@ -1,0 +1,162 @@
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=13mm,right=13mm,top=15mm,bottom=13mm,includeheadfoot]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{multicol}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{array}
+
+\setCJKmainfont{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\setlength{\parindent}{0pt}
+
+\definecolor{secc}{RGB}{22,40,72}     % 章标题
+\definecolor{subc}{RGB}{58,88,128}    % 节标题
+\definecolor{ansc}{RGB}{10,86,140}    % 答案
+\definecolor{leftc}{RGB}{74,84,100}   % 答案册中的题面（灰）
+\definecolor{mute}{RGB}{132,132,132}  % 编号
+\definecolor{dotc}{RGB}{178,178,178}  % 点线
+\definecolor{ruleg}{RGB}{120,140,170}
+
+\newcounter{fcnt}
+\makeatletter
+% 点导线：用 1fill（高于 \parfillskip 的 fil 阶），保证铺满整栏
+\newcommand{\dtf}{\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hskip 0pt plus 1fill\relax}
+\makeatother
+\newcommand{\dotlines}[1]{%
+  \ifnum#1>0 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+  \ifnum#1>1 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+  \ifnum#1>2 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+  \ifnum#1>3 \noindent{\color{dotc}\dtf}\par\vspace{0.95em}\fi
+}
+\newcommand{\ans}[1]{{\color{ansc}#1}}
+
+\newcommand{\Fsec}[1]{%
+  \par\vspace{0.85em}\nobreak
+  \noindent{\sffamily\bfseries\large\color{secc}#1}\par
+  \vspace{0.18em}\noindent{\color{ruleg}\rule{\linewidth}{0.9pt}}\par
+  \vspace{0.55em}\nobreak}
+\newcommand{\Fsub}[1]{%
+  \par\vspace{0.45em}\nobreak
+  \noindent{\sffamily\bfseries\color{subc}#1}\par\vspace{0.35em}\nobreak}
+
+\newcommand{\WBitem}[3]{%
+  \stepcounter{fcnt}%
+  \par\noindent\hangindent=2.0em\hangafter=1
+  \makebox[2.0em][l]{\sffamily\footnotesize\color{mute}\thefcnt.}%
+  #1$\displaystyle #2$\ %
+  \ifnum#3=0 {\color{dotc}\dtf}\par\vspace{1.9em}%
+  \else\par\vspace{0.1em}\dotlines{#3}\fi}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{mute}一元积分 · 考研核心公式默写本}
+\fancyhead[R]{\small\sffamily\color{mute}第 \thepage\ 页}
+\renewcommand{\headrulewidth}{0.4pt}\renewcommand{\footrulewidth}{0pt}
+\begin{document}
+{\sffamily\bfseries\LARGE\color{secc}一元积分 · 考研核心公式默写本}\par
+\vspace{0.35em}
+{\small\color{mute}来源《一元积分大观》核心公式区 · 共 \textbf{72} 条公式}\par
+\vspace{0.6em}
+{\small 姓名\underline{\hspace{2.1cm}}\quad 日期\underline{\hspace{2.1cm}}\quad
+ 用时\underline{\hspace{1.5cm}}\quad 正确率\underline{\hspace{1.5cm}}}\par
+\vspace{0.4em}
+{\small\color{mute}用法：先默写、后对照《答案册》。做错的在编号上画圈，次日只默错项。}\par
+\vspace{0.5em}
+{\color{ruleg}\rule{\linewidth}{1.1pt}}\par
+\vspace{0.9em}
+\begin{multicols}{2}
+\Fsec{一、不定积分基本公式表}
+\Fsub{1.1　幂 · 指数 · 对数}
+\WBitem{}{\int x^{\alpha}\,\mathrm{d}x=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{x}=}{0}
+\WBitem{}{\int e^{x}\,\mathrm{d}x=}{0}
+\WBitem{}{\int a^{x}\,\mathrm{d}x=}{0}
+\WBitem{}{\int \ln x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{1+x^{2}}=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{1-x^{2}}}=}{0}
+\Fsub{1.2　三角函数}
+\WBitem{}{\int \sin x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \cos x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \tan x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \cot x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \sec x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \csc x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \sec^{2}x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \csc^{2}x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \sec x\tan x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \csc x\cot x\,\mathrm{d}x=}{0}
+\Fsub{1.3　含参数推广}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{x^{2}+a^{2}}=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{a^{2}-x^{2}}}=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{x^{2}-a^{2}}=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{x^{2}+a^{2}}}=}{0}
+\WBitem{}{\int \dfrac{\mathrm{d}x}{\sqrt{x^{2}-a^{2}}}=}{0}
+\WBitem{}{\int \sqrt{a^{2}-x^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int \sqrt{x^{2}+a^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int \sqrt{x^{2}-a^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int \sinh x\,\mathrm{d}x=}{0}
+\WBitem{}{\int \cosh x\,\mathrm{d}x=}{0}
+\Fsec{二、定积分核心结论}
+\Fsub{2.1　对称 · 分解 · 周期 · 平移}
+\WBitem{}{\int_{-a}^{a}f(x)\,\mathrm{d}x=}{2}
+\WBitem{偶 + 奇分解：}{f(x)=}{1}
+\WBitem{}{\int_{a}^{a+T}f(x)\,\mathrm{d}x=}{0}
+\WBitem{}{[\,a,b\,]\ \xrightarrow{\ x=\frac{a+b}{2}+t\ }}{0}
+\Fsub{2.2　区间再现}
+\WBitem{}{\int_{a}^{b}f(x)\,\mathrm{d}x\ \xrightarrow{\ x=a+b-t\ }}{0}
+\WBitem{推论 A：}{\int_{0}^{\pi/2}f(\sin x)\,\mathrm{d}x=}{0}
+\WBitem{推论 B：}{\int_{0}^{\pi}xf(\sin x)\,\mathrm{d}x=}{0}
+\WBitem{推论 B 应用：}{\int_{0}^{\pi}x\sin^{2}x\,\mathrm{d}x=}{0}
+\Fsub{2.3　Wallis 公式}
+\WBitem{}{\int_{0}^{\pi/2}\sin^{n}x\,\mathrm{d}x=\int_{0}^{\pi/2}\cos^{n}x\,\mathrm{d}x=}{2}
+\WBitem{递推：}{I_{n}=}{0}
+\WBitem{}{\int_{0}^{\pi/2}\sin^{2}x\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\pi/2}\sin^{3}x\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\pi/2}\sin^{4}x\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\pi/2}\sin^{6}x\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\pi}\cos^{6}\theta\,\mathrm{d}\theta=}{0}
+\WBitem{}{\int_{0}^{2\pi}\sin^{6}x\,\mathrm{d}x=}{0}
+\Fsub{2.4　几何意义 · 面积}
+\WBitem{}{\int_{-a}^{a}\sqrt{a^{2}-x^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{a}\sqrt{a^{2}-x^{2}}\,\mathrm{d}x=}{0}
+\WBitem{两曲线间的面积：}{S=}{0}
+\Fsec{三、特殊反常积分}
+\Fsub{3.1　指数型（结果是阶乘）}
+\WBitem{}{\int_{0}^{\infty}x^{n}e^{-x}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}x^{n}e^{-ax}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}e^{-ax}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}xe^{-ax}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}x^{2}e^{-ax}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}xe^{-x^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}x^{3}e^{-x^{2}}\,\mathrm{d}x=}{0}
+\Fsub{3.2　泊松积分}
+\WBitem{}{\int_{0}^{\infty}e^{-x^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{-\infty}^{+\infty}e^{-x^{2}}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{-\infty}^{+\infty}e^{-x^{2}/2}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}e^{-ax^{2}}\,\mathrm{d}x=}{0}
+\Fsub{3.3　伽马函数 $\Gamma$}
+\WBitem{定义：}{\Gamma(s)=}{1}
+\WBitem{递推：}{\Gamma(s+1)=}{0}
+\WBitem{}{\Gamma(1)=}{0}
+\WBitem{}{\Gamma\!\left(\dfrac{1}{2}\right)=}{0}
+\WBitem{}{\Gamma(n+1)=}{0}
+\WBitem{}{\int_{0}^{\infty}\sqrt{x}\,e^{-x}\,\mathrm{d}x=}{0}
+\WBitem{}{\int_{0}^{\infty}x^{-1/2}e^{-x}\,\mathrm{d}x=}{0}
+\Fsub{3.4　贝塔函数 $B$}
+\WBitem{定义：}{B(p,q)=}{1}
+\WBitem{对称性：}{B(p,q)=}{0}
+\WBitem{与 $\Gamma$ 的关系：}{B(p,q)=}{0}
+\WBitem{}{B(1,1)=}{0}
+\WBitem{}{B\!\left(\dfrac{1}{2},\dfrac{1}{2}\right)=}{0}
+\WBitem{}{B(p,q)\ \xrightarrow{\ x=\frac{t}{1+t}\ }}{1}
+\WBitem{}{\int_{0}^{1}\dfrac{\mathrm{d}x}{\sqrt{x(1-x)}}=}{0}
+\WBitem{}{\int_{0}^{\pi/2}\sin^{2p-1}\theta\cos^{2q-1}\theta\,\mathrm{d}\theta=}{0}
+\end{multicols}
+\vspace{0.6em}
+{\color{ruleg}\rule{\linewidth}{0.7pt}}\par
+\vspace{0.7em}
+{\sffamily\bfseries\color{secc}错题记录 · 反复默错的那几条}\par
+\vspace{0.4em}
+\dotlines{4}
+\end{document}
