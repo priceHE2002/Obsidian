@@ -46,9 +46,35 @@
               "icon": "lucide-file-text",
               "title": "常微分方程-题目提炼"
             }
+          },
+          {
+            "id": "d69faabd23a4989a",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "05_英语/考研英语一阅读真题_A4装订版.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "考研英语一阅读真题_A4装订版"
+            }
+          },
+          {
+            "id": "1ecf4e1adf842379",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://yanbrick.com/english?exam=en1&t=2014-t2&mode=solve",
+                "title": "英砖 · 考研英语长难句精读",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "英砖 · 考研英语长难句精读"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -108,7 +134,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 325.22265625
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "7f4b4e0b83f1f22d",
@@ -124,7 +151,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_计算机系统/_408每日五问/408五问·进度.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -215,7 +241,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 412.6875
+    "width": 412.6875,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -232,10 +259,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "9905338098284727",
+  "active": "1ecf4e1adf842379",
   "lastOpenFiles": [
-    "03_计算机系统/_408每日五问/408五问·错题本.md",
+    "05_英语/考研英语一阅读真题_A4装订版.pdf",
     "03_计算机系统/_408每日五问/408五问·进度.md",
+    "03_计算机系统/_408每日五问/408五问·错题本.md",
     "04_数学大观/高数大观/微分方程/常微分方程-题目提炼.pdf",
     "03_计算机系统/_408每日五问",
     "04_数学大观/高数大观/微分方程/微分方程 MOC.md",
