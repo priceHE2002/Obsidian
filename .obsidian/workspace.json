@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "09_考研政治/政治04 分模块命题逻辑.md",
+                "file": "03_计算机系统/_408每日五问/408五问·进度.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "政治04 分模块命题逻辑"
+              "title": "408五问·进度"
             }
           },
           {
@@ -48,33 +48,20 @@
             }
           },
           {
-            "id": "d69faabd23a4989a",
+            "id": "f1c15ef3dbd6ea51",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "05_英语/考研英语一阅读真题_A4装订版.pdf"
+                "file": "04_数学大观/高数大观/微分方程/微分方程大观.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "考研英语一阅读真题_A4装订版"
-            }
-          },
-          {
-            "id": "1ecf4e1adf842379",
-            "type": "leaf",
-            "state": {
-              "type": "webviewer",
-              "state": {
-                "url": "https://yanbrick.com/english?exam=en1&t=2014-t2&mode=solve",
-                "title": "英砖 · 考研英语长难句精读",
-                "mode": "webview"
-              },
-              "icon": "globe-2",
-              "title": "英砖 · 考研英语长难句精读"
+              "icon": "lucide-file",
+              "title": "微分方程大观"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -134,8 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "7f4b4e0b83f1f22d",
@@ -151,6 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "03_计算机系统/_408每日五问/408五问·进度.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -259,16 +246,16 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "1ecf4e1adf842379",
+  "active": "e28c7e88c5893cdb",
   "lastOpenFiles": [
-    "05_英语/考研英语一阅读真题_A4装订版.pdf",
-    "03_计算机系统/_408每日五问/408五问·进度.md",
     "03_计算机系统/_408每日五问/408五问·错题本.md",
+    "09_考研政治/政治04 分模块命题逻辑.md",
+    "03_计算机系统/_408每日五问/408五问·进度.md",
     "04_数学大观/高数大观/微分方程/常微分方程-题目提炼.pdf",
+    "04_数学大观/高数大观/微分方程/微分方程大观.md",
+    "05_英语/考研英语一阅读真题_A4装订版.pdf",
     "03_计算机系统/_408每日五问",
     "04_数学大观/高数大观/微分方程/微分方程 MOC.md",
-    "04_数学大观/高数大观/微分方程/微分方程大观.md",
-    "09_考研政治/政治04 分模块命题逻辑.md",
     "04_数学大观/高数大观/微分方程/微分方程大观.md.tmp.13346.938a9a57c88b",
     "04_数学大观/高数大观/函数极限/函数极限大观.md",
     "01_数学/高等数学/🌲5.多元函数积分学及其应用.md",
@@ -288,7 +275,6 @@
     "04_数学大观/高数大观/一元积分/公式默写本_源码/answers.tex",
     "04_数学大观/高数大观/一元积分/公式默写本_源码",
     "04_数学大观/高数大观/一元积分/一元积分核心公式默写本_答案册.pdf",
-    "04_数学大观/高数大观/一元积分/一元积分核心公式默写本.pdf",
     "04_数学大观/高数大观/函数极限/函数极限 MOC.md",
     "04_数学大观/高数大观/函数极限/泰勒公式.md",
     "天大港理工与天大福州_考研与AI就业对比.md",
