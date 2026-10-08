@@ -34,9 +34,21 @@
               "icon": "lucide-file",
               "title": "一元积分大观"
             }
+          },
+          {
+            "id": "c8c786e9ad306afd",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "03_计算机系统/2_操作系统/操作系统P1_PV操作大题.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "操作系统P1_PV操作大题"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -217,12 +229,12 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "markdown-importer:打开 Markdown 格式转换器": false,
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "4bfd2aa9da8282a0",
+  "active": "c8c786e9ad306afd",
   "lastOpenFiles": [
+    "03_计算机系统/2_操作系统/操作系统P1_PV操作大题.pdf",
     "04_数学大观/高数大观/一元积分/一元积分核心公式默写本.pdf",
     "04_数学大观/高数大观/一元积分/一元积分核心公式默写本_答案册.pdf",
     "04_数学大观/高数大观/一元积分/一元积分大观.md",
@@ -238,7 +250,6 @@
     "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P4_一堆指令的执行（纯净版）.pdf",
     "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P3_存储系统大题专项强化.pdf",
     "04_数学大观/高数大观/多元微分/星河/多元函数微分学概念（底稿）.pdf",
-    "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化 P1_数据的表示和运算.pdf",
     "03_计算机系统/_408每日五问/408五问·进度.md",
     "03_计算机系统/_408每日五问/408五问·错题本.md",
     "09_考研政治/政治04 分模块命题逻辑.md",
