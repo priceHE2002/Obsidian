@@ -85,7 +85,7 @@ flowchart LR
 | 已知 | 条件反射出什么 | 用途 |
 |---|---|---|
 | $\sum u_n$ 收敛 | $u_n\to0$ | 只能反过来判发散 |
-| $\sum u_n$ 收敛 | $\{u_n\}$ **有界**（最终可放缩为 $1$） | 推 $\sum u_n^{2}$、$\sum u_nv_n$ 收敛 |
+| $\sum u_n$ 收敛 | $\{u_n\}$ **有界**（最终可放缩为 $1$） | 配合"$u_n\ge0$"或"$\sum\lvert u_n\rvert$ 收敛"才能推 $\sum u_n^{2}$ 收敛；配合"$\sum\lvert u_n\rvert$ 收敛 ＋ $v_n$ 有界"可推 $\sum\lvert u_nv_n\rvert$ 收敛 |
 | $\sum u_n$ 发散 | $\sum\lvert u_n\rvert$ **发散** | 2.4 性质 1 的逆否 |
 | $a_n$ 单减，$\sum(-1)^{n-1}a_n$ 发散 | $\lim a_n\ne0$ | 由发散倒推通项不趋 $0$ |
 | 正项级数收敛 | 奇数项、偶数项子级数均收敛 | 从整体推局部 |
