@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1791777122242-hr33brywy",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1791777122266-df0a5j6",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1791777122239-10bnek3",
+      "timestamp": 1791777122239,
+      "rawDisplayText": "你是什么模型",
+      "canonicalText": "你是什么模型",
+      "context": {
+        "linkedContent": {
+          "path": "04_数学大观/高数大观/级数/无穷级数大观.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "5cd5e8b5fecc8827dee2d60f0bf45af45c79c1f87ad1880e94e0264a8f6834e9",
+      "providerUserMessageId": "ea52532d-1c7e-4abe-bfd5-efe81a5b3d85",
+      "providerAssistantMessageId": "7a3d806f-f929-43aa-a787-899e915480e1"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1791777157107-tew3fgi",
+      "userTurnOrdinal": 2,
+      "state": "accepted",
+      "localMessageId": "msg-1791777157101-iup614p",
+      "timestamp": 1791777157101,
+      "rawDisplayText": "你harness以下的是什么base model",
+      "canonicalText": "你harness以下的是什么base model",
+      "images": [],
+      "contentDigest": "c687a0959c8f8e41cfeb22decf0f33b6be2f04a0f255ffd65f73f8b989334a21",
+      "providerUserMessageId": "85a5456d-13af-402c-b167-50002e86d053",
+      "providerAssistantMessageId": "3eb3ad95-ca29-4f93-b219-fb942c8993ec"
+    },
+    {
+      "schemaVersion": 1,
+      "id": "msg-1791777257653-ewgy414",
+      "userTurnOrdinal": 3,
+      "state": "accepted",
+      "localMessageId": "msg-1791777257641-0fovomk",
+      "timestamp": 1791777257641,
+      "rawDisplayText": "请你再查下",
+      "canonicalText": "请你再查下",
+      "images": [],
+      "contentDigest": "7ca7fffca589fc27f92b5434d9365bf94c6ae16a1673d2df81d14912540660f1",
+      "providerUserMessageId": "84c9b1c4-0d1d-44c6-bf96-941b78d8e36b",
+      "providerAssistantMessageId": "95aff51d-1cfd-43dd-8019-27f3f52693b0"
+    }
+  ]
+}

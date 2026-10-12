@@ -1,0 +1,24 @@
+{
+  "id": "conv-1791777122242-hr33brywy",
+  "providerId": "claude",
+  "title": "询问当前使用的模型",
+  "titleGenerationStatus": "success",
+  "createdAt": 1791777122252,
+  "lastActivityAt": 1791777350746,
+  "sessionId": "8283c075-58e9-448b-97dc-f3f43511309b",
+  "selectedModel": "opus",
+  "providerState": {
+    "providerSessionId": "8283c075-58e9-448b-97dc-f3f43511309b"
+  },
+  "linkedContentPath": "04_数学大观/高数大观/级数/无穷级数大观.md",
+  "usage": {
+    "model": "opus",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 1000000,
+    "contextTokens": 0,
+    "percentage": 0,
+    "contextWindowIsAuthoritative": true
+  }
+}

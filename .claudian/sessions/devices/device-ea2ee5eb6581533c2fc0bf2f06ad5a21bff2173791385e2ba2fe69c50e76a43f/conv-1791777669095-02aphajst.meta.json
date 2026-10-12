@@ -1,0 +1,24 @@
+{
+  "id": "conv-1791777669095-02aphajst",
+  "providerId": "claude",
+  "title": "问候语",
+  "titleGenerationStatus": "success",
+  "createdAt": 1791777669103,
+  "lastActivityAt": 1791777688716,
+  "sessionId": "222c9931-c9bd-413e-aa9c-724ce58d6274",
+  "selectedModel": "sonnet",
+  "providerState": {
+    "providerSessionId": "222c9931-c9bd-413e-aa9c-724ce58d6274"
+  },
+  "linkedContentPath": "04_数学大观/高数大观/级数/无穷级数大观.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 35694,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 37888,
+    "contextWindow": 1000000,
+    "contextTokens": 73582,
+    "percentage": 7,
+    "contextWindowIsAuthoritative": true
+  }
+}
