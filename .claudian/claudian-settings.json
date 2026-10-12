@@ -3,7 +3,7 @@
   "permissionMode": "yolo",
   "model": "sonnet",
   "thinkingBudget": "off",
-  "effortLevel": "high",
+  "effortLevel": "max",
   "serviceTier": "default",
   "enableAutoTitleGeneration": true,
   "titleGenerationLocale": "",
@@ -95,13 +95,13 @@
   "settingsProvider": "claude",
   "lastSelectedChatModel": {
     "providerId": "claude",
-    "model": "sonnet[1m]"
+    "model": "opus"
   },
   "savedProviderModel": {
     "claude": "sonnet"
   },
   "savedProviderEffort": {
-    "claude": "high"
+    "claude": "max"
   },
   "savedProviderServiceTier": {},
   "savedProviderThinkingBudget": {},

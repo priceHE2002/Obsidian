@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1786705567115,
+  "lastScanned": 1791777116809,
   "projectRoot": "/Users/heyuhang/Documents/Obsidian Vault",
   "techStack": {
     "languages": [],
@@ -24,9 +24,7 @@
   "structure": {
     "isMonorepo": false,
     "workspaces": [],
-    "mainDirectories": [
-      "docs"
-    ],
+    "mainDirectories": [],
     "gitBranches": {
       "defaultBranch": "main",
       "branchingStrategy": null
@@ -38,7 +36,7 @@
       "path": "00_Inbox",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1786705567102,
+      "lastAccessed": 1791777116802,
       "keyFiles": [
         "草稿.md"
       ]
@@ -46,124 +44,87 @@
     "01_数学": {
       "path": "01_数学",
       "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1786705567103,
+      "fileCount": 0,
+      "lastAccessed": 1791777116802,
       "keyFiles": []
     },
     "02_DSP": {
       "path": "02_DSP",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1786705567104,
+      "lastAccessed": 1791777116803,
       "keyFiles": []
     },
-    "03_计算机组成原理": {
-      "path": "03_计算机组成原理",
+    "03_计算机系统": {
+      "path": "03_计算机系统",
       "purpose": null,
-      "fileCount": 3,
-      "lastAccessed": 1786705567104,
-      "keyFiles": [
-        "408 计组高频计算题训练单.md",
-        "计算机组成原理_截图整理笔记.md"
-      ]
+      "fileCount": 1,
+      "lastAccessed": 1791777116803,
+      "keyFiles": []
     },
-    "04_音频算法": {
-      "path": "04_音频算法",
+    "04_数学大观": {
+      "path": "04_数学大观",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1791777116803,
+      "keyFiles": []
+    },
+    "05_英语": {
+      "path": "05_英语",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1786705567104,
+      "lastAccessed": 1791777116803,
       "keyFiles": [
-        "BS-Roformer.md",
-        "HB Demucs.md"
+        "考研英语一阅读真题_A4装订版.pdf"
       ]
     },
-    "05_编程": {
-      "path": "05_编程",
-      "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1786705567105,
-      "keyFiles": []
-    },
-    "06_英语": {
-      "path": "06_英语",
-      "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1786705567105,
-      "keyFiles": [
-        "长难句.md"
-      ]
-    },
-    "07_工具": {
-      "path": "07_工具",
-      "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1786705567106,
-      "keyFiles": []
-    },
-    "08_DL基础及论文进阶": {
-      "path": "08_DL基础及论文进阶",
-      "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1786705567106,
-      "keyFiles": []
-    },
-    "09_计算机网络": {
-      "path": "09_计算机网络",
+    "06_工具": {
+      "path": "06_工具",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1786705567107,
+      "lastAccessed": 1791777116803,
       "keyFiles": []
     },
-    "10_数学大观": {
-      "path": "10_数学大观",
+    "07_DL基础及论文进阶": {
+      "path": "07_DL基础及论文进阶",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1786705567107,
+      "lastAccessed": 1791777116803,
       "keyFiles": []
     },
-    "11_数据结构": {
-      "path": "11_数据结构",
+    "08_考研打卡": {
+      "path": "08_考研打卡",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1786705567107,
+      "lastAccessed": 1791777116803,
       "keyFiles": [
         "使用说明.md",
         "总览.md"
       ]
     },
-    "99_Archive": {
-      "path": "99_Archive",
+    "09_考研政治": {
+      "path": "09_考研政治",
       "purpose": null,
-      "fileCount": 1,
-      "lastAccessed": 1786705567107,
+      "fileCount": 7,
+      "lastAccessed": 1791777116803,
       "keyFiles": [
-        "计算机组成原理.zip"
+        "政治01 总论 · 应试本质.md",
+        "政治02 选择题方法论.md",
+        "政治03 材料分析题方法论.md",
+        "政治04 分模块命题逻辑.md",
+        "政治05 三层思维法与笔记模板.md"
       ]
-    },
-    "docs": {
-      "path": "docs",
-      "purpose": "Documentation",
-      "fileCount": 0,
-      "lastAccessed": 1786705567107,
-      "keyFiles": []
     },
     "02_DSP/assets": {
       "path": "02_DSP/assets",
       "purpose": "Static assets",
       "fileCount": 35,
-      "lastAccessed": 1786705567108,
+      "lastAccessed": 1791777116804,
       "keyFiles": [
         "DFT分辨率_瑞利判据vs严格不重叠.png",
         "DFT参数设计与补零验证.png",
         "DFT序列偶奇延拓演示.png"
       ]
-    },
-    "03_计算机组成原理/assets": {
-      "path": "03_计算机组成原理/assets",
-      "purpose": "Static assets",
-      "fileCount": 0,
-      "lastAccessed": 1786705567108,
-      "keyFiles": []
     }
   },
   "hotPaths": [

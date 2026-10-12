@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "conversationId": "conv-1791777669095-02aphajst",
+  "records": [
+    {
+      "schemaVersion": 1,
+      "id": "msg-1791777669129-hfflh4a",
+      "userTurnOrdinal": 1,
+      "state": "accepted",
+      "localMessageId": "msg-1791777669091-cjxdgfx",
+      "timestamp": 1791777669091,
+      "rawDisplayText": "你好",
+      "canonicalText": "你好",
+      "context": {
+        "linkedContent": {
+          "path": "04_数学大观/高数大观/级数/无穷级数大观.md"
+        }
+      },
+      "images": [],
+      "contentDigest": "815b1925f3db319cfc8ef8cad8a91b3f8b512f630d8f82635cb105e93e666c2a",
+      "providerUserMessageId": "55c44788-b6a5-4762-a989-d0e373e1aa5f",
+      "providerAssistantMessageId": "ff3e3e87-5725-4132-a0dc-d5c970097e80"
+    }
+  ]
+}
