@@ -8,47 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "a406019a50e5e4af",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "07_DL基础及论文进阶/02_具身智能/04_Diffusion_Policy/Diffusion Policy.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Diffusion Policy"
-            }
-          },
-          {
-            "id": "b0a2c4fcd84704dc",
+            "id": "e902fae1c3ca69a8",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "05_英语/考研英语一阅读真题_A4装订版.pdf"
+                "file": "03_计算机系统/0_数据结构/数据结构（含新大纲考点）.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "考研英语一阅读真题_A4装订版"
-            }
-          },
-          {
-            "id": "0a0822f1687a0c0b",
-            "type": "leaf",
-            "state": {
-              "type": "webviewer",
-              "state": {
-                "url": "https://yanbrick.com/english/favorites?exam=en1",
-                "title": "英砖 · 考研英语长难句精读",
-                "mode": "webview"
-              },
-              "icon": "globe-2",
-              "title": "英砖 · 考研英语长难句精读"
+              "title": "数据结构（含新大纲考点）"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -252,16 +223,16 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "b0a2c4fcd84704dc",
+  "active": "e902fae1c3ca69a8",
   "lastOpenFiles": [
-    "04_数学大观.zip",
+    "07_DL基础及论文进阶/02_具身智能/04_Diffusion_Policy/Diffusion Policy.md",
     "05_英语/考研英语一阅读真题_A4装订版.pdf",
+    "04_数学大观.zip",
     "07_DL基础及论文进阶/02_具身智能/23_Sharpa_Robotics面试学习/08_PPO_GRPO与交叉熵.md",
     "07_DL基础及论文进阶/02_具身智能/23_Sharpa_Robotics面试学习/07_Attention与Transformer组件.md",
     "07_DL基础及论文进阶/02_具身智能/23_Sharpa_Robotics面试学习/06_项目介绍与面试表达.md",
     "07_DL基础及论文进阶/02_具身智能/23_Sharpa_Robotics面试学习/05_世界模型与训练估时.md",
     "07_DL基础及论文进阶/02_具身智能/23_Sharpa_Robotics面试学习/00_Sharpa面试学习导航.md",
-    "07_DL基础及论文进阶/02_具身智能/04_Diffusion_Policy/Diffusion Policy.md",
     "07_DL基础及论文进阶/02_具身智能/04_Diffusion_Policy/Diffusion Policy 原文.pdf",
     "07_DL基础及论文进阶/02_具身智能/具身智能论文精讲.md",
     "07_DL基础及论文进阶/02_具身智能/23_Sharpa_Robotics面试学习/02_矩阵乘法与TopK.md",
@@ -282,7 +253,6 @@
     "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P4_指令流水线解题技巧总结.pdf",
     "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P4_一堆指令的执行（纯净版）.pdf",
     "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P3_存储系统大题专项强化.pdf",
-    "03_计算机系统/1_计算机组成原理/1_王道强化/计组强化P2_存储系统大串讲（计组×操作系统）_课前打印.pdf",
     "04_数学大观/高数大观/函数极限/函数极限 MOC.md",
     "04_数学大观/高数大观/函数极限/函数极限大观.md",
     "04_数学大观/高数大观/函数极限/泰勒公式.md",
