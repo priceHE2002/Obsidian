@@ -16,3 +16,10 @@
 
 # Claude Code 会话数据与工作树（内含 git 仓库，不能入库）
 .claude/
+
+# 缓存与本地垃圾（不进 git）
+.DS_Store
+.trash/
+.accelerate/
+__pycache__/
+*.pyc
