@@ -106,6 +106,10 @@ Sharpa,遥操作算法工程师（实习生）,上海,,面议,未注明,实习,�
 智元机器人,空间算法实习生,上海,,面议,未注明,实习,三维重建MVS/3DGS/VGGT；VLM+三维空间Grounding与空间记忆；端侧实时重建部署；跨本体泛化,https://agirobot.jobs.feishu.cn/internrecruitment/position/7694562162417502483/detail,feishu,第2轮,飞书ATS在招，三维重建+空间理解方向
 智元机器人,算法实习生,上海,,面议,,实习,搭建Isaac Sim/UE/Blender与实机数据流水线；熟悉Python；有SLAM位姿、三维重建或VLM标注经验优先,https://agirobot.jobs.feishu.cn/internrecruitment/position/7682984052161808682/detail,feishu,第2轮,多模态4D数据与自动标注，支撑感知模型迭代
 智往未来,VLA算法实习生（上海/北京）,上海,徐汇,300-400元/天,4天/周，3个月起,实习,硕/博，精通PyTorch与Transformer；熟悉Isaac Sim/Mujoco仿真或ROS真机部署优先,https://www.shixiseng.com/intern/inn_heisuchomoa6,shixiseng,第3轮,有转正HC；截止2027-10-14
+灵波科技（蚂蚁集团）,具身智能 Infra 优化工程师（实习）,上海,,面议,未注明,实习,本科+；Python 熟练，C/C++ 或 CUDA 优先；Linux、体系结构基础；分布式训练,https://talent.antgroup.com/campus-full-list?type=campus_intern&batchId=25051200066269,official,第4轮,ID 260826011678789；VLA 训练推理部署
+灵波科技（蚂蚁集团）,具身智能灵巧操作算法实习生,上海,,面议,未注明,实习,硕士+；灵巧手抓取/手内操作经验；RL(SAC/PPO) 或 IL(ACT/DP/VLA) 之一；Isaac/MuJoCo,https://talent.antgroup.com/campus-full-list?type=campus_intern&batchId=25051200066269,official,第4轮,ID 26031309150118；灵巧手+Sim2Real
+灵波科技（蚂蚁集团）,遥操作人机交互与可视化实习生,上海,,面议,未注明,实习,本科+；机器人控制基础、机械臂运动学；HCI/VR 交互与可视化开发,https://talent.antgroup.com/campus-full-list?type=campus_intern&batchId=25051200066269,official,第4轮,ID 26031309155387；VR+视触觉反馈
+灵波科技（蚂蚁集团）,遥操作系统工程实习生,上海,,面议,未注明,实习,本科+；机器人控制基础、运动学；软硬件联调与系统集成经验,https://talent.antgroup.com/campus-full-list?type=campus_intern&batchId=25051200066269,official,第4轮,ID 26031309154041；机械臂+力反馈设备
 百度,具身模型研发实习生（J106928）,上海,,面议,未注明,实习,计算机/AI/自动化/机器人本科或硕博；机器学习基础，懂Transformer/Flow Matching；有多模态、具身智能或机器人学习经验优先,https://talent.baidu.com/jobs/detail/INTERN/a068d8a1-c7cf-4df6-8204-378ad1bbb1d6,official,第3轮,VLA/WAM预训练后训练、仿真与真机评测、具身数据处理；base北京/上海
 穹彻智能,AI算法实习生（视觉算法）,上海,,面议,未注明,实习,负责机器人视觉与深度学习算法开发、优化、部署，需具备工程落地能力,https://www.noematrix.ai/join-us?jobId=1986722905844748288,official,第2轮,官网在招，视觉/具身算法方向
 穹彻智能,具身智能算法实习生,上海,,面议,未注明,实习,机器人技能学习与操作、6D位姿预测、模仿学习、多模态大模型、仿真环境开发等,https://www.noematrix.ai/join-us?jobId=1920368629904445440,official,第2轮,官网在招，偏数据与仿真工具
@@ -143,7 +147,15 @@ Sharpa,遥操作算法工程师（实习生）,上海,,面议,未注明,实习,�
 杭州埃瑟睿智能科技有限公司,三维感知算法实习生,杭州,西湖区,150-200元/天,2个月,实习,点云滤波/ICP配准/RANSAC/场景重建；PCL或Open3D；C++或Python；A*与栅格地图,https://m.liepin.com/job/1984478237.shtml,liepin,第3轮,三维感知/点云；4天/周；提供转正
 杭州蓝芯机器人技术股份有限公司,机器人开发实习生(J10112),杭州,,180-250元/天,,实习,本科及以上，精通C++/Python，熟悉Linux与ROS2，有SLAM/导航算法实车落地经验优先，能全职实习6个月,https://m.liepin.com/job/1977489497.shtml,liepin,第2轮,余杭区AI小镇，5天/周，提供转正
 网易（杭州）,激光SLAM算法实习生,杭州,,200-400元/天,,实习,熟悉LOAM/LIO-SAM/FAST-LIO、ROS、C++/Python、PCL与图优化；机器人竞赛或SLAM论文加分,https://www.shixiseng.com/intern/inn_vfc3evwvjuin,shixiseng,第2轮,滨江区，3D激光雷达建图与定位
+蚂蚁技术研究院,视频世界模型算法,杭州,,面议,每周4天，6个月+,实习,硕/博在读；Python/PyTorch 熟练；视频生成、时序建模、VLA 对齐经验,https://talent.antgroup.com/campus-full-list?type=campus_intern&batchId=25051200066269,official,第4轮,ID 25022003401951；北京/上海/杭州；交互式生成
+蚂蚁数字科技,多模态算法实习生（具身方向）,杭州,,面议,未注明,实习,硕/博；人形机器人控制与具身理论；运动学/动力学；足式控制经验优先,https://talent.antgroup.com/campus-full-list?type=campus_intern&batchId=25051200066269,official,第4轮,ID 25102307228101；北京/杭州；遥操作+控制
 西湖大学工学院机器智能实验室（MiLAB）,科研助理（人形机器人具身基础模型）,杭州,西湖区,面议,全职,RA,AI/计算机/自动化/机器人/控制/应用数学硕士或优秀本科；扎实机器学习基础，熟悉Transformer、VLA与强化学习,https://www.westlake.edu.cn/careers/OpenPositions/research_team/kyeng/202601/t20260107_63502.html,official,第2轮,王东林组，具身大模型/强化学习，招5人
+阿里云,具身智能算法实习生-MaaS,杭州,,面议,未注明,实习,硕/博在读，ML与多模态基础扎实，Python/PyTorch；有机器人控制/规划/感知研究经验,https://campus-talent.alibaba.com/campus/position/199904280003?lang=zh,official,第4轮,日常实习生；阿里云MaaS平台；可转正
+阿里巴巴控股集团,研究型实习生-具身智能算法工程师,杭州,,面议,未注明,实习,本硕博在读，Python/PyTorch；模仿学习/强化学习、手物交互、Isaac Sim/MuJoCo 之一,https://campus-talent.alibaba.com/campus/position/199910060004?lang=zh,official,第4轮,RynnWorld 具身智能体系；研究型实习生
+阿里巴巴（数据智多星）,数据智多星-世界模型评测,杭州,,面议,未注明,实习,本科及以上在读，Python 评测脚本；理解物理一致性与时空建模指标,https://campus-talent.alibaba.com/campus/position/199908860001?lang=zh,official,第4轮,北京/杭州；世界模型评测
+阿里巴巴（数据智多星）,日常实习生-数据智多星-具身智能仿真方向,杭州,,面议,未注明,实习,计算机/图形学硕博；3D生成或视频世界模型经验，顶会论文优先,https://campus-talent.alibaba.com/campus/position/199904300004?lang=zh,official,第4轮,3D仿真/数据引擎方向；日常实习生
+阿里巴巴（未来生活实验室）,日常实习生-视频世界模型-未来生活实验室,杭州,,面议,未注明,实习,多模态与生成式模型背景，有视频生成/VLM 实战经验,https://campus-talent.alibaba.com/campus/position/199905060004?lang=zh,official,第4轮,北京/杭州；大规模视频世界模型
+阿里巴巴（未来生活实验室）,研究型实习生-世界模型-未来生活实验室,杭州,,面议,未注明,实习,计算机/自动化/数学本科及以上；编程扎实，能独立分析模型研发问题,https://campus-talent.alibaba.com/campus/position/199904140004?lang=zh,official,第4轮,北京/杭州；多模态+世界模型
 零零科技,slam算法实习生,杭州,,200-400元/天,,实习,硕士优先，掌握SLAM/VIO、多传感器融合与标定，熟C++/Python和Linux，有论文者优先,https://www.shixiseng.com/intern/inn_leopqwcgnfoe,shixiseng,第2轮,余杭区，5天/周，实习3个月，可转正
 上海纬钛科技有限公司（苏州办公）,强化学习算法工程师（正式/实习均可）,苏州,工业园区,20-40k·14薪,不限,实习,硕士及以上，精通PPO/SAC/DQN与PyTorch，熟悉ROS2、Isaac Sim/MuJoCo，懂机器人运动学动力学,https://m.liepin.com/job/1984304899.shtml,liepin,第2轮,视触融合具身操作，正式/实习均可，学生可投
 优诺智行(苏州)科技有限公司,机器人实习生（控制与导航方向）,苏州,工业园区,4-7k,3-6个月,实习,电气/控制/AI至少一方向基础，做运动学建模、ROS/ROS2导航、PID/MPC调参,https://m.liepin.com/job/1982902989.shtml,liepin,第2轮,AI学者带队攻坚团队，可转正，实战项目制
