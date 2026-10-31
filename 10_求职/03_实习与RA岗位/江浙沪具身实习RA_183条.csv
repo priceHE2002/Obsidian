@@ -1,0 +1,184 @@
+﻿公司/机构,岗位,城市,区,薪资,时长,类型,硬性要求,链接,来源,采集批次,备注
+ABB机器人,触觉应用实习生,上海,浦东新区,180-200/天,3个月,实习,硕士在读，精通数据建模与机器人力控算法，了解KMP/Flow matching，英文读写良好,https://www.shixiseng.com/intern/inn_33osbeykcskz,实习僧,第3轮,触觉传感器采集与力-位轨迹建模
+Momenta,世界模型算法实习生(Mstar),上海,,面议,,实习,深度学习基础扎实、熟练PyTorch；掌握分布式训练框架/大规模Scaling；世界模型或视频生成经验优先,https://momenta.jobs.feishu.cn/campus/position/7660075475231361290/detail,official,第2轮,Mstar；Physical AI/Policy世界模型、VLA、端侧Poli…
+Momenta,端到端决策规划算法实习生(Mstar),上海,,面议,,实习,计算机/AI硕博应届；必须具备Flow Matching经验；理解RL后训练(PPO/GRPO)、On-policy蒸馏,https://momenta.jobs.feishu.cn/campus/position/7660075456691374355/detail,official,第2轮,端到端驾驶决策后训练：RL/On-policy Distillation；北京…
+Momenta,端到端大模型算法实习生(Mstar),上海,,面议,,实习,计算机/AI/自动化硕博应届；熟悉Transformer/ViT/LLM；有VLM或VLA研究经验；熟练PyTorch,https://momenta.jobs.feishu.cn/campus/position/7660075494222154038/detail,official,第2轮,感知-规划一体化端到端大模型+世界模型预研；北京上海苏州
+Momenta,算法实习生（智驾大模型）,上海,,面议,,实习,硕/博在读，计算机/AI/自动化；熟悉Python与PyTorch；每周4天以上、实习6个月以上；有VLM/论文优先,https://momenta.jobs.feishu.cn/campus/position/7624057200840231206/detail,official,第2轮,世界模型/视频生成/VLM驾驶策略；IL/RL轨迹预测；上海北京
+Momenta,规划算法开发实习生,上海,,300-400元/天,,实习,相关专业27届以后硕/博，熟练C++或Python至少一种，连续实习6个月，有自动驾驶经验优先,https://www.liepin.com/job/1976164727.shtml,liepin,第2轮,浦东金海园；5天/周、6个月；招1人；猎聘桌面被风控，手机UA实测200/42…
+NIO蔚来,机器人控制算法实习生(A41964),上海,,300元/天,5天/周，3个月，硕士,实习,SLAM与激光雷达/IMU融合；六轴机械臂正逆解、轨迹插补、手眼标定；ROS2/Gazebo；C++/Python,https://www.shixiseng.com/intern/inn_t1g3hiqmqlwe,shixiseng,第3轮,机器人控制算法，含SLAM导航与机械臂运动学
+NIO蔚来,机器人轨迹寻优算法实习生(A97351),上海,,300元/天,5天/周，3个月，本科,实习,RRT*/PRM/CHOMP/TrajOpt/MPC；SQP或内点法；Gazebo/MuJoCo/Isaac Sim仿真,https://www.shixiseng.com/intern/inn_uu1ilsa1ndg5,shixiseng,第3轮,运动规划与轨迹优化，无转正说明
+RONOVO,控制算法实习生,上海,,200元/天,硕士在读优先,实习,机械/电气/软件专业，熟机器人软件开发与ROS，掌握C++/Python；会LabVIEW或CAD加分,https://www.shixiseng.com/intern/inn_hcw0ncg53e2j,shixiseng,第3轮,手术机器人控制系统开发与测试；截止2026-12-31
+Sharpa,2D-SLAM工程师（实习生）,上海,,面议,未注明,实习,计算机/自动化/机器人/数学；C++必须；熟悉GMapping/Hector/Cartographer；ICP、粒子滤波、g2o/ceres；ROS,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7623356760765581619/detail,feishu,第2轮,飞书ATS在招，激光雷达2D建图定位
+Sharpa,AI Infra工程师（实习生）,上海,,面议,未注明,实习,本科+；PyTorch DataLoader与DDP/FSDP/DeepSpeed/Ray Train；HDF5/Parquet/WebDataset,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7694204984364419374/detail,feishu,第2轮,飞书ATS在招，训练数据链路与分布式训练
+Sharpa,SLAM/VIO算法工程师（实习生）,上海,,面议,未注明,实习,数学基础扎实（线代/概率/SE3、SO3）；熟悉SLAM/VIO与图优化；C/C++、Linux、ROS/ROS2；GTSAM加分,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7597663302973671743/detail,feishu,第2轮,飞书ATS在招，双目VIO亚厘米级6D位姿
+Sharpa,人体骨骼重建算法工程师（实习生）,上海,,面议,未注明,实习,硕士+（优秀本科可）；精通SMPL/SMPL-X与MANO；多目相机标定/多视角几何/3D重建；有视觉SLAM经验,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7694227350354954547/detail,feishu,第2轮,飞书ATS在招，多目视频人体/手部姿态重建
+Sharpa,具身智能研究员（基模方向实习生）,上海,,面议,未注明,实习,本科+；具身基座模型与真机强化学习；有顶会顶刊或高影响力开源；VLA/World-Action Model 经验优先,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7650326793131968818/detail,feishu,第2轮,飞书ATS在招，灵巧精细长程操作基座模型
+Sharpa,数据算法工程师（实习生）,上海,,面议,未注明,实习,硕士+；Python/C++与PyTorch；多模态数据清洗/时空对齐；用VLM/LLM做自动标注；机器人数据经验优先,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7694210103218227465/detail,feishu,第2轮,飞书ATS在招，具身数据生产与数据闭环
+Sharpa,机器人强化学习算法工程师（实习生）,上海,,面议,未注明,实习,硕士+；熟练MuJoCo/IsaacLab；深入RL算法；有完整RL训练与真机部署、Sim2Real落地案例,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7639205454762363162/detail,feishu,第2轮,飞书ATS在招，灵巧手抓取/手内操作RL
+Sharpa,机器人控制工程师-AI控制组（实习生）,上海,,面议,未注明,实习,控制/自动化/机器人/AI硕士+；熟悉MPC、WBC等现代控制；有RL在Locomotion/WBC的Sim2Real经验优先,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7616659746700331306/detail,feishu,第2轮,飞书ATS在招，轮式/双足人形运动控制
+Sharpa,机器人算法工程师实习生（manipulation方向）,上海,,面议,未注明,实习,本科+；机器人学习、模仿学习或强化学习；ROS/PyTorch、Python/C++；每周≥3天、≥3个月,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7473386947110422795/detail,feishu,第2轮,飞书ATS在招，真机复杂物理操作任务
+Sharpa,机器人系统工程师-数据采集方向（实习生）,上海,,面议,未注明,实习,机器人/自动化/机电/控制/计算机在读；懂运动学（齐次变换、正逆解、雅可比）与动力学基础,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7652227049780840754/detail,feishu,第2轮,飞书ATS在招，机器人数据采集系统与质量
+Sharpa,算法嵌入式部署工程师（实习生）,上海,,面议,未注明,实习,自动化/机电/计算机硕士+；精通运动学动力学与MPC/自适应控制；C++/Python、ROS2；RRT/A*/DWA,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7592151528367655187/detail,feishu,第2轮,飞书ATS在招，控制算法与嵌入式部署
+Sharpa,算法软件工程师实习生（Simulation方向）,上海,,面议,未注明,实习,本科+；熟悉MuJoCo/Isaac Sim/Isaac Lab搭建与基准测试；C++/Python、ROS2；懂运动学动力学优先,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7666022231256582410/detail,feishu,第2轮,飞书ATS在招，机器人仿真环境与工具链
+Sharpa,触觉传感器算法工程师（实习生）,上海,,面议,未注明,实习,深入理解深度学习（图像检测/分割）；了解视触觉/压阻传感器原理；熟练Python，会用AI辅助编程,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7631511235854747931/detail,feishu,第2轮,飞书ATS在招，视触觉接触位置与力感知
+Sharpa,触觉应用算法工程师（实习生）,上海,,面议,未注明,实习,博士；机器学习基础扎实；有robot-learning的RL/IL项目经验；做触觉仿真与contact-rich灵巧操作,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7490839886724499738/detail,feishu,第2轮,飞书ATS在招，触觉表征+RL/IL灵巧操作
+Sharpa,遥操作算法工程师（实习生）,上海,,面议,未注明,实习,本科+；机器人学习/模仿学习或强化学习；多模态与生成式算法；熟悉运动学动力学控制优先,https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7535305661681387817/detail,feishu,第2轮,飞书ATS在招，主从姿态重定向与力/触觉反馈
+上海交通大学MVIG实验室,具身智能方向研究助理（本科实习/Research AP）,上海,闵行,面议,长期,RA,上交本科大一至大三可投本科实习；Research AP需博士+5篇一作AI论文,https://www.mvig.org/recruit/2024.html,official,第2轮,卢策吾组，长期招收，邮件投递
+上海交通大学自主机器人实验室,科研助理（卢俊国长聘教授团队）,上海,闵行,面议,长期,RA,本科及以上；Java/C++/Python至少一门；有软件开发或测试经验优先,https://join.sjtu.edu.cn/Admin/QsPreview.aspx?qsid=c35bc6f16591428ba11393501fc27d87,official,第2轮,招3人，项目聘用A，截止2027-05-16
+上海交通大学自动化与感知学院,王红雨课题组科研助理（无人机飞控）,上海,闵行,面议,长期,RA,持CAAC超视距执照；精通PX4/ArduPilot调参排故；3-5年相关经验,https://join.sjtu.edu.cn/Admin/QsPreview.aspx?qsid=47b3c2e0f7f24dc88afb4a250e47b2f8,official,第2轮,招1人，截止2026-11-13
+上海人工智能实验室,世界模型物理评测实习生-物理智能中心,上海,徐汇,面议,长期优先,实习,本科及以上在读；计算机/AI/图形学/机器人/物理；三维数学、刚体动力学、渲染基础；Python/C++；了解物理引擎,https://www.shlab.org.cn/joinus/detail/7685677300847151403?mode=campus,official,第3轮,世界模型物理能力/因果性评测；重力碰撞摩擦惯性；评测工具与基线
+上海人工智能实验室,仿真平台开发工程师-物理智能中心,上海,徐汇,面议,未注明,实习,本科及以上应届；计算机/机器人/自动化等；C++或Python；线代/坐标变换/力学；懂Isaac Sim/MuJoCo/Unity优先,https://www.shlab.org.cn/joinus/detail/7687485473829226778?mode=campus,official,第3轮,仿真引擎与Code World Model平台；机器人操作环境/数字孪生
+上海人工智能实验室,具身仿真数据实习生-物理智能中心,上海,徐汇,面议,至少3个月,实习,机器人/自动化/计算机本科及以上；懂机器人学基础；熟练Isaac Sim等仿真器；Python场景脚本与数据导出,https://www.shlab.org.cn/joinus/detail/7673348635257784626?mode=campus,official,第3轮,机械臂/灵巧手/移动底盘操作场景；视觉轨迹数据合成；Sim2Real泛化
+上海人工智能实验室,具身智能交互算法实习生-物理智能中心,上海,徐汇,面议,未注明,实习,硕士/博士优先，优秀本科可；熟RL/模仿学习/VLA/运动控制/感知之一；有真机部署经验；Python/PyTorch/C++/ROS,https://www.shlab.org.cn/joinus/detail/7677865792705480987?mode=campus,official,第3轮,灵巧手/移动双臂/人形；长程精细操作、多模态融合、sim2real闭环
+上海人工智能实验室,具身智能操作算法实习生-物理智能中心,上海,徐汇,面议,未注明,实习,计算机/AI/机器人/自动化硕士+；熟PyTorch与机器人运动学规划控制；有世界模型、模仿学习、双臂/灵巧手经验优先,https://www.shlab.org.cn/joinus/detail/7677892979700992298?mode=campus,official,第3轮,双臂+灵巧手移动操作；世界模型、策略学习、真机部署评测
+上海人工智能实验室,具身智能（场景生成、物理仿真、后训练）-物理智能中心,上海,徐汇,面议,6个月以上,实习,本科+，研究生优先；图形学/物理仿真/RL基础；熟Isaac Sim/Lab、MuJoCo等；会PPO/GRPO；每周线下4天+,https://www.shlab.org.cn/joinus/detail/7673347399540738323?mode=campus,official,第3轮,Real2Sim2Real、具身场景生成、多模态物理仿真、WAM/VLA后训练
+上海人工智能实验室,多模态融合SLAM算法实习生,上海,徐汇,面议,未注明,实习,计算机/机器人/自动化/测绘硕士+；扎实状态估计与非线性优化；熟ORB-SLAM3、FAST-LIVO2等视觉激光融合SLAM,https://www.shlab.org.cn/joinus/detail/7694225784613538099?mode=campus,official,第3轮,物理智能中心；相机/激光/IMU融合定位建图，算法复现与评测
+上海人工智能实验室,机器人操作算法实习生（VLA/World-Action Model方向）-物理智能中心,上海,徐汇,面议,6个月及以上,实习,本科/研究生在读；熟Python与PyTorch；熟VLA/WAM及LeRobot、OpenPI、StarVLA；了解抓取、位姿估计、模仿学习/RL,https://www.shlab.org.cn/joinus/detail/7677867001382160681?mode=campus,official,第3轮,操作基座模型研发+真机/仿真评测；要求线下稳定实习6个月+
+上海人工智能实验室,机器人操作算法（数据闭环与泛化方向）-物理智能中心,上海,徐汇,面议,6个月以上,实习,在读本科/研究生；熟ROS2真机联调；熟VLA/WAM与LeRobot/OpenPI；Python/PyTorch；能实习6个月+，不支持远程,https://www.shlab.org.cn/joinus/detail/7677865095531514175?mode=campus,official,第3轮,操作基座模型数据闭环、真机评测、遥操作数据规模化
+上海人工智能实验室,机器人运动控制实习生（无人机/移动机器人方向）,上海,徐汇,面议,未注明,实习,自动化/机器人/航空航天/计算机硕士+；熟PX4/ArduPilot、ROS/ROS2；有轨迹规划、姿态控制或RL控制经验优先,https://www.shlab.org.cn/joinus/detail/7694209449011022134?mode=campus,official,第3轮,物理智能中心；无人机/轮式机器人规划控制，仿真+真机部署
+上海人工智能实验室,物理智能世界模型训练实习生,上海,徐汇,面议,未注明,实习,本科高年级/硕士/博士在读；熟Python与PyTorch/JAX；了解模仿学习、RL、轨迹预测；有VLA/扩散模型/真机部署经验优先,https://www.shlab.org.cn/joinus/detail/7684165090257799460?mode=campus,official,第3轮,机器人交互数据建模、动作条件预测、轨迹生成；仿真到真机闭环
+上海人工智能实验室,科学仿真平台研究（deepdive项目）-物理智能中心,上海,徐汇,面议,未注明,实习,数学/物理/计算机基础扎实；熟C++/CUDA；能读论文并复现；有FEM/CFD/MPM、图形学、机器人仿真或GPU计算经验优先,https://www.shlab.org.cn/joinus/detail/7678308820766181638?mode=campus,official,第3轮,通用科学仿真平台；多物理场/可微仿真；数字孪生与Sim2Real
+上海人工智能实验室,算法实习生,上海,,300-400元/天,5天/周，6个月，本科,实习,智能体运动预测与规划决策；图神经网络/Transformer；需连续实习6个月,https://www.shixiseng.com/intern/inn_ko9gskfjedw7,shixiseng,第3轮,运动预测/规划决策方向，实习僧在招
+上海创智学院,具身智能科研实习生,上海,,面议,3–6个月,实习,本科/硕士；自动化/机器人/机械/计算机等；会Python/C++；对机器人仿真、运动控制、RL或感知有兴趣；每周30h+,https://sii-czxy.jobs.feishu.cn/index/position/7688651975483427082/detail,feishu,第3轮,医疗具身智能仿真平台：三维建模、物理仿真、运动规划与控制算法验证
+上海创智学院,数字交互世界模型科研实习生,上海,,面议,6个月以上,实习,本科/硕士；计算机/AI/数学/统计等；Python+PyTorch；了解Transformer/生成模型；有世界模型/视频生成复现经验优先,https://sii-czxy.jobs.feishu.cn/index/position/7694571878220335386/detail,feishu,第3轮,世界模型/长程视频生成/交互式生成；数据Pipeline、训练评测；线下6个月+
+上海期智研究院,【具身智能】人形机器人硕士后/实习生,上海,徐汇,面议,12个月起,RA,硕士；2年以上机器人VLA/RL研究经历；熟悉Isaac Lab、ROS、足式机器人,https://www.sqz.ac.cn/sxs-75,official,第2轮,VLA/MPC/灵巧抓取等5方向，招2-3人
+中国科学院上海微系统与信息技术研究所,仿生视觉系统实验室具身智能研发工程师,上海,长宁,面议,长期,RA,计算机/自动化/数学硕士+；掌握PID/鲁棒控制与机器人运动学；熟强化学习实机落地,https://www.gaoxiaojob.com/announcement/detail/413146.html,gaoxiaojob,第2轮,机器人运动控制/RL实机部署，邮箱投递
+中建东方装饰,机器人研发岗,上海,静安区,100-200/天,2个月,实习,本科，熟悉多传感器融合SLAM、A*/RRT*/DWA路径规划与ROS/ROS2，有步态控制经验优先,https://www.shixiseng.com/intern/inn_uchgtivsqq2o,实习僧,第3轮,四足与轮式机器人导航控制研发
+人形机器人（上海）有限公司,具身算法实习生(WAM/VLA/强化学习),上海,浦东新区,200-250元/天,未注明,实习,硕士/博士在读，计算机/机器人/AI，熟Python+PyTorch，了解VLA、强化学习或模仿学习,https://www.liepin.com/job/1986043637.shtml,liepin,第2轮,张江模力社区，国资人形机器人平台，招3人
+仙工智能,Slam算法实习生,上海,,面议,未注明,实习,计算机/机器人相关专业，SLAM/激光建图定位方向（JD正文未展开）,https://seer-group.jobs.feishu.cn/index/position/7662599554566965513/detail,feishu,第2轮,飞书ATS在招，JD描述为空需向HR确认细节
+仙工智能,VLA算法实习生,上海,,面议,未注明,实习,硕士；熟悉Transformer与CLIP/LLaVA/RT-2；掌握Diffusion/ActionChunking；PyTorch，有IL/RL经验,https://seer-group.jobs.feishu.cn/index/position/7662249036686690603/detail,feishu,第2轮,飞书ATS在招，VLA/VLM研发与真机部署
+仙工智能,机械臂算法实习生,上海,,面议,未注明,实习,在读硕博；机器人学与刚体运动学基础，了解RRT/A*；掌握Python或C++，有ROS/仿真经验优先,https://seer-group.jobs.feishu.cn/index/position/7662254467069085979/detail,feishu,第2轮,飞书ATS在招，上肢协作运动规划与仿真验证
+仙工智能,算法工程师（实习）,上海,,面议,未注明,实习,本科+，计算机/自动化/机器人；做3D点云检测分割与自动标注，需PyTorch训练调优与部署能力,https://seer-group.jobs.feishu.cn/index/position/7662329309496002826/detail,feishu,第2轮,飞书ATS在招，3D自动标注/数据闭环方向
+傅利叶,机器人运动控制实习生,上海,浦东,300-400元/天,5天/周，硕士,实习,控制/机器人/自动化专业，懂PID/LQR/MPC/WBC与强化学习PPO；熟C++/Python及Isaac仿真,https://www.shixiseng.com/intern/inn_ebmpf4gbhwus,shixiseng,第3轮,下肢/全身协调/臂手操作方向；截止2026-12-23
+光轮智能,AI-Native Engineer（具身智能方向）,上海,嘉定,面议,未注明,实习,本科/研究生在读，熟悉Python或C++，了解Git/Linux，有LLM/VLM或Agent经验加分,https://lightwheel.jobs.feishu.cn/index/position/7621389609281063210/detail,feishu,第2轮,京沪可选，AI+机器人方向
+光轮智能,VLM算法实习生,上海,嘉定,面议,未注明,实习,硕士+，精通PyTorch，有多模态大模型训练经验，熟悉LLaVA/Qwen-VL及DeepSpeed等加速框架,https://lightwheel.jobs.feishu.cn/index/position/7683084866620410121/detail,feishu,第2轮,飞书ATS在招，上海嘉定，薪资面议
+光轮智能,具身智能仿真引擎开发实习生,上海,嘉定,面议,未注明,实习,数学物理基础扎实，熟练Python，了解C++/CUDA，用过Isaac Sim/MuJoCo/Unity加分,https://lightwheel.jobs.feishu.cn/index/position/7621406673219537194/detail,feishu,第2轮,京沪可选，仿真引擎方向
+光轮智能,具身智能大模型实习生,上海,嘉定,面议,未注明,实习,Robotics/VLA/World Model/多模态大模型方向有研究经验，熟悉Transformer、模仿学习或强化学习,https://lightwheel.jobs.feishu.cn/index/position/7673863422870620466/detail,feishu,第2轮,京沪两地可选，飞书ATS在招
+光轮智能,具身智能研究实习生,上海,嘉定,面议,6个月以上,实习,博士优先，Robotics/World Model/RL/仿真方向，有真机与多机多卡经验，需连续实习6个月,https://lightwheel.jobs.feishu.cn/index/position/7637392515369650438/detail,feishu,第2轮,要求连续6个月，京沪可选
+光轮智能,具身运控算法实习生,上海,嘉定,面议,未注明,实习,熟悉运动学/动力学、轨迹规划与PID/MPC/WBC等控制算法，熟练C++/Python,https://lightwheel.jobs.feishu.cn/index/position/7665539343527758123/detail,feishu,第2轮,上海嘉定，机械臂/人形运控
+光轮智能,机器人仿真算法实习生,上海,嘉定,面议,未注明,实习,本科高年级/硕博在读，熟悉Python、PyTorch、Linux/Git，了解Isaac Lab、MuJoCo或ROS者优先,https://lightwheel.jobs.feishu.cn/index/position/7668161664088688939/detail,feishu,第2轮,京沪可选，偏仿真评测方向
+博世中国,具身智能 / VLA 算法实习生-BUD,上海,,250-300元/天,5天/周，硕士,实习,硕/博在读，熟Python/PyTorch；熟悉OpenVLA或π系列VLA模型；能处理大规模机器人轨迹数据,https://www.shixiseng.com/intern/inn_3tklakb1opib,shixiseng,第3轮,VLA数据处理与训练评测；截止2026-11-21
+博世中国,感知算法实习生,上海,,180-200元/天,5天/周，本科,实习,本科及以上，熟Python/深度学习；有目标检测、分割或点云/相机标定经验优先,https://www.shixiseng.com/intern/inn_tu48hhhybmlj,shixiseng,第3轮,智能驾驶感知方向；截止日期见页面
+博世中国,标定定位算法实习生-XC,上海,,180-200元/天,本硕应届，长期,实习,熟vSLAM/Li-SLAM/三维重建/粒子滤波或卡尔曼滤波；C++扎实，有机器人SLAM项目优先,https://www.shixiseng.com/intern/inn_r7kle9a19wz5,shixiseng,第3轮,智能驾驶标定定位；可接触转正机会
+同济大学智能机器人与计算感知实验室,机器人与智能感知实验室科研助理,上海,浦东,面议,2年（可续）,RA,本科及以上，35岁以下；计算机/自动化/力学/机器人等方向；公文写作与英语交流,https://robot.tongji.edu.cn/info/1254/1779.htm,official,第2轮,招2人，张江人工智能岛，截止长期
+同济大学智阈实验室,移动操作机器人具身感知科研助理,上海,浦东,面议,灵活,实习,大二至大四优先；熟ROS/ROS2与Python/C++；有机械臂/视觉导航/系统集成经验优先,https://www.gaoxiaojob.com/announcement/detail/403113.html,gaoxiaojob,第2轮,招4人，本科生科研实践岗，张江基地线下
+同济大学材料科学与工程学院,先进材料与智能科学实验室柔性交互与具身智能科研助理,上海,杨浦,面议,灵活,实习,本科在读；有Python/嵌入式基础；参与柔性传感电路与手势识别算法,https://www.gaoxiaojob.com/announcement/detail/400565.html,gaoxiaojob,第2轮,招1-2人，本科生科研实践岗，随时报名
+地平线,世界模型算法实习生,上海,,380-500元/天,5天/周，4个月，硕士,实习,具身基础模型/世界模型：WAM、Action-Conditioned World Model、UMM、4D；PyTorch；顶会论文加分,https://www.shixiseng.com/intern/inn_cxkjdcqsh3h6,shixiseng,第3轮,具身智能基础模型方向，含开源与报告
+地平线,世界模型算法实习生（实时交互方向）,上海,,300-400元/天,5天/周，6个月，硕士,实习,长时序视频生成；DMD2蒸馏加速；Action-conditioned闭环环境；VAE视觉表征；冲击CVPR/NeurIPS,https://www.shixiseng.com/intern/inn_rc6bpmzmner9,shixiseng,第3轮,实时可交互世界模型，有房补
+地平线,具身生成方向实习生,上海,,270-370元/天,硕士及以上,实习,计算机/图形学/AI硕士+，熟Diffusion/Flow Matching等生成模型，PyTorch训练调优经验,https://www.shixiseng.com/intern/inn_44lcgvekujum,shixiseng,第3轮,机器人World Model/3D场景生成；截止2027-01-05
+地平线,决策规划PnC实习生-路由规划方向,上海,浦东新区,300-400/天,6个月,实习,硕士，熟悉A*/Dijkstra等路径规划算法，掌握C++/Python，有机器人或无人车经验优先,https://www.shixiseng.com/intern/inn_b6mxxu710uo9,实习僧,第3轮,临港，无图/轻图导航规划
+地平线,感知算法实习生(OCC方向)-base上海/南京,上海,,150-300元/天,硕/博在读,实习,硕/博，熟Occupancy/OccFlow/3D表征或NeRF/3DGS之一；有大规模3D模型训练经验,https://www.shixiseng.com/intern/inn_ihevtwdc2lnl,shixiseng,第3轮,3D场景理解感知；截止2027-01-05
+地平线,深度学习算法实习生（感知+多模态大模型）,上海,浦东新区,180-250/天,6个月,实习,硕士，CV/人工智能背景，熟练C++/Python与PyTorch，有顶会论文或竞赛获奖优先,https://www.shixiseng.com/intern/inn_hx9pfyb4pyzj,实习僧,第3轮,感知前沿+多模态大模型调研
+墨奇智能,触觉算法实习生,上海,杨浦区,300-500元/天,6个月优先,实习,研究生+，自动化/机器人/计算机，熟触觉信号处理、Python/C++/ROS，有力控经验,https://www.liepin.com/job/1986248971.shtml,liepin,第2轮,杨浦，具身智能创业公司，触觉/VTLA方向
+复旦大学智能机器人研究院,自动控制工程师（工程实验技术助理RST）,上海,杨浦,面议,长期,RA,自动化/电气/机电本科+；熟电气原理图与PLC/HMI；精通C/C++/Python上位机,https://www.gaoxiaojob.com/announcement/detail/441809.html,gaoxiaojob,第2轮,劳务派遣，招1人，截止2028-06-30
+复旦大学智能机器人研究院,软件开发工程师（研究助理RSR）,上海,杨浦,面议,长期,RA,电子/电气/自动化/计算机本科+；熟练C/C++/C#；有移动机器人/ROS经验优先,https://www.gaoxiaojob.com/announcement/detail/441287.html,gaoxiaojob,第2轮,劳务派遣，招1人，截止2028-06-30
+字节跳动,多模态与世界模型算法实习生-Seed大模型人才实习,上海,,面议,,实习,2028届及以后本科及以上在读，计算机/电子/数学；CV/多模态/AIGC/渲染研究背景；顶会论文优先,https://bytedance.jobs.feishu.cn/campus/position/7622213472429459717/detail,official,第2轮,Seed大模型人才实习；世界模型进阶能力、GUI/游戏虚拟环境
+字节跳动,多模态世界模型算法实习生-Seed,上海,,面议,,实习,本科及以上在读，计算机/电子/数学优先；CV/多模态/AIGC/渲染生成有较深入研究；顶会论文优先,https://bytedance.jobs.feishu.cn/campus/position/7215563256558537018/detail,official,第2轮,Seed；多模态理解与生成基础模型、世界模型与评测体系；日常实习3个月+
+字节跳动,机器人应用开发实习生 - Seed Model,上海,,面议,,实习,本科及以上在读，计算机/软工相关；计算机基础扎实、编程能力强；每周实习5天、持续3个月以上,https://bytedance.jobs.feishu.cn/campus/position/7377659849766816050/detail,official,第2轮,Seed机器人团队；机器人评测验证/任务执行/远控调试工具链与数据闭环
+字节跳动,机器人数据开发实习生 - Seed Model,上海,,面议,,实习,本科在读计算机相关；熟悉MySQL/MongoDB，掌握Golang；了解机器人运动学/坐标变换加分；每周到岗>3天,https://bytedance.jobs.feishu.cn/campus/position/7618922700820023557/detail,official,第2轮,Seed机器人数据平台；分布式存储与处理引擎，Golang/Python，数据…
+小派创新,算法实习生,上海,浦东新区,500-1000/天,3个月,实习,硕士在读（2027/2028届），CV与深度学习扎实，熟悉PyTorch，了解SLAM与三维视觉优先,https://www.shixiseng.com/intern/inn_hq8lqx3gj2fq,实习僧,第3轮,XR手部姿态估计与多模态融合
+小鹏汽车,具身智能体框架开发实习生,上海,,面议,,实习,参与人形机器人智能体框架：LLM/VLM任务理解与规划、MCP协议工具与技能调用、状态机与任务编排、记忆与会话管理、端云协同,https://xiaopeng.jobs.feishu.cn/campus/position/7699031439945615654/detail,official,第2轮,机器人「智能体大脑」核心模块开发；深圳上海
+小鹏汽车,具身智能算法研究实习生（智能体）,上海,,面议,未注明,实习,计算机/AI相关，博士优先；熟悉中后训练与RL（PPO/GRPO/RLHF/RLAIF）；Python/PyTorch，Ray与分布式训练加分,https://xiaopeng.jobs.feishu.cn/campus/position/7695752833673185563/detail,feishu,第2轮,飞书ATS在招，物理能力评测与智能体自主进化
+小鹏汽车,机器人VLA大模型算法实习生,上海,,面议,未注明,实习,计算机/AI/机器人/自动化；熟悉监督学习、模仿学习、强化学习与Transformer/VLM/VLA；PyTorch、Python,https://xiaopeng.jobs.feishu.cn/campus/position/7658229808334162222/detail,feishu,第2轮,飞书ATS在招，真机/仿真/3DGS数据与VLA微调
+小鹏汽车,运动控制算法实习生（强化学习方向）,上海,,面议,,实习,参与人形机器人RL训练，优化运动规划与控制策略；机器人数据重映射(retargeting)；与传统控制互补；控制/RL基础扎实,https://xiaopeng.jobs.feishu.cn/campus/position/7619137926345214235/detail,official,第2轮,小鹏机器人中心，行走/灵巧操作/导航；深圳北京上海
+擎朗智能,感知算法工程师（实习生）,上海,,250-300元/天,硕士，长期实习,实习,机器视觉/机器人等硕士，熟PyTorch与2D检测/分割/MOT；掌握C++、PCL、OpenCV、ROS,https://www.shixiseng.com/intern/inn_eb7yn6n2smh5,shixiseng,第3轮,图像+点云感知，量产落地；截止2026-12-31
+星逻智能,无人机SLAM开发实习生,上海,浦东新区,150-200/天,4个月,实习,硕士，计算机/数学/自动化，熟练掌握SLAM，有视觉导航开发经验、对无人机或机器人感兴趣优先,https://www.shixiseng.com/intern/inn_dmygudwjdejy,实习僧,第3轮,临港，视觉导航与视觉SLAM
+星逻智能,无人机机器学习开发工程师实习生,上海,浦东,130-260元/天,4天/周，7个月，硕士,实习,无人机目标检测/跟踪/场景识别算法；机器学习与深度学习；图像处理基础,https://www.shixiseng.com/intern/inn_wmemdvrub8xc,shixiseng,第3轮,研发中心张江；苏州公司总部；表现者可留用+期权
+星逻智能,深度学习应用部署实习生,上海,,250-400元/天,5天/周，3个月，硕士,实习,开源模型封装与应用测试；深度学习推理平台研发；算法工程化落地,https://www.shixiseng.com/intern/inn_bntffsiopodo,shixiseng,第3轮,推理平台/部署方向，可转正
+星逻智能,深度学习模型加速实习生,上海,,250-400元/天,5天/周，3个月，硕士,实习,Jetson TX2/NX机载模型加速；C/C++；darknet YOLOv4、TensorRT；有加速经验优先,https://www.shixiseng.com/intern/inn_l2olhy0mkcpi,shixiseng,第3轮,无人机机载推理加速，可转正
+星逻智能,深度学习算法研究实习生,上海,浦东,180-200元/天,4天/周，3个月，硕士,实习,深度学习前沿算法研究；可发论文；计算机视觉/多模态相关,https://www.shixiseng.com/intern/inn_uhs9jpgtocge,shixiseng,第3轮,浦东海洋一路333号，可转正，截止2026-12-31
+星际元启机器人,AI 数据工程师,上海,,300-500元/天,5天/周，3个月，硕士,实习,具身大模型多模态数据Pipeline；HiveSQL/Spark；数据质量评估与数据合成算法,https://www.shixiseng.com/intern/inn_qqeishsvdayv,shixiseng,第3轮,具身数据方向，可转正
+智元机器人,VLA大模型实习生,上海,,面议,大三/研一研二优先,实习,计算机/AI/自动化本科以上，熟悉OpenVLA、π0等VLA模型部署与数据pipeline,https://agirobot.jobs.feishu.cn/internrecruitment/position/7683427268110993673/detail,feishu,第2轮,飞书ATS，VLA真机落地闭环岗位
+智元机器人,世界模型算法实习生,上海,,面议,长期稳定实习优先,实习,本科高年级/硕博，机器学习或CV背景，对视频生成、世界模型、仿真有兴趣,https://agirobot.jobs.feishu.cn/internrecruitment/position/7699055239278823690/detail,feishu,第2轮,飞书ATS，世界模型与策略结合
+智元机器人,具身后训练强化学习算法实习生,上海,,面议,,实习,硕士以上，熟悉强化学习与Offline/Online RL，Python+PyTorch，有RLinf经验优先,https://agirobot.jobs.feishu.cn/internrecruitment/position/7694543377468098870/detail,feishu,第2轮,飞书ATS，具身后训练方向
+智元机器人,具身基础模型算法实习生,上海,,面议,长期稳定实习优先,实习,本科高年级/硕博在读，深度学习与代码基础扎实，有多模态大模型、VLA或生成模型经验优先,https://agirobot.jobs.feishu.cn/internrecruitment/position/7696024876527945994/detail,feishu,第2轮,飞书ATS实习岗，参与基础模型训练与真机验证
+智元机器人,具身智能全栈Infra实习生,上海,,面议,,实习,熟悉Python/C++/JS与大规模数据并发，了解Ray、MPI、Lerobot/mcap/zarr、ROS,https://agirobot.jobs.feishu.cn/internrecruitment/position/7690406123048667438/detail,feishu,第2轮,飞书ATS，具身中心数据与评测闭环
+智元机器人,具身智能算法实习生（VLA / World Model 方向）,上海,,面议,,实习,参与VLA/世界模型调研复现，构建多模态端到端模型，需PyTorch与真机部署经验,https://agirobot.jobs.feishu.cn/internrecruitment/position/7683410175643388203/detail,feishu,第2轮,飞书ATS，含数据管线与真机闭环
+智元机器人,具身模型算法实习生,上海,,面议,未注明,实习,硕士+；VLA后训练SFT/LoRA与超参调优；多模态数据pipeline；复现RT-2/OpenVLA/π0；Isaac Sim/MuJoCo闭环,https://agirobot.jobs.feishu.cn/internrecruitment/position/7694638424377395494/detail,feishu,第2轮,飞书ATS在招，VLA具身大模型后训练方向
+智元机器人,具身算法实习生,上海,,面议,未注明,实习,硕博；模仿学习与强化学习；ACT/MT-ACT/RT1/RT2/DiffusionPolicy；GraspNet/AnyGrasp等6D位姿与抓取,https://agirobot.jobs.feishu.cn/internrecruitment/position/7699746607633631498/detail,feishu,第2轮,飞书ATS在招，人形机器人IL/RL与多模态大模型
+智元机器人,具身算法工程师（VLN）,上海,,面议,,实习,硕士以上，熟悉VLN/VLA、多模态感知融合与BEV/Occupancy，有导航规划经验,https://agirobot.jobs.feishu.cn/internrecruitment/position/7686109006519404854/detail,feishu,第2轮,飞书ATS，全尺寸人形导航
+智元机器人,强化学习感控实习生,上海,,面议,,实习,重点院校硕士以上，自动化/机器人/AI，精通强化学习与Isaac等仿真，熟悉LiDAR与视觉,https://agirobot.jobs.feishu.cn/internrecruitment/position/7681550881230342406/detail,feishu,第2轮,飞书ATS，感控行走与导航
+智元机器人,强化学习真机操作,上海,,面议,每周≥4天，连续≥6个月,实习,硕博在读，掌握RL理论，熟悉SAC/PPO，Python+PyTorch或JAX，读过SERL优先,https://agirobot.jobs.feishu.cn/internrecruitment/position/7678224702234708278/detail,feishu,第2轮,飞书ATS，真机RL训练pipeline
+智元机器人,强化学习运控实习生,上海,,面议,,实习,硕士以上，熟练IsaacLab/IsaacSim/MjLab，精通Python/C++，熟悉AMP、HimLoco等,https://agirobot.jobs.feishu.cn/internrecruitment/position/7688231310713129252/detail,feishu,第2轮,飞书ATS，走跑步态与sim2real
+智元机器人,机器人算法全栈工程实习生,上海,,面议,,实习,精通Python，熟悉RL/模仿学习、操作策略、感知、运动规划中至少两个方向,https://agirobot.jobs.feishu.cn/internrecruitment/position/7685592413872343339/detail,feishu,第2轮,飞书ATS，SDK团队算法原型与集成
+智元机器人,灵巧手具身算法助理研究员（实习生）,上海,,面议,未注明,实习,灵巧手数据采训测推流水线；多模态模型训练与评测；端侧部署；LLM任务规划/Agentic Model探索,https://agirobot.jobs.feishu.cn/internrecruitment/position/7690406083856943402/detail,feishu,第2轮,飞书ATS在招，真实灵巧手平台全链路
+智元机器人,电驱控制算法实习生,上海,,面议,,实习,自动化/控制/机电背景；了解C/C++与控制理论；熟悉永磁同步电机及矢量控制；有驱动调试经验优先,https://agirobot.jobs.feishu.cn/internrecruitment/position/7696071115176954175/detail,feishu,第2轮,关节电驱控制算法，贴近工业机器人运控
+智元机器人,空间算法实习生,上海,,面议,未注明,实习,三维重建MVS/3DGS/VGGT；VLM+三维空间Grounding与空间记忆；端侧实时重建部署；跨本体泛化,https://agirobot.jobs.feishu.cn/internrecruitment/position/7694562162417502483/detail,feishu,第2轮,飞书ATS在招，三维重建+空间理解方向
+智元机器人,算法实习生,上海,,面议,,实习,搭建Isaac Sim/UE/Blender与实机数据流水线；熟悉Python；有SLAM位姿、三维重建或VLM标注经验优先,https://agirobot.jobs.feishu.cn/internrecruitment/position/7682984052161808682/detail,feishu,第2轮,多模态4D数据与自动标注，支撑感知模型迭代
+智往未来,VLA算法实习生（上海/北京）,上海,徐汇,300-400元/天,4天/周，3个月起,实习,硕/博，精通PyTorch与Transformer；熟悉Isaac Sim/Mujoco仿真或ROS真机部署优先,https://www.shixiseng.com/intern/inn_heisuchomoa6,shixiseng,第3轮,有转正HC；截止2027-10-14
+百度,具身模型研发实习生（J106928）,上海,,面议,未注明,实习,计算机/AI/自动化/机器人本科或硕博；机器学习基础，懂Transformer/Flow Matching；有多模态、具身智能或机器人学习经验优先,https://talent.baidu.com/jobs/detail/INTERN/a068d8a1-c7cf-4df6-8204-378ad1bbb1d6,official,第3轮,VLA/WAM预训练后训练、仿真与真机评测、具身数据处理；base北京/上海
+穹彻智能,AI算法实习生（视觉算法）,上海,,面议,未注明,实习,负责机器人视觉与深度学习算法开发、优化、部署，需具备工程落地能力,https://www.noematrix.ai/join-us?jobId=1986722905844748288,official,第2轮,官网在招，视觉/具身算法方向
+穹彻智能,具身智能算法实习生,上海,,面议,未注明,实习,机器人技能学习与操作、6D位姿预测、模仿学习、多模态大模型、仿真环境开发等,https://www.noematrix.ai/join-us?jobId=1920368629904445440,official,第2轮,官网在招，偏数据与仿真工具
+穹彻智能,具身智能算法实习生（VLA）,上海,,面议,未注明,实习,参与具身智能研究与算法开发，有多模态大模型、模仿学习或VLA相关经验优先,https://www.noematrix.ai/join-us?jobId=1986723033716494336,official,第2轮,官网加入我们页在招，一页多岗
+穹彻智能,具身智能算法实习生（强化学习）,上海,,面议,未注明,实习,熟悉RL及ACT/Diffusion Policy/OpenVLA/Pi0等VLA模型，会用Isaac Sim/Lab、MuJoCo仿真,https://www.noematrix.ai/join-us?jobId=1986722732016013312,official,第2轮,官网在招，上肢操作策略方向
+美的集团,具身智能实习生,上海,青浦,150-200元/天,5天/周，6个月，本科,实习,模仿学习/强化学习/自监督；Python/C++；有双臂或移动机器人经验优先,https://www.shixiseng.com/intern/inn_binngf4kj4oa,shixiseng,第3轮,青浦美的全球创新园区，截止2027-01-14
+美的集团,具身智能实习生（VLM/VLA方向）,上海,青浦,150-200元/天,5天/周，6个月起,实习,硕/博在读，掌握PyTorch，了解VLM/VLA/RL原理；熟悉LLaVA/Qwen-VL或π系列者优先,https://www.shixiseng.com/intern/inn_teq113eseslz,shixiseng,第3轮,表现优异可转正；美的全球创新园区
+美的集团,强化学习运控实习生,上海,,200-300元/天,5天/周，6个月，硕士,实习,人形机器人全身协调运控；PPO等强化学习算法；isaacsim/isaaclab/mujoco；PyTorch,https://www.shixiseng.com/intern/inn_qetzvjjee7hp,shixiseng,第3轮,人形运控方向，可转正
+美的集团（上海）,具身数据研究实习生,上海,青浦,300-400元/天,6个月起,实习,研究具身数据管线与数据配方，参与VLA/WAM训练微调评测；需熟练PyTorch与AI Coding Agent,https://www.shixiseng.com/intern/inn_71lzatdlbfok,shixiseng,第3轮,VLA/WAM数据研究；截止2027-10-12
+美的集团（上海）,具身智能（机器人操作）实习生,上海,青浦,300-400元/天,4天/周,实习,有模型训练经验，懂刚体变换与机器人学；熟6D位姿/Isaac Sim/MoveIt/模仿学习之二三,https://www.shixiseng.com/intern/inn_ulbsznwoeiqh,shixiseng,第3轮,接受用Claude Code等agent开发；截止2027-10-12
+萝博派对（RoboParty）,机器人算法工程师（VLA/RL）,上海,,面议,未注明,实习,机器人/数学/最优化基础，熟练Python或C++，熟悉VLA与强化学习，有机器人控制经验,https://roboparty.jobs.feishu.cn/index/position/7579175380633815305/detail,feishu,第2轮,飞书直招，全身VLA操作与灵巧操作
+蔚来,AGI超星计划-多模态具身交互控制研究（实习）,上海,,面议,未注明,实习,精通Transformer/Diffusion/VAE/Flow Matching；熟悉RLHF/PPO/DPO/GRPO；有大模型训练与Agent经验,https://nio.jobs.feishu.cn/campus/position/7638943698469980443/detail,feishu,第2轮,NOMI Mate头部动作/表情/TTS实时控制
+蔚来,端到端大模型算法实习生-VLA方向（上海）,上海,,面议,未注明,实习,本科+；熟练Python与PyTorch；掌握VLM/LLM原理；负责VLA模型数据、训练与部署；有自驾/机器人经验优先,https://nio.jobs.feishu.cn/campus/position/7620320073849522441/detail,feishu,第2轮,飞书ATS在招，智驾VLA多模态大模型
+蔚来,蔚来AGI超星计划-物理世界基座模型预研,上海,,面议,,实习,第一作者5篇以上CCF-A或同等影响力成果，对多模态基座/世界模型有体系化认知；有大规模算力Scaling经验加分；实习6个月以上,https://nio.jobs.feishu.cn/campus/position/7638941907657984297/detail,official,第2轮,物理世界基座模型：时空表征、因果建模、长时序预测；上海北京
+蔚来,蔚来AGI超星计划-端到端大模型闭环数据迭代,上海,,面议,,实习,精通VLA/WA/WM算法原理与大模型训练微调；数学基础扎实；熟练Python/C++与PyTorch；有顶会论文或Scaling经验加分,https://nio.jobs.feishu.cn/campus/position/7638942900801505577/detail,official,第2轮,world action模型预训练+数据闭环，Policy/Env Gener…
+蔚来,蔚来AGI超星计划-端到端智能辅助驾驶算法预研,上海,,面议,,实习,有智能辅助驾驶/具身智能方向高影响力论文，理解世界模型；WAM/VLA端到端架构、模仿学习与RL混合训练；实习6个月以上,https://nio.jobs.feishu.cn/campus/position/7638943157400537407/detail,official,第2轮,WAM/VLA端到端大模型，跨模态对齐与推理优化；上海北京
+蔚来,蔚来AGI超星计划-面向车身运动控制（VMC）的物理AI与多场景重建强化学习研究,上海,,面议,,实习,具备RL、控制理论、车辆动力学或机器人学基础；熟悉PPO/SAC/Model-based RL；熟悉Simulink/Isaac Sim/MuJoCo；Pyt…,https://nio.jobs.feishu.cn/campus/position/7638947087330019594/detail,official,第2轮,VMC参数辨识+物理仿真+RL+场景风险，residual policy；AG…
+行猩科技,SLAM算法实习生,上海,,面议,4天/周，硕士,实习,硕士，自动化/计算机/通信等；熟C++/Python，有ROS与无人车/机器人经验优先,https://www.shixiseng.com/intern/inn_ap1zdtchs1yr,shixiseng,第3轮,自动驾驶/机器人SLAM研发；需邮件投递
+西门子医疗（Siemens Healthineers）,具身智能控制算法实习生,上海,浦东,250-300元/天,5天/周，硕士,实习,硕/博，研究具身大模型人形机器人控制；熟VLA多模态、Isaac仿真与真机验证,https://www.shixiseng.com/intern/inn_piulydj27ssl,shixiseng,第3轮,上海创新中心（张江）；截止2026-12-06
+非夕机器人,AI视觉算法实习生,上海,闵行,250-300元/天,4天/周，6个月，本科,实习,YOLO/PointNet++ 2D/3D检测；6D位姿估计与跟踪；Jetson Orin/Xavier+TensorRT部署,https://www.shixiseng.com/intern/inn_1ckihsfsjra5,shixiseng,第3轮,可转正，截止2027-03-05
+非夕机器人（Flexiv）,AI算法实习生,上海,,面议,未注明,实习,本科+，熟悉C++/Python/Linux，掌握检测分割、三维重建、6D位姿、视觉伺服之一,https://flexivrobotics.jobs.feishu.cn/index/position/7512749757842098471/detail,feishu,第2轮,飞书直招，机械臂视觉方向
+非夕机器人（Flexiv）,具身智能算法实习生,上海,,面议,未注明,实习,本科+，熟悉C++/Python，了解机器人技能学习、6D位姿、多模态/视觉大模型之一,https://flexivrobotics.jobs.feishu.cn/index/position/7405096887614114058/detail,feishu,第2轮,飞书直招，含模型部署与仿真方向
+非夕机器人（Flexiv）,具身智能算法实习生（研究开发）,上海,,面议,未注明,实习,本科+，熟悉Python，了解模仿学习(DP/VLA)或强化学习(PPO)，有真机调试或IsaacSim经验,https://flexivrobotics.jobs.feishu.cn/index/position/7559116372769622326/detail,feishu,第2轮,飞书直招，团队获RSS/ICRA最佳论文提名
+云深处科技,算法实习生,杭州,西湖区,300-400元/天,6个月，5天/周,实习,机器人/控制硕士，掌握PPO/SAC/DQN等深度强化学习，Python/C++与PyTorch，熟悉IsaacSim/MuJoCo仿真，有顶会论文优先,https://www.liepin.com/lptjob/85087949,liepin,第3轮,人形机器人敏捷鲁棒控制算法，提供转正，截止2027-08-24
+云深处科技,算法实习生（决策规划方向）,杭州,西湖区,200-400元/天,6个月,实习,具身机器人导航决策与运动规划；BC/模仿学习、Transformer规划、Diffusion Policy、强化学习,https://m.liepin.com/job/1985730039.shtml,liepin,第3轮,具身导航决策规划；5天/周；本科可投
+云深处科技,算法实习生（导航轻图方向）,杭州,西湖区,200-400元/天,4个月，5天/周,实习,本科及以上在校生，计算机/自动化/机器人/数学，C++或Python，Linux，PyTorch基础，有论文复现与实验分析能力,https://www.liepin.com/lptjob/85730087,liepin,第3轮,轻图导航引导线生成算法，实车数据评测，对具身智能有兴趣
+云深处科技,算法实习生（数据打标/挖掘方向）,杭州,西湖区,300-400元/天,4个月,实习,深度学习基础，熟悉分类/检测/分割/caption；有机器人或智驾、lidar/camera/pose经验优先,https://m.liepin.com/job/1985729933.shtml,liepin,第3轮,四足机器狗数据算法；5天/周；硕士
+云深处科技,算法实习生（机器人全局定位）,杭州,西湖区,300-400元/天,6个月,实习,视觉地点识别/图像检索/重定位/位姿估计；Transformer视觉表征与特征匹配；鱼眼相机与跨视角,https://m.liepin.com/job/1985375697.shtml,liepin,第3轮,机器人全局定位；提供转正；5天/周
+云深处科技,算法实习生（自动标注方向）,杭州,西湖区,300-400元/天,4个月,实习,熟悉LIO算法(LIO-SAM/FAST-LIO/Livox-LIO)；BEV/Occupancy；激光与相机融合感知；硕士,https://m.liepin.com/job/1985730171.shtml,liepin,第3轮,LIO+自动标注；5天/周；2026届及以后
+云深处科技,算法实习生（里程计方向）,杭州,西湖区,300-400元/天,3个月,实习,惯性/多模态融合里程计；卡尔曼滤波或RNN/Transformer序列建模；Python/PyTorch/ROS,https://m.liepin.com/lptjob/83782493,liepin,第3轮,足式机器人里程计；5天/周；硕博
+凌迪科技,动捕算法实习生,杭州,西湖区,250-500元/天,3个月,实习,手部关键点检测/3D姿态估计/运动跟踪；IMU姿态解算与EKF融合；SLAM/VIO惯性定位优先,https://m.liepin.com/lptjob/85320779,liepin,第3轮,动捕算法；可远程/线下；5天/周
+奥比中光,SLAM算法实习生（三维扫描方向）,杭州,,200-300元/天,,实习,本科及以上，熟悉C/C++、OpenCV/PCL/Open3D与非线性优化，有RGBD SLAM、回环检测与位姿优化经验优先,https://m.liepin.com/job/1986191395.shtml,liepin,第2轮,余杭区，5天/周，6个月，提供转正
+星逻智能,无人机驾驶算法开发实习生,杭州,,200-300元/天,5天/周，3个月，本科,实习,无人机/无人驾驶感知算法；机器视觉与雷达数据融合；检测跟踪与三维视觉,https://www.shixiseng.com/intern/inn_cjwtbnc2wm7q,shixiseng,第3轮,可远程、可转正，寒暑期均可
+杭州埃瑟睿智能科技有限公司,AI多模态交互开发实习生,杭州,西湖区,150-200元/天,3个月,实习,端侧多模态VLA；ViT/Transformer；PyTorch；人脸检测检索；INT4量化/蒸馏/Jetson部署优先,https://m.liepin.com/lptjob/84478241,liepin,第3轮,机器人VLA端侧落地；4天/周；提供转正
+杭州埃瑟睿智能科技有限公司,三维感知算法实习生,杭州,西湖区,150-200元/天,2个月,实习,点云滤波/ICP配准/RANSAC/场景重建；PCL或Open3D；C++或Python；A*与栅格地图,https://m.liepin.com/job/1984478237.shtml,liepin,第3轮,三维感知/点云；4天/周；提供转正
+杭州蓝芯机器人技术股份有限公司,机器人开发实习生(J10112),杭州,,180-250元/天,,实习,本科及以上，精通C++/Python，熟悉Linux与ROS2，有SLAM/导航算法实车落地经验优先，能全职实习6个月,https://m.liepin.com/job/1977489497.shtml,liepin,第2轮,余杭区AI小镇，5天/周，提供转正
+网易（杭州）,激光SLAM算法实习生,杭州,,200-400元/天,,实习,熟悉LOAM/LIO-SAM/FAST-LIO、ROS、C++/Python、PCL与图优化；机器人竞赛或SLAM论文加分,https://www.shixiseng.com/intern/inn_vfc3evwvjuin,shixiseng,第2轮,滨江区，3D激光雷达建图与定位
+西湖大学工学院机器智能实验室（MiLAB）,科研助理（人形机器人具身基础模型）,杭州,西湖区,面议,全职,RA,AI/计算机/自动化/机器人/控制/应用数学硕士或优秀本科；扎实机器学习基础，熟悉Transformer、VLA与强化学习,https://www.westlake.edu.cn/careers/OpenPositions/research_team/kyeng/202601/t20260107_63502.html,official,第2轮,王东林组，具身大模型/强化学习，招5人
+零零科技,slam算法实习生,杭州,,200-400元/天,,实习,硕士优先，掌握SLAM/VIO、多传感器融合与标定，熟C++/Python和Linux，有论文者优先,https://www.shixiseng.com/intern/inn_leopqwcgnfoe,shixiseng,第2轮,余杭区，5天/周，实习3个月，可转正
+上海纬钛科技有限公司（苏州办公）,强化学习算法工程师（正式/实习均可）,苏州,工业园区,20-40k·14薪,不限,实习,硕士及以上，精通PPO/SAC/DQN与PyTorch，熟悉ROS2、Isaac Sim/MuJoCo，懂机器人运动学动力学,https://m.liepin.com/job/1984304899.shtml,liepin,第2轮,视触融合具身操作，正式/实习均可，学生可投
+优诺智行(苏州)科技有限公司,机器人实习生（控制与导航方向）,苏州,工业园区,4-7k,3-6个月,实习,电气/控制/AI至少一方向基础，做运动学建模、ROS/ROS2导航、PID/MPC调参,https://m.liepin.com/job/1982902989.shtml,liepin,第2轮,AI学者带队攻坚团队，可转正，实战项目制
+博世中国,Cobot AI视觉集成 软件开发的实习生-BMG,苏州,工业园区,150-200元/天,6个月，5天/周,实习,硕士，C#/C++项目经验，熟悉HTML/JS与TCP/IP、Modbus，有视觉深度学习经验优先,https://www.shixiseng.com/intern/inn_jmz4f3zkbynq,shixiseng,第3轮,协作机器人/具身智能平台建设；一对一导师；博世汽车部件苏州
+博世中国,仿真评测链路开发实习生-XC,苏州,工业园区,180-200元/天,5天/周，6个月，本科,实习,精通 Python；了解大模型/多模态推理框架（vLLM/Ollama/Triton）；辅助驾驶仿真评测脚本与工具链,https://www.shixiseng.com/intern/inn_hgerlmoixluc,shixiseng,第3轮,仿真与数据方向；ADAS 仿真评测+AI 看板，非本体算法
+博世中国,计算机视觉算法实习生——BMG,苏州,工业园区,180-200元/天,5天/周，6个月，本科,实习,电子/计算机在读研究生；熟悉机器学习与CV深度学习；Python；实时视频流分析经验,https://www.shixiseng.com/intern/inn_mt7lsq7tx89r,shixiseng,第3轮,智能制造事业部先进工艺部，工业视觉算法；苏州本地院校优先
+哈工大苏州研究院,AI算法实习生,苏州,越溪,100-200元/天,6个月，每周5天,实习,本科及以上在读，熟练Python与PyTorch，懂机器学习基础，有多模态/推理优化经验优先,https://m.liepin.com/job/1986061801.shtml,liepin,第2轮,科研院所算法研发，可转正，招1人
+哈工大苏州研究院,端到端导航算法工程师实习生,苏州,越溪,150-200元/天,6个月，每周5天,实习,硕士在读，熟悉Transformer/VLM/VLA/VLN/RL/世界模型中至少两个方向，精通PyTorch,https://m.liepin.com/job/1986172213.shtml,liepin,第2轮,导盲机器人具身智能，VLM/VLN真机落地，可转正
+星逻智能,图像处理算法工程师,苏州,,150-200元/天,5天/周，4个月，本科,实习,无人机图像识别算法；目标检测/跟踪/场景识别；特征匹配、Kalman滤波、OpenCV,https://www.shixiseng.com/intern/inn_fs2nzb14tayq,shixiseng,第3轮,苏州，无人机视觉算法，包中餐
+星逻智能,无人机图像识别实习生,苏州,工业园区,130-260元/天,4个月，4天/周,实习,硕士，熟悉OpenCV与机器学习，掌握特征匹配、Kalman滤波、运动估计，会Python/Java,https://www.shixiseng.com/intern/inn_5g0stmbon86c,shixiseng,第3轮,无人机视觉定位算法；满4月有额外津贴，可转正
+星逻智能,机器人项目实习生,苏州,工业园区,3k,6个月，每周5天,实习,大专及以上，理工科背景，能跟机器人项目现场交付与测试，沟通协调能力强,https://m.liepin.com/job/1978107401.shtml,liepin,第2轮,无人机/清洁机器人项目助理岗，可转正
+江苏纽泰格,SLAM算法实习生（四足机器人/3D激光雷达）,苏州,东渚,3-4k,6个月，每周6天,实习,本科在读，C++/ROS，会用PCL/Eigen，读过FAST-LIO/LOAM，懂卡尔曼滤波或位姿优化,https://m.liepin.com/job/1986050829.shtml,liepin,第2轮,LIO建图、回环与退化场景评测，实机上车
+江苏纽泰格,规控算法实习生（四足机器人/规划控制）,苏州,东渚,3-4k,6个月，每周6天,实习,本科在读，熟练C++与ROS/ROS2，懂A*/DWA/TEB、轨迹跟踪与坐标变换,https://m.liepin.com/job/1986050895.shtml,liepin,第2轮,四足机器狗实机导航规划，导师带教，截止2027-10
+海宇维界,机器人VLA算法实习生,苏州,虎丘,300-500元/天,4天/周，6个月起,实习,本/硕在读，了解模仿学习/VLA/Diffusion Policy/ACT；需现场实习且连续6个月以上,https://www.shixiseng.com/intern/inn_v9aiyzfdkvzh,shixiseng,第3轮,真机部署+示教数据；截止2026-12-06
+深庭纪,机器人系统辨识实习生,苏州,越溪,4-9k,3个月起,实习,本科在读，Python/Linux/Git，懂刚体动力学与执行器力矩特性，熟悉Isaac Lab优先,https://m.liepin.com/job/1985660499.shtml,liepin,第2轮,Sim-to-Real与RL运控部署，双轮足真机
+纬钛机器人,具身智能算法工程师（实习）,苏州,吴中,250-400元/天,5天/周，硕士,实习,硕士，熟C++/Python、ROS2/PyTorch；懂模仿学习/世界模型/强化学习与Isaac/Mujoco仿真,https://www.shixiseng.com/intern/inn_udd5yocpsmiq,shixiseng,第3轮,端到端具身大模型、机械臂真机；截止2027-08-27
+苏州大学,科研助理（AI视觉检测方向·汝长海教授课题组）,苏州,相城,面议,全职,RA,硕士及以上，计算机/人工智能/自动化；1年以上AI视觉算法开发；熟悉图像处理与深度学习,https://rsc.suda.edu.cn/f4/17/c279a717847/page.htm,official,第3轮,机电学院；光纤跳线AI视觉检测；截止10-27；岗位表在公告附件xlsx
+中国科学院工业人工智能研究所,具身智能算法实习生（VLA大模型方向）,南京,江宁区,80-150元/天,6个月，5天/周,实习,计算机/AI/机器人/自动化等在读本科及以上，会Python+PyTorch；跟进VLA大模型(π0等)、产线数据采集标注、LoRA微调与仿真评测,https://m.liepin.com/job/1985030605.shtml,liepin,第2轮,中科院工业人工智能所，VLA/具身智能方向，截止2027-08-20
+地平线,计算机视觉/多模态大模型算法工程师实习生,南京,栖霞,150-300元/天,3个月，5天/周,实习,硕/博，掌握PyTorch及Deepspeed/Swift，有CV/NLP/多模态项目经验,https://www.shixiseng.com/intern/inn_uc8bwvmyyjpn,shixiseng,第3轮,兴智科技园；VLM/VLA研发，顶会论文加分
+数字华夏(深圳)科技有限公司,VLA算法实习生,南京,雨花台区·铁心桥,150-250元/天,4个月，4天/周,实习,本科在读；VLA视觉-语言-动作算法、世界模型、强化学习、多模态感知融合、机器人仿真训练；提供转正,https://m.liepin.com/job/1983031343.shtml,liepin,第2轮,机器人VLA/世界模型方向，南京铁心桥，可转正
+汇川技术,运动控制算法（见习/实习）,南京,江宁区·东善桥,180-300元/天,3个月，5天/周,实习,机器人/控制/机械/自动化/数学等专业；负责工业与协作机器人运动控制算法，力控、绝对精度、轨迹精度；熟悉运动学动力学与轨迹规划,https://m.liepin.com/job/1985880795.shtml,liepin,第2轮,工业/协作机器人运控算法，截止2027-05-31
+江苏大块头智驾科技有限公司,Slam算法实习生,南京,建邺区·兴隆,3-5k,未注明,实习,硕士，计算机/数学/模式识别/地图相关；熟悉C/C++、OpenCV/Eigen/G2O/Ceres；激光SLAM、多传感器融合定位、点云处理经验优先,https://m.liepin.com/job/1954806183.shtml,liepin,第2轮,自动驾驶激光SLAM/高精地图方向，学生可投
+澜光科技(南京)有限责任公司,3D点云算法实习生,南京,雨花台区·岔路口,250-400元/天,3个月，5天/周,实习,在读硕士（优秀本科生亦可），计算机/自动化/测绘/遥感等；点云分割配准、图像处理、三维重建、PyTorch；有SLAM/检测论文或KITTI等榜单经验加分,https://m.liepin.com/job/1982950755.shtml,liepin,第2轮,基础设施智能巡检，LiDAR点云/三维重建，可转正
+中国电子科技南湖研究院,机器人工程师（实习）,嘉兴,湘家荡,80-150元/天,3个月，5天/周,实习,硕士在读，熟练 C++/Python，熟悉定位导航与路径规划算法，了解 ROS 优先,https://m.liepin.com/job/1982464561.shtml,liepin,第3轮,无人车/机器狗定位导航、路径规划与运动控制算法，招2人
+清智嘉创,SLAM算法实习生（UMI、Ego、手套等）,嘉兴,,300-500元/天,,实习,有视觉SLAM/VIO开发经验，熟悉相机-IMU标定、回环检测与位姿图优化，熟C++/ROS,https://www.shixiseng.com/intern/inn_kjmei0mbcvvc,shixiseng,第2轮,面向UMI/Ego头环的无本体动捕设备
+清智嘉创,具身智能模型训练实习生,嘉兴,,500-1000元/天,,实习,熟悉PyTorch与VLA模型微调；了解模仿学习/强化学习、机器人操作与真机部署者优先,https://www.shixiseng.com/intern/inn_ezieotdamp9s,shixiseng,第2轮,南湖区清华柔电院，清华系具身智能公司
+清智嘉创,科研助理（柔性电子、生物材料、具身智能、医工交叉）,嘉兴,南湖,180-300元/天,8个月，5天/周,RA,材料/机械/电子/计算机/自动化等背景，能独立推进文献调研与算法或实验工作,https://www.shixiseng.com/intern/inn_e6nasmu92izk,shixiseng,第3轮,清华课题组科研助理，参与具身智能课题
+清智嘉创,触觉解算模型开发实习生,嘉兴,南湖,200-400元/天,3个月，5天/周,实习,力学/电子/自动化等背景，会Python/PyTorch，了解触觉信号解算、力估计或接触建模,https://www.shixiseng.com/intern/inn_iguwms3ffptr,shixiseng,第3轮,清华柔性电子研究院；触觉传感器信号解算；可转正
+杭州先登航天科技有限公司,算法控制实习生（飞行器专项）,湖州,红丰,100-150元/天,3个月，5天/周,实习,控制/自动化/机器人/航空在读硕士（优秀本科可），熟 ArduPilot、PX4、Mission Planner，会飞控二次开发,https://m.liepin.com/job/1984365881.shtml,liepin,第3轮,无人机集群编队/协同避障/轨迹跟踪算法与实机调试，招3人
+浙江大学湖州研究院,人工智能实习生（海洋机器人）,湖州,红丰,100-120元/天,3个月，5天/周,实习,本科及以上在读，机械/计算机/自动化/机器人专业，熟练 Python、PyTorch、Anaconda,https://m.liepin.com/job/1980908733.shtml,liepin,第3轮,调试人形机器人做人性化交互并协助实验，截止2027-03-13
+浙江大学湖州研究院,自主导航算法实习生,湖州,红丰,150-250元/天,3个月，5天/周,实习,本科大三以上，掌握路径规划/决策/强化学习/组合优化之一，熟悉 A*、Dijkstra、卡尔曼滤波、视觉SLAM,https://m.liepin.com/job/1984806795.shtml,liepin,第3轮,应急场景智能决策、动态路径重规划、GPS拒止下视觉导航；提供转正
+浙江大学湖州研究院（FAST 实验室）,FAST-LAB 仿生与流场感知科研助理（MEMS/流体实验/智能感知方向）,湖州,,面议,,实习,机器人/传感器/MEMS/流体项目经验优先，会 SolidWorks、Comsol、OpenFoam、Fluent，英语可读文献,http://hzi.zju.edu.cn/wap/mwechat/content_view?m=aea8b9fd-3a2c-4f04-87d7-b4080096152e,official,第3轮,以实习生身份入组，做感知控制平台与感知算法；指导老师许超
+浙江大学湖州研究院（FAST 实验室）,高稳定性强抗扰无人机项目科研助理,湖州,,面议,,实习,旋翼飞行器抗扰控制与多旋翼制作经验，ROS2，鲁棒/自适应/MPC/强化学习，Python/C++/MATLAB,http://hzi.zju.edu.cn/sitem/news_content_view?m=30a193f4-1cd3-40e9-b047-b3c201186826,official,第3轮,实习生身份入组，做高稳定飞控与抗扰动控制
+求之科技(无锡)有限公司,具身智能算法实习生,无锡,荣巷,200-300元/天,3个月，每周5天,实习,研究生在读，熟悉深度学习与PyTorch/JAX，有CV/3D Vision/表征学习项目经验之一,https://m.liepin.com/job/1979635495.shtml,liepin,第2轮,自研硬件平台复现具身操作算法，招2人
+江苏隆盛唯睿具身智能机器人创新中心,机器人算法实习生,无锡,蠡湖,150-300元/天,6个月，每周5天,实习,硕博在读，机器人/自动化/计算机，熟悉Python或C++，做过机器人/视觉/SLAM/控制/RL任一项目,https://m.liepin.com/job/1983582687.shtml,liepin,第2轮,人形机器人灵巧手/关节模组，ROS2与Isaac仿真，可转正
+江苏集萃清联智控科技有限公司,定位算法实习生 (MJ000368),无锡,落霞苑商业街,150-180元/天,6个月，每周5天,实习,硕士或优秀本科，懂SLAM/ICP/NDT、ESKF，C++或Python，有Linux开发经验,https://m.liepin.com/job/1985156967.shtml,liepin,第2轮,激光融合定位与组合导航，矿区港口场景
+精研,图形图像算法工程师（硕士实习生·3D视觉/SLAM）,常州,西林,4-8k,面议,实习,硕士在读，熟悉Open3D/PCL/PointNet，做3D目标检测、点云处理或SLAM方向,https://m.liepin.com/job/1985829153.shtml,liepin,第2轮,3D视觉/点云/CAD大模型三方向，学生可投
+浣江实验室（绍兴诸暨）,机器人工程师实习生,绍兴,诸暨,50-80元/天,6个月，5天/周,实习,在校本科（硕士优先），机械相关专业优先，有项目经验，会常用办公软件,https://m.liepin.com/job/1984579547.shtml,liepin,第3轮,实验室科研/管理辅助岗，招3人，提供转正
