@@ -8,5 +8,5 @@
     "downscalePercent": 80
   },
   "alwaysUpdateLinks": true,
-  "readableLineLength": true
+  "readableLineLength": false
 }
