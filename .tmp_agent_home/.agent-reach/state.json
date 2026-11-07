@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "channels": {},
+  "tools": {},
+  "checks": {},
+  "skill": {
+    "links": []
+  },
+  "removed_defaults": [],
+  "backend_health": {
+    "web": {
+      "search": {}
+    }
+  },
+  "owned_paths": {
+    "state.json": "state ledger",
+    "browser-locks/2b576bf1feb5afde134c049c2dd599ec5873a91a012f63f3172225b7dd6be8b0.lock": "state lock"
+  }
+}
