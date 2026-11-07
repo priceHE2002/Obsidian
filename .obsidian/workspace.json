@@ -11,15 +11,32 @@
             "id": "339b3946329b2e75",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "03_计算机系统/03_操作系统/04_题本/【A4带空】27王道操作系统综合题做题本.pdf"
+                "file": "10_求职/05_上海具身实习200岗与研0规划/上海具身实习200岗与研0规划.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "【A4带空】27王道操作系统综合题做题本"
+              "icon": "lucide-file",
+              "title": "上海具身实习200岗与研0规划"
+            }
+          },
+          {
+            "id": "8579b2d3a0b141b5",
+            "type": "leaf",
+            "state": {
+              "type": "webviewer",
+              "state": {
+                "url": "https://fcn5hvc5qbfs.jobs.feishu.cn/668262/position/7694227350354954547/detail",
+                "title": "人体骨骼重建算法工程师（实习生） - 加入Sharpa Robotics",
+                "mode": "webview"
+              },
+              "icon": "globe-2",
+              "title": "人体骨骼重建算法工程师（实习生） - 加入Sharpa Robotics"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,7 +112,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_计算机系统/03_操作系统/04_题本/【A4带空】27王道操作系统综合题做题本.pdf",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -223,9 +239,12 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "339b3946329b2e75",
+  "active": "8579b2d3a0b141b5",
   "lastOpenFiles": [
     "10_求职/05_上海具身实习200岗与研0规划/上海具身实习200岗与研0规划.md",
+    "10_求职/05_上海具身实习200岗与研0规划/200岗JD全量明细.md",
+    "10_求职/05_上海具身实习200岗与研0规划/JD需求分析与求职学习路径.md",
+    "03_计算机系统/03_操作系统/04_题本/【A4带空】27王道操作系统综合题做题本.pdf",
     "10_求职/00_求职总览.md",
     "10_求职/04_面经与复习/小红书-具身VLA-WAM-面经30篇.md",
     "10_求职/04_面经与复习/具身VLA高频复习提纲.md",
@@ -240,7 +259,6 @@
     "10_求职/05_上海具身实习200岗与研0规划/数据附件/原始工作簿_上海200个具身算法实习岗位_20261106.xlsx",
     "10_求职/05_上海具身实习200岗与研0规划/数据附件/作品集项目.csv",
     "10_求职/05_上海具身实习200岗与研0规划/数据附件/24周学习路线.csv",
-    "10_求职/05_上海具身实习200岗与研0规划/数据附件",
     "10_求职/04_面经与复习/attachments/6ae9d04f000000001500ae1e_1.png",
     "10_求职/04_面经与复习/attachments/6accbd8a000000000b006067_1.png",
     "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_6.png",
@@ -268,8 +286,6 @@
     "07_DL基础及论文进阶/04_我的研究/frontierguard/21_synthesis_v1.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_venue.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_repair.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_breadth.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_scaling_evidence.md",
     "03_计算机组成原理/计算机组成原理_全览.canvas",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"
