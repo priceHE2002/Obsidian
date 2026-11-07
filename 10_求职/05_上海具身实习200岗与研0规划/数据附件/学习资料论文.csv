@@ -1,0 +1,31 @@
+模块,资源/论文名称,定位/阅读重点,官方/原始链接,配套周次,优先级,完成证据,来源性质,进度状态
+基础,PyTorch官方教程,深度学习框架,https://pytorch.org/tutorials/,W1-W4,必修,训练脚本、autograd、DataLoader、GPU,官方教程,未开始
+基础,Stanford CS231n,计算机视觉基础,https://cs231n.stanford.edu/,W2-W4,必修,CNN、视觉表征、模型训练,课程主页,未开始
+基础,The Illustrated Transformer（概念导读）,Transformer,https://jalammar.github.io/illustrated-transformer/,W3,辅助,Attention概念与结构图,作者文章,未开始
+基础,Attention Is All You Need,Transformer论文,https://arxiv.org/abs/1706.03762,W3,必修,注意力模块与序列建模,arXiv原论文,未开始
+机器人学,Modern Robotics（教材）,运动学动力学,https://modernrobotics.northwestern.edu/,W5-W7,必修,坐标变换、Jacobian、动力学与控制,教材官网,未开始
+机器人学,Pinocchio,机器人运动学/动力学库,https://github.com/stack-of-tasks/pinocchio,W5-W7,辅助,FK/IK/动力学调用,官方仓库,未开始
+机器人学,MuJoCo Documentation,机器人仿真,https://mujoco.readthedocs.io/en/stable/,W6-W12,必修,物理仿真、MJCF、接触控制,官方文档,未开始
+机器人学,ROS 2 Tutorials,机器人软件,https://docs.ros.org/en/jazzy/Tutorials.html,W7/W23,核心,节点、topic、TF、控制接口,官方文档,未开始
+强化学习,Reinforcement Learning: An Introduction (Sutton & Barto),强化学习理论,http://incompleteideas.net/book/the-book-2nd.html,W8-W12,必修,MDP、价值函数、策略梯度,作者主页,未开始
+强化学习,Berkeley CS285 Deep RL,强化学习课程,https://rail.eecs.berkeley.edu/deeprlcourse/,W8-W12,必修,PPO、SAC、model-based RL,课程主页,未开始
+强化学习,OpenAI Spinning Up in Deep RL,强化学习入门,https://spinningup.openai.com/en/latest/,W8-W10,必修,PPO/SAC伪代码和算法解释,课程网站,未开始
+强化学习,CleanRL,RL实现参考,https://github.com/vwxyzjn/cleanrl,W9-W12,核心,单文件可复现PPO/SAC,开源仓库,未开始
+强化学习,Stable-Baselines3,RL基线,https://stable-baselines3.readthedocs.io/,W9-W12,核心,稳定策略基线,官方文档,未开始
+仿真,Isaac Lab Documentation,并行机器人RL,https://isaac-sim.github.io/IsaacLab/main/index.html,W11-W12,核心,并行仿真/训练/域随机化,官方文档,未开始
+仿真,ManiSkill Documentation,机器人操作Benchmark,https://maniskill.readthedocs.io/en/latest/,W11-W20,核心,操作任务/数据/benchmark,官方文档,未开始
+模仿学习,DAgger: A Reduction of Imitation Learning,模仿学习,https://arxiv.org/abs/1011.0686,W13,辅助,分布偏移与在线数据聚合,arXiv原论文,未开始
+模仿学习,ACT / ALOHA项目,Action Chunking Transformer,https://tonyzhaozh.github.io/aloha/,W14,必修,ACT、action chunk和示教,项目主页,未开始
+模仿学习,Diffusion Policy项目,生成式机器人策略,https://diffusion-policy.cs.columbia.edu/,W15,必修,扩散策略与动作生成,项目主页,未开始
+模仿学习,LeRobot,机器人数据/训练生态,https://github.com/huggingface/lerobot,W13-W20,必修,机器人episode与预训练策略,官方仓库,未开始
+VLA,OpenVLA,视觉语言动作模型,https://openvla.github.io/,W17-W20,必修,VLA架构、训练和评测,项目主页,未开始
+VLA,OpenVLA源代码,VLA开源实现,https://github.com/openvla/openvla,W17-W20,核心,机器人动作token生成与fine-tune,官方仓库,未开始
+VLA,OpenPI,Physical Intelligence机器人模型,https://github.com/Physical-Intelligence/openpi,W17-W20,进阶,π系列模型开源推理/训练,官方仓库,未开始
+VLA,LIBERO Benchmark,长程/迁移/多任务操作,https://libero-project.github.io/main.html,W18-W20,核心,训练/测试任务拆分,项目主页,未开始
+世界模型,DreamerV3,模型驱动强化学习,https://arxiv.org/abs/2301.04104,W21-W22,进阶,latent dynamics与规划,arXiv论文,未开始
+世界模型,Learning Latent Dynamics for Planning from Pixels (PlaNet),世界模型基础,https://arxiv.org/abs/1811.04551,W21-W22,进阶,预测模型与规划,arXiv论文,未开始
+世界模型,World Models (Ha & Schmidhuber),世界模型概念,https://arxiv.org/abs/1803.10122,W21-W22,辅助,环境表征与动态预测,arXiv论文,未开始
+具身Agent,SayCan,语言规划与技能价值,https://say-can.github.io/,W23,进阶,LLM与技能价值联合决策,项目主页,未开始
+具身Agent,Code as Policies,语言到机器人控制,https://code-as-policies.github.io/,W23,辅助,语言生成可执行操作,项目主页,未开始
+工程,Weights & Biases Docs,实验记录,https://docs.wandb.ai/,W1-W24,辅助,指标、配置、曲线与artifact,官方文档,未开始
+工程,Git官方教程,版本管理,https://git-scm.com/docs/gittutorial,W1-W24,必修,分支、提交与可复现,官方文档,未开始

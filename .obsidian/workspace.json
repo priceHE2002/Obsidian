@@ -13,10 +13,10 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "03_计算机系统/03_操作系统/02_王道强化/操作系统P3_文件系统画图训练（课前打印4份）.pdf"
+                "file": "03_计算机系统/03_操作系统/04_题本/【A4带空】27王道操作系统综合题做题本.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "操作系统P3_文件系统画图训练（课前打印4份）"
+              "title": "【A4带空】27王道操作系统综合题做题本"
             }
           }
         ]
@@ -79,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.93359375
+    "width": 370.6953125
   },
   "right": {
     "id": "7f4b4e0b83f1f22d",
@@ -95,7 +95,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_计算机系统/03_操作系统/02_王道强化/操作系统P3_文件系统画图训练（课前打印4份）.pdf",
+                "file": "03_计算机系统/03_操作系统/04_题本/【A4带空】27王道操作系统综合题做题本.pdf",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -223,13 +223,35 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "2a0b2c21f867c062",
+  "active": "339b3946329b2e75",
   "lastOpenFiles": [
+    "10_求职/05_上海具身实习200岗与研0规划/上海具身实习200岗与研0规划.md",
+    "10_求职/00_求职总览.md",
+    "10_求职/04_面经与复习/小红书-具身VLA-WAM-面经30篇.md",
+    "10_求职/04_面经与复习/具身VLA高频复习提纲.md",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/方向分布.csv",
+    "10_求职/04_面经与复习/attachments/6a1c537d0000000037035168_2.png",
+    "10_求职/01_JD数据与公司地图.md",
+    "03_计算机系统/03_操作系统/02_王道强化/操作系统P3_文件系统专项强化.pdf",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/能力需求画像.csv",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/投递管理.csv",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/岗位JD清单_200.csv",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/学习资料论文.csv",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/原始工作簿_上海200个具身算法实习岗位_20261106.xlsx",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/作品集项目.csv",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件/24周学习路线.csv",
+    "10_求职/05_上海具身实习200岗与研0规划/数据附件",
+    "10_求职/04_面经与复习/attachments/6ae9d04f000000001500ae1e_1.png",
+    "10_求职/04_面经与复习/attachments/6accbd8a000000000b006067_1.png",
+    "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_6.png",
+    "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_5.png",
+    "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_4.png",
+    "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_3.png",
+    "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_2.png",
+    "10_求职/04_面经与复习/attachments/6acb7954000000001a0328a3_1.png",
+    "10_求职/04_面经与复习/attachments/6acb444c0000000015005aa8_1.png",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/最终方案.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/skills/north-star-protocol/SKILL.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/skills/north-star-protocol",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/skills",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/budget_v3.py",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/99_FINAL_ICRA_EXPERIMENT_PLAN.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/99C_FINAL_DEXTEROUS_PLAN.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/99B_FINAL_DEXTEROUS_PLAN.md",
@@ -237,40 +259,17 @@
     "07_DL基础及论文进阶/04_我的研究/frontierguard/28_judge_final_round3.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/27_redteam_v3.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/26_synthesis_v3.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/26_budget_v3.py",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/25_judge_round2.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/24_redteam_v2.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/23_synthesis_v2.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/23_budget_v2.py",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/22b_ROUND2_BRIEF.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/22_redteam_v1.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/22_critique_synthesis_v1.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/21_synthesis_v1.md",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_venue.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_repair_sim.py",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_repair.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_breadth_calc.py",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r4_breadth.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_sim3.py",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_sim2.json",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_scaling_sim4.py",
     "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_scaling_evidence.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_scaling.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_reviewer.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_practical.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_online.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_minimax.md",
-    "07_DL基础及论文进阶/04_我的研究/frontierguard/20_ideation/r2_expdesign.md",
-    "03_计算机系统/04_计算机网络/03_我的笔记/02_物理层与数据链路层/assets/编码波形.png",
-    "03_计算机系统/04_计算机网络/03_我的笔记/02_物理层与数据链路层/assets/交换机拓扑.png",
-    "03_计算机系统/04_计算机网络/03_我的笔记/02_物理层与数据链路层/assets/卫星链路.png",
-    "04_数学大观/01_高数大观/06_重积分/attachments/xy型区域示意图.png",
-    "02_DSP/04_滤波器设计/06_IIR数字滤波器的基本结构/梅森公式流图.png",
-    "02_DSP/04_滤波器设计/06_IIR数字滤波器的基本结构/二阶IIR直接II型_教科书版.png",
-    "02_DSP/04_滤波器设计/06_IIR数字滤波器的基本结构/2017真题结构分析_修复版.png",
-    "02_DSP/04_滤波器设计/04_IIR/模拟滤波器部分分式分解验证.png",
-    "02_DSP/04_滤波器设计/04_IIR/模拟带通不对称性演示.png",
-    "02_DSP/04_滤波器设计/04_IIR/双线性变换法_频率畸变与响应.png",
     "03_计算机组成原理/计算机组成原理_全览.canvas",
     "计算机组成原理/未命名.canvas",
     "未命名.canvas"

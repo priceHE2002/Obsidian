@@ -1,0 +1,25 @@
+周次,阶段,本周主题,理论知识目标,动手任务（必须运行）,项目交付物,验收标准（可客观检查）,对标JD技能,建议工时(h),优先级,进度状态（可编辑）,状态计算完成度
+1,基础设施,Python研究代码与Linux环境,完成numpy/torch张量、autograd、Git分支及conda环境管理。,用PyTorch从零写2层MLP、单元测试、环境锁定；把训练脚本提交Git。,可复现实验仓库+环境README,一条命令复现训练；显式写随机种子和设备信息。,Python|PyTorch|Linux,18,必修,待开始,0
+2,深度学习基础,损失函数、优化器与梯度,实现分类任务、交叉熵/Adam、数据增强和过拟合排查。,给MLP+CNN加train/val/test、学习率调度和日志。,实验对照表v1,有训练曲线+混淆矩阵；至少2种学习率比较。,PyTorch|Python|Evaluation,18,必修,待开始,0
+3,大模型基础,Attention/Transformer/ViT,推导Scaled Dot-Product Attention及复杂度、位置编码与ViT。,实现mini-Transformer，记录token长度变化对速度/显存的影响。,mini-Transformer+报告,能解释Q/K/V、注意力维度、训练与推理开销。,Transformer|PyTorch|VLM,20,必修,待开始,0
+4,视觉与多模态,2D检测与RGB-D几何,学习OpenCV图像、点云投影、深度相机和目标检测的关键指标。,对公开RGB-D样本做深度到点云投影、物体3D框可视化。,点云可视化Demo,坐标系转换正确，展示至少3例失败案例。,3D Vision|Perception|Python,18,必修,待开始,0
+5,机器人学入门,SE(3)、FK/IK与雅可比,学习刚体变换、连杆运动学、Jacobian和简单IK。,用Python实现2D/6DoF正运动学；调用Pinocchio或数值IK比对。,FK/IK单元测试,末端误差有量化指标，验证变换组合和逆变换。,Control|Pinocchio|C++,20,必修,待开始,0
+6,仿真与控制,MuJoCo、URDF和关节控制,理解接触、碰撞、惯性、PD控制；熟悉MuJoCo与Gymnasium接口。,在MuJoCo构建机械臂Reach/Push环境、实现观测/动作/奖励/终止。,可运行机器人仿真Env,场景可reset、可批量评测，演示稳定轨迹。,MuJoCo|Simulation|Control,20,必修,待开始,0
+7,运动控制,控制器对比与执行安全,理解PID/阻抗/轨迹插补、控制频率和接触不稳定性。,对比PD与阻抗控制在扰动下的误差；实现动作限幅和失败检测。,控制器消融报告,图示跟踪误差/峰值力/恢复时间等指标。,Control|ROS2|MuJoCo,20,必修,待开始,0
+8,强化学习理论,MDP、Bellman、价值迭代,理解策略梯度、Actor-Critic、GAE、on/off policy、奖励成形。,手写tabular Q-learning和策略梯度；推导PPO clipped objective。,RL原理笔记+可运行最简代码,能独立解释PPO/SAC与探索、奖励泄漏。,RL|PPO|SAC,18,必修,待开始,0
+9,强化学习实践,PPO稳定复现,阅读CleanRL/SB3训练实现，在机器人Reach训练PPO。,调试actor/critic、归一化、GAE、clip、entropy和训练曲线。,PPO基线v1,≥3随机种子；报告均值/标准差和失败模式。,RL|PPO|MuJoCo|PyTorch,22,必修,待开始,0
+10,强化学习实践,SAC与off-policy,理解replay buffer、双Q、target network、熵正则。,复现SAC与PPO在相同机器臂操作任务下比较数据效率。,PPO vs SAC基线,固定奖励/时长/测试种子，对比成功率和样本量。,RL|SAC|PPO|MuJoCo,22,必修,待开始,0
+11,规模化仿真,Isaac Lab/ManiSkill并行环境,理解批量仿真、域随机化、观测噪声、任务难度调节。,移植抓取任务至ManiSkill或Isaac Lab；对比并行采样速度。,并行采样实验,记录step/sec、设备、显存；仿真任务能批量reset。,Isaac Lab|ManiSkill|RL|Simulation,22,核心,待开始,0
+12,RL里程碑,训练稳定性与奖励消融,学习reward hacking、domain randomization、模型选择和3-seed评测。,完成PPO/SAC抓取操作复现实验；做奖励/随机化/动作频率消融。,项目P1报告+视频,可复现3-seed均值±标准差；至少2组消融；视频演示。,RL|PPO|SAC|Sim2Real|Evaluation,24,核心,待开始,0
+13,模仿学习,BC/DAgger/数据集结构,理解行为克隆、分布偏移、expert demonstration与DAgger。,收集或复用公开机器人演示；BC训练抓取并评估开环/闭环。,BC基线与轨迹集,训练/验证不泄漏；轨迹同步、动作空间、成功率有记录。,IL|RL|LeRobot,20,核心,待开始,0
+14,机器人策略,ACT动作分块,学习Action Chunking Transformer、时序平滑、观测动作对齐。,跑通ACT在低维或图像输入操作任务的数据管线和推理。,ACT复现日志+Demo,对比BC和ACT，同样示教数及测试协议。,ACT|IL|Transformer|PyTorch,20,核心,待开始,0
+15,生成式策略,Diffusion Policy/Flow Matching,学习条件扩散、去噪目标与动作序列生成，了解Flow Matching。,复现简化DP抓取策略并做采样步数/推理时延消融。,DP vs ACT对比,输出推理fps、成功率与动作平滑性；失败分类。,Diffusion Policy|Flow Matching|IL,22,核心,待开始,0
+16,机器人数据栈,LeRobot与轨迹规范化,理解机器人episode、视觉-状态-动作同步与离线评测。,把BC/ACT/DP数据转换成LeRobot风格格式，复现配置和训练。,项目P2完整包,README+日志+视频+模型权重信息+3-seed结果。,LeRobot|ACT|Diffusion Policy|Evaluation,20,核心,待开始,0
+17,VLA模型,视觉语言动作联合架构,学习CLIP/ViT、VLM与动作token/chunk、机器人动作归一化。,解析OpenVLA或SmolVLA推理数据流，画模块图和tensor shape。,VLA架构复现笔记,输入输出维度清楚，训练/推理接口可跑通。,VLA|VLM|OpenVLA|Transformer,22,核心,待开始,0
+18,VLA推理,开源VLA部署与Benchmark,学习OpenVLA/π0/SmolVLA等的动作预测思路与资源代价。,基于资源可行性选择轻量预训练VLA，接LIBERO或LeRobot eval。,VLA基线推理结果,报告设备、延迟、推理频率、任务成功率、失败案例。,VLA|OpenVLA|LIBERO|LeRobot,22,核心,待开始,0
+19,VLA后训练,LoRA/SFT与任务适配,学习低秩微调、数据配方与过拟合、模型checkpoint选择。,在可用算力内训练微调小型动作模型；对比冻结特征/LoRA。,微调项目P3,同协议评测训练前后效果，不用训练集验证效果。,VLA|SFT|LoRA|PyTorch,22,核心,待开始,0
+20,泛化评测,LIBERO/OOD/多任务训练,学习未见物体/布局/语义指令泛化、成功判定与统计置信。,至少2种任务集分布切分，多任务策略与单任务策略对比。,操作策略泛化评测表,每种设置≥3种子，成功率、失败恢复次数有统计。,LIBERO|VLA|IL|Evaluation,22,核心,待开始,0
+21,世界模型,Action-conditioned latent dynamics,理解state/action到未来state的预测、latent rollout误差传播。,在已有MuJoCo轨迹上训练动作条件forward model并预测1/5/10步。,世界模型P4基线,报告分时域预测误差，避免训练/测试轨迹泄漏。,World Model|PyTorch|RL|MuJoCo,22,进阶,待开始,0
+22,物理后果感知,基于模型的多步技能评估,学习模型滚动预测、成功概率、累计不确定性和简单MPC。,把世界模型改为技能级终态/时长/成功率预测，评估规划选择。,技能级世界模型模块,用未见技能组合测预测误差与排序准确率。,World Model|Planning|RL|MPC,22,进阶,待开始,0
+23,技能组合Agent,可复用技能接口与规划,理解option/技能抽象、技能前后条件、失败恢复和闭环执行。,训练/复用Reach/Grasp/Place技能，Agent生成可执行动作序列。,具身Agent P5演示,不少于3个技能、2个多阶段任务；执行日志可回放。,Agent|Planning|RL|Dexterous Hand,24,进阶,待开始,0
+24,求职与研究收敛,作品集、简历和技术面,整理PPO/SAC、ACT/DP、VLA和技能世界模型的真实贡献与局限。,制作中英双语技术简历、项目演示视频、论文复现卡片，进行2次模拟面试。,完整求职作品集,每项目有复现命令/评测曲线/错误分析，8分钟讲清楚一项实验。,Evaluation|PyTorch|RL|VLA,18,必修,待开始,0
