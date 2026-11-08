@@ -79,8 +79,8 @@
 ```bash
 python3 ~/.hermes/skills/note-taking/obsidian/scripts/check_note_links.py \
   "/Users/heyuhang/Documents/Obsidian Vault" \
-  "07_DL基础及论文进阶/07_每日论文" \
-  "07_DL基础及论文进阶/06_论文X光"
+  "/Users/heyuhang/Documents/Obsidian Vault/07_DL基础及论文进阶/07_每日论文" \
+  "/Users/heyuhang/Documents/Obsidian Vault/07_DL基础及论文进阶/06_论文X光"
 ```
 
 检查项：wikilink 目标存在、`#标题` 锚点可解析、表格列数一致、frontmatter 存在。
