@@ -13,15 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03_计算机系统/408考研性能指标大全.md",
+                "file": "03_计算机系统/_408每日五问/408考研性能指标大全_2027_Obsidian_Mac表格版.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "408考研性能指标大全"
+              "title": "408考研性能指标大全_2027_Obsidian_Mac表格版"
+            }
+          },
+          {
+            "id": "b4a7a716f59a4369",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "03_计算机系统/03_操作系统/02_王道强化/操作系统P4_IO 管理专项强化.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "操作系统P4_IO 管理专项强化"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +110,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03_计算机系统/408考研性能指标大全.md",
+                "file": "03_计算机系统/03_操作系统/02_王道强化/操作系统P4_IO 管理专项强化.pdf",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -225,8 +238,11 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "1d8d8f769f2a2562",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
+    "07_DL基础及论文进阶/07_每日论文/00_每日论文索引.md",
+    "07_DL基础及论文进阶/07_每日论文",
+    "06_工具/03_DailyPapers工作流.md",
     "03_计算机系统/_408每日五问/408考研性能指标大全_2027_Obsidian_Mac表格版.md",
     "03_计算机系统/408考研性能指标大全.md",
     "03_计算机系统/_408每日五问/408考研性能指标/08｜参考来源与修订.md",
@@ -259,10 +275,7 @@
     "09_考研政治/06_选择题完整做题方法.md",
     "10_求职/06_具身实习公司地图/公司档案/博世中国.md",
     "10_求职/06_具身实习公司地图/公司档案/维他动力.md",
-    "10_求职/06_具身实习公司地图/公司档案/钛虎机器人.md",
-    "10_求职/06_具身实习公司地图/公司档案/智往未来.md",
     "10_求职/06_具身实习公司地图/公司档案",
-    "10_求职/06_具身实习公司地图",
     "10_求职/04_面经与复习/attachments/6a1c537d0000000037035168_2.png",
     "10_求职/04_面经与复习/attachments/6ae9d04f000000001500ae1e_1.png",
     "10_求职/04_面经与复习/attachments/6accbd8a000000000b006067_1.png",
