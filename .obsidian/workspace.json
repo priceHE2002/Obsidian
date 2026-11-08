@@ -8,20 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1d8d8f769f2a2562",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "03_计算机系统/_408每日五问/408考研性能指标大全_2027_Obsidian_Mac表格版.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "408考研性能指标大全_2027_Obsidian_Mac表格版"
-            }
-          },
-          {
             "id": "b4a7a716f59a4369",
             "type": "leaf",
             "state": {
@@ -37,18 +23,15 @@
             "id": "fd732e831bba52da",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "07_DL基础及论文进阶/02_具身智能/01_具身智能论文精讲.md",
-                "mode": "preview",
-                "source": false
+                "file": "07_DL基础及论文进阶/02_具身智能/24_SuperMimic/SuperMimic.pdf"
               },
-              "icon": "lucide-file",
-              "title": "01_具身智能论文精讲"
+              "icon": "lucide-file-text",
+              "title": "SuperMimic"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -254,9 +237,11 @@
   },
   "active": "b4a7a716f59a4369",
   "lastOpenFiles": [
+    "07_DL基础及论文进阶/02_具身智能/24_SuperMimic/SuperMimic.pdf",
+    "07_DL基础及论文进阶/02_具身智能/24_SuperMimic/02_model.py.md",
     "07_DL基础及论文进阶/02_具身智能/01_具身智能论文精讲.md",
     "04_数学大观/01_高数大观/06_多元积分/大观知识点/3.三重积分.pdf",
-    "07_DL基础及论文进阶/02_具身智能/24_SuperMimic/SuperMimic.pdf",
+    "07_DL基础及论文进阶/02_具身智能/24_SuperMimic/01_SuperMimic.md",
     "07_DL基础及论文进阶/02_具身智能/24_SuperMimic",
     "07_DL基础及论文进阶/06_论文X光/05_SuperMimic_X光.md",
     "07_DL基础及论文进阶/07_每日论文/2026-11-08-论文推荐.md",
@@ -286,8 +271,6 @@
     "10_求职/06_具身实习公司地图/公司级JD偏好与命中率提升计划.md",
     "10_求职/06_具身实习公司地图/公司档案汇总.md",
     "10_求职/04_面经与复习/小红书-具身VLA-WAM-面经30篇.md",
-    "10_求职/04_面经与复习/具身VLA高频复习提纲.md",
-    "10_求职/03_实习与RA岗位/00_实习与RA总览.md",
     "04_数学大观/01_高数大观/06_多元积分/大观知识点",
     "10_求职/04_面经与复习/attachments/6a1c537d0000000037035168_2.png",
     "10_求职/04_面经与复习/attachments/6ae9d04f000000001500ae1e_1.png",
