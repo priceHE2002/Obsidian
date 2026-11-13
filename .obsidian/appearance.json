@@ -6,5 +6,6 @@
     "quiet-notes-unified"
   ],
   "translucency": true,
-  "cssTheme": ""
+  "cssTheme": "",
+  "showRibbon": true
 }
