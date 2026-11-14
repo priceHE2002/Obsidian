@@ -116,8 +116,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 373.1484375,
-    "collapsed": true
+    "width": 263.1796875
   },
   "right": {
     "id": "7f4b4e0b83f1f22d",
@@ -261,7 +260,7 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "d341978a6b68f591",
+  "active": "2a0b2c21f867c062",
   "lastOpenFiles": [
     "03_计算机系统/04_计算机网络/02_王道强化_手稿/计网P1_物理层链路层（凌乱手稿版）.pdf",
     "03_计算机系统/_408每日五问/01_408五问·进度.md",
